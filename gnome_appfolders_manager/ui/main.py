@@ -45,6 +45,7 @@ class UIMain(object):
         # Load settings
         settings.settings = settings.Settings(FILE_SETTINGS, False)
         settings.positions = settings.Settings(FILE_WINDOWS_POSITION, False)
+        self.desktop_entries = []
         self.folders = {}
         preferences.preferences = preferences.Preferences()
         self.loadUI()
@@ -91,6 +92,7 @@ class UIMain(object):
             button.set_tooltip_text(action.get_label().replace('_', ''))
         # Automatically add a Gtk.Separator to each Gtk.ListBoxRow
         self.ui.listbox_folders.set_header_func(add_separator_listboxrow, None)
+        self.ui.listbox_files.set_header_func(add_separator_listboxrow, None)
         # Connect signals from the glade file to the module functions
         self.ui.connect_signals(self)
 
@@ -155,6 +157,48 @@ class UIMain(object):
 
     def on_listbox_folders_row_selected(self, widget, selected_row):
         """Reload the applications for the selected AppFolder"""
+        def add_new_application(filename, desktop_file):
+            """Add a new application from a .desktop file"""
+            self.desktop_entries.append(filename)
+            # New Gtk.Box for application icon, name and description
+            new_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
+                              spacing=5)
+            new_box.show()
+            # Add Gtk.Image for application icon (and resize the icon)
+            new_image = Gtk.Image.new_from_icon_name(desktop_file.getIcon()
+                                                     if desktop_file
+                                                     else 'gtk-missing-image',
+                                                     Gtk.IconSize.DIALOG)
+            (status, width, height) = Gtk.IconSize.lookup(Gtk.IconSize.DIALOG)
+            new_image.set_pixel_size(height)
+
+            new_image.show()
+            new_box.add(new_image)
+            # Add a new Gtk.Box with name and filename
+            new_box_labels = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
+                                     homogeneous=True,
+                                     spacing=3)
+            new_box_labels.show()
+            new_box.add(new_box_labels)
+            # Add Gtk.Label for application name
+            new_label = Gtk.Label()
+            new_label.set_markup('<b>%s</b>' % (desktop_file.getName()
+                                 if desktop_file else 'Missing desktop file'))
+            new_label.set_hexpand(True)
+            new_label.set_halign(Gtk.Align.START)
+            new_label.show()
+            new_box_labels.add(new_label)
+            # Add Gtk.Label for filename
+            new_label = Gtk.Label()
+            new_label.set_markup(filename)
+            new_label.set_halign(Gtk.Align.START)
+            new_label.show()
+            new_box_labels.add(new_label)
+            # Add Gtk.ListBoxRow with the previous
+            new_row = Gtk.ListBoxRow(height_request=40)
+            new_row.show()
+            new_row.add(new_box)
+            self.ui.listbox_files.add(new_row)
         if selected_row:
             for key in self.folders:
                 if self.folders[key][0] is selected_row:
@@ -165,4 +209,12 @@ class UIMain(object):
                     self.ui.lbl_description_text.set_label(
                         folder_info.desktop_entry.getComment())
                     applications = folder_info.get_applications()
+                    # Clear any previous application icon
+                    for row in self.ui.listbox_files:
+                        row.destroy()
+                    self.desktop_entries = []
+                    # Add new application icons
+                    for application in applications:
+                        desktop_file = applications[application]
+                        add_new_application(application, desktop_file)
                     break
