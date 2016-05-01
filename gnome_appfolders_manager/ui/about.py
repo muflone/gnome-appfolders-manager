@@ -71,8 +71,7 @@ class UIAbout(object):
                     resource_type, (resource_url,))
         icon_logo = Pixbuf.new_from_file(FILE_ICON)
         self.ui.dialog_about.set_logo(icon_logo)
-        if not preferences.get(preferences.DETACHED_WINDOWS):
-            self.ui.dialog_about.set_transient_for(parent)
+        self.ui.dialog_about.set_transient_for(parent)
 
     def show(self):
         """Show the About dialog"""

@@ -74,8 +74,7 @@ class UIMain(object):
         # Initialize Gtk.HeaderBar
         self.ui.header_bar.props.title = self.ui.win_main.get_title()
         self.ui.win_main.set_titlebar(self.ui.header_bar)
-        for button in (self.ui.button_new, self.ui.button_edit,
-                       self.ui.button_delete, self.ui.button_about):
+        for button in (self.ui.button_about, ):
             action = button.get_related_action()
             icon_name = action.get_icon_name()
             if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
@@ -216,6 +215,7 @@ class UIMain(object):
                     # Add new application icons
                     for application in applications:
                         desktop_file = applications[application]
-                        if desktop_file or not preferences.get(preferences.PREFERENCES_HIDE_MISSING):
+                        if desktop_file or not preferences.get(
+                                preferences.PREFERENCES_HIDE_MISSING):
                             add_new_application(application, desktop_file)
                     break
