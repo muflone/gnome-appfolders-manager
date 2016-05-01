@@ -216,5 +216,6 @@ class UIMain(object):
                     # Add new application icons
                     for application in applications:
                         desktop_file = applications[application]
-                        add_new_application(application, desktop_file)
+                        if desktop_file or not preferences.get(preferences.PREFERENCES_HIDE_MISSING):
+                            add_new_application(application, desktop_file)
                     break
