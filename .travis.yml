@@ -1,0 +1,25 @@
+language: python
+python:
+  - "2.7"
+virtualenv:
+  system_site_packages: true
+sudo: false
+addons:
+  apt:
+    packages:
+    - python-gi                               # GObject
+    - gir1.2-gtk-3.0                          # gi.repository.gtk
+    - python-xdg                              # PyXDG
+install:
+  - pip install -r requirements.txt
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+script:
+  - python -m compileall .
+  - pep8 . || true
+  - pychecker --no-shadow
+    --blacklist gobject,GLib,gi._glib,gi._gobject,gi._gobject._gobject
+    gnome-appfolders-manager.py
+  - python setup.py install --optimize=1 --root=build
+  - ls -laR build
