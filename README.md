@@ -6,9 +6,9 @@ GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-a
 
 **License:** GPL-2+
 
-**Codice sorgente:** https://github.com/muflone/gnome-appfolders-manager
+**Source code:** https://github.com/muflone/gnome-appfolders-manager
 
-**Documentazione:** http://www.muflone.com/gnome-appfolders-manager/
+**Documentation:** http://www.muflone.com/gnome-appfolders-manager/
 
 System Requirements
 -------------------
