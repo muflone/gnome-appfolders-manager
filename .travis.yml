@@ -19,7 +19,7 @@ script:
   - python -m compileall .
   - pep8 . || true
   - pychecker --no-shadow
-    --blacklist gobject,GLib,gi._glib,gi._gobject,gi._gobject._gobject
+    --blacklist gi
     gnome-appfolders-manager.py
   - python setup.py install --optimize=1 --root=build
   - ls -laR build
