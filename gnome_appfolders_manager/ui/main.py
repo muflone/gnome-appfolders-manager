@@ -45,6 +45,7 @@ class UIMain(object):
         # Load settings
         settings.settings = settings.Settings(FILE_SETTINGS, False)
         settings.positions = settings.Settings(FILE_WINDOWS_POSITION, False)
+        self.folders = {}
         preferences.preferences = preferences.Preferences()
         self.loadUI()
         self.reload_folders()
@@ -142,8 +143,8 @@ class UIMain(object):
             new_box_labels.add(new_label)
             # Gtk.Label with title
             new_label = Gtk.Label()
-            new_label.set_markup('<span size="small">%s</span>' % 
-                folder_info.desktop_entry.getName())
+            new_label.set_markup('<span size="small">%s</span>' %
+                                 folder_info.desktop_entry.getName())
             new_label.set_halign(Gtk.Align.START)
             new_box_labels.add(new_label)
 
