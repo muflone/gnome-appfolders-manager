@@ -135,12 +135,15 @@ class UIMain(object):
                                      spacing=3)
             new_box.add(new_box_labels)
             # Gtk.Label with name
-            new_label = Gtk.Label(folder_info.folder)
+            new_label = Gtk.Label()
+            new_label.set_markup('<b>%s</b>' % folder_info.folder)
             new_label.set_hexpand(True)
             new_label.set_halign(Gtk.Align.START)
             new_box_labels.add(new_label)
             # Gtk.Label with title
-            new_label = Gtk.Label(folder_info.desktop_entry.getName())
+            new_label = Gtk.Label()
+            new_label.set_markup('<span size="small">%s</span>' % 
+                folder_info.desktop_entry.getName())
             new_label.set_halign(Gtk.Align.START)
             new_box_labels.add(new_label)
 
