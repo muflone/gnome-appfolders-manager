@@ -27,7 +27,7 @@ from gnome_appfolders_manager.constants import (
     FILE_SETTINGS, FILE_WINDOWS_POSITION,
     SCHEMA_FOLDERS)
 from gnome_appfolders_manager.functions import (
-    get_ui_file, add_separator_listboxrow, text, _)
+    get_ui_file, get_treeview_selected_row, text, _)
 import gnome_appfolders_manager.preferences as preferences
 import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
@@ -35,6 +35,10 @@ from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.ui.about import UIAbout
 
 from gnome_appfolders_manager.models.folder_info import FolderInfo
+from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
+from gnome_appfolders_manager.models.appfolders import ModelAppFolders
+from gnome_appfolders_manager.models.application_info import ApplicationInfo
+from gnome_appfolders_manager.models.applications import ModelApplications
 
 SECTION_WINDOW_NAME = 'main'
 
@@ -45,12 +49,17 @@ class UIMain(object):
         # Load settings
         settings.settings = settings.Settings(FILE_SETTINGS, False)
         settings.positions = settings.Settings(FILE_WINDOWS_POSITION, False)
-        self.desktop_entries = []
         self.folders = {}
         preferences.preferences = preferences.Preferences()
         self.loadUI()
+        # Prepares the models for folders and applications
+        self.model_folders = ModelAppFolders(self.ui.store_folders)
+        self.model_applications = ModelApplications(self.ui.store_applications)
+        # Detect the AppFolders and select the first one automatically
         self.reload_folders()
-
+        if self.model_folders.count() > 0:
+            self.ui.treeview_folders.set_cursor(0)
+        self.ui.treeview_folders.grab_focus()
         # Restore the saved size and position
         settings.positions.restore_window_position(
             self.ui.win_main, SECTION_WINDOW_NAME)
@@ -89,9 +98,6 @@ class UIMain(object):
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
-        # Automatically add a Gtk.Separator to each Gtk.ListBoxRow
-        self.ui.listbox_folders.set_header_func(add_separator_listboxrow, None)
-        self.ui.listbox_files.set_header_func(add_separator_listboxrow, None)
         # Connect signals from the glade file to the module functions
         self.ui.connect_signals(self)
 
@@ -126,96 +132,34 @@ class UIMain(object):
         list_folders = settings_folders.get_value('folder-children')
         for folder_name in list_folders:
             folder_info = FolderInfo(folder_name)
-            # New box for folder icon and description
-            new_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                              spacing=5)
-            new_box.add(Gtk.Image.new_from_icon_name(
-                folder_info.desktop_entry.getIcon(), Gtk.IconSize.DIALOG))
+            appfolder = AppFolderInfo(folder_info)
+            self.model_folders.add_data(appfolder)
+            self.folders[folder_info.folder] = folder_info
 
-            new_box_labels = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
-                                     homogeneous=True,
-                                     spacing=3)
-            new_box.add(new_box_labels)
-            # Gtk.Label with name
-            new_label = Gtk.Label()
-            new_label.set_markup('<b>%s</b>' % folder_info.folder)
-            new_label.set_hexpand(True)
-            new_label.set_halign(Gtk.Align.START)
-            new_box_labels.add(new_label)
-            # Gtk.Label with title
-            new_label = Gtk.Label()
-            new_label.set_markup('<span size="small">%s</span>' %
-                                 folder_info.desktop_entry.getName())
-            new_label.set_halign(Gtk.Align.START)
-            new_box_labels.add(new_label)
-
-            new_row = Gtk.ListBoxRow(height_request=40)
-            new_row.add(new_box)
-            self.ui.listbox_folders.add(new_row)
-            self.folders[folder_info.name] = (new_row, folder_info)
-
-    def on_listbox_folders_row_selected(self, widget, selected_row):
-        """Reload the applications for the selected AppFolder"""
-        def add_new_application(filename, desktop_file):
-            """Add a new application from a .desktop file"""
-            self.desktop_entries.append(filename)
-            # New Gtk.Box for application icon, name and description
-            new_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                              spacing=5)
-            new_box.show()
-            # Add Gtk.Image for application icon (and resize the icon)
-            new_image = Gtk.Image.new_from_icon_name(desktop_file.getIcon()
-                                                     if desktop_file
-                                                     else 'gtk-missing-image',
-                                                     Gtk.IconSize.DIALOG)
-            (status, width, height) = Gtk.IconSize.lookup(Gtk.IconSize.DIALOG)
-            new_image.set_pixel_size(height)
-
-            new_image.show()
-            new_box.add(new_image)
-            # Add a new Gtk.Box with name and filename
-            new_box_labels = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
-                                     homogeneous=True,
-                                     spacing=3)
-            new_box_labels.show()
-            new_box.add(new_box_labels)
-            # Add Gtk.Label for application name
-            new_label = Gtk.Label()
-            new_label.set_markup('<b>%s</b>' % (desktop_file.getName()
-                                 if desktop_file else 'Missing desktop file'))
-            new_label.set_hexpand(True)
-            new_label.set_halign(Gtk.Align.START)
-            new_label.show()
-            new_box_labels.add(new_label)
-            # Add Gtk.Label for filename
-            new_label = Gtk.Label()
-            new_label.set_markup(filename)
-            new_label.set_halign(Gtk.Align.START)
-            new_label.show()
-            new_box_labels.add(new_label)
-            # Add Gtk.ListBoxRow with the previous
-            new_row = Gtk.ListBoxRow(height_request=40)
-            new_row.show()
-            new_row.add(new_box)
-            self.ui.listbox_files.add(new_row)
+    def on_treeview_folders_cursor_changed(self, widget):
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         if selected_row:
-            for key in self.folders:
-                if self.folders[key][0] is selected_row:
-                    folder_info = self.folders[key][1]
-                    self.ui.lbl_name_text.set_label(folder_info.folder)
-                    self.ui.lbl_title_text.set_label(
-                        folder_info.desktop_entry.getName())
-                    self.ui.lbl_description_text.set_label(
-                        folder_info.desktop_entry.getComment())
-                    applications = folder_info.get_applications()
-                    # Clear any previous application icon
-                    for row in self.ui.listbox_files:
-                        row.destroy()
-                    self.desktop_entries = []
-                    # Add new application icons
-                    for application in applications:
-                        desktop_file = applications[application]
-                        if desktop_file or not preferences.get(
-                                preferences.PREFERENCES_HIDE_MISSING):
-                            add_new_application(application, desktop_file)
-                    break
+            folder_name = self.model_folders.get_key(selected_row)
+            folder_info = self.folders[folder_name]
+            self.ui.lbl_name_text.set_label(folder_info.folder)
+            self.ui.lbl_title_text.set_label(
+                folder_info.desktop_entry.getName())
+            self.ui.lbl_description_text.set_label(
+                folder_info.desktop_entry.getComment())
+            # Clear any previous application icon
+            self.model_applications.clear()
+            # Add new application icons
+            applications = folder_info.get_applications()
+            for application in applications:
+                desktop_file = applications[application]
+                if desktop_file or not preferences.get(
+                        preferences.PREFERENCES_HIDE_MISSING):
+                    application_file = applications[application]
+                    application_info = ApplicationInfo(
+                        application,
+                        application_file.getName()
+                        if desktop_file else 'Missing desktop file',
+                        application_file.getComment()
+                        if desktop_file else application,
+                        application_file.getIcon() if desktop_file else None)
+                    self.model_applications.add_data(application_info)

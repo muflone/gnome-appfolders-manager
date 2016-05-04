@@ -30,6 +30,7 @@ PATH_FOLDER = '/org/gnome/desktop/app-folders/folders/{folder}/'
 
 class FolderInfo(object):
     def __init__(self, folder):
+        """Find a folder from the settings"""
         self.folder = folder
         # Get info from the settings schema
         folder_path = PATH_FOLDER.format(folder=folder)

@@ -69,10 +69,15 @@ def recursive_glob(starting_path, pattern):
     return result
 
 
-def add_separator_listboxrow(row, before, user_data):
-    """Add a horizontal Gtk.Separator to a Gtk.ListBoxRow header"""
-    if before and not row.get_header():
-        row.set_header(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL))
+def get_treeview_selected_row(widget):
+    """Return the selected row in a GtkTreeView"""
+    return widget.get_selection().get_selected()[1]
+
+
+def get_pixbuf_from_icon_name(icon_name, size):
+    """Get a Gdk.PixBuf from a theme icon"""
+    return Gtk.IconTheme.get_default().load_icon(
+        icon_name=icon_name, size=size, flags=Gtk.IconLookupFlags.USE_BUILTIN)
 
 
 # This special alias is used to track localization requests to catch
@@ -86,5 +91,6 @@ __all__ = [
     'localized_messages',
     'get_ui_file',
     'recursive_glob',
-    'add_separator_listboxrow'
+    'get_treeview_selected_row',
+    'get_pixbuf_from_icon_name'
 ]
