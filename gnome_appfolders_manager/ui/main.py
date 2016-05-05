@@ -83,7 +83,9 @@ class UIMain(object):
         # Initialize Gtk.HeaderBar
         self.ui.header_bar.props.title = self.ui.win_main.get_title()
         self.ui.win_main.set_titlebar(self.ui.header_bar)
-        for button in (self.ui.button_about, ):
+        for button in (self.ui.button_folder_new, self.ui.button_folder_remove,
+                       self.ui.button_files_add, self.ui.button_files_remove,
+                       self.ui.button_files_save, self.ui.button_about, ):
             action = button.get_related_action()
             icon_name = action.get_icon_name()
             if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
