@@ -33,6 +33,7 @@ import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 from gnome_appfolders_manager.ui.about import UIAbout
+from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
 
 from gnome_appfolders_manager.models.folder_info import FolderInfo
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
@@ -165,3 +166,8 @@ class UIMain(object):
                         if desktop_file else application,
                         application_file.getIcon() if desktop_file else None)
                     self.model_applications.add_data(application_info)
+
+    def on_action_files_new_activate(self, action):
+        dialog = UIApplicationPicker(self.ui.win_main)
+        dialog.show()
+        dialog.destroy()
