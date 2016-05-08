@@ -25,7 +25,8 @@ from gi.repository.GdkPixbuf import Pixbuf
 
 import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-from gnome_appfolders_manager.functions import get_ui_file
+from gnome_appfolders_manager.functions import (
+    get_ui_file, set_style_suggested_action)
 
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
@@ -46,6 +47,7 @@ class UIApplicationPicker(object):
             Gtk.SortType.ASCENDING)
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)
+        set_style_suggested_action(self.ui.button_add)
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:

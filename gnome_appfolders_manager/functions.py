@@ -113,6 +113,11 @@ def get_pixbuf_from_icon_name(icon_name, size):
     return icon
 
 
+def set_style_suggested_action(widget):
+    """Add the suggested-action style to a widget"""
+    widget.get_style_context().add_class("suggested-action")
+
+
 # This special alias is used to track localization requests to catch
 # by xgettext. The text() calls aren't tracked by xgettext
 _ = text
@@ -125,5 +130,6 @@ __all__ = [
     'get_ui_file',
     'recursive_glob',
     'get_treeview_selected_row',
-    'get_pixbuf_from_icon_name'
+    'get_pixbuf_from_icon_name',
+    'set_style_suggested_action'
 ]
