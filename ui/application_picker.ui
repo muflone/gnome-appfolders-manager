@@ -29,7 +29,6 @@
     </child>
     <child>
       <object class="GtkButton" id="button_add">
-        <property name="label" translatable="yes">button</property>
         <property name="use_action_appearance">True</property>
         <property name="related_action">action_add</property>
         <property name="visible">True</property>
