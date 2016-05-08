@@ -18,6 +18,7 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
+from gnome_appfolders_manager.constants import MISSING_ICON_NAME
 from gnome_appfolders_manager.functions import get_pixbuf_from_icon_name
 from gnome_appfolders_manager.models.abstract import ModelAbstract
 
@@ -31,6 +32,12 @@ class ModelApplications(ModelAbstract):
         """Add a new row to the model if it doesn't exists"""
         super(self.__class__, self).add_data(item)
         if item.filename not in self.rows:
+            icon = None
+            if item.icon_name:
+                icon = get_pixbuf_from_icon_name(item.icon_name, 48)
+            # If the icon was not found or it was missing use a fallback icon
+            if not icon:
+                icon = get_pixbuf_from_icon_name(MISSING_ICON_NAME, 48)
             new_row = self.model.append((
                 item.filename,
                 item.name,
@@ -41,8 +48,7 @@ class ModelApplications(ModelAbstract):
                     'name': item.name.encode('utf-8'),
                     'description': item.description.encode('utf-8'),
                     'filename': item.filename}),
-                get_pixbuf_from_icon_name(item.icon_name, 48)
-                if item.icon_name else None))
+                icon))
             self.rows[item.filename] = new_row
             return new_row
 

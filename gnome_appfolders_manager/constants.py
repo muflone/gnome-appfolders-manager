@@ -38,6 +38,7 @@ DOMAIN_NAME = 'gnome-appfolders-manager'
 VERBOSE_LEVEL_QUIET = 0
 VERBOSE_LEVEL_NORMAL = 1
 VERBOSE_LEVEL_MAX = 2
+MISSING_ICON_NAME = 'application-x-executable'
 
 # Paths constants
 # If there's a file data/gnome-appfolders-manager.png then the shared data
