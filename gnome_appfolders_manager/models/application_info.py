@@ -18,10 +18,12 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
+from gi.repository import GLib
+
 
 class ApplicationInfo(object):
     def __init__(self, filename, name, description, icon_name):
-        self.filename = filename
-        self.name = name
-        self.description = description
+        self.filename = GLib.markup_escape_text(filename)
+        self.name = GLib.markup_escape_text(name)
+        self.description = GLib.markup_escape_text(description)
         self.icon_name = icon_name

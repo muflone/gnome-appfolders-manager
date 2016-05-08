@@ -45,8 +45,8 @@ class ModelApplications(ModelAbstract):
                 '<b>{name}</b>\n'
                 '<small>{description}</small>\n'
                 '<small>{filename}</small>'.format(**{
-                    'name': item.name.encode('utf-8'),
-                    'description': item.description.encode('utf-8'),
+                    'name': item.name,
+                    'description': item.description,
                     'filename': item.filename}),
                 icon))
             self.rows[item.filename] = new_row

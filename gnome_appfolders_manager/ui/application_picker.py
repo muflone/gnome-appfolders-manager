@@ -21,7 +21,6 @@
 from gi.repository import Gtk
 from gi.repository import Gio
 from gi.repository import GdkPixbuf
-from gi.repository import GLib
 from gi.repository.GdkPixbuf import Pixbuf
 
 import gnome_appfolders_manager.preferences as preferences
@@ -54,16 +53,11 @@ class UIApplicationPicker(object):
                 if isinstance(desktop_entry.get_icon(), Gio.ThemedIcon):
                     icons = desktop_entry.get_icon().get_names()
                     icon_name = icons[0] if icons else None
-                #description = (desktop_entry.get_description().decode('utf-8')
-                #               if desktop_entry.get_description() else '')
-                name = desktop_entry.get_name()
-                if '&' in name:
-                    print name, desktop_entry.get_id()
-                name = GLib.markup_escape_text(name).decode('utf-8')
-                filename = GLib.markup_escape_text(desktop_entry.get_id())
-                application = ApplicationInfo(filename,
-                                              name,
-                                              '',
+                description = (desktop_entry.get_description()
+                               if desktop_entry.get_description() else '')
+                application = ApplicationInfo(desktop_entry.get_id(),
+                                              desktop_entry.get_name(),
+                                              description,
                                               icon_name)
                 self.model_applications.add_data(application)
             except Exception as e:
