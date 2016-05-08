@@ -11,6 +11,7 @@
     <child>
       <object class="GtkAction" id="action_close">
         <property name="short_label" translatable="yes">_Close</property>
+        <signal name="activate" handler="on_action_close_activate" swapped="no"/>
       </object>
     </child>
   </object>

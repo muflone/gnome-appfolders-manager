@@ -62,6 +62,8 @@ class UIApplicationPicker(object):
                 self.model_applications.add_data(application)
             except Exception as e:
                 print 'error for', desktop_entry.get_id(), e
+        # Connect signals from the glade file to the module functions
+        self.ui.connect_signals(self)
 
     def show(self):
         """Show the application picker dialog"""
@@ -72,3 +74,7 @@ class UIApplicationPicker(object):
         """Destroy the application picker dialog"""
         self.ui.dialog_application_picker.destroy()
         self.ui.dialog_application_picker = None
+
+    def on_action_close_activate(self, action):
+        """Close the application picker dialog"""
+        self.ui.dialog_application_picker.response(Gtk.ResponseType.CLOSE)
