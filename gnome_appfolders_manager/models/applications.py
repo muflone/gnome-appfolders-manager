@@ -28,6 +28,10 @@ class ModelApplications(ModelAbstract):
     COL_DESCRIPTION = 2
     COL_ICON = 3
 
+    def __init__(self, model):
+        super(self.__class__, self).__init__(model)
+        self.items = {}
+
     def add_data(self, item):
         """Add a new row to the model if it doesn't exists"""
         super(self.__class__, self).add_data(item)
@@ -50,6 +54,7 @@ class ModelApplications(ModelAbstract):
                     'filename': item.filename}),
                 icon))
             self.rows[item.filename] = new_row
+            self.items[item.filename] = item
             return new_row
 
     def get_title(self, treeiter):

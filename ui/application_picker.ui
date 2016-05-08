@@ -6,6 +6,8 @@
     <child>
       <object class="GtkAction" id="action_add">
         <property name="short_label" translatable="yes">_Add</property>
+        <property name="sensitive">False</property>
+        <signal name="activate" handler="on_action_add_activate" swapped="no"/>
       </object>
     </child>
     <child>
@@ -91,8 +93,11 @@
                 <property name="can_focus">True</property>
                 <property name="model">store_applications</property>
                 <property name="headers_visible">False</property>
+                <signal name="row-activated" handler="on_treeview_applications_row_activated" swapped="no"/>
                 <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview_selection_applications"/>
+                  <object class="GtkTreeSelection" id="treeview_selection_applications">
+                    <signal name="changed" handler="on_treeview_selection_applications_changed" swapped="no"/>
+                  </object>
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="column_applications">

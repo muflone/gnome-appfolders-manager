@@ -168,6 +168,15 @@ class UIMain(object):
                     self.model_applications.add_data(application_info)
 
     def on_action_files_new_activate(self, action):
+        """Show an application picker to add to the current AppFolder"""
         dialog = UIApplicationPicker(self.ui.win_main)
-        dialog.show()
+        if dialog.show() == Gtk.ResponseType.OK:
+            if dialog.selected_application:
+                # Get the selected application in the application picker
+                # and add it to the current AppFolder
+                application_info = dialog.model_applications.items[
+                    dialog.selected_application]
+                self.model_applications.add_data(application_info)
+                # Enable folder content saving
+                self.ui.action_files_save.set_sensitive(True)
         dialog.destroy()

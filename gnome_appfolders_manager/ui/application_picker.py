@@ -26,7 +26,7 @@ from gi.repository.GdkPixbuf import Pixbuf
 import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import (
-    get_ui_file, set_style_suggested_action)
+    get_ui_file, set_style_suggested_action, get_treeview_selected_row)
 
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
@@ -48,6 +48,7 @@ class UIApplicationPicker(object):
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
+        self.selected_application = None
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:
@@ -69,8 +70,9 @@ class UIApplicationPicker(object):
 
     def show(self):
         """Show the application picker dialog"""
-        self.ui.dialog_application_picker.run()
+        response = self.ui.dialog_application_picker.run()
         self.ui.dialog_application_picker.hide()
+        return response
 
     def destroy(self):
         """Destroy the application picker dialog"""
@@ -80,3 +82,18 @@ class UIApplicationPicker(object):
     def on_action_close_activate(self, action):
         """Close the application picker dialog"""
         self.ui.dialog_application_picker.response(Gtk.ResponseType.CLOSE)
+
+    def on_action_add_activate(self, action):
+        """Add the selected application to the current AppFolder"""
+        self.selected_application = self.model_applications.get_key(
+            get_treeview_selected_row(self.ui.treeview_applications))
+        self.ui.dialog_application_picker.response(Gtk.ResponseType.OK)
+
+    def on_treeview_applications_row_activated(self, widget, path, column):
+        """Add the selected application on row activation"""
+        self.ui.action_add.activate()
+
+    def on_treeview_selection_applications_changed(self, widget):
+        """Set action sensitiveness on selection change"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
+        self.ui.action_add.set_sensitive(bool(selected_row))
