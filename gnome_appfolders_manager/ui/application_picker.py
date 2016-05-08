@@ -23,6 +23,7 @@ from gi.repository import Gio
 from gi.repository import GdkPixbuf
 from gi.repository.GdkPixbuf import Pixbuf
 
+import gnome_appfolders_manager.settings as settings
 import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import (
@@ -70,12 +71,16 @@ class UIApplicationPicker(object):
 
     def show(self):
         """Show the application picker dialog"""
+        settings.positions.restore_window_position(
+            self.ui.dialog_application_picker, SECTION_WINDOW_NAME)
         response = self.ui.dialog_application_picker.run()
         self.ui.dialog_application_picker.hide()
         return response
 
     def destroy(self):
         """Destroy the application picker dialog"""
+        settings.positions.save_window_position(
+            self.ui.dialog_application_picker, SECTION_WINDOW_NAME)
         self.ui.dialog_application_picker.destroy()
         self.ui.dialog_application_picker = None
 
