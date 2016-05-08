@@ -21,9 +21,11 @@
 import os
 import os.path
 import fnmatch
+import itertools
 from gettext import gettext, dgettext
 
 from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 
 from gnome_appfolders_manager.constants import DIR_UI
 
@@ -76,8 +78,39 @@ def get_treeview_selected_row(widget):
 
 def get_pixbuf_from_icon_name(icon_name, size):
     """Get a Gdk.PixBuf from a theme icon"""
-    return Gtk.IconTheme.get_default().load_icon(
-        icon_name=icon_name, size=size, flags=Gtk.IconLookupFlags.USE_BUILTIN)
+    theme = Gtk.IconTheme.get_default()
+    if theme.has_icon(icon_name):
+        icon = theme.load_icon(icon_name=icon_name,
+                               size=size,
+                               flags=Gtk.IconLookupFlags.USE_BUILTIN)
+    else:
+        # The icon was not found in the current theme, search for filenames
+        # with png or jpg extensions
+        if (icon_name.lower().endswith('.png') or
+                icon_name.lower().endswith('.jpg') or
+                icon_name.lower().endswith('.xpm')):
+            filenames = (icon_name, )
+        else:
+            filenames = ('%s.png' % icon_name,
+                         '%s.jpg' % icon_name,
+                         '%s.xpm' % icon_name)
+        # Search for filenames in icons and pixmaps directories
+        icon = None
+        search_in_paths = ('/usr/share/icons',
+                           '/usr/share/pixmaps')
+        for path, filename in itertools.product(search_in_paths, filenames):
+            file_path = os.path.join(path, filename)
+            if os.path.isfile(file_path):
+                icon = GdkPixbuf.Pixbuf.new_from_file(file_path)
+                break
+    if icon:
+        # If size is not correct then resize the icon to the requested size
+        if icon.get_width() != size or icon.get_height() != size:
+            icon = icon.scale_simple(size, size,
+                                     GdkPixbuf.InterpType.BILINEAR)
+    else:
+        print 'missing icon', icon_name
+    return icon
 
 
 # This special alias is used to track localization requests to catch
