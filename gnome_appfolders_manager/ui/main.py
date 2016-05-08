@@ -180,6 +180,11 @@ class UIMain(object):
                 application_info = dialog.model_applications.items[
                     dialog.selected_application]
                 self.model_applications.add_data(application_info)
+                # Automatically select the newly added application
+                filename = application_info.filename
+                treeiter = self.model_applications.rows[filename]
+                self.ui.treeview_applications.set_cursor(
+                    self.model_applications.get_path(treeiter))
                 # Enable folder content saving
                 self.ui.action_files_save.set_sensitive(True)
         dialog.destroy()
