@@ -56,6 +56,9 @@ class UIMain(object):
         # Prepares the models for folders and applications
         self.model_folders = ModelAppFolders(self.ui.store_folders)
         self.model_applications = ModelApplications(self.ui.store_applications)
+        self.model_applications.model.set_sort_column_id(
+            self.ui.treeview_column_applications.get_sort_column_id(),
+            Gtk.SortType.ASCENDING)
         # Detect the AppFolders and select the first one automatically
         self.reload_folders()
         if self.model_folders.count() > 0:
