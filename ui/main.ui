@@ -253,6 +253,7 @@
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="model">store_folders</property>
+                <property name="headers_clickable">False</property>
                 <signal name="cursor-changed" handler="on_treeview_folders_cursor_changed" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview_selection_folders"/>
@@ -260,7 +261,6 @@
                 <child>
                   <object class="GtkTreeViewColumn" id="treeview_column_folders">
                     <property name="title" translatable="yes">Folders</property>
-                    <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererPixbuf" id="cell_folders_icon"/>
                       <attributes>
@@ -311,13 +311,13 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="model">store_applications</property>
+                    <property name="headers_clickable">False</property>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection"/>
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeview_column_applications">
                         <property name="title" translatable="yes">Applications</property>
-                        <property name="clickable">True</property>
                         <property name="sort_column_id">1</property>
                         <child>
                           <object class="GtkCellRendererPixbuf" id="cell_application_icon"/>

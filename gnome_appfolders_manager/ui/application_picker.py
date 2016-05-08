@@ -43,7 +43,7 @@ class UIApplicationPicker(object):
         # Prepares the models for the applications
         self.model_applications = ModelApplications(self.ui.store_applications)
         self.model_applications.model.set_sort_column_id(
-            self.ui.column_applications.get_sort_column_id(),
+            self.ui.treeview_column_applications.get_sort_column_id(),
             Gtk.SortType.ASCENDING)
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)

@@ -59,6 +59,8 @@
   </object>
   <object class="GtkDialog" id="dialog_application_picker">
     <property name="can_focus">False</property>
+    <property name="default_width">400</property>
+    <property name="default_height">200</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="box_content">
@@ -100,7 +102,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="column_applications">
+                  <object class="GtkTreeViewColumn" id="treeview_column_applications">
                     <property name="title" translatable="yes">Applications</property>
                     <property name="sort_column_id">1</property>
                     <child>
