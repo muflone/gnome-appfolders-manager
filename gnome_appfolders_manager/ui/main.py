@@ -172,7 +172,8 @@ class UIMain(object):
 
     def on_action_files_new_activate(self, action):
         """Show an application picker to add to the current AppFolder"""
-        dialog = UIApplicationPicker(self.ui.win_main)
+        dialog = UIApplicationPicker(self.ui.win_main,
+                                     self.model_applications.rows.keys())
         if dialog.show() == Gtk.ResponseType.OK:
             if dialog.selected_application:
                 # Get the selected application in the application picker

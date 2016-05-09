@@ -36,7 +36,7 @@ SECTION_WINDOW_NAME = 'application picker'
 
 
 class UIApplicationPicker(object):
-    def __init__(self, parent):
+    def __init__(self, parent, existing_files):
         """Prepare the application picker dialog"""
         # Load the user interface
         self.ui = GtkBuilderLoader(get_ui_file('application_picker.ui'))
@@ -63,7 +63,9 @@ class UIApplicationPicker(object):
                                               desktop_entry.get_name(),
                                               description,
                                               icon_name)
-                self.model_applications.add_data(application)
+                # Skip existing files
+                if application.filename not in existing_files:
+                    self.model_applications.add_data(application)
             except Exception as e:
                 print 'error for', desktop_entry.get_id(), e
         # Connect signals from the glade file to the module functions
