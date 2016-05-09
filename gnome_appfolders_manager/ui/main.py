@@ -189,3 +189,8 @@ class UIMain(object):
                 # Enable folder content saving
                 self.ui.action_files_save.set_sensitive(True)
         dialog.destroy()
+
+    def on_treeview_selection_applications_changed(self, widget):
+        """Set action sensitiveness on selection change"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
+        self.ui.action_files_remove.set_sensitive(bool(selected_row))

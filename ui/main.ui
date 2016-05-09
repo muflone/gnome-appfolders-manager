@@ -313,7 +313,9 @@
                     <property name="model">store_applications</property>
                     <property name="headers_clickable">False</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="GtkTreeSelection" id="treeview_selection_applications">
+                        <signal name="changed" handler="on_treeview_selection_applications_changed" swapped="no"/>
+                      </object>
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeview_column_applications">
