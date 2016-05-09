@@ -64,3 +64,15 @@ class FolderInfo(object):
                 desktop_entry = None
             result[application] = desktop_entry
         return result
+
+    def get_name(self):
+        """Return the AppFolder name"""
+        return self.desktop_entry.getName() if self.desktop_entry else ''
+
+    def get_comment(self):
+        """Return the AppFolder comment"""
+        return self.desktop_entry.getComment() if self.desktop_entry else ''
+
+    def get_icon_name(self):
+        """Return the AppFolder icon name"""
+        return self.desktop_entry.getIcon() if self.desktop_entry else ''

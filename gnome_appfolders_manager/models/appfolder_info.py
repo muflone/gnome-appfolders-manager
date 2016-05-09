@@ -24,6 +24,6 @@ class AppFolderInfo(object):
         """Create an AppFolderInfo object from a FolderInfo object"""
         self.filename = folder_info.name
         self.name = folder_info.folder
-        self.title = folder_info.desktop_entry.getName()
-        self.description = folder_info.desktop_entry.getComment()
-        self.icon_name = folder_info.desktop_entry.getIcon()
+        self.title = folder_info.get_name()
+        self.description = folder_info.get_comment()
+        self.icon_name = folder_info.get_icon_name()
