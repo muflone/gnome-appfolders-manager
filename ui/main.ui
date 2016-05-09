@@ -21,21 +21,6 @@
       <accelerator key="q" modifiers="GDK_CONTROL_MASK"/>
     </child>
   </object>
-  <object class="GtkActionGroup" id="actions_applications">
-    <property name="accel_group">accelerators</property>
-    <child>
-      <object class="GtkAction" id="action_application_delete">
-        <property name="label" comments="Use domain gtk30">_Delete</property>
-        <property name="icon_name">edit-delete</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_application_add">
-        <property name="label" translatable="yes">_New</property>
-        <property name="icon_name">document-new</property>
-      </object>
-    </child>
-  </object>
   <object class="GtkActionGroup" id="actions_files">
     <property name="accel_group">accelerators</property>
     <child>
@@ -70,17 +55,16 @@
   <object class="GtkActionGroup" id="actions_folders">
     <property name="accel_group">accelerators</property>
     <child>
-      <object class="GtkAction" id="action_folder_remove">
+      <object class="GtkAction" id="action_folders_remove">
         <property name="label" comments="Use domain gtk30">_Remove</property>
         <property name="icon_name">edit-delete</property>
       </object>
     </child>
     <child>
-      <object class="GtkAction" id="action_folder_new">
+      <object class="GtkAction" id="action_folders_new">
         <property name="label" translatable="yes">_Create</property>
         <property name="icon_name">folder-new</property>
       </object>
-      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
     </child>
   </object>
   <object class="GtkHeaderBar" id="header_bar">
@@ -98,7 +82,7 @@
     <child>
       <object class="GtkButton" id="button_folder_new">
         <property name="use_action_appearance">True</property>
-        <property name="related_action">action_folder_new</property>
+        <property name="related_action">action_folders_new</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -110,7 +94,7 @@
     <child>
       <object class="GtkButton" id="button_folder_remove">
         <property name="use_action_appearance">True</property>
-        <property name="related_action">action_folder_remove</property>
+        <property name="related_action">action_folders_remove</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
