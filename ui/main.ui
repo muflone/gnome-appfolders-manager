@@ -28,14 +28,12 @@
         <property name="label" comments="Use domain gtk30">_Delete</property>
         <property name="icon_name">edit-delete</property>
       </object>
-      <accelerator key="Delete" modifiers="GDK_CONTROL_MASK"/>
     </child>
     <child>
       <object class="GtkAction" id="action_application_add">
         <property name="label" translatable="yes">_New</property>
         <property name="icon_name">document-new</property>
       </object>
-      <accelerator key="Insert"/>
     </child>
   </object>
   <object class="GtkActionGroup" id="actions_files">
@@ -57,6 +55,7 @@
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_remove_activate" swapped="no"/>
       </object>
+      <accelerator key="Delete"/>
     </child>
     <child>
       <object class="GtkAction" id="action_files_new">
@@ -65,7 +64,7 @@
         <property name="icon_name">list-add</property>
         <signal name="activate" handler="on_action_files_new_activate" swapped="no"/>
       </object>
-      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
+      <accelerator key="Insert"/>
     </child>
   </object>
   <object class="GtkActionGroup" id="actions_folders">
