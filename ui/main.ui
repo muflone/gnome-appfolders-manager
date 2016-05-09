@@ -55,6 +55,7 @@
         <property name="short_label" translatable="yes">_Delete</property>
         <property name="icon_name">list-remove</property>
         <property name="sensitive">False</property>
+        <signal name="activate" handler="on_action_files_remove_activate" swapped="no"/>
       </object>
     </child>
     <child>

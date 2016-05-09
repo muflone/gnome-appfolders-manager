@@ -196,3 +196,11 @@ class UIMain(object):
         """Set action sensitiveness on selection change"""
         selected_row = get_treeview_selected_row(self.ui.treeview_applications)
         self.ui.action_files_remove.set_sensitive(bool(selected_row))
+
+    def on_action_files_remove_activate(self, action):
+        """Remove the selected application from the current AppFolder"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
+        if selected_row:
+            self.model_applications.remove(selected_row)
+            # Enable folder content saving
+            self.ui.action_files_save.set_sensitive(True)
