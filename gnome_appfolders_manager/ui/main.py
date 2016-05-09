@@ -202,3 +202,13 @@ class UIMain(object):
             self.model_applications.remove(selected_row)
             # Enable folder content saving
             self.ui.action_files_save.set_sensitive(True)
+
+    def on_action_files_save_activate(self, action):
+        """Save the current AppFolder"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        if selected_row:
+            folder_name = self.model_folders.get_key(selected_row)
+            folder_info = self.folders[folder_name]
+            folder_info.set_applications(self.model_applications.rows.keys())
+        # Disable folder content saving
+        self.ui.action_files_save.set_sensitive(False)

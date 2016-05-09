@@ -66,6 +66,11 @@ class FolderInfo(object):
             result[application] = desktop_entry
         return result
 
+    def set_applications(self, applications):
+        """Set the applications list"""
+        self.apps = applications
+        self.settings.set_strv('apps', self.apps)
+
     def get_name(self):
         """Return the AppFolder name"""
         return self.desktop_entry.getName() if self.desktop_entry else ''
