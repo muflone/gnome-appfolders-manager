@@ -18,6 +18,8 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
+from gi.repository import GLib
+
 from gnome_appfolders_manager.constants import MISSING_ICON_NAME
 from gnome_appfolders_manager.functions import get_pixbuf_from_icon_name
 from gnome_appfolders_manager.models.abstract import ModelAbstract
@@ -51,7 +53,7 @@ class ModelApplications(ModelAbstract):
                 '<small>{filename}</small>'.format(**{
                     'name': item.name,
                     'description': item.description,
-                    'filename': item.filename}),
+                    'filename': GLib.markup_escape_text(item.filename)}),
                 icon))
             self.rows[item.filename] = new_row
             self.items[item.filename] = item
