@@ -19,6 +19,7 @@
 ##
 
 import os.path
+
 from gi.repository import Gio
 
 from xdg import BaseDirectory, DesktopEntry
@@ -34,12 +35,12 @@ class FolderInfo(object):
         self.folder = folder
         # Get info from the settings schema
         folder_path = PATH_FOLDER.format(folder=folder)
-        settings_folder = Gio.Settings.new_with_path(schema_id=SCHEMA_FOLDER,
-                                                     path=folder_path)
-        self.name = settings_folder.get_string('name')
-        self.translate = settings_folder.get_boolean('translate')
-        self.apps = list(settings_folder.get_value('apps'))
-        self.categories = list(settings_folder.get_value('categories'))
+        self.settings = Gio.Settings.new_with_path(schema_id=SCHEMA_FOLDER,
+                                                   path=folder_path)
+        self.name = self.settings.get_string('name')
+        self.translate = self.settings.get_boolean('translate')
+        self.apps = self.settings.get_strv('apps')
+        self.categories = self.settings.get_strv('categories')
         self.desktop_entry = None
         # Find desktop directory file
         if self.name.endswith('.directory'):
