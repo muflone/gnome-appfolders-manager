@@ -169,6 +169,8 @@ class UIMain(object):
                         if desktop_file else application,
                         application_file.getIcon() if desktop_file else None)
                     self.model_applications.add_data(application_info)
+            # Disable folder content saving
+            self.ui.action_files_save.set_sensitive(False)
 
     def on_action_files_new_activate(self, action):
         """Show an application picker to add to the current AppFolder"""

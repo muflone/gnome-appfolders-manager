@@ -54,6 +54,7 @@
         <property name="label" comments="Use domain gtk30">_Delete</property>
         <property name="short_label" translatable="yes">_Delete</property>
         <property name="icon_name">list-remove</property>
+        <property name="sensitive">False</property>
       </object>
     </child>
     <child>
