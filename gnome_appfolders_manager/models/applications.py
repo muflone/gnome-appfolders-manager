@@ -27,8 +27,9 @@ from gnome_appfolders_manager.models.abstract import ModelAbstract
 
 class ModelApplications(ModelAbstract):
     COL_TITLE = 1
-    COL_DESCRIPTION = 2
-    COL_ICON = 3
+    COL_COMMENT = 2
+    COL_DESCRIPTION = 3
+    COL_ICON = 4
 
     def __init__(self, model):
         super(self.__class__, self).__init__(model)
