@@ -46,6 +46,8 @@ class UIApplicationPicker(object):
         self.model_applications.model.set_sort_column_id(
             self.ui.treeview_column_applications.get_sort_column_id(),
             Gtk.SortType.ASCENDING)
+        self.ui.filter_applications.set_visible_column(
+            ModelApplications.COL_VISIBLE)
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
@@ -62,7 +64,8 @@ class UIApplicationPicker(object):
                 application = ApplicationInfo(desktop_entry.get_id(),
                                               desktop_entry.get_name(),
                                               description,
-                                              icon_name)
+                                              icon_name,
+                                              desktop_entry.should_show())
                 # Skip existing files
                 if application.filename not in existing_files:
                     self.model_applications.add_data(application)
@@ -93,7 +96,8 @@ class UIApplicationPicker(object):
     def on_action_add_activate(self, action):
         """Add the selected application to the current AppFolder"""
         self.selected_application = self.model_applications.get_key(
-            get_treeview_selected_row(self.ui.treeview_applications))
+            self.ui.filter_applications.convert_iter_to_child_iter(
+            get_treeview_selected_row(self.ui.treeview_applications)))
         self.ui.dialog_application_picker.response(Gtk.ResponseType.OK)
 
     def on_treeview_applications_row_activated(self, widget, path, column):
@@ -104,3 +108,8 @@ class UIApplicationPicker(object):
         """Set action sensitiveness on selection change"""
         selected_row = get_treeview_selected_row(self.ui.treeview_applications)
         self.ui.action_add.set_sensitive(bool(selected_row))
+
+    def on_action_show_hidden_toggled(self, widget):
+        """Set the visibility for all the Gtk.TreeModelRows"""
+        self.model_applications.set_all_rows_visibility(
+            self.ui.action_show_hidden.get_active())

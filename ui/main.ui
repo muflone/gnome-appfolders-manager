@@ -193,6 +193,10 @@
       <column type="gchararray"/>
       <!-- column-name Icon -->
       <column type="GdkPixbuf"/>
+      <!-- column-name Valid -->
+      <column type="gboolean"/>
+      <!-- column-name Visible -->
+      <column type="gboolean"/>
     </columns>
   </object>
   <object class="GtkListStore" id="store_folders">

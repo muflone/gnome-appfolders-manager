@@ -16,6 +16,12 @@
         <signal name="activate" handler="on_action_close_activate" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkToggleAction" id="action_show_hidden">
+        <property name="short_label" translatable="yes">_Show hidden files</property>
+        <signal name="toggled" handler="on_action_show_hidden_toggled" swapped="no"/>
+      </object>
+    </child>
   </object>
   <object class="GtkHeaderBar" id="header_bar">
     <property name="visible">True</property>
@@ -42,6 +48,20 @@
         <property name="position">1</property>
       </packing>
     </child>
+    <child>
+      <object class="GtkCheckButton" id="checkbox_show_hidden_files">
+        <property name="use_action_appearance">True</property>
+        <property name="related_action">action_show_hidden</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="pack_type">end</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
   </object>
   <object class="GtkListStore" id="store_applications">
     <columns>
@@ -55,7 +75,14 @@
       <column type="gchararray"/>
       <!-- column-name Icon -->
       <column type="GdkPixbuf"/>
+      <!-- column-name Valid -->
+      <column type="gboolean"/>
+      <!-- column-name Visible -->
+      <column type="gboolean"/>
     </columns>
+  </object>
+  <object class="GtkTreeModelFilter" id="filter_applications">
+    <property name="child_model">store_applications</property>
   </object>
   <object class="GtkDialog" id="dialog_application_picker">
     <property name="can_focus">False</property>
@@ -93,7 +120,7 @@
               <object class="GtkTreeView" id="treeview_applications">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="model">store_applications</property>
+                <property name="model">filter_applications</property>
                 <property name="headers_visible">False</property>
                 <signal name="row-activated" handler="on_treeview_applications_row_activated" swapped="no"/>
                 <child internal-child="selection">

@@ -22,8 +22,9 @@ from gi.repository import GLib
 
 
 class ApplicationInfo(object):
-    def __init__(self, filename, name, description, icon_name):
+    def __init__(self, filename, name, description, icon_name, valid):
         self.filename = filename
         self.name = GLib.markup_escape_text(name)
         self.description = GLib.markup_escape_text(description)
         self.icon_name = icon_name
+        self.valid = valid

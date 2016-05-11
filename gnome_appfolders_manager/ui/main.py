@@ -165,7 +165,9 @@ class UIMain(object):
                         if desktop_file else 'Missing desktop file',
                         application_file.getComment()
                         if desktop_file else application,
-                        application_file.getIcon() if desktop_file else None)
+                        application_file.getIcon() if desktop_file else None,
+                        # Always show any application, also if hidden
+                        True)
                     self.model_applications.add_data(application_info)
             # Disable folder content saving
             self.ui.action_files_save.set_sensitive(False)

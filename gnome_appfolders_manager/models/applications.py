@@ -30,6 +30,8 @@ class ModelApplications(ModelAbstract):
     COL_COMMENT = 2
     COL_DESCRIPTION = 3
     COL_ICON = 4
+    COL_VALID = 5
+    COL_VISIBLE = 6
 
     def __init__(self, model):
         super(self.__class__, self).__init__(model)
@@ -55,7 +57,9 @@ class ModelApplications(ModelAbstract):
                     'name': item.name,
                     'description': item.description,
                     'filename': GLib.markup_escape_text(item.filename)}),
-                icon))
+                icon,
+                item.valid,
+                item.valid))
             self.rows[item.filename] = new_row
             self.items[item.filename] = item
             return new_row
@@ -71,3 +75,12 @@ class ModelApplications(ModelAbstract):
     def get_icon(self, treeiter):
         """Get the icon from a TreeIter"""
         return self.model[treeiter][self.COL_ICON]
+
+    def set_all_rows_visibility(self, visible):
+        """Set all items visible or restore the valid column for visibility"""
+        for treeiter in self.model:
+            self.model[treeiter.path][self.COL_VISIBLE] = (
+                # All rows are visible
+                True if visible
+                # Only valid rows are visible
+                else self.model[treeiter.path][self.COL_VALID])
