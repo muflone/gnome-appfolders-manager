@@ -28,6 +28,10 @@ from gnome_appfolders_manager.constants import SCHEMA_FOLDER
 
 PATH_FOLDER = '/org/gnome/desktop/app-folders/folders/{folder}/'
 
+OPTION_FOLDER_NAME = 'name'
+OPTION_FOLDER_TRANSLATE = 'translate'
+OPTION_FOLDER_APPS = 'apps'
+OPTION_FOLDER_CATEGORIES = 'categories'
 
 class FolderInfo(object):
     def __init__(self, folder):
@@ -37,10 +41,10 @@ class FolderInfo(object):
         folder_path = PATH_FOLDER.format(folder=folder)
         self.settings = Gio.Settings.new_with_path(schema_id=SCHEMA_FOLDER,
                                                    path=folder_path)
-        self.name = self.settings.get_string('name')
-        self.translate = self.settings.get_boolean('translate')
-        self.apps = self.settings.get_strv('apps')
-        self.categories = self.settings.get_strv('categories')
+        self.name = self.settings.get_string(OPTION_FOLDER_NAME)
+        self.translate = self.settings.get_boolean(OPTION_FOLDER_TRANSLATE)
+        self.apps = self.settings.get_strv(OPTION_FOLDER_APPS)
+        self.categories = self.settings.get_strv(OPTION_FOLDER_CATEGORIES)
         self.desktop_entry = None
         # Find desktop directory file
         if self.name.endswith('.directory'):
@@ -69,7 +73,7 @@ class FolderInfo(object):
     def set_applications(self, applications):
         """Set the applications list"""
         self.apps = applications
-        self.settings.set_strv('apps', self.apps)
+        self.settings.set_strv(OPTION_FOLDER_APPS, self.apps)
 
     def get_name(self):
         """Return the AppFolder name"""
