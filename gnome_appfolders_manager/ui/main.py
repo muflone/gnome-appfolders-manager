@@ -148,7 +148,7 @@ class UIMain(object):
             folder_name = self.model_folders.get_key(selected_row)
             folder_info = self.folders[folder_name]
             self.ui.lbl_name_text.set_label(folder_info.folder)
-            self.ui.lbl_title_text.set_label(folder_info.get_name())
+            self.ui.entry_title.set_text(folder_info.get_name())
             self.ui.lbl_description_text.set_label(folder_info.get_comment())
             # Clear any previous application icon
             self.model_applications.clear()
