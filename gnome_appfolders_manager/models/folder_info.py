@@ -86,3 +86,8 @@ class FolderInfo(object):
     def get_icon_name(self):
         """Return the AppFolder icon name"""
         return self.desktop_entry.getIcon() if self.desktop_entry else ''
+
+    def get_readonly(self):
+        """Check if the folder name is read-only (its name is got from 
+        desktop-directories)"""
+        return self.name.endswith('.directory')
