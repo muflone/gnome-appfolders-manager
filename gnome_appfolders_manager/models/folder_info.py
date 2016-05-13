@@ -77,7 +77,8 @@ class FolderInfo(object):
 
     def get_name(self):
         """Return the AppFolder name"""
-        return self.desktop_entry.getName() if self.desktop_entry else ''
+        return (self.desktop_entry.getName() if self.desktop_entry
+                else self.name)
 
     def get_comment(self):
         """Return the AppFolder comment"""
