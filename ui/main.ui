@@ -59,6 +59,7 @@
       <object class="GtkAction" id="action_folders_remove">
         <property name="label" comments="Use domain gtk30">_Remove</property>
         <property name="icon_name">edit-delete</property>
+        <signal name="activate" handler="on_action_folders_remove_activate" swapped="no"/>
       </object>
     </child>
     <child>

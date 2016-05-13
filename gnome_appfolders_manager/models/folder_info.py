@@ -88,6 +88,11 @@ class FolderInfo(object):
         """Return the AppFolder icon name"""
         return self.desktop_entry.getIcon() if self.desktop_entry else ''
 
+    def remove(self):
+        """Remove the AppFolder by resetting all the children keys"""
+        for key in self.settings.keys():
+            self.settings.reset(key)
+
     def get_readonly(self):
         """Check if the folder name is read-only (its name is got from 
         desktop-directories)"""

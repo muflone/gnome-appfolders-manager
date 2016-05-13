@@ -34,6 +34,8 @@ from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
+from gnome_appfolders_manager.ui.message_dialog import (
+    show_message_dialog, UIMessageDialogNoYes)
 
 from gnome_appfolders_manager.models.folder_info import FolderInfo
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
@@ -222,3 +224,28 @@ class UIMain(object):
             folder_info.set_applications(self.model_applications.rows.keys())
         # Disable folder content saving
         self.ui.action_files_save.set_sensitive(False)
+
+    def on_action_folders_remove_activate(self, action):
+        """Remove the current AppFolder"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        if selected_row:
+            folder_name = self.model_folders.get_key(selected_row)
+            if show_message_dialog(class_=UIMessageDialogNoYes,
+                                   parent=self.ui.win_main,
+                                   message_type=Gtk.MessageType.QUESTION,
+                                   title=None,
+                                   msg1=_('Remove the selected folder?'),
+                                   msg2=_('Are you sure you want to remove '
+                                          'the folder %s?') % folder_name,
+                                   is_response_id=Gtk.ResponseType.YES):
+                # Remove the AppFolder from settings
+                folder_info = self.folders[folder_name]
+                folder_info.remove()
+                self.folders.pop(folder_name)
+                # Remove the folder name from the folders list
+                settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
+                list_folders = settings_folders.get_strv('folder-children')
+                list_folders.remove(folder_name)
+                settings_folders.set_strv('folder-children', list_folders)
+                # Remove the folder from the folders model
+                self.model_folders.remove(selected_row)
