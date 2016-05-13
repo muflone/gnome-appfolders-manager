@@ -137,7 +137,7 @@ class UIMain(object):
         """Reload the Application Folders"""
         self.folders = {}
         settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
-        list_folders = settings_folders.get_value('folder-children')
+        list_folders = settings_folders.get_strv('folder-children')
         for folder_name in list_folders:
             folder_info = FolderInfo(folder_name)
             appfolder = AppFolderInfo(folder_info)
