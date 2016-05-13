@@ -66,6 +66,7 @@
       <object class="GtkAction" id="action_folders_new">
         <property name="label" translatable="yes">_Create</property>
         <property name="icon_name">folder-new</property>
+        <signal name="activate" handler="on_action_folders_new_activate" swapped="no"/>
       </object>
     </child>
   </object>

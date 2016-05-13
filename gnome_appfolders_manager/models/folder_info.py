@@ -84,6 +84,10 @@ class FolderInfo(object):
         """Return the AppFolder comment"""
         return self.desktop_entry.getComment() if self.desktop_entry else ''
 
+    def set_title(self, title):
+        """Set the AppFolder title"""
+        self.settings.set_string(OPTION_FOLDER_NAME, title)
+
     def get_icon_name(self):
         """Return the AppFolder icon name"""
         return self.desktop_entry.getIcon() if self.desktop_entry else ''

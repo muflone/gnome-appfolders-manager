@@ -34,6 +34,7 @@ from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
+from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
 from gnome_appfolders_manager.ui.message_dialog import (
     show_message_dialog, UIMessageDialogNoYes)
 
@@ -249,3 +250,20 @@ class UIMain(object):
                 settings_folders.set_strv('folder-children', list_folders)
                 # Remove the folder from the folders model
                 self.model_folders.remove(selected_row)
+
+    def on_action_folders_new_activate(self, action):
+        """Creat a new AppFolder"""
+        dialog = UICreateAppFolder(self.ui.win_main,
+                                   self.model_folders.rows.keys())
+        if dialog.show() == Gtk.ResponseType.OK:
+            # Create a new FolderInfo object and set its title
+            folder_info = FolderInfo(dialog.folder_name)
+            folder_info.set_title(dialog.folder_title)
+            # Add the folder to the folders list
+            settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
+            list_folders = settings_folders.get_strv('folder-children')
+            list_folders.append(dialog.folder_name)
+            settings_folders.set_strv('folder-children', list_folders)
+            # Reload folders list
+            self.reload_folders()
+        dialog.destroy()
