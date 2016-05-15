@@ -76,6 +76,11 @@ def get_treeview_selected_row(widget):
     return widget.get_selection().get_selected()[1]
 
 
+def get_treeview_selected_rows(widget):
+    """Return the selected rows in a GtkTreeView"""
+    return widget.get_selection().get_selected_rows()[1]
+
+
 def get_pixbuf_from_icon_name(icon_name, size):
     """Get a Gdk.PixBuf from a theme icon"""
     theme = Gtk.IconTheme.get_default()
@@ -130,6 +135,7 @@ __all__ = [
     'get_ui_file',
     'recursive_glob',
     'get_treeview_selected_row',
+    'get_treeview_selected_rows',
     'get_pixbuf_from_icon_name',
     'set_style_suggested_action'
 ]
