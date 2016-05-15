@@ -188,17 +188,20 @@ class UIMain(object):
         dialog = UIApplicationPicker(self.ui.win_main,
                                      self.model_applications.rows.keys())
         if dialog.show() == Gtk.ResponseType.OK:
-            if dialog.selected_application:
-                # Get the selected application in the application picker
-                # and add it to the current AppFolder
-                application_info = dialog.model_applications.items[
-                    dialog.selected_application]
-                self.model_applications.add_data(application_info)
-                # Automatically select the newly added application
-                filename = application_info.filename
-                treeiter = self.model_applications.rows[filename]
-                self.ui.treeview_applications.set_cursor(
-                    self.model_applications.get_path(treeiter))
+            if dialog.selected_applications:
+                for application in dialog.selected_applications:
+                    # Get the selected application in the application picker
+                    # and add it to the current AppFolder
+                    application_info = dialog.model_applications.items[
+                        application]
+                    self.model_applications.add_data(application_info)
+                    # Automatically select the newly added application
+                    filename = application_info.filename
+                    treeiter = self.model_applications.rows[filename]
+                if treeiter:
+                    # Automatically select the last added application
+                    self.ui.treeview_applications.set_cursor(
+                        self.model_applications.get_path(treeiter))
                 # Enable folder content saving
                 self.ui.action_files_save.set_sensitive(True)
         dialog.destroy()

@@ -27,7 +27,8 @@ import gnome_appfolders_manager.settings as settings
 import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import (
-    get_ui_file, set_style_suggested_action, get_treeview_selected_row)
+    get_ui_file, set_style_suggested_action, get_treeview_selected_row,
+    get_treeview_selected_rows)
 
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
@@ -51,7 +52,7 @@ class UIApplicationPicker(object):
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
-        self.selected_application = None
+        self.selected_applications = None
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:
@@ -95,9 +96,11 @@ class UIApplicationPicker(object):
 
     def on_action_add_activate(self, action):
         """Add the selected application to the current AppFolder"""
-        self.selected_application = self.model_applications.get_key(
-            self.ui.filter_applications.convert_iter_to_child_iter(
-                get_treeview_selected_row(self.ui.treeview_applications)))
+        self.selected_applications = []
+        for row in get_treeview_selected_rows(self.ui.treeview_applications):
+            application = self.model_applications.get_key(
+                self.ui.filter_applications.convert_path_to_child_path(row))
+            self.selected_applications.append(application)
         self.ui.dialog_application_picker.response(Gtk.ResponseType.OK)
 
     def on_treeview_applications_row_activated(self, widget, path, column):
@@ -106,8 +109,9 @@ class UIApplicationPicker(object):
 
     def on_treeview_selection_applications_changed(self, widget):
         """Set action sensitiveness on selection change"""
-        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
-        self.ui.action_add.set_sensitive(bool(selected_row))
+        selected_rows = get_treeview_selected_rows(
+            self.ui.treeview_applications)
+        self.ui.action_add.set_sensitive(bool(selected_rows))
 
     def on_action_show_hidden_toggled(self, widget):
         """Set the visibility for all the Gtk.TreeModelRows"""
