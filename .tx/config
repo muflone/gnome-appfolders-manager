@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[gnome-appfolders-manager.gnome-appfolders-manager]
+source_file = po/gnome-appfolders-manager.pot
+source_lang = en
+file_filter = po/<lang>.po
+type = PO
