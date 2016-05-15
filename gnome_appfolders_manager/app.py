@@ -44,6 +44,12 @@ class Application(Gtk.Application):
         action = Gio.SimpleAction(name="about")
         action.connect("activate", self.on_app_about_activate)
         self.add_action(action)
+        # Add the shortcut action to the app menu
+        # only for GTK+ 3.20.0 and higher
+        if not Gtk.check_version(3, 20, 0):
+            action = Gio.SimpleAction(name="shortcuts")
+            action.connect("activate", self.on_app_shortcuts_activate)
+            self.add_action(action)
         # Add the quit action to the app menu
         action = Gio.SimpleAction(name="quit")
         action.connect("activate", self.on_app_quit_activate)
@@ -61,6 +67,11 @@ class Application(Gtk.Application):
         """Show the about dialog from the app menu"""
         __pychecker__ = 'unusednames=data'
         self.ui.on_action_about_activate(action)
+
+    def on_app_shortcuts_activate(self, action, data):
+        """Show the shortcuts dialog from the app menu"""
+        __pychecker__ = 'unusednames=data'
+        self.ui.on_action_shortcuts_activate(action)
 
     def on_app_quit_activate(self, action, data):
         """Quit the application from the app menu"""

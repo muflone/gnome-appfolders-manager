@@ -8,6 +8,13 @@
         <attribute name="accel">F1</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">Show keyboard _shortcuts</attribute>
+        <attribute name="action">app.shortcuts</attribute>
+        <attribute name="accel">&lt;Primary&gt;F1</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">_Quit</attribute>
         <attribute name="action">app.quit</attribute>
       </item>

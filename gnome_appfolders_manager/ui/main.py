@@ -33,6 +33,7 @@ import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 from gnome_appfolders_manager.ui.about import UIAbout
+from gnome_appfolders_manager.ui.shortcuts import UIShortcuts
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
 from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
 from gnome_appfolders_manager.ui.message_dialog import (
@@ -134,6 +135,11 @@ class UIMain(object):
         dialog = UIAbout(self.ui.win_main)
         dialog.show()
         dialog.destroy()
+
+    def on_action_shortcuts_activate(self, action):
+        """Show the shortcuts dialog"""
+        dialog = UIShortcuts(self.ui.win_main)
+        dialog.show()
 
     def on_action_quit_activate(self, action):
         """Close the application by closing the main window"""
