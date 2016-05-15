@@ -5,20 +5,20 @@
   <object class="GtkActionGroup" id="actions_dialog">
     <child>
       <object class="GtkAction" id="action_add">
-        <property name="short_label" translatable="yes">_Add</property>
+        <property name="short_label" translatable="yes">_Add applications</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_add_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkAction" id="action_close">
-        <property name="short_label" translatable="yes">_Close</property>
+        <property name="short_label" comments="Use domain gtk30">_Close</property>
         <signal name="activate" handler="on_action_close_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkToggleAction" id="action_show_hidden">
-        <property name="label" translatable="yes">_Show hidden files</property>
+        <property name="label" comments="Use domain gtk30">Show _Hidden Files</property>
         <signal name="toggled" handler="on_action_show_hidden_toggled" swapped="no"/>
       </object>
     </child>

@@ -1,0 +1,67 @@
+# English translations for GNOME App Folders Manager package.
+# Copyright (C) 2016 Fabio Castelli
+# This file is distributed under the same license as the GNOME App Folders Manager package.
+# Automatically generated, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME App Folders Manager 0.2.1\n"
+"Report-Msgid-Bugs-To: muflone@vbsimple.net\n"
+"POT-Creation-Date: 2016-05-15 20:53+0200\n"
+"PO-Revision-Date: 2016-05-15 20:53+0200\n"
+"Last-Translator: Muflone (muflone(at)vbsimple.net)\n"
+"Language-Team: none\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "_About GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "_Quit"
+msgstr "_Quit"
+
+#: ui/application_picker.ui:8
+msgid "_Add applications"
+msgstr "_Add applications"
+
+#: ui/application_picker.ui:153 ui/main.ui:311
+msgid "Applications"
+msgstr "Applications"
+
+#: ui/create_appfolder.ui:116 ui/main.ui:389
+msgid "Title:"
+msgstr "Title:"
+
+#: ui/main.ui:78
+msgid "_Folders:"
+msgstr "_Folders:"
+
+#: ui/main.ui:252
+msgid "Folders"
+msgstr "Folders"
+
+#: ui/main.ui:417
+msgid "Description:"
+msgstr "Description:"
+
+#: gnome_appfolders_manager/ui/main.py:169
+msgid "The title cannot be modified"
+msgstr "The title cannot be modified"
+
+#: gnome_appfolders_manager/ui/main.py:248
+msgid "Remove the selected folder?"
+msgstr "Remove the selected folder?"
+
+#: gnome_appfolders_manager/ui/main.py:249
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "Are you sure you want to remove the folder %s?"
+
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Contributors:"

@@ -81,6 +81,13 @@ class UIMain(object):
             # Connect the actions accelerators
             widget.connect_accelerator()
             # Set labels
+            label = widget.get_label()
+            if not label:
+                label = widget.get_short_label()
+            widget.set_label(text(label))
+            widget.set_short_label(label)
+        # Initialize labels
+        for widget in self.ui.get_objects_by_type(Gtk.Label):
             widget.set_label(text(widget.get_label()))
         # Initialize tooltips
         for widget in self.ui.get_objects_by_type(Gtk.ToolButton):

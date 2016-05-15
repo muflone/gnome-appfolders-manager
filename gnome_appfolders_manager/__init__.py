@@ -23,7 +23,7 @@ import locale
 
 import gnome_appfolders_manager.requires
 
-from gnome_appfolders_manager.functions import text, _
+from gnome_appfolders_manager.functions import store_message, text, _
 from gnome_appfolders_manager.constants import DOMAIN_NAME, DIR_LOCALE
 
 # Load domain for translation
@@ -31,6 +31,14 @@ for module in (gettext, locale):
     module.bindtextdomain(DOMAIN_NAME, DIR_LOCALE)
     module.textdomain(DOMAIN_NAME)
 
+# Import some translated messages from GTK+ domain
+for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
+                'A folder with that name already exists'):
+    text(message=message, gtk30=True)
+store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
+store_message('_Files:', '_%s:' % text(message='Files', gtk30=True))
+store_message('_Create Folder', text(message='Create Folder', gtk30=True))
+
 # With domain context
-for message in ('_New', '_Edit', '_Delete', '_Quit', '_About'):
+for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):
     text(message=message, gtk30=True, context='Stock label')

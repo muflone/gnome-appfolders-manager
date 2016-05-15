@@ -28,7 +28,7 @@ import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import (
     get_ui_file, set_style_suggested_action, get_treeview_selected_row,
-    get_treeview_selected_rows)
+    get_treeview_selected_rows, text)
 
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
@@ -49,6 +49,21 @@ class UIApplicationPicker(object):
             Gtk.SortType.ASCENDING)
         self.ui.filter_applications.set_visible_column(
             ModelApplications.COL_VISIBLE)
+        # Initialize actions
+        for widget in self.ui.get_objects_by_type(Gtk.Action):
+            # Connect the actions accelerators
+            widget.connect_accelerator()
+            # Set labels
+            label = widget.get_label()
+            if not label:
+                label = widget.get_short_label()
+            widget.set_short_label(text(label))
+            widget.set_label(text(label))
+        # Initialize tooltips
+        for widget in self.ui.get_objects_by_type(Gtk.Button):
+            action = widget.get_related_action()
+            if action:
+                widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)

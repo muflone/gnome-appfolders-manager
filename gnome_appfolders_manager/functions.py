@@ -57,6 +57,11 @@ def text(message, gtk30=False, context=None):
     return localized_messages[message]
 
 
+def store_message(message, translated):
+    """Store a translated message in the localized_messages list"""
+    localized_messages[message] = translated
+
+
 def get_ui_file(filename):
     """Return the full path of a Glade/UI file"""
     return os.path.join(DIR_UI, filename)
@@ -130,6 +135,7 @@ _ = text
 __all__ = [
     'readlines',
     'text',
+    'store_message',
     '_',
     'localized_messages',
     'get_ui_file',

@@ -24,7 +24,7 @@ import gnome_appfolders_manager.settings as settings
 import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import (
-    get_ui_file, set_style_suggested_action, _)
+    get_ui_file, set_style_suggested_action, _, text)
 
 SECTION_WINDOW_NAME = 'create folder'
 
@@ -35,6 +35,24 @@ class UICreateAppFolder(object):
         # Load the user interface
         self.ui = GtkBuilderLoader(get_ui_file('create_appfolder.ui'))
         self.ui.dialog_create_appfolder.set_titlebar(self.ui.header_bar)
+        # Initialize actions
+        for widget in self.ui.get_objects_by_type(Gtk.Action):
+            # Connect the actions accelerators
+            widget.connect_accelerator()
+            # Set labels
+            label = widget.get_label()
+            if not label:
+                label = widget.get_short_label()
+            widget.set_short_label(text(label))
+            widget.set_label(text(label))
+        # Initialize labels
+        for widget in self.ui.get_objects_by_type(Gtk.Label):
+            widget.set_label(text(widget.get_label()))
+        # Initialize tooltips
+        for widget in self.ui.get_objects_by_type(Gtk.Button):
+            action = widget.get_related_action()
+            if action:
+                widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
         self.ui.dialog_create_appfolder.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_create)
@@ -82,4 +100,5 @@ class UICreateAppFolder(object):
             'dialog-error' if existing else None)
         self.ui.entry_name.set_icon_tooltip_text(
             Gtk.EntryIconPosition.SECONDARY,
-            _('A folder with that name already exists') if existing else None)
+            text('A folder with that name already exists')
+            if existing else None)
