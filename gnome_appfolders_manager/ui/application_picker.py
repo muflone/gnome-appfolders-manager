@@ -97,7 +97,7 @@ class UIApplicationPicker(object):
         """Add the selected application to the current AppFolder"""
         self.selected_application = self.model_applications.get_key(
             self.ui.filter_applications.convert_iter_to_child_iter(
-            get_treeview_selected_row(self.ui.treeview_applications)))
+                get_treeview_selected_row(self.ui.treeview_applications)))
         self.ui.dialog_application_picker.response(Gtk.ResponseType.OK)
 
     def on_treeview_applications_row_activated(self, widget, path, column):

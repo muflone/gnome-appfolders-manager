@@ -33,6 +33,7 @@ OPTION_FOLDER_TRANSLATE = 'translate'
 OPTION_FOLDER_APPS = 'apps'
 OPTION_FOLDER_CATEGORIES = 'categories'
 
+
 class FolderInfo(object):
     def __init__(self, folder):
         """Find a folder from the settings"""
@@ -98,6 +99,6 @@ class FolderInfo(object):
             self.settings.reset(key)
 
     def get_readonly(self):
-        """Check if the folder name is read-only (its name is got from 
+        """Check if the folder name is read-only (its name is got from
         desktop-directories)"""
         return self.name.endswith('.directory')
