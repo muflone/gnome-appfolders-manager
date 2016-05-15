@@ -39,7 +39,8 @@ class ModelAppFolders(ModelAbstract):
                 '<b>%s</b>\n<small>%s\n%s</small>' % (item.title,
                                                       item.name,
                                                       item.filename),
-                get_pixbuf_from_icon_name(item.icon_name, 48)))
+                get_pixbuf_from_icon_name(item.icon_name, 48)
+                if item.icon_name else None))
             self.rows[item.name] = new_row
             return new_row
 
