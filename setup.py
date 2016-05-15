@@ -157,6 +157,37 @@ class Command_CreatePOT(Command):
                     os.unlink(filename)
 
 
+class Command_CreatePO(Command):
+    description = "create translation PO file"
+    user_options = [
+        ('locale=', None, 'Define locale'),
+        ('output=', None, 'Define output file'),
+        ]
+
+    def initialize_options(self):
+        self.locale = None
+        self.output = None
+
+    def finalize_options(self):
+        self.dir_base = os.path.dirname(os.path.abspath(__file__))
+        self.dir_po = os.path.join(self.dir_base, 'po')
+        assert (self.locale), 'Missing locale'
+        assert (self.output), 'Missing output file'
+
+    def run(self):
+        self.dir_ui = os.path.join(self.dir_base, 'ui')
+        file_pot = '%s.pot' % os.path.join(self.dir_po, DOMAIN_NAME)
+        file_po = '%s.po' % os.path.join(self.dir_po, self.output)
+        # Create PO file
+        subprocess.call(
+            args=('msginit',
+                  '--input=%s' % file_pot,
+                  '--no-translator',
+                  '--output-file=%s' % file_po,
+                  '--locale=%s' % self.locale),
+            cwd=self.dir_base)
+
+
 class Command_Translations(Command):
     description = "build translations"
     user_options = []
@@ -210,6 +241,7 @@ setup(
         'install_scripts': Install_Scripts,
         'install_data': Install_Data,
         'create_pot': Command_CreatePOT,
+        'create_po': Command_CreatePO,
         'translations': Command_Translations
     }
 )
