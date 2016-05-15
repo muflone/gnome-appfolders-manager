@@ -197,7 +197,7 @@ setup(
     packages=['gnome_appfolders_manager', 'gnome_appfolders_manager.models',
               'gnome_appfolders_manager.ui'],
     data_files=[
-        ('share/gnome_appfolders_manager/data',
+        ('share/gnome-appfolders-manager/data',
             ['data/gnome-appfolders-manager.png']),
         ('share/applications',
             ['data/gnome-appfolders-manager.desktop']),
