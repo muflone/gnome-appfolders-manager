@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager 0.2.1\n"
 "Report-Msgid-Bugs-To: muflone@vbsimple.net\n"
-"POT-Creation-Date: 2016-05-15 20:53+0200\n"
-"PO-Revision-Date: 2016-05-15 20:53+0200\n"
+"POT-Creation-Date: 2016-05-16 02:11+0200\n"
+"PO-Revision-Date: 2016-05-16 02:11+0200\n"
 "Last-Translator: Muflone (muflone(at)vbsimple.net)\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -22,42 +22,62 @@ msgid "_About GNOME App Folders Manager"
 msgstr "_Informazioni su GNOME App Folders Manager"
 
 #: ui/appmenu.ui:11
-msgid "_Quit"
-msgstr "_Esci"
+msgid "Show keyboard _shortcuts"
+msgstr "Mostra _scorciatoie di tastiera"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr "_Aggiungi applicazioni"
 
-#: ui/application_picker.ui:153 ui/main.ui:311
+#: ui/application_picker.ui:153 ui/main.ui:313
 msgid "Applications"
 msgstr "Applicazioni"
 
-#: ui/create_appfolder.ui:116 ui/main.ui:389
+#: ui/create_appfolder.ui:116 ui/main.ui:391
 msgid "Title:"
 msgstr "Titolo:"
 
-#: ui/main.ui:78
+#: ui/main.ui:80
 msgid "_Folders:"
 msgstr "_Cartelle:"
 
-#: ui/main.ui:252
+#: ui/main.ui:254 ui/shortcuts.ui:38
 msgid "Folders"
 msgstr "Cartelle"
 
-#: ui/main.ui:417
+#: ui/main.ui:419
 msgid "Description:"
 msgstr "Descrizione:"
 
-#: gnome_appfolders_manager/ui/main.py:169
+#: ui/shortcuts.ui:21
+msgid "Show the about dialog"
+msgstr "Mostra la finestra informazioni"
+
+#: ui/shortcuts.ui:43
+msgid "Create a new folder"
+msgstr "Crea una nuova cartella"
+
+#: ui/shortcuts.ui:50
+msgid "Remove the currently selected folder"
+msgstr "Rimuove la cartella attualmente selezionata"
+
+#: ui/shortcuts.ui:65
+msgid "Add a new file"
+msgstr "Aggiunge un nuovo file"
+
+#: ui/shortcuts.ui:72
+msgid "Remove the selected file"
+msgstr "Rimuove il file selezionato"
+
+#: gnome_appfolders_manager/ui/main.py:175
 msgid "The title cannot be modified"
 msgstr "Il titolo non può essere modificato"
 
-#: gnome_appfolders_manager/ui/main.py:248
+#: gnome_appfolders_manager/ui/main.py:254
 msgid "Remove the selected folder?"
 msgstr "Rimuovere la cartella selezionata?"
 
-#: gnome_appfolders_manager/ui/main.py:249
+#: gnome_appfolders_manager/ui/main.py:255
 #, python-format
 msgid "Are you sure you want to remove the folder %s?"
 msgstr "Sei sicuro di voler rimuovere la cartella %s?"

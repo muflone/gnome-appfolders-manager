@@ -22,7 +22,7 @@ from gi.repository import Gtk
 from gi.repository.GdkPixbuf import Pixbuf
 
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-from gnome_appfolders_manager.functions import get_ui_file
+from gnome_appfolders_manager.functions import get_ui_file, text
 
 
 class UIShortcuts(object):
@@ -31,6 +31,12 @@ class UIShortcuts(object):
         # Load the user interface
         self.ui = GtkBuilderLoader(get_ui_file('shortcuts.ui'))
         self.ui.shortcuts.set_transient_for(parent)
+        # Initialize groups
+        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsGroup):
+            widget.props.title = text(widget.props.title)
+        # Initialize shortcuts
+        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsShortcut):
+            widget.props.title = text(widget.props.title)
 
     def show(self):
         """Show the shortcuts dialog"""

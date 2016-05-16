@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager 0.2.1\n"
 "Report-Msgid-Bugs-To: muflone@vbsimple.net\n"
-"POT-Creation-Date: 2016-05-15 20:53+0200\n"
+"POT-Creation-Date: 2016-05-16 02:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,42 +22,62 @@ msgid "_About GNOME App Folders Manager"
 msgstr ""
 
 #: ui/appmenu.ui:11
-msgid "_Quit"
+msgid "Show keyboard _shortcuts"
 msgstr ""
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr ""
 
-#: ui/application_picker.ui:153 ui/main.ui:311
+#: ui/application_picker.ui:153 ui/main.ui:313
 msgid "Applications"
 msgstr ""
 
-#: ui/create_appfolder.ui:116 ui/main.ui:389
+#: ui/create_appfolder.ui:116 ui/main.ui:391
 msgid "Title:"
 msgstr ""
 
-#: ui/main.ui:78
+#: ui/main.ui:80
 msgid "_Folders:"
 msgstr ""
 
-#: ui/main.ui:252
+#: ui/main.ui:254 ui/shortcuts.ui:38
 msgid "Folders"
 msgstr ""
 
-#: ui/main.ui:417
+#: ui/main.ui:419
 msgid "Description:"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:169
+#: ui/shortcuts.ui:21
+msgid "Show the about dialog"
+msgstr ""
+
+#: ui/shortcuts.ui:43
+msgid "Create a new folder"
+msgstr ""
+
+#: ui/shortcuts.ui:50
+msgid "Remove the currently selected folder"
+msgstr ""
+
+#: ui/shortcuts.ui:65
+msgid "Add a new file"
+msgstr ""
+
+#: ui/shortcuts.ui:72
+msgid "Remove the selected file"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/main.py:175
 msgid "The title cannot be modified"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:248
+#: gnome_appfolders_manager/ui/main.py:254
 msgid "Remove the selected folder?"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:249
+#: gnome_appfolders_manager/ui/main.py:255
 #, python-format
 msgid "Are you sure you want to remove the folder %s?"
 msgstr ""

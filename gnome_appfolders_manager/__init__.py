@@ -33,7 +33,8 @@ for module in (gettext, locale):
 
 # Import some translated messages from GTK+ domain
 for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
-                'A folder with that name already exists'):
+                'A folder with that name already exists',
+                'General'):
     text(message=message, gtk30=True)
 store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
 store_message('_Files:', '_%s:' % text(message='Files', gtk30=True))
@@ -42,3 +43,4 @@ store_message('_Create Folder', text(message='Create Folder', gtk30=True))
 # With domain context
 for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):
     text(message=message, gtk30=True, context='Stock label')
+store_message('Quit', text(message='_Quit', gtk30=True).replace('_', ''))
