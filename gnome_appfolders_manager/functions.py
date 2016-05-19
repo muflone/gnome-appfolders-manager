@@ -52,6 +52,9 @@ def text(message, gtk30=False, context=None):
             full_message = message if not context else '%s\04%s' % (
                 context, message)
             localized_messages[message] = dgettext('gtk30', full_message)
+            # Fix for untranslated messages with context
+            if context and localized_messages[message] == full_message:
+                localized_messages[message] = dgettext('gtk30', message)
         else:
             localized_messages[message] = gettext(message)
     return localized_messages[message]
