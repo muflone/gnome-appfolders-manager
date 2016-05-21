@@ -163,17 +163,6 @@ class UIMain(object):
         if selected_row:
             folder_name = self.model_folders.get_key(selected_row)
             folder_info = self.folders[folder_name]
-            readonly = folder_info.get_readonly()
-            self.ui.lbl_name_text.set_label(folder_info.folder)
-            self.ui.entry_title.set_text(folder_info.get_name())
-            self.ui.entry_title.set_editable(not readonly)
-            self.ui.entry_title.set_icon_from_icon_name(
-                Gtk.EntryIconPosition.SECONDARY,
-                'emblem-readonly' if readonly else None)
-            self.ui.entry_title.set_icon_tooltip_text(
-                Gtk.EntryIconPosition.SECONDARY,
-                _('The title cannot be modified') if readonly else None)
-            self.ui.lbl_description_text.set_label(folder_info.get_comment())
             # Clear any previous application icon
             self.model_applications.clear()
             # Add new application icons
