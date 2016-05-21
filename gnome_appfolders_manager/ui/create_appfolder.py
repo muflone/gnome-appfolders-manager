@@ -63,10 +63,19 @@ class UICreateAppFolder(object):
         # Connect signals from the glade file to the module functions
         self.ui.connect_signals(self)
 
-    def show(self):
+    def show(self, name, title):
         """Show the dialog"""
         settings.positions.restore_window_position(
             self.ui.dialog_create_appfolder, SECTION_WINDOW_NAME)
+        # Set initial values
+        self.folder_name = name
+        self.ui.entry_name.set_text(name)
+        self.folder_title = title
+        self.ui.entry_title.set_text(title)
+        # Change label from Create folder to Save if a name was provided
+        if name:
+            self.ui.entry_name.set_sensitive(False)
+            self.ui.action_create.set_short_label(text('_Save'))
         response = self.ui.dialog_create_appfolder.run()
         self.ui.dialog_create_appfolder.hide()
         return response
@@ -91,7 +100,7 @@ class UICreateAppFolder(object):
     def on_entry_name_changed(self, widget):
         """Check if the folder already exists"""
         name = self.ui.entry_name.get_text().strip()
-        existing = name in self.existing_folders
+        existing = (name in self.existing_folders and name != self.folder_name)
         # If a folder with the specified name already exists
         # then disable the creation and show an icon
         self.ui.action_create.set_sensitive(bool(name) and not existing)

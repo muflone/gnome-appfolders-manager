@@ -39,6 +39,7 @@ for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
 store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
 store_message('_Files:', '_%s:' % text(message='Files', gtk30=True))
 store_message('_Create Folder', text(message='Create Folder', gtk30=True))
+store_message('_Properties', text(message='Properties', gtk30=True))
 
 # With domain context
 for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):

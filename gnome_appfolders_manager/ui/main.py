@@ -99,6 +99,7 @@ class UIMain(object):
         self.ui.header_bar.props.title = self.ui.win_main.get_title()
         self.ui.win_main.set_titlebar(self.ui.header_bar)
         for button in (self.ui.button_folder_new, self.ui.button_folder_remove,
+                       self.ui.button_folder_properties,
                        self.ui.button_files_add, self.ui.button_files_remove,
                        self.ui.button_files_save, self.ui.button_about, ):
             action = button.get_related_action()
@@ -265,7 +266,7 @@ class UIMain(object):
         """Creat a new AppFolder"""
         dialog = UICreateAppFolder(self.ui.win_main,
                                    self.model_folders.rows.keys())
-        if dialog.show() == Gtk.ResponseType.OK:
+        if dialog.show(name='', title='') == Gtk.ResponseType.OK:
             # Create a new FolderInfo object and set its title
             folder_info = FolderInfo(dialog.folder_name)
             folder_info.set_title(dialog.folder_title)
@@ -277,3 +278,24 @@ class UIMain(object):
             # Reload folders list
             self.reload_folders()
         dialog.destroy()
+
+    def on_action_folders_properties_activate(self, action):
+        """Set the AppFolder properties"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        if selected_row:
+            name = self.model_folders.get_key(selected_row)
+            title = self.model_folders.get_title(selected_row)
+            dialog = UICreateAppFolder(self.ui.win_main,
+                                       self.model_folders.rows.keys())
+            if dialog.show(name=name, title=title) == Gtk.ResponseType.OK:
+                folder_name = dialog.folder_name
+                folder_title = dialog.folder_title
+                # Update the folder title
+                folder_info = self.folders[folder_name]
+                folder_info.name = folder_title
+                folder_info.set_title(folder_title)
+                # Reload the folders list and select the folder again
+                self.reload_folders()
+                self.ui.treeview_folders.set_cursor(
+                    self.model_folders.get_path_by_name(folder_name))
+            dialog.destroy()
