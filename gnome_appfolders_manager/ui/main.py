@@ -150,6 +150,7 @@ class UIMain(object):
     def reload_folders(self):
         """Reload the Application Folders"""
         self.folders = {}
+        self.model_folders.clear()
         settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
         list_folders = settings_folders.get_strv('folder-children')
         for folder_name in list_folders:
@@ -162,26 +163,30 @@ class UIMain(object):
         selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         if selected_row:
             folder_name = self.model_folders.get_key(selected_row)
-            folder_info = self.folders[folder_name]
-            # Clear any previous application icon
-            self.model_applications.clear()
-            # Add new application icons
-            applications = folder_info.get_applications()
-            for application in applications:
-                desktop_file = applications[application]
-                if desktop_file or not preferences.get(
-                        preferences.PREFERENCES_HIDE_MISSING):
-                    application_file = applications[application]
-                    application_info = ApplicationInfo(
-                        application,
-                        application_file.getName()
-                        if desktop_file else 'Missing desktop file',
-                        application_file.getComment()
-                        if desktop_file else application,
-                        application_file.getIcon() if desktop_file else None,
-                        # Always show any application, also if hidden
-                        True)
-                    self.model_applications.add_data(application_info)
+            # Check if the folder still exists
+            # (model erased while the cursor moves through the Gtk.TreeView)
+            if folder_name in self.folders:
+                folder_info = self.folders[folder_name]
+                # Clear any previous application icon
+                self.model_applications.clear()
+                # Add new application icons
+                applications = folder_info.get_applications()
+                for application in applications:
+                    desktop_file = applications[application]
+                    if desktop_file or not preferences.get(
+                            preferences.PREFERENCES_HIDE_MISSING):
+                        application_file = applications[application]
+                        application_info = ApplicationInfo(
+                            application,
+                            application_file.getName()
+                            if desktop_file else 'Missing desktop file',
+                            application_file.getComment()
+                            if desktop_file else application,
+                            application_file.getIcon()
+                            if desktop_file else None,
+                            # Always show any application, also if hidden
+                            True)
+                        self.model_applications.add_data(application_info)
             # Disable folder content saving
             self.ui.action_files_save.set_sensitive(False)
 
