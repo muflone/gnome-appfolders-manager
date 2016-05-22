@@ -121,7 +121,9 @@ class UIMain(object):
             preferences.HEADERBARS_SMALL_ICONS:
                 self.ui.action_preferences_small_icons,
             preferences.HEADERBARS_SYMBOLIC_ICONS:
-                self.ui.action_preferences_symbolic_icons
+                self.ui.action_preferences_symbolic_icons,
+            preferences.PREFERENCES_SHOW_MISSING:
+                self.ui.action_preferences_show_missing_files
         }
         for setting_name, action in self.dict_settings_map.items():
             action.set_active(preferences.get(setting_name))
@@ -183,8 +185,8 @@ class UIMain(object):
                 applications = folder_info.get_applications()
                 for application in applications:
                     desktop_file = applications[application]
-                    if desktop_file or not preferences.get(
-                            preferences.PREFERENCES_HIDE_MISSING):
+                    if desktop_file or preferences.get(
+                            preferences.PREFERENCES_SHOW_MISSING):
                         application_file = applications[application]
                         application_info = ApplicationInfo(
                             application,
@@ -335,3 +337,8 @@ class UIMain(object):
         self.ui.label_infobar.set_label(
             _('Restart is required to apply the settings'))
         self.ui.infobar.show()
+
+    def on_action_preferences_show_missing_files_toggled(self, widget):
+        """Show and hide the missing desktop files"""
+        self.on_treeview_folders_cursor_changed(
+            self.ui.treeview_folders)

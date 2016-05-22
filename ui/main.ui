@@ -102,6 +102,13 @@
         <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkToggleAction" id="action_preferences_show_missing_files">
+        <property name="short_label" translatable="yes">Show missing _files</property>
+        <signal name="toggled" handler="on_action_preferences_show_missing_files_toggled" after="yes" swapped="no"/>
+        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
+      </object>
+    </child>
   </object>
   <object class="GtkMenu" id="menu_preferences">
     <property name="visible">True</property>
@@ -118,6 +125,15 @@
       <object class="GtkCheckMenuItem" id="menuitem_small_icons">
         <property name="use_action_appearance">True</property>
         <property name="related_action">action_preferences_small_icons</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_show_missing_files">
+        <property name="use_action_appearance">True</property>
+        <property name="related_action">action_preferences_show_missing_files</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_underline">True</property>
