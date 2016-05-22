@@ -392,6 +392,7 @@
                 <property name="can_focus">True</property>
                 <property name="model">store_applications</property>
                 <property name="headers_clickable">False</property>
+                <property name="search_column">1</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview_selection_applications">
                     <signal name="changed" handler="on_treeview_selection_applications_changed" swapped="no"/>
@@ -452,6 +453,7 @@
                 <property name="receives_default">True</property>
                 <property name="model">store_folders</property>
                 <property name="headers_clickable">False</property>
+                <property name="search_column">1</property>
                 <signal name="cursor-changed" handler="on_treeview_folders_cursor_changed" swapped="no"/>
                 <signal name="row-activated" handler="on_treeview_folders_row_activated" swapped="no"/>
                 <child internal-child="selection">
