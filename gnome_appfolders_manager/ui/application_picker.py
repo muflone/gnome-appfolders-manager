@@ -68,6 +68,13 @@ class UIApplicationPicker(object):
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
         self.selected_applications = None
+        # Load settings
+        self.dict_settings_map = {
+            preferences.APP_PICKER_SHOW_HIDDEN:
+                self.ui.action_show_hidden
+        }
+        for setting_name, action in self.dict_settings_map.items():
+            action.set_active(preferences.get(setting_name))
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:
@@ -87,6 +94,8 @@ class UIApplicationPicker(object):
                     self.model_applications.add_data(application)
             except Exception as e:
                 print 'error for', desktop_entry.get_id(), e
+        self.model_applications.set_all_rows_visibility(
+            preferences.get(preferences.APP_PICKER_SHOW_HIDDEN))
         # Connect signals from the glade file to the module functions
         self.ui.connect_signals(self)
 
@@ -127,6 +136,12 @@ class UIApplicationPicker(object):
         selected_rows = get_treeview_selected_rows(
             self.ui.treeview_applications)
         self.ui.action_add.set_sensitive(bool(selected_rows))
+
+    def on_action_preferences_toggled(self, widget):
+        """Change a preference value"""
+        for setting_name, action in self.dict_settings_map.items():
+            if action is widget:
+                preferences.set(setting_name, widget.get_active())
 
     def on_action_show_hidden_toggled(self, widget):
         """Set the visibility for all the Gtk.TreeModelRows"""

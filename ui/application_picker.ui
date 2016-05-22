@@ -19,6 +19,7 @@
     <child>
       <object class="GtkToggleAction" id="action_show_hidden">
         <property name="label" comments="Use domain gtk30">Show _Hidden Files</property>
+        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
         <signal name="toggled" handler="on_action_show_hidden_toggled" swapped="no"/>
       </object>
     </child>
