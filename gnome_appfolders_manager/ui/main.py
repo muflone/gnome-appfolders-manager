@@ -259,6 +259,8 @@ class UIMain(object):
                 list_folders = settings_folders.get_strv('folder-children')
                 list_folders.remove(folder_name)
                 settings_folders.set_strv('folder-children', list_folders)
+                # Clear the applications model
+                self.model_applications.clear()
                 # Remove the folder from the folders model
                 self.model_folders.remove(selected_row)
 
