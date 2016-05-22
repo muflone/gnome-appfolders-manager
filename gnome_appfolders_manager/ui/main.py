@@ -340,7 +340,7 @@ class UIMain(object):
     def on_action_preferences_need_restart_toggled(self, widget):
         """Show the infobar to require application restart"""
         self.ui.label_infobar.set_label(
-            _('Restart is required to apply the settings'))
+            _('The application must be restarted to apply the settings'))
         self.ui.infobar.show()
 
     def on_action_preferences_show_missing_files_toggled(self, widget):
