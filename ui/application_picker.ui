@@ -104,8 +104,8 @@
   </object>
   <object class="GtkDialog" id="dialog_application_picker">
     <property name="can_focus">False</property>
-    <property name="default_width">400</property>
-    <property name="default_height">200</property>
+    <property name="default_width">528</property>
+    <property name="default_height">245</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="box_content">
