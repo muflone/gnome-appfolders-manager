@@ -93,9 +93,13 @@ def get_pixbuf_from_icon_name(icon_name, size):
     """Get a Gdk.PixBuf from a theme icon"""
     theme = Gtk.IconTheme.get_default()
     if theme.has_icon(icon_name):
+        # The icon was a theme icon
         icon = theme.load_icon(icon_name=icon_name,
                                size=size,
                                flags=Gtk.IconLookupFlags.USE_BUILTIN)
+    elif os.path.isfile(icon_name):
+        # The icon was a full filename
+        icon = GdkPixbuf.Pixbuf.new_from_file(icon_name)
     else:
         # The icon was not found in the current theme, search for filenames
         # with png or jpg extensions

@@ -88,9 +88,14 @@ class UIApplicationPicker(object):
         for desktop_entry in Gio.app_info_get_all():
             try:
                 icon_name = None
-                if isinstance(desktop_entry.get_icon(), Gio.ThemedIcon):
+                icon = desktop_entry.get_icon()
+                if isinstance(icon, Gio.ThemedIcon):
+                    # From Gio.ThemedIcon get the icon name only
                     icons = desktop_entry.get_icon().get_names()
                     icon_name = icons[0] if icons else None
+                elif isinstance(icon, Gio.FileIcon):
+                    # From Gio.FileIcon get the full file name
+                    icon_name = icon.get_file().get_parse_name()
                 description = (desktop_entry.get_description()
                                if desktop_entry.get_description() else '')
                 application = ApplicationInfo(desktop_entry.get_id(),
