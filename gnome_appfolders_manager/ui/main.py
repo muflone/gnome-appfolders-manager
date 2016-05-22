@@ -116,6 +116,11 @@ class UIMain(object):
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
+        # Set preferences button icon
+        icon_name = self.ui.image_preferences.get_icon_name()[0]
+        if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
+            icon_name += '-symbolic'
+        self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {
             preferences.HEADERBARS_SMALL_ICONS:

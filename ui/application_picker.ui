@@ -69,10 +69,10 @@
         <property name="draw_indicator">True</property>
         <property name="popup">menu_options</property>
         <child>
-          <object class="GtkImage" id="image_options">
+          <object class="GtkImage" id="image_preferences">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="icon_name">emblem-system-symbolic</property>
+            <property name="icon_name">emblem-system</property>
           </object>
         </child>
       </object>

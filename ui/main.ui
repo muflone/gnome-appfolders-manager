@@ -215,7 +215,7 @@
           <object class="GtkImage" id="image_preferences">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="icon_name">emblem-system-symbolic</property>
+            <property name="icon_name">emblem-system</property>
             <property name="use_fallback">True</property>
           </object>
         </child>

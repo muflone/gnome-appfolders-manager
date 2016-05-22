@@ -68,6 +68,15 @@ class UIApplicationPicker(object):
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
         self.selected_applications = None
+        # Set preferences button icon
+        icon_name = self.ui.image_preferences.get_icon_name()[0]
+        if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
+            icon_name += '-symbolic'
+        # Get desired icon size
+        icon_size = (Gtk.IconSize.BUTTON
+                     if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
+                     else Gtk.IconSize.LARGE_TOOLBAR)
+        self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {
             preferences.APP_PICKER_SHOW_HIDDEN:
