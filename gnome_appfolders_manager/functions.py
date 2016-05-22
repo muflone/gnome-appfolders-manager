@@ -105,12 +105,14 @@ def get_pixbuf_from_icon_name(icon_name, size):
         # with png or jpg extensions
         if (icon_name.lower().endswith('.png') or
                 icon_name.lower().endswith('.jpg') or
-                icon_name.lower().endswith('.xpm')):
+                icon_name.lower().endswith('.xpm') or
+                icon_name.lower().endswith('.svg')):
             filenames = (icon_name, )
         else:
             filenames = ('%s.png' % icon_name,
                          '%s.jpg' % icon_name,
-                         '%s.xpm' % icon_name)
+                         '%s.xpm' % icon_name,
+                         '%s.svg' % icon_name)
         # Search for filenames in icons and pixmaps directories
         icon = None
         search_in_paths = ('/usr/share/icons',
