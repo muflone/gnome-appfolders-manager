@@ -199,6 +199,7 @@ class UIMain(object):
                        self.ui.action_files_new):
             widget.set_sensitive(bool(selected_row))
         if not selected_row:
+            self.ui.action_files_new.set_sensitive(False)
             self.ui.action_files_remove.set_sensitive(False)
             self.ui.action_files_save.set_sensitive(False)
             self.model_applications.clear()

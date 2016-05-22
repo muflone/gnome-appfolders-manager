@@ -45,6 +45,7 @@
       <object class="GtkAction" id="action_files_new">
         <property name="short_label" comments="Use domain gtk30">_New</property>
         <property name="icon_name">list-add</property>
+        <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_new_activate" swapped="no"/>
       </object>
       <accelerator key="Insert"/>
