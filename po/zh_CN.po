@@ -1,89 +1,89 @@
-# Italian translations for GNOME App Folders Manager package.
+# Chinese translations for GNOME App Folders Manager package.
 # Copyright (C) 2016 Fabio Castelli
 # This file is distributed under the same license as the GNOME App Folders Manager package.
 #
 # Translators:
-# Muflone <webreg(at)vbsimple.net>, 2016
+# Dz Chen <wsxy162(at)gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
 "POT-Creation-Date: 2016-05-16 02:11+0200\n"
-"PO-Revision-Date: 2016-05-22 15:17+0000\n"
-"Last-Translator: Muflone <webreg(at)vbsimple.net>\n"
-"Language-Team: Italian (http://www.transifex.com/muflone/gnome-appfolders-"
-"manager/language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2016-05-22 09:57+0000\n"
+"Last-Translator: Dz Chen <wsxy162(at)gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/muflone/gnome-"
+"appfolders-manager/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ui/appmenu.ui:6
 msgid "_About GNOME App Folders Manager"
-msgstr "_Informazioni su GNOME App Folders Manager"
+msgstr "关于 GNOME App Folders Manager"
 
 #: ui/appmenu.ui:11
 msgid "Show keyboard _shortcuts"
-msgstr "Mostra _scorciatoie di tastiera"
+msgstr "显示键盘快捷方式(_S)"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
-msgstr "_Aggiungi applicazioni"
+msgstr "添加应用程序(_A)"
 
 #: ui/application_picker.ui:153 ui/main.ui:313
 msgid "Applications"
-msgstr "Applicazioni"
+msgstr "应用程序"
 
 #: ui/create_appfolder.ui:116 ui/main.ui:391
 msgid "Title:"
-msgstr "Titolo:"
+msgstr "标题："
 
 #: ui/main.ui:80
 msgid "_Folders:"
-msgstr "_Cartelle:"
+msgstr "文件夹(_F)："
 
 #: ui/main.ui:254 ui/shortcuts.ui:38
 msgid "Folders"
-msgstr "Cartelle"
+msgstr "文件夹"
 
 #: ui/main.ui:419
 msgid "Description:"
-msgstr "Descrizione:"
+msgstr "说明："
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
-msgstr "Mostra la finestra informazioni"
+msgstr "显示关于对话框"
 
 #: ui/shortcuts.ui:43
 msgid "Create a new folder"
-msgstr "Crea una nuova cartella"
+msgstr "新建文件夹"
 
 #: ui/shortcuts.ui:50
 msgid "Remove the currently selected folder"
-msgstr "Rimuove la cartella attualmente selezionata"
+msgstr "移除当前选中的文件夹"
 
 #: ui/shortcuts.ui:65
 msgid "Add a new file"
-msgstr "Aggiunge un nuovo file"
+msgstr "添加新文件"
 
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
-msgstr "Rimuove il file selezionato"
+msgstr "移除选中的文件"
 
 #: gnome_appfolders_manager/ui/main.py:175
 msgid "The title cannot be modified"
-msgstr "Il titolo non può essere modificato"
+msgstr "此标题无法被修改"
 
 #: gnome_appfolders_manager/ui/main.py:254
 msgid "Remove the selected folder?"
-msgstr "Rimuovere la cartella selezionata?"
+msgstr "移除选中的文件夹？"
 
 #: gnome_appfolders_manager/ui/main.py:255
 #, python-format
 msgid "Are you sure you want to remove the folder %s?"
-msgstr "Sei sicuro di voler rimuovere la cartella %s?"
+msgstr "您确定想要移除该文件夹 %s 吗？"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
-msgstr "Contributi:"
+msgstr "贡献者"

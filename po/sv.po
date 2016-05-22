@@ -1,19 +1,19 @@
-# Italian translations for GNOME App Folders Manager package.
+# Svedish translations for GNOME App Folders Manager package.
 # Copyright (C) 2016 Fabio Castelli
 # This file is distributed under the same license as the GNOME App Folders Manager package.
 #
 # Translators:
-# Muflone <webreg(at)vbsimple.net>, 2016
+# Anders Jonsson <transifex(at)norsjovallen.se>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
 "POT-Creation-Date: 2016-05-16 02:11+0200\n"
-"PO-Revision-Date: 2016-05-22 15:17+0000\n"
-"Last-Translator: Muflone <webreg(at)vbsimple.net>\n"
-"Language-Team: Italian (http://www.transifex.com/muflone/gnome-appfolders-"
-"manager/language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2016-05-22 15:18+0000\n"
+"Last-Translator: Anders Jonsson <transifex(at)norsjovallen.se>\n"
+"Language-Team: Swedish (http://www.transifex.com/muflone/gnome-appfolders-"
+"manager/language/sv/)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,69 +21,69 @@ msgstr ""
 
 #: ui/appmenu.ui:6
 msgid "_About GNOME App Folders Manager"
-msgstr "_Informazioni su GNOME App Folders Manager"
+msgstr "_Om GNOME App Folders Manager"
 
 #: ui/appmenu.ui:11
 msgid "Show keyboard _shortcuts"
-msgstr "Mostra _scorciatoie di tastiera"
+msgstr "Visa _tangentbordsgenvägar"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
-msgstr "_Aggiungi applicazioni"
+msgstr "_Lägg till program"
 
 #: ui/application_picker.ui:153 ui/main.ui:313
 msgid "Applications"
-msgstr "Applicazioni"
+msgstr "Program"
 
 #: ui/create_appfolder.ui:116 ui/main.ui:391
 msgid "Title:"
-msgstr "Titolo:"
+msgstr "Titel:"
 
 #: ui/main.ui:80
 msgid "_Folders:"
-msgstr "_Cartelle:"
+msgstr "_Mappar:"
 
 #: ui/main.ui:254 ui/shortcuts.ui:38
 msgid "Folders"
-msgstr "Cartelle"
+msgstr "Mappar"
 
 #: ui/main.ui:419
 msgid "Description:"
-msgstr "Descrizione:"
+msgstr "Beskrivning:"
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
-msgstr "Mostra la finestra informazioni"
+msgstr "Visa om-dialogen"
 
 #: ui/shortcuts.ui:43
 msgid "Create a new folder"
-msgstr "Crea una nuova cartella"
+msgstr "Skapa en ny mapp"
 
 #: ui/shortcuts.ui:50
 msgid "Remove the currently selected folder"
-msgstr "Rimuove la cartella attualmente selezionata"
+msgstr "Ta bort den aktuellt markerade mappen"
 
 #: ui/shortcuts.ui:65
 msgid "Add a new file"
-msgstr "Aggiunge un nuovo file"
+msgstr "Lägg till en ny fil"
 
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
-msgstr "Rimuove il file selezionato"
+msgstr "Ta bort den markerade filen"
 
 #: gnome_appfolders_manager/ui/main.py:175
 msgid "The title cannot be modified"
-msgstr "Il titolo non può essere modificato"
+msgstr "Titeln kan inte ändras"
 
 #: gnome_appfolders_manager/ui/main.py:254
 msgid "Remove the selected folder?"
-msgstr "Rimuovere la cartella selezionata?"
+msgstr "Ta bort den markerade mappen?"
 
 #: gnome_appfolders_manager/ui/main.py:255
 #, python-format
 msgid "Are you sure you want to remove the folder %s?"
-msgstr "Sei sicuro di voler rimuovere la cartella %s?"
+msgstr "Är du säker på att du vill ta bort mappen %s?"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
-msgstr "Contributi:"
+msgstr "Bidragsgivare:"
