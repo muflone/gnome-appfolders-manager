@@ -34,7 +34,7 @@ for module in (gettext, locale):
 # Import some translated messages from GTK+ domain
 for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
                 'A folder with that name already exists',
-                'General'):
+                'General', 'Preferences'):
     text(message=message, gtk30=True)
 store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
 store_message('_Files:', '_%s:' % text(message='Files', gtk30=True))

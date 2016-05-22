@@ -116,6 +116,15 @@ class UIMain(object):
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
+        # Load settings
+        self.dict_settings_map = {
+            preferences.HEADERBARS_SMALL_ICONS:
+                self.ui.action_preferences_small_icons,
+            preferences.HEADERBARS_SYMBOLIC_ICONS:
+                self.ui.action_preferences_symbolic_icons
+        }
+        for setting_name, action in self.dict_settings_map.items():
+            action.set_active(preferences.get(setting_name))
         # Connect signals from the glade file to the module functions
         self.ui.connect_signals(self)
 
@@ -314,3 +323,15 @@ class UIMain(object):
                 self.ui.treeview_folders.set_cursor(
                     self.model_folders.get_path_by_name(folder_name))
             dialog.destroy()
+
+    def on_action_preferences_toggled(self, widget):
+        """Change a preference value"""
+        for setting_name, action in self.dict_settings_map.items():
+            if action is widget:
+                preferences.set(setting_name, widget.get_active())
+
+    def on_action_preferences_need_restart_toggled(self, widget):
+        """Show the infobar to require application restart"""
+        self.ui.label_infobar.set_label(
+            _('Restart is required to apply the settings'))
+        self.ui.infobar.show()

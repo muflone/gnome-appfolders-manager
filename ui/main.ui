@@ -80,6 +80,50 @@
       <accelerator key="F2"/>
     </child>
   </object>
+  <object class="GtkActionGroup" id="actions_preferences">
+    <property name="accel_group">accelerators</property>
+    <child>
+      <object class="GtkAction" id="action_preferences_menu">
+        <property name="short_label" comments="Use domain gtk30">Preferences</property>
+        <property name="icon_name">preferences-desktop</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_preferences_symbolic_icons">
+        <property name="short_label" translatable="yes">Sy_mbolic icons (requires restart)</property>
+        <signal name="toggled" handler="on_action_preferences_need_restart_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_preferences_small_icons">
+        <property name="short_label" translatable="yes">_Small icons (requires restart)</property>
+        <signal name="toggled" handler="on_action_preferences_need_restart_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="menu_preferences">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_symbolic_icons">
+        <property name="use_action_appearance">True</property>
+        <property name="related_action">action_preferences_symbolic_icons</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_small_icons">
+        <property name="use_action_appearance">True</property>
+        <property name="related_action">action_preferences_small_icons</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkHeaderBar" id="header_bar">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -127,7 +171,7 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="position">9</property>
+        <property name="position">3</property>
       </packing>
     </child>
     <child>
@@ -141,7 +185,28 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">2</property>
+        <property name="position">4</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="button_preferences">
+        <property name="related_action">action_preferences_menu</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="popup">menu_preferences</property>
+        <child>
+          <object class="GtkImage" id="image_preferences">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="icon_name">emblem-system-symbolic</property>
+            <property name="use_fallback">True</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="pack_type">end</property>
+        <property name="position">5</property>
       </packing>
     </child>
     <child>
@@ -151,7 +216,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">3</property>
+        <property name="position">6</property>
       </packing>
     </child>
     <child>
@@ -165,7 +230,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">4</property>
+        <property name="position">7</property>
       </packing>
     </child>
     <child>
@@ -178,7 +243,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">5</property>
+        <property name="position">8</property>
       </packing>
     </child>
     <child>
@@ -191,7 +256,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">6</property>
+        <property name="position">9</property>
       </packing>
     </child>
     <child>
@@ -203,7 +268,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
-        <property name="position">8</property>
+        <property name="position">10</property>
       </packing>
     </child>
   </object>
@@ -249,68 +314,55 @@
     </accel-groups>
     <signal name="delete-event" handler="on_win_main_delete_event" swapped="no"/>
     <child>
-      <object class="GtkBox" id="box_main">
+      <object class="GtkGrid" id="grid_main">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkScrolledWindow" id="scrolled_folders">
-            <property name="width_request">200</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">True</property>
-            <property name="is_focus">True</property>
-            <child>
-              <object class="GtkTreeView" id="treeview_folders">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="has_focus">True</property>
-                <property name="is_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="model">store_folders</property>
-                <property name="headers_clickable">False</property>
-                <signal name="cursor-changed" handler="on_treeview_folders_cursor_changed" swapped="no"/>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview_selection_folders">
-                    <signal name="changed" handler="on_treeview_selection_folders_changed" swapped="no"/>
-                  </object>
-                </child>
+          <object class="GtkInfoBar" id="infobar">
+            <property name="app_paintable">True</property>
+            <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
+            <child internal-child="action_area">
+              <object class="GtkButtonBox" id="buttonbox_infobar">
+                <property name="can_focus">False</property>
+                <property name="layout_style">end</property>
                 <child>
-                  <object class="GtkTreeViewColumn" id="treeview_column_folders">
-                    <property name="title" translatable="yes">Folders</property>
-                    <child>
-                      <object class="GtkCellRendererPixbuf" id="cell_folders_icon"/>
-                      <attributes>
-                        <attribute name="pixbuf">4</attribute>
-                      </attributes>
-                    </child>
-                    <child>
-                      <object class="GtkCellRendererText" id="cell_folders_description"/>
-                      <attributes>
-                        <attribute name="markup">3</attribute>
-                      </attributes>
-                    </child>
-                  </object>
+                  <placeholder/>
                 </child>
               </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child internal-child="content_area">
+              <object class="GtkBox" id="box_infobar">
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="label_infobar">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label">MESSAGE</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator" id="separator_main">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+            <property name="width">3</property>
           </packing>
         </child>
         <child>
@@ -352,9 +404,68 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator_main">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_folders">
+            <property name="width_request">250</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
+            <property name="is_focus">True</property>
+            <property name="vexpand">True</property>
+            <child>
+              <object class="GtkTreeView" id="treeview_folders">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
+                <property name="is_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="model">store_folders</property>
+                <property name="headers_clickable">False</property>
+                <signal name="cursor-changed" handler="on_treeview_folders_cursor_changed" swapped="no"/>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection" id="treeview_selection_folders">
+                    <signal name="changed" handler="on_treeview_selection_folders_changed" swapped="no"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeview_column_folders">
+                    <property name="title" translatable="yes">Folders</property>
+                    <child>
+                      <object class="GtkCellRendererPixbuf" id="cell_folders_icon"/>
+                      <attributes>
+                        <attribute name="pixbuf">4</attribute>
+                      </attributes>
+                    </child>
+                    <child>
+                      <object class="GtkCellRendererText" id="cell_folders_description"/>
+                      <attributes>
+                        <attribute name="markup">3</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
       </object>
