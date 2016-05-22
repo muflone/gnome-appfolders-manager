@@ -26,7 +26,7 @@ from xdg import BaseDirectory
 
 # Application constants
 APP_NAME = 'GNOME App Folders Manager'
-APP_VERSION = '0.2.3'
+APP_VERSION = '0.2.4'
 APP_DESCRIPTION = 'Manage GNOME Shell applications folders'
 APP_ID = 'gnome-appfolders-manager.muflone.com'
 APP_URL = 'http://www.muflone.com/gnome-appfolders-manager/'
