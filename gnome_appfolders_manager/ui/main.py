@@ -191,6 +191,18 @@ class UIMain(object):
             # Disable folder content saving
             self.ui.action_files_save.set_sensitive(False)
 
+    def on_treeview_selection_folders_changed(self, widget):
+        """Set action sensitiveness on selection change"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        for widget in (self.ui.action_folders_remove,
+                       self.ui.action_folders_properties,
+                       self.ui.action_files_new):
+            widget.set_sensitive(bool(selected_row))
+        if not selected_row:
+            self.ui.action_files_remove.set_sensitive(False)
+            self.ui.action_files_save.set_sensitive(False)
+            self.model_applications.clear()
+
     def on_action_files_new_activate(self, action):
         """Show an application picker to add to the current AppFolder"""
         dialog = UIApplicationPicker(self.ui.win_main,

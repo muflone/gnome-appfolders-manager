@@ -56,6 +56,7 @@
       <object class="GtkAction" id="action_folders_remove">
         <property name="short_label" comments="Use domain gtk30">_Remove</property>
         <property name="icon_name">edit-delete</property>
+        <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_remove_activate" swapped="no"/>
       </object>
       <accelerator key="Delete" modifiers="GDK_CONTROL_MASK"/>
@@ -72,6 +73,7 @@
       <object class="GtkAction" id="action_folders_properties">
         <property name="short_label" comments="Use domain gtk30">_Properties</property>
         <property name="icon_name">document-properties</property>
+        <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_properties_activate" swapped="no"/>
       </object>
       <accelerator key="F2"/>
@@ -269,7 +271,9 @@
                 <property name="headers_clickable">False</property>
                 <signal name="cursor-changed" handler="on_treeview_folders_cursor_changed" swapped="no"/>
                 <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview_selection_folders"/>
+                  <object class="GtkTreeSelection" id="treeview_selection_folders">
+                    <signal name="changed" handler="on_treeview_selection_folders_changed" swapped="no"/>
+                  </object>
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeview_column_folders">
