@@ -347,3 +347,7 @@ class UIMain(object):
         """Show and hide the missing desktop files"""
         self.on_treeview_folders_cursor_changed(
             self.ui.treeview_folders)
+
+    def on_treeview_folders_row_activated(self, widget, path, column):
+        """Show folder properties on activation"""
+        self.ui.action_folders_properties.activate()
