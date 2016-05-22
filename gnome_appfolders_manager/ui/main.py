@@ -91,7 +91,7 @@ class UIMain(object):
         for widget in self.ui.get_objects_by_type(Gtk.Label):
             widget.set_label(text(widget.get_label()))
         # Initialize tooltips
-        for widget in self.ui.get_objects_by_type(Gtk.ToolButton):
+        for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()
             if action:
                 widget.set_tooltip_text(action.get_label().replace('_', ''))
