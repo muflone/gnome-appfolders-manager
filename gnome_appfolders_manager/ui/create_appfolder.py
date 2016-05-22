@@ -55,9 +55,9 @@ class UICreateAppFolder(object):
                 widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
         self.ui.dialog_create_appfolder.set_transient_for(parent)
-        set_style_suggested_action(self.ui.button_create)
+        set_style_suggested_action(self.ui.button_ok)
         self.existing_folders = existing_folders
-        self.ui.button_create.grab_default()
+        self.ui.button_ok.grab_default()
         self.folder_name = ''
         self.folder_title = ''
         # Connect signals from the glade file to the module functions
@@ -72,10 +72,12 @@ class UICreateAppFolder(object):
         self.ui.entry_name.set_text(name)
         self.folder_title = title
         self.ui.entry_title.set_text(title)
-        # Change label from Create folder to Save if a name was provided
+        # Change label from Create folder to Save if a folder name was provided
         if name:
             self.ui.entry_name.set_sensitive(False)
-            self.ui.action_create.set_short_label(text('_Save'))
+            self.ui.button_ok.set_related_action(self.ui.action_save)
+            self.ui.button_ok.set_tooltip_text(
+                self.ui.action_save.get_label().replace('_', ''))
         response = self.ui.dialog_create_appfolder.run()
         self.ui.dialog_create_appfolder.hide()
         return response
@@ -91,7 +93,7 @@ class UICreateAppFolder(object):
         """Close the dialog"""
         self.ui.dialog_create_appfolder.response(Gtk.ResponseType.CLOSE)
 
-    def on_action_create_activate(self, action):
+    def on_action_confirm_activate(self, action):
         """Accept the folder name and title and close the dialog"""
         self.folder_name = self.ui.entry_name.get_text().strip()
         self.folder_title = self.ui.entry_title.get_text().strip()

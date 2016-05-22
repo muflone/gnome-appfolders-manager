@@ -7,7 +7,13 @@
       <object class="GtkAction" id="action_create">
         <property name="short_label" comments="Use domain gtk30">_Create Folder</property>
         <property name="sensitive">False</property>
-        <signal name="activate" handler="on_action_create_activate" swapped="no"/>
+        <signal name="activate" handler="on_action_confirm_activate" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_save">
+        <property name="short_label" comments="Use domain gtk30">_Save</property>
+        <signal name="activate" handler="on_action_confirm_activate" swapped="no"/>
       </object>
     </child>
     <child>
@@ -31,7 +37,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button_create">
+      <object class="GtkButton" id="button_ok">
         <property name="use_action_appearance">True</property>
         <property name="related_action">action_create</property>
         <property name="visible">True</property>
