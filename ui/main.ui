@@ -77,7 +77,7 @@
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_properties_activate" swapped="no"/>
       </object>
-      <accelerator key="F2"/>
+      <accelerator key="Return" modifiers="GDK_MOD1_MASK"/>
     </child>
   </object>
   <object class="GtkActionGroup" id="actions_preferences">
