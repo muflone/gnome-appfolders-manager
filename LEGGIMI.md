@@ -10,6 +10,37 @@ GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-a
 
 **Documentazione:** http://www.muflone.com/gnome-appfolders-manager/
 
+Utilizzo
+--------
+
+Dalla finestra principale di *GNOME App Folders Manager* è possibile definire
+le cartelle personalizzate per raggruppare le applicazioni cliccando il pulsante
+**Crea cartella** sulla barra di intestazione.
+
+![Finestra principale](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/italian/main.png)
+
+Definire il nome della cartella e il titolo da mostrare nella shell di GNOME e
+confermare la nuova cartella cliccando il pulsante **Crea cartella**.
+
+![Nuova cartella](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/italian/create-folder.png)
+
+Aggiungere le applicazioni desiderate alla nuova cartella cliccando il pulsante
+**Nuovo file** sulla barra di intestazione, selezionare le applicazioni da
+includere (la selezione multipla è anche possibile) e cliccare il pulsante
+**Aggiungi applicazioni**.
+
+![Application picker](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/italian/add-applications.png)
+
+Salvare la cartella cliccando il pulsante **Salva cartella** nella finestra
+principale di GNOME App Folders Manager.
+
+![Finestra principale con una nuova cartella](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main-with-new-appfolder.png)
+
+Aprire la finestra delle attività di GNOME Shell per utilizzare la nuova
+cartella delle applicazioni.
+
+![GNOME Shell overview](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/italian/gnome-shell-appfolder.png)
+
 Requisiti di sistema
 --------------------
 
