@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
 "POT-Creation-Date: 2016-05-22 23:51+0200\n"
-"PO-Revision-Date: 2016-05-22 09:57+0000\n"
+"PO-Revision-Date: 2016-05-25 06:45+0000\n"
 "Last-Translator: Dz Chen <wsxy162(at)gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/muflone/gnome-appfolders-manager/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -64,15 +64,15 @@ msgstr "应用程序"
 
 #: ui/main.ui:93
 msgid "Sy_mbolic icons (requires restart)"
-msgstr ""
+msgstr "符号图标（需要重启）(_M)"
 
 #: ui/main.ui:100
 msgid "_Small icons (requires restart)"
-msgstr ""
+msgstr "小图标（需要重启）(_S)"
 
 #: ui/main.ui:107
 msgid "Show missing _files"
-msgstr ""
+msgstr "显示缺失文件(_F)"
 
 #: ui/main.ui:151
 msgid "_Folders:"
@@ -93,4 +93,4 @@ msgstr "您确定想要移除该文件夹 %s 吗？"
 
 #: gnome_appfolders_manager/ui/main.py:343
 msgid "The application must be restarted to apply the settings"
-msgstr ""
+msgstr "应用程序必须重启以应用该设置"
