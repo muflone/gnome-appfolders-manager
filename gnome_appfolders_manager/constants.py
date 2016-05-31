@@ -55,7 +55,13 @@ else:
 # Set the paths for the folders
 DIR_DATA = os.path.join(DIR_PREFIX, 'data')
 DIR_UI = os.path.join(DIR_PREFIX, 'ui')
-DIR_SETTINGS = BaseDirectory.save_config_path(DOMAIN_NAME)
+try:
+    # In read-only environments, the settings folder cannot be created
+    # (eg in a Debian pbuilder fakeroot)
+    DIR_SETTINGS = BaseDirectory.save_config_path(DOMAIN_NAME)
+except:
+    # Get the settings path without actually creating it
+    DIR_SETTINGS = os.path.join(BaseDirectory.xdg_config_home, DOMAIN_NAME)
 # Set the paths for the data files
 FILE_ICON = os.path.join(DIR_DATA, 'gnome-appfolders-manager.png')
 FILE_CONTRIBUTORS = os.path.join(DIR_DOCS, 'contributors')
