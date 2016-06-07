@@ -97,6 +97,12 @@ def get_pixbuf_from_icon_name(icon_name, size):
         icon = theme.load_icon(icon_name=icon_name,
                                size=size,
                                flags=Gtk.IconLookupFlags.USE_BUILTIN)
+    elif theme.has_icon(os.path.splitext(os.path.basename(icon_name))[0]):
+        # The theme contains an icon with the same file name
+        filename = os.path.splitext(os.path.basename(icon_name))[0]
+        icon = theme.load_icon(icon_name=filename,
+                               size=size,
+                               flags=Gtk.IconLookupFlags.USE_BUILTIN)
     elif os.path.isfile(icon_name):
         # The icon was a full filename
         icon = GdkPixbuf.Pixbuf.new_from_file(icon_name)
