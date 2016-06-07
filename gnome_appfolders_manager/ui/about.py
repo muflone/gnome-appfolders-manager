@@ -46,7 +46,7 @@ class UIAbout(object):
         self.ui = GtkBuilderLoader(get_ui_file('about.ui'))
         # Set various properties
         self.ui.dialog_about.set_program_name(APP_NAME)
-        self.ui.dialog_about.set_version('Version %s' % APP_VERSION)
+        self.ui.dialog_about.set_version(_('Version %s') % APP_VERSION)
         self.ui.dialog_about.set_comments(APP_DESCRIPTION)
         self.ui.dialog_about.set_website(APP_URL)
         self.ui.dialog_about.set_copyright(APP_COPYRIGHT)
