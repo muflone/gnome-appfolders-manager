@@ -137,6 +137,8 @@ class Command_CreatePOT(Command):
         for filename in recursive_glob(self.dir_base, '*.py'):
             list_files_process.append(os.path.relpath(filename,
                                                       self.dir_base))
+        # Sort the files to process them always in the same order (hopefully)
+        list_files_process.sort()
         # Extract messages from the files to process
         subprocess.call(
             args=chain(('xgettext',
