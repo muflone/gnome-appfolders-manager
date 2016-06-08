@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
-"POT-Creation-Date: 2016-05-22 23:51+0200\n"
+"POT-Creation-Date: 2016-06-08 01:53+0200\n"
 "PO-Revision-Date: 2016-05-22 15:17+0000\n"
 "Last-Translator: Muflone <webreg(at)vbsimple.net>\n"
 "Language-Team: Italian (http://www.transifex.com/muflone/gnome-appfolders-manager/language/it/)\n"
@@ -18,30 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui/shortcuts.ui:21
-msgid "Show the about dialog"
-msgstr "Mostra la finestra informazioni"
-
-#: ui/shortcuts.ui:38 ui/main.ui:464
-msgid "Folders"
-msgstr "Cartelle"
-
-#: ui/shortcuts.ui:43
-msgid "Create a new folder"
-msgstr "Crea una nuova cartella"
-
-#: ui/shortcuts.ui:50
-msgid "Remove the currently selected folder"
-msgstr "Rimuove la cartella attualmente selezionata"
-
-#: ui/shortcuts.ui:65
-msgid "Add a new file"
-msgstr "Aggiunge un nuovo file"
-
-#: ui/shortcuts.ui:72
-msgid "Remove the selected file"
-msgstr "Rimuove il file selezionato"
-
 #: ui/appmenu.ui:6
 msgid "_About GNOME App Folders Manager"
 msgstr "_Informazioni su GNOME App Folders Manager"
@@ -50,17 +26,17 @@ msgstr "_Informazioni su GNOME App Folders Manager"
 msgid "Show keyboard _shortcuts"
 msgstr "Mostra _scorciatoie di tastiera"
 
-#: ui/create_appfolder.ui:122
-msgid "Title:"
-msgstr "Titolo:"
-
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr "_Aggiungi applicazioni"
 
-#: ui/application_picker.ui:154 ui/main.ui:402
+#: ui/application_picker.ui:155 ui/main.ui:403
 msgid "Applications"
 msgstr "Applicazioni"
+
+#: ui/create_appfolder.ui:122
+msgid "Title:"
+msgstr "Titolo:"
 
 #: ui/main.ui:93
 msgid "Sy_mbolic icons (requires restart)"
@@ -78,9 +54,29 @@ msgstr "Mostra _file mancanti"
 msgid "_Folders:"
 msgstr "_Cartelle:"
 
-#: gnome_appfolders_manager/ui/about.py:59
-msgid "Contributors:"
-msgstr "Contributi:"
+#: ui/main.ui:466 ui/shortcuts.ui:38
+msgid "Folders"
+msgstr "Cartelle"
+
+#: ui/shortcuts.ui:21
+msgid "Show the about dialog"
+msgstr "Mostra la finestra informazioni"
+
+#: ui/shortcuts.ui:43
+msgid "Create a new folder"
+msgstr "Crea una nuova cartella"
+
+#: ui/shortcuts.ui:50
+msgid "Remove the currently selected folder"
+msgstr "Rimuove la cartella attualmente selezionata"
+
+#: ui/shortcuts.ui:65
+msgid "Add a new file"
+msgstr "Aggiunge un nuovo file"
+
+#: ui/shortcuts.ui:72
+msgid "Remove the selected file"
+msgstr "Rimuove il file selezionato"
 
 #: gnome_appfolders_manager/ui/main.py:278
 msgid "Remove the selected folder?"
@@ -94,3 +90,12 @@ msgstr "Sei sicuro di voler rimuovere la cartella %s?"
 #: gnome_appfolders_manager/ui/main.py:343
 msgid "The application must be restarted to apply the settings"
 msgstr "L'applicazione deve essere riavviata per applicare le impostazioni"
+
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr "Versione %s"
+
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Contributi:"
