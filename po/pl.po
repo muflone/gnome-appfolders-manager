@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: GNOME App Folders Manager 0.3.2\n"
 "Report-Msgid-Bugs-To: muflone@vbsimple.net\n"
 "POT-Creation-Date: 2016-11-25 14:32+0100\n"
-"PO-Revision-Date: 2016-11-25 14:44+0100\n"
+"PO-Revision-Date: 2016-11-25 14:56+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr "Ikony sy_mboliczne (wymagane ponowne uruchomienie)"
 
 #: ui/main.ui:100
 msgid "_Small icons (requires restart)"
-msgstr "Małe ikony (wymagane ponowne uruchomienie)"
+msgstr "_Małe ikony (wymagane ponowne uruchomienie)"
 
 #: ui/main.ui:107
 msgid "Show missing _files"
@@ -78,7 +78,7 @@ msgstr "_Katalogi:"
 
 #: ui/main.ui:466 ui/shortcuts.ui:38
 msgid "Folders"
-msgstr "_Katalogi:"
+msgstr "Katalogi:"
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
