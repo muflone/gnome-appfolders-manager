@@ -94,7 +94,7 @@ msgstr "应用程序必须重启以应用该设置"
 #: gnome_appfolders_manager/ui/about.py:49
 #, python-format
 msgid "Version %s"
-msgstr ""
+msgstr "版本 %s"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
