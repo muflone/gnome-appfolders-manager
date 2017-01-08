@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
-"POT-Creation-Date: 2016-06-08 01:53+0200\n"
+"POT-Creation-Date: 2016-06-09 00:04+0200\n"
 "PO-Revision-Date: 2016-05-16 02:11+0200\n"
-"Last-Translator: Muflone (muflone(at)vbsimple.net)\n"
+"Last-Translator: Muflone <muflone(at)vbsimple.net>\n"
 "Language-Team: none\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "_About GNOME App Folders Manager"
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr "Version %s"
 
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "Show keyboard _shortcuts"
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Contributors:"
+
+#: gnome_appfolders_manager/ui/main.py:278
+msgid "Remove the selected folder?"
+msgstr "Remove the selected folder?"
+
+#: gnome_appfolders_manager/ui/main.py:279
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "Are you sure you want to remove the folder %s?"
+
+#: gnome_appfolders_manager/ui/main.py:343
+msgid "The application must be restarted to apply the settings"
+msgstr "The application must be restarted to apply the settings"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
@@ -32,6 +46,14 @@ msgstr "_Add applications"
 #: ui/application_picker.ui:155 ui/main.ui:403
 msgid "Applications"
 msgstr "Applications"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "_About GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "Show keyboard _shortcuts"
 
 #: ui/create_appfolder.ui:122
 msgid "Title:"
@@ -76,25 +98,3 @@ msgstr "Add a new file"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Remove the selected file"
-
-#: gnome_appfolders_manager/ui/main.py:278
-msgid "Remove the selected folder?"
-msgstr "Remove the selected folder?"
-
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "Are you sure you want to remove the folder %s?"
-
-#: gnome_appfolders_manager/ui/main.py:343
-msgid "The application must be restarted to apply the settings"
-msgstr "The application must be restarted to apply the settings"
-
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
-msgid "Version %s"
-msgstr "Version %s"
-
-#: gnome_appfolders_manager/ui/about.py:59
-msgid "Contributors:"
-msgstr "Contributors:"

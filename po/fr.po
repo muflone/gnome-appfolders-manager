@@ -4,12 +4,11 @@
 #
 # Translators:
 # Okki <okki(at)gnomelibre.fr>, 2016
-# Muflone <webreg(at)vbsimple.net>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
-"POT-Creation-Date: 2016-06-08 01:53+0200\n"
+"POT-Creation-Date: 2016-06-09 00:04+0200\n"
 "PO-Revision-Date: 2016-05-22 15:15+0000\n"
 "Last-Translator: Okki <okki(at)gnomelibre.fr>\n"
 "Language-Team: French (http://www.transifex.com/muflone/gnome-appfolders-manager/language/fr/)\n"
@@ -19,13 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "À _propos de GNOME App Folders Manager"
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr ""
 
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "Afficher les _raccourcis clavier"
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Contributeurs:"
+
+#: gnome_appfolders_manager/ui/main.py:278
+msgid "Remove the selected folder?"
+msgstr "Supprimer le dossier sélectionné?"
+
+#: gnome_appfolders_manager/ui/main.py:279
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "Êtes-vous certain de vouloir supprimer le dossier %s?"
+
+#: gnome_appfolders_manager/ui/main.py:343
+msgid "The application must be restarted to apply the settings"
+msgstr ""
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
@@ -34,6 +47,14 @@ msgstr "_Ajouter des applications"
 #: ui/application_picker.ui:155 ui/main.ui:403
 msgid "Applications"
 msgstr "Applications"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "À _propos de GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "Afficher les _raccourcis clavier"
 
 #: ui/create_appfolder.ui:122
 msgid "Title:"
@@ -78,25 +99,3 @@ msgstr "Ajouter un nouveau fichier"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Supprimer le fichier sélectionné"
-
-#: gnome_appfolders_manager/ui/main.py:278
-msgid "Remove the selected folder?"
-msgstr "Supprimer le dossier sélectionné?"
-
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "Êtes-vous certain de vouloir supprimer le dossier %s?"
-
-#: gnome_appfolders_manager/ui/main.py:343
-msgid "The application must be restarted to apply the settings"
-msgstr ""
-
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
-msgid "Version %s"
-msgstr ""
-
-#: gnome_appfolders_manager/ui/about.py:59
-msgid "Contributors:"
-msgstr "Contributeurs:"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
-"POT-Creation-Date: 2016-06-08 01:53+0200\n"
+"POT-Creation-Date: 2016-06-09 00:04+0200\n"
 "PO-Revision-Date: 2016-05-25 06:45+0000\n"
 "Last-Translator: Dz Chen <wsxy162(at)gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/muflone/gnome-appfolders-manager/language/zh_CN/)\n"
@@ -18,13 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "关于 GNOME App Folders Manager"
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr "版本 %s"
 
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "显示键盘快捷方式(_S)"
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "贡献者"
+
+#: gnome_appfolders_manager/ui/main.py:278
+msgid "Remove the selected folder?"
+msgstr "移除选中的文件夹？"
+
+#: gnome_appfolders_manager/ui/main.py:279
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "您确定想要移除该文件夹 %s 吗？"
+
+#: gnome_appfolders_manager/ui/main.py:343
+msgid "The application must be restarted to apply the settings"
+msgstr "应用程序必须重启以应用该设置"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
@@ -33,6 +47,14 @@ msgstr "添加应用程序(_A)"
 #: ui/application_picker.ui:155 ui/main.ui:403
 msgid "Applications"
 msgstr "应用程序"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "关于 GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "显示键盘快捷方式(_S)"
 
 #: ui/create_appfolder.ui:122
 msgid "Title:"
@@ -77,25 +99,3 @@ msgstr "添加新文件"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "移除选中的文件"
-
-#: gnome_appfolders_manager/ui/main.py:278
-msgid "Remove the selected folder?"
-msgstr "移除选中的文件夹？"
-
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "您确定想要移除该文件夹 %s 吗？"
-
-#: gnome_appfolders_manager/ui/main.py:343
-msgid "The application must be restarted to apply the settings"
-msgstr "应用程序必须重启以应用该设置"
-
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
-msgid "Version %s"
-msgstr "版本 %s"
-
-#: gnome_appfolders_manager/ui/about.py:59
-msgid "Contributors:"
-msgstr "贡献者"

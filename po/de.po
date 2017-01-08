@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
-"POT-Creation-Date: 2016-06-08 01:53+0200\n"
+"POT-Creation-Date: 2016-06-09 00:04+0200\n"
 "PO-Revision-Date: 2016-05-26 18:31+0200\n"
 "Last-Translator: Vincent Bermel <willovince(at)openmailbox.org>\n"
 "Language-Team: German Translations\n"
@@ -18,13 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "_Über GNOME App Folders Manager"
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr ""
 
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "Tasten_kürzel"
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Beitragende:"
+
+#: gnome_appfolders_manager/ui/main.py:278
+msgid "Remove the selected folder?"
+msgstr "Ausgewählten Ordner entfernen?"
+
+#: gnome_appfolders_manager/ui/main.py:279
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "Soll der Ordner %s enternt werden?"
+
+#: gnome_appfolders_manager/ui/main.py:343
+msgid "The application must be restarted to apply the settings"
+msgstr "Die Änderungen erfordern einen Neustart des Programms"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
@@ -33,6 +47,14 @@ msgstr "Anwendungen _hinzufügen"
 #: ui/application_picker.ui:155 ui/main.ui:403
 msgid "Applications"
 msgstr "Anwendungen"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "_Über GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "Tasten_kürzel"
 
 #: ui/create_appfolder.ui:122
 msgid "Title:"
@@ -77,25 +99,3 @@ msgstr "Datei hinzufügen"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Ausgewählte Datei entfernen"
-
-#: gnome_appfolders_manager/ui/main.py:278
-msgid "Remove the selected folder?"
-msgstr "Ausgewählten Ordner entfernen?"
-
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "Soll der Ordner %s enternt werden?"
-
-#: gnome_appfolders_manager/ui/main.py:343
-msgid "The application must be restarted to apply the settings"
-msgstr "Die Änderungen erfordern einen Neustart des Programms"
-
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
-msgid "Version %s"
-msgstr ""
-
-#: gnome_appfolders_manager/ui/about.py:59
-msgid "Contributors:"
-msgstr "Beitragende:"
