@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Fabio Castelli
+# This file is distributed under the same license as the GNOME App Folders Manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME App Folders Manager 0.3.2\n"
+"Report-Msgid-Bugs-To: muflone@vbsimple.net\n"
+"POT-Creation-Date: 2016-11-25 14:32+0100\n"
+"PO-Revision-Date: 2016-11-25 14:56+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+
+#: gnome_appfolders_manager/ui/about.py:49
+#, python-format
+msgid "Version %s"
+msgstr "Wersja %s"
+
+#: gnome_appfolders_manager/ui/about.py:59
+msgid "Contributors:"
+msgstr "Autorzy:"
+
+#: gnome_appfolders_manager/ui/main.py:278
+msgid "Remove the selected folder?"
+msgstr "Usunąć wybrany katalog?"
+
+#: gnome_appfolders_manager/ui/main.py:279
+#, python-format
+msgid "Are you sure you want to remove the folder %s?"
+msgstr "Czy napewno usunąć katalog %s?"
+
+#: gnome_appfolders_manager/ui/main.py:343
+msgid "The application must be restarted to apply the settings"
+msgstr "Nowe ustawienia będą aktywne po ponownym uruchomieniu programu."
+
+#: ui/application_picker.ui:8
+msgid "_Add applications"
+msgstr "_Dodaj programy"
+
+#: ui/application_picker.ui:155 ui/main.ui:403
+msgid "Applications"
+msgstr "Programy"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "_O GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "Pokaż _skróty klawiszowe"
+
+#: ui/create_appfolder.ui:122
+msgid "Title:"
+msgstr "Tytuł:"
+
+#: ui/main.ui:93
+msgid "Sy_mbolic icons (requires restart)"
+msgstr "Ikony sy_mboliczne (wymagane ponowne uruchomienie)"
+
+#: ui/main.ui:100
+msgid "_Small icons (requires restart)"
+msgstr "_Małe ikony (wymagane ponowne uruchomienie)"
+
+#: ui/main.ui:107
+msgid "Show missing _files"
+msgstr "Pokaż brakujące _pliki"
+
+#: ui/main.ui:151
+msgid "_Folders:"
+msgstr "_Katalogi:"
+
+#: ui/main.ui:466 ui/shortcuts.ui:38
+msgid "Folders"
+msgstr "Katalogi:"
+
+#: ui/shortcuts.ui:21
+msgid "Show the about dialog"
+msgstr "Pokaż informacje o programie"
+
+#: ui/shortcuts.ui:43
+msgid "Create a new folder"
+msgstr "Utwórz nowy katalog"
+
+#: ui/shortcuts.ui:50
+msgid "Remove the currently selected folder"
+msgstr "Usuń zaznaczony katalog"
+
+#: ui/shortcuts.ui:65
+msgid "Add a new file"
+msgstr "Dodaj nowy plik"
+
+#: ui/shortcuts.ui:72
+msgid "Remove the selected file"
+msgstr "Usuń zaznaczony plik"
