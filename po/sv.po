@@ -1,5 +1,5 @@
 # Swedish translations for GNOME App Folders Manager package.
-# Copyright (C) 2016 Fabio Castelli
+# Copyright (C) 2016-2017 Fabio Castelli
 # This file is distributed under the same license as the GNOME App Folders Manager package.
 #
 # Translators:
