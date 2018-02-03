@@ -8,6 +8,7 @@ Comment[en]=Manage GNOME Shell applications folders
 Comment[it]=Gestisci le cartelle delle applicazioni su GNOME Shell
 Comment[de]=Anwendungsordner in der GNOME Shell-Übersicht organisieren
 Comment[pl]=Zarządzanie aplikacjami GNOME-Shell
+Comment[hu]=GNOME alkalmazásmappák kezelése
 Terminal=false
 Categories=Utilities;GTK;
 Icon=gnome-appfolders-manager
