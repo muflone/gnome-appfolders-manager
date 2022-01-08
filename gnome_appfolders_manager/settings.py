@@ -20,7 +20,7 @@
 
 import optparse
 import time
-import ConfigParser
+import configparser
 
 from gnome_appfolders_manager.constants import (
     VERBOSE_LEVEL_QUIET, VERBOSE_LEVEL_NORMAL, VERBOSE_LEVEL_MAX)
@@ -48,7 +48,7 @@ class Settings(object):
                           help='hide error and information messages')
         (self.options, self.arguments) = parser.parse_args()
         # Parse settings from the configuration file
-        self.config = ConfigParser.RawConfigParser()
+        self.config = configparser.RawConfigParser()
         # Set case sensitiveness if requested
         if case_sensitive:
             self.config.optionxform = str
@@ -145,7 +145,7 @@ class Settings(object):
         """Print a text with current date and time based on the
         verbose level"""
         if verbose_level <= self.options.verbose_level:
-            print '[%s] %s' % (time.strftime('%Y/%m/%d %H:%M:%S'), text)
+            print('[%s] %s' % (time.strftime('%Y/%m/%d %H:%M:%S'), text))
 
     def restore_window_position(self, window, section):
         """Restore the saved window size and position"""

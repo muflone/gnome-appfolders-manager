@@ -134,7 +134,7 @@ def get_pixbuf_from_icon_name(icon_name, size):
             icon = icon.scale_simple(size, size,
                                      GdkPixbuf.InterpType.BILINEAR)
     else:
-        print 'missing icon', icon_name
+        print('missing icon', icon_name)
     return icon
 
 

@@ -74,7 +74,7 @@ class FolderInfo(object):
     def set_applications(self, applications):
         """Set the applications list"""
         self.apps = applications
-        self.settings.set_strv(OPTION_FOLDER_APPS, self.apps)
+        self.settings.set_strv(OPTION_FOLDER_APPS, list(self.apps))
 
     def get_name(self):
         """Return the AppFolder name"""

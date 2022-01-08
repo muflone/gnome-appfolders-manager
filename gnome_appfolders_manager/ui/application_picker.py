@@ -107,7 +107,7 @@ class UIApplicationPicker(object):
                 if application.filename not in existing_files:
                     self.model_applications.add_data(application)
             except Exception as e:
-                print 'error for', desktop_entry.get_id(), e
+                print('error for', desktop_entry.get_id(), e)
         self.model_applications.set_all_rows_visibility(
             preferences.get(preferences.APP_PICKER_SHOW_HIDDEN))
         # Connect signals from the glade file to the module functions
