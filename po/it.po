@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the GNOME App Folders Manager package.
 #
 # Translators:
-# Muflone <webreg(at)vbsimple.net>, 2016
+# Muflone <muflone(at)muflone.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
-"Report-Msgid-Bugs-To: muflone(at)vbsimple.net\n"
+"Report-Msgid-Bugs-To: muflone(at)muflone.com\n"
 "POT-Creation-Date: 2016-06-09 00:04+0200\n"
 "PO-Revision-Date: 2016-05-22 15:17+0000\n"
-"Last-Translator: Muflone <webreg(at)vbsimple.net>\n"
+"Last-Translator: Muflone <muflone(at)muflone.com>\n"
 "Language-Team: Italian (http://www.transifex.com/muflone/gnome-appfolders-manager/language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"

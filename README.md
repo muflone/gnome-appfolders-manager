@@ -2,7 +2,7 @@ GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-a
 =========================
 **Description:** Manage GNOME Shell applications folders.
 
-**Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)vbsimple.net>
+**Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
 
 **License:** GPL-3+
 
