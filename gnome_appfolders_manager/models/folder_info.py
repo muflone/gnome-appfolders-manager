@@ -18,7 +18,7 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-import os.path
+import pathlib
 
 from gi.repository import Gio
 
@@ -51,8 +51,8 @@ class FolderInfo(object):
         if self.name.endswith('.directory'):
             datadirs = BaseDirectory.load_data_paths('desktop-directories')
             for datadir in datadirs:
-                filename = os.path.join(datadir, self.name)
-                if os.path.exists(filename):
+                filename = pathlib.Path(datadir) / self.name
+                if filename.exists():
                     self.desktop_entry = DesktopEntry.DesktopEntry(filename)
                     break
 
@@ -62,8 +62,8 @@ class FolderInfo(object):
         datadirs = list(BaseDirectory.load_data_paths('applications'))
         for application in self.apps:
             for datadir in datadirs:
-                filename = os.path.join(datadir, application)
-                if os.path.exists(filename):
+                filename = pathlib.Path(datadir) / application
+                if filename.exists():
                     desktop_entry = DesktopEntry.DesktopEntry(filename)
                     break
             else:

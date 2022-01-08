@@ -18,8 +18,8 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
+import pathlib
 import sys
-import os.path
 
 from xdg import BaseDirectory
 
@@ -32,7 +32,7 @@ APP_ID = 'gnome-appfolders-manager.muflone.com'
 APP_URL = 'http://www.muflone.com/gnome-appfolders-manager/'
 APP_AUTHOR = 'Fabio Castelli'
 APP_AUTHOR_EMAIL = 'muflone@muflone.com'
-APP_COPYRIGHT = 'Copyright 2016-2022 %s' % APP_AUTHOR
+APP_COPYRIGHT = f'Copyright 2016-2022 {APP_AUTHOR}'
 # Other constants
 DOMAIN_NAME = 'gnome-appfolders-manager'
 VERBOSE_LEVEL_QUIET = 0
@@ -43,34 +43,34 @@ MISSING_ICON_NAME = 'application-x-executable'
 # Paths constants
 # If there's a file data/gnome-appfolders-manager.png then the shared data
 # are searched in relative paths, else the standard paths are used
-if os.path.isfile(os.path.join('data', 'gnome-appfolders-manager.png')):
-    DIR_PREFIX = '.'
-    DIR_LOCALE = os.path.join(DIR_PREFIX, 'locale')
-    DIR_DOCS = os.path.join(DIR_PREFIX, 'doc')
+if ((pathlib.Path('data') / 'gnome-appfolders-manager.png')).is_file():
+    DIR_PREFIX = pathlib.Path('.')
+    DIR_LOCALE = DIR_PREFIX / 'locale'
+    DIR_DOCS = DIR_PREFIX / 'doc'
 else:
-    DIR_PREFIX = os.path.join(sys.prefix, 'share', 'gnome-appfolders-manager')
-    DIR_LOCALE = os.path.join(sys.prefix, 'share', 'locale')
-    DIR_DOCS = os.path.join(sys.prefix, 'share', 'doc',
-                            'gnome-appfolders-manager')
+    path_prefix = pathlib.Path(sys.prefix)
+    DIR_PREFIX = path_prefix / 'share' / 'gnome-appfolders-manager'
+    DIR_LOCALE = path_prefix / 'share' / 'locale'
+    DIR_DOCS = path_prefix / 'share' / 'doc' / 'gnome-appfolders-manager'
 # Set the paths for the folders
-DIR_DATA = os.path.join(DIR_PREFIX, 'data')
-DIR_UI = os.path.join(DIR_PREFIX, 'ui')
+DIR_DATA = DIR_PREFIX / 'data'
+DIR_UI = DIR_PREFIX / 'ui'
 try:
     # In read-only environments, the settings folder cannot be created
     # (eg in a Debian pbuilder fakeroot)
-    DIR_SETTINGS = BaseDirectory.save_config_path(DOMAIN_NAME)
-except:
+    DIR_SETTINGS = pathlib.Path(BaseDirectory.save_config_path(DOMAIN_NAME))
+except Exception:
     # Get the settings path without actually creating it
-    DIR_SETTINGS = os.path.join(BaseDirectory.xdg_config_home, DOMAIN_NAME)
+    DIR_SETTINGS = pathlib.Path(BaseDirectory.xdg_config_home) / DOMAIN_NAME
 # Set the paths for the data files
-FILE_ICON = os.path.join(DIR_DATA, 'gnome-appfolders-manager.png')
-FILE_CONTRIBUTORS = os.path.join(DIR_DOCS, 'contributors')
-FILE_TRANSLATORS = os.path.join(DIR_DOCS, 'translators')
-FILE_LICENSE = os.path.join(DIR_DOCS, 'license')
-FILE_RESOURCES = os.path.join(DIR_DOCS, 'resources')
+FILE_ICON = DIR_DATA / 'gnome-appfolders-manager.png'
+FILE_CONTRIBUTORS = DIR_DOCS / 'contributors'
+FILE_TRANSLATORS = DIR_DOCS / 'translators'
+FILE_LICENSE = DIR_DOCS / 'license'
+FILE_RESOURCES = DIR_DOCS / 'resources'
 # Set the paths for configuration files
-FILE_SETTINGS = os.path.join(DIR_SETTINGS, 'settings.conf')
-FILE_WINDOWS_POSITION = os.path.join(DIR_SETTINGS, 'windows.conf')
+FILE_SETTINGS = DIR_SETTINGS / 'settings.conf'
+FILE_WINDOWS_POSITION = DIR_SETTINGS / 'windows.conf'
 # Settings schema and paths
 SCHEMA_FOLDERS = 'org.gnome.desktop.app-folders'
-SCHEMA_FOLDER = '%s.folder' % SCHEMA_FOLDERS
+SCHEMA_FOLDER = f'{SCHEMA_FOLDERS}.folder'

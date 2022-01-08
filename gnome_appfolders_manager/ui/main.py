@@ -22,28 +22,30 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
 
-from gnome_appfolders_manager.constants import (
-    APP_NAME,
-    FILE_SETTINGS, FILE_WINDOWS_POSITION,
-    SCHEMA_FOLDERS)
-from gnome_appfolders_manager.functions import (
-    get_ui_file, get_treeview_selected_row, text, _)
+from gnome_appfolders_manager.constants import (APP_NAME,
+                                                FILE_SETTINGS,
+                                                FILE_WINDOWS_POSITION,
+                                                SCHEMA_FOLDERS)
+from gnome_appfolders_manager.functions import (_,
+                                                get_ui_file,
+                                                get_treeview_selected_row,
+                                                text)
+from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 import gnome_appfolders_manager.preferences as preferences
 import gnome_appfolders_manager.settings as settings
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
-from gnome_appfolders_manager.ui.about import UIAbout
-from gnome_appfolders_manager.ui.shortcuts import UIShortcuts
-from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
-from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
-from gnome_appfolders_manager.ui.message_dialog import (
-    show_message_dialog, UIMessageDialogNoYes)
-
-from gnome_appfolders_manager.models.folder_info import FolderInfo
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
+from gnome_appfolders_manager.models.folder_info import FolderInfo
+
+from gnome_appfolders_manager.ui.about import UIAbout
+from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
+from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
+from gnome_appfolders_manager.ui.message_dialog import (
+    show_message_dialog, UIMessageDialogNoYes)
+from gnome_appfolders_manager.ui.shortcuts import UIShortcuts
 
 SECTION_WINDOW_NAME = 'main'
 
@@ -277,7 +279,8 @@ class UIMain(object):
                                    title=None,
                                    msg1=_('Remove the selected folder?'),
                                    msg2=_('Are you sure you want to remove '
-                                          'the folder %s?') % folder_name,
+                                          'the folder {FOLDER}?').format(
+                                       FOLDER=folder_name),
                                    is_response_id=Gtk.ResponseType.YES):
                 # Remove the AppFolder from settings
                 folder_info = self.folders[folder_name]

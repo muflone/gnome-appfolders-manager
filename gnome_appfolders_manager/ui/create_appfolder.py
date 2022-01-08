@@ -21,10 +21,10 @@
 from gi.repository import Gtk
 
 import gnome_appfolders_manager.settings as settings
-import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-from gnome_appfolders_manager.functions import (
-    get_ui_file, set_style_suggested_action, _, text)
+from gnome_appfolders_manager.functions import (get_ui_file,
+                                                set_style_suggested_action,
+                                                text)
 
 SECTION_WINDOW_NAME = 'create folder'
 

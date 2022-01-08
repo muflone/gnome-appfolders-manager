@@ -33,7 +33,7 @@ class GtkBuilderLoader(object):
         """Get a widget from GtkBuilder using class member name"""
         if key not in self.__widgets:
             self.__widgets[key] = self.builder.get_object(key)
-            assert self.__widgets[key], 'Missing widget: %s' % key
+            assert self.__widgets[key], f'Missing widget: {key}'
         return self.__widgets[key]
 
     def get_objects(self):

@@ -19,7 +19,6 @@
 ##
 
 from gi.repository import Gtk
-from gi.repository.GdkPixbuf import Pixbuf
 
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import get_ui_file, text

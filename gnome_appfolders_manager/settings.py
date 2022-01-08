@@ -18,12 +18,12 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-import optparse
-import time
 import configparser
+import optparse
 
-from gnome_appfolders_manager.constants import (
-    VERBOSE_LEVEL_QUIET, VERBOSE_LEVEL_NORMAL, VERBOSE_LEVEL_MAX)
+from gnome_appfolders_manager.constants import (VERBOSE_LEVEL_QUIET,
+                                                VERBOSE_LEVEL_NORMAL,
+                                                VERBOSE_LEVEL_MAX)
 
 POSITION_LEFT = 'left'
 POSITION_TOP = 'top'

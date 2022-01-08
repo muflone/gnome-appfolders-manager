@@ -21,9 +21,9 @@
 import gettext
 import locale
 
-import gnome_appfolders_manager.requires
+import gnome_appfolders_manager.requires                           # noqa: F401
 
-from gnome_appfolders_manager.functions import store_message, text, _
+from gnome_appfolders_manager.functions import store_message, text
 from gnome_appfolders_manager.constants import DOMAIN_NAME, DIR_LOCALE
 
 # Load domain for translation

@@ -21,6 +21,6 @@
 import gi
 
 if gi.require_version('Gtk', '3.0') is None:
-    from gi.repository import Gtk
+    from gi.repository import Gtk                                  # noqa: F401
 if gi.require_version('GdkPixbuf', '2.0') is None:
-    from gi.repository import GdkPixbuf
+    from gi.repository import GdkPixbuf                            # noqa: F401

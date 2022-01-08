@@ -21,13 +21,19 @@
 from gi.repository import Gtk
 from gi.repository.GdkPixbuf import Pixbuf
 
-import gnome_appfolders_manager.preferences as preferences
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-from gnome_appfolders_manager.constants import (
-    APP_NAME, APP_VERSION, APP_DESCRIPTION, APP_URL, APP_COPYRIGHT,
-    APP_AUTHOR, APP_AUTHOR_EMAIL,
-    FILE_CONTRIBUTORS, FILE_LICENSE, FILE_TRANSLATORS, FILE_RESOURCES,
-    FILE_ICON)
+from gnome_appfolders_manager.constants import (APP_NAME,
+                                                APP_VERSION,
+                                                APP_DESCRIPTION,
+                                                APP_URL,
+                                                APP_COPYRIGHT,
+                                                APP_AUTHOR,
+                                                APP_AUTHOR_EMAIL,
+                                                FILE_CONTRIBUTORS,
+                                                FILE_LICENSE,
+                                                FILE_TRANSLATORS,
+                                                FILE_RESOURCES,
+                                                FILE_ICON)
 from gnome_appfolders_manager.functions import readlines, get_ui_file, _
 
 
@@ -46,12 +52,13 @@ class UIAbout(object):
         self.ui = GtkBuilderLoader(get_ui_file('about.ui'))
         # Set various properties
         self.ui.dialog_about.set_program_name(APP_NAME)
-        self.ui.dialog_about.set_version(_('Version %s') % APP_VERSION)
+        self.ui.dialog_about.set_version(_('Version {VERSION}').format(
+            VERSION=APP_VERSION))
         self.ui.dialog_about.set_comments(APP_DESCRIPTION)
         self.ui.dialog_about.set_website(APP_URL)
         self.ui.dialog_about.set_copyright(APP_COPYRIGHT)
         # Prepare lists for authors and contributors
-        authors = ['%s <%s>' % (APP_AUTHOR, APP_AUTHOR_EMAIL)]
+        authors = [f'{APP_AUTHOR} <{APP_AUTHOR_EMAIL}>']
         contributors = []
         for line in readlines(FILE_CONTRIBUTORS, False):
             contributors.append(line)
@@ -69,7 +76,7 @@ class UIAbout(object):
                 resource_type, resource_url = line.split(':', 1)
                 self.ui.dialog_about.add_credit_section(
                     resource_type, (resource_url,))
-        icon_logo = Pixbuf.new_from_file(FILE_ICON)
+        icon_logo = Pixbuf.new_from_file(str(FILE_ICON))
         self.ui.dialog_about.set_logo(icon_logo)
         self.ui.dialog_about.set_transient_for(parent)
 

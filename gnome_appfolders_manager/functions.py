@@ -18,11 +18,11 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-import os
-import os.path
 import fnmatch
-import itertools
 from gettext import gettext, dgettext
+import itertools
+import os
+import pathlib
 
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
@@ -49,8 +49,7 @@ def text(message, gtk30=False, context=None):
     if message not in localized_messages:
         if gtk30:
             # Get a message translated from GTK+ 3 domain
-            full_message = message if not context else '%s\04%s' % (
-                context, message)
+            full_message = message if not context else f'{context}\04{message}'
             localized_messages[message] = dgettext('gtk30', full_message)
             # Fix for untranslated messages with context
             if context and localized_messages[message] == full_message:
@@ -67,7 +66,7 @@ def store_message(message, translated):
 
 def get_ui_file(filename):
     """Return the full path of a Glade/UI file"""
-    return os.path.join(DIR_UI, filename)
+    return str(DIR_UI / filename)
 
 
 def recursive_glob(starting_path, pattern):
@@ -75,7 +74,7 @@ def recursive_glob(starting_path, pattern):
     result = []
     for root, dirnames, filenames in os.walk(starting_path):
         for filename in fnmatch.filter(filenames, pattern):
-            result.append(os.path.join(root, filename))
+            result.append(pathlib.Path(root) / filename)
     return result
 
 
@@ -92,41 +91,38 @@ def get_treeview_selected_rows(widget):
 def get_pixbuf_from_icon_name(icon_name, size):
     """Get a Gdk.PixBuf from a theme icon"""
     theme = Gtk.IconTheme.get_default()
+    path_icon_name = pathlib.Path(icon_name)
     if theme.has_icon(icon_name):
         # The icon was a theme icon
         icon = theme.load_icon(icon_name=icon_name,
                                size=size,
                                flags=Gtk.IconLookupFlags.USE_BUILTIN)
-    elif theme.has_icon(os.path.splitext(os.path.basename(icon_name))[0]):
+    elif theme.has_icon(path_icon_name.stem):
         # The theme contains an icon with the same file name
-        filename = os.path.splitext(os.path.basename(icon_name))[0]
-        icon = theme.load_icon(icon_name=filename,
+        icon = theme.load_icon(icon_name=path_icon_name.stem,
                                size=size,
                                flags=Gtk.IconLookupFlags.USE_BUILTIN)
-    elif os.path.isfile(icon_name):
+    elif path_icon_name.is_file():
         # The icon was a full filename
         icon = GdkPixbuf.Pixbuf.new_from_file(icon_name)
     else:
         # The icon was not found in the current theme, search for filenames
         # with png or jpg extensions
-        if (icon_name.lower().endswith('.png') or
-                icon_name.lower().endswith('.jpg') or
-                icon_name.lower().endswith('.xpm') or
-                icon_name.lower().endswith('.svg')):
+        if (path_icon_name.suffix.lower() in ('.png', '.jpg', '.xpm', '.svg')):
             filenames = (icon_name, )
         else:
-            filenames = ('%s.png' % icon_name,
-                         '%s.jpg' % icon_name,
-                         '%s.xpm' % icon_name,
-                         '%s.svg' % icon_name)
+            filenames = (f'{icon_name}.png',
+                         f'{icon_name}.jpg',
+                         f'{icon_name}.xpm',
+                         f'{icon_name}.svg')
         # Search for filenames in icons and pixmaps directories
         icon = None
         search_in_paths = ('/usr/share/icons',
                            '/usr/share/pixmaps')
         for path, filename in itertools.product(search_in_paths, filenames):
-            file_path = os.path.join(path, filename)
-            if os.path.isfile(file_path):
-                icon = GdkPixbuf.Pixbuf.new_from_file(file_path)
+            file_path = pathlib.Path(path) / filename
+            if file_path.is_file():
+                icon = GdkPixbuf.Pixbuf.new_from_file(str(file_path))
                 break
     if icon:
         # If size is not correct then resize the icon to the requested size
