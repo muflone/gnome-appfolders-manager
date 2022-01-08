@@ -4,7 +4,7 @@ GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-a
 
 **Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)vbsimple.net>
 
-**License:** GPL-2+
+**License:** GPL-3+
 
 **Source code:** https://github.com/muflone/gnome-appfolders-manager
 
