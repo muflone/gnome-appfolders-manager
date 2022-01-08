@@ -2,7 +2,7 @@
 #     Project: GNOME App Folders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@vbsimple.net>
-#   Copyright: 2016-2017 Fabio Castelli
+#   Copyright: 2016-2022 Fabio Castelli
 #     License: GPL-2+
 #  This program is free software; you can redistribute it and/or modify it
 #  under the terms of the GNU General Public License as published by the Free
@@ -32,7 +32,7 @@ APP_ID = 'gnome-appfolders-manager.muflone.com'
 APP_URL = 'http://www.muflone.com/gnome-appfolders-manager/'
 APP_AUTHOR = 'Fabio Castelli'
 APP_AUTHOR_EMAIL = 'muflone@vbsimple.net'
-APP_COPYRIGHT = 'Copyright 2016-2017 %s' % APP_AUTHOR
+APP_COPYRIGHT = 'Copyright 2016-2022 %s' % APP_AUTHOR
 # Other constants
 DOMAIN_NAME = 'gnome-appfolders-manager'
 VERBOSE_LEVEL_QUIET = 0
