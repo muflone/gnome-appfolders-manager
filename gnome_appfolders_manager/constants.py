@@ -41,17 +41,24 @@ VERBOSE_LEVEL_MAX = 2
 MISSING_ICON_NAME = 'application-x-executable'
 
 # Paths constants
-# If there's a file data/gnome-appfolders-manager.png then the shared data
-# are searched in relative paths, else the standard paths are used
+path_xdg_data_home = pathlib.Path(BaseDirectory.xdg_data_home)
 if ((pathlib.Path('data') / 'gnome-appfolders-manager.png')).is_file():
-    DIR_PREFIX = pathlib.Path('.')
+    # Use relative paths
+    DIR_PREFIX = pathlib.Path('data').parent.absolute()
     DIR_LOCALE = DIR_PREFIX / 'locale'
     DIR_DOCS = DIR_PREFIX / 'doc'
+elif (path_xdg_data_home / DOMAIN_NAME / 'data' /
+      'gnome-appfolders-manager.png').is_file():
+    # Use local user path
+    DIR_PREFIX = path_xdg_data_home / DOMAIN_NAME
+    DIR_LOCALE = path_xdg_data_home / 'locale'
+    DIR_DOCS = path_xdg_data_home / 'doc' / DOMAIN_NAME
 else:
+    # Use system path
     path_prefix = pathlib.Path(sys.prefix)
-    DIR_PREFIX = path_prefix / 'share' / 'gnome-appfolders-manager'
+    DIR_PREFIX = path_prefix / 'share' / DOMAIN_NAME
     DIR_LOCALE = path_prefix / 'share' / 'locale'
-    DIR_DOCS = path_prefix / 'share' / 'doc' / 'gnome-appfolders-manager'
+    DIR_DOCS = path_prefix / 'share' / 'doc' / DOMAIN_NAME
 # Set the paths for the folders
 DIR_DATA = DIR_PREFIX / 'data'
 DIR_UI = DIR_PREFIX / 'ui'
