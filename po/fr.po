@@ -38,7 +38,7 @@ msgstr "Êtes-vous certain de vouloir supprimer le dossier {FOLDER}?"
 
 #: gnome_appfolders_manager/ui/main.py:355
 msgid "The application must be restarted to apply the settings"
-msgstr ""
+msgstr "L'application doit être redémarrée pour que les changements soient effectifs"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
@@ -62,15 +62,15 @@ msgstr "Titre:"
 
 #: ui/main.ui:102
 msgid "Sy_mbolic icons (requires restart)"
-msgstr ""
+msgstr "Icônes sy_mboliques (nécessite un redémarrage)"
 
 #: ui/main.ui:109
 msgid "_Small icons (requires restart)"
-msgstr ""
+msgstr "_Petites icônes (nécessite un redémarrage)"
 
 #: ui/main.ui:116
 msgid "Show missing _files"
-msgstr ""
+msgstr "Afficher les _fichiers manquants"
 
 #: ui/main.ui:160
 msgid "Folders:"
