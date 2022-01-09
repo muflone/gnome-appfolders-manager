@@ -38,13 +38,13 @@ class ModelApplications(ModelAbstract):
         self.items = {}
 
     def add_data(self, item):
-        """Add a new row to the model if it doesn't exists"""
+        """Add a new row to the model if it doesn't exist"""
         super(self.__class__, self).add_data(item)
         if item.filename not in self.rows:
             icon = None
             if item.icon_name:
                 icon = get_pixbuf_from_icon_name(item.icon_name, 48)
-            # If the icon was not found or it was missing use a fallback icon
+            # Use a fallback icon if the icon was not found, or it was missing
             if not icon:
                 icon = get_pixbuf_from_icon_name(MISSING_ICON_NAME, 48)
             new_row = self.model.append((

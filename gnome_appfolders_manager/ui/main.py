@@ -43,8 +43,8 @@ from gnome_appfolders_manager.models.folder_info import FolderInfo
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
 from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
-from gnome_appfolders_manager.ui.message_dialog import (
-    show_message_dialog, UIMessageDialogNoYes)
+from gnome_appfolders_manager.ui.message_dialog import (show_message_dialog,
+                                                        UIMessageDialogNoYes)
 from gnome_appfolders_manager.ui.shortcuts import UIShortcuts
 
 SECTION_WINDOW_NAME = 'main'
@@ -58,7 +58,7 @@ class UIMain(object):
         settings.positions = settings.Settings(FILE_WINDOWS_POSITION, False)
         self.folders = {}
         preferences.preferences = preferences.Preferences()
-        self.loadUI()
+        self.load_ui()
         # Prepares the models for folders and applications
         self.model_folders = ModelAppFolders(self.ui.store_folders)
         self.model_applications = ModelApplications(self.ui.store_applications)
@@ -74,7 +74,7 @@ class UIMain(object):
         settings.positions.restore_window_position(
             self.ui.win_main, SECTION_WINDOW_NAME)
 
-    def loadUI(self):
+    def load_ui(self):
         """Load the interface UI"""
         self.ui = GtkBuilderLoader(get_ui_file('main.ui'))
         self.ui.win_main.set_application(self.application)
@@ -228,6 +228,7 @@ class UIMain(object):
                                      self.model_applications.rows.keys())
         if dialog.show() == Gtk.ResponseType.OK:
             if dialog.selected_applications:
+                treeiter = None
                 for application in dialog.selected_applications:
                     # Get the selected application in the application picker
                     # and add it to the current AppFolder

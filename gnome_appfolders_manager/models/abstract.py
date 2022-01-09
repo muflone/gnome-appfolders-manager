@@ -36,7 +36,7 @@ class ModelAbstract(object):
         return self.model.clear()
 
     def add_data(self, item):
-        """Add a new row to the model if it doesn't exists"""
+        """Add a new row to the model if it doesn't exist"""
         pass
 
     def set_data(self, treeiter, item):
