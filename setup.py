@@ -33,10 +33,13 @@ from itertools import chain
 from glob import glob
 
 from gnome_appfolders_manager.functions import recursive_glob
-from gnome_appfolders_manager.constants import (
-    APP_NAME, APP_VERSION, APP_DESCRIPTION,
-    APP_AUTHOR, APP_AUTHOR_EMAIL, APP_URL,
-    DOMAIN_NAME)
+from gnome_appfolders_manager.constants import (APP_NAME,
+                                                APP_VERSION,
+                                                APP_DESCRIPTION,
+                                                APP_AUTHOR,
+                                                APP_AUTHOR_EMAIL,
+                                                APP_URL,
+                                                DOMAIN_NAME)
 
 
 class Install_Scripts(install_scripts):
