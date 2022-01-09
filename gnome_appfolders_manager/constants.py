@@ -53,6 +53,12 @@ elif (path_xdg_data_home / DOMAIN_NAME / 'data' /
     DIR_PREFIX = path_xdg_data_home / DOMAIN_NAME
     DIR_LOCALE = path_xdg_data_home / 'locale'
     DIR_DOCS = path_xdg_data_home / 'doc' / DOMAIN_NAME
+elif (pathlib.Path(__file__).parent.parent / 'share' / DOMAIN_NAME / 'data' /
+      'gnome-appfolders-manager.png').is_file():
+    # Use local user path in the local Python directory
+    DIR_PREFIX = pathlib.Path(__file__).parent.parent / 'share' / DOMAIN_NAME
+    DIR_LOCALE = DIR_PREFIX.parent / 'locale'
+    DIR_DOCS = DIR_PREFIX.parent / 'doc' / DOMAIN_NAME
 else:
     # Use system path
     path_prefix = pathlib.Path(sys.prefix)
