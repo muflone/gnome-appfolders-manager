@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 ##
 #     Project: GNOME App Folders Manager
 # Description: Manage GNOME Shell applications folders
@@ -20,7 +18,10 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-from gnome_appfolders_manager import main
+from gnome_appfolders_manager.app import Application
 
-if __name__ == '__main__':
-    main()
+
+def main():
+    # Start the application
+    app = Application()
+    app.run(None)
