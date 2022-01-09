@@ -39,12 +39,13 @@ def main():
                       2: logging.DEBUG}
     logging.getLogger().setLevel(verbose_levels[options.verbose_level])
     # Log paths for debug purposes
-    logging.debug(f'{DIR_PREFIX=}')
-    logging.debug(f'{DIR_LOCALE=}')
-    logging.debug(f'{DIR_DOCS=}')
-    logging.debug(f'{DIR_DATA=}')
-    logging.debug(f'{DIR_UI=}')
-    logging.debug(f'{DIR_SETTINGS=}')
+    # Not using {VARIABLE=} as it's not compatible with Python 3.6
+    logging.debug(f'DIR_PREFIX={str(DIR_PREFIX)}')
+    logging.debug(f'DIR_LOCALE={str(DIR_LOCALE)}')
+    logging.debug(f'DIR_DOCS={str(DIR_DOCS)}')
+    logging.debug(f'DIR_DATA={str(DIR_DATA)}')
+    logging.debug(f'DIR_UI={str(DIR_UI)}')
+    logging.debug(f'DIR_SETTINGS={str(DIR_SETTINGS)}')
     # Start the application
     app = Application()
     app.run(None)
