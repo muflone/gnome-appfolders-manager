@@ -1,5 +1,8 @@
-GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-appfolders-manager.svg?branch=master)](https://travis-ci.org/muflone/gnome-appfolders-manager)
-=========================
+# GNOME App Folders Manager
+
+[![Travis CI Build Status](https://img.shields.io/travis/com/muflone/gnome-appfolders-manager/master.svg)](https://www.travis-ci.com/github/muflone/gnome-appfolders-manager)
+[![CircleCI Build Status](https://img.shields.io/circleci/project/github/muflone/gnome-appfolders-manager/master.svg)](https://circleci.com/gh/muflone/gnome-appfolders-manager)
+
 **Description:** Manage GNOME Shell applications folders.
 
 **Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
@@ -10,8 +13,7 @@ GNOME App Folders Manager [![Build Status](https://travis-ci.org/muflone/gnome-a
 
 **Documentation:** http://www.muflone.com/gnome-appfolders-manager/
 
-Usage
------
+# Usage
 
 From the *GNOME App Folders Manager* main window you can define your custom folders
 to group your applications by clicking the **Create folder** button on the header bar.
@@ -38,16 +40,14 @@ Open the GNOME Shell overview to use the new Application Folder.
 
 ![GNOME Shell overview](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/gnome-shell-appfolder.png)
 
-System Requirements
--------------------
+# System Requirements
 
 * Python 3.x (developed and tested for Python 3.9.4)
 * GTK+ 3.0 libraries for Python 3
 * GObject libraries for Python 3 ( https://pypi.org/project/PyGObject/ )
 * XDG library for Python 3 ( https://pypi.org/project/pyxdg/ )
 
-Installation
-------------
+# Installation
 
 A distutils installation script is available to install from the sources.
 
@@ -61,8 +61,7 @@ To install the files in another path instead of the standard /usr prefix use:
     cd /path/to/folder
     python3 setup.py install --root NEW_PATH
 
-Usage
------
+# Usage
 
 If the application is not installed please use:
 
