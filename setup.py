@@ -73,10 +73,16 @@ class Install_Data(install_data):
     def install_translations(self):
         setuptools.distutils.log.info('Installing translations...')
         path_base = pathlib.Path(__file__).parent.absolute()
-        path_build = pathlib.Path('build')
-        path_locale = pathlib.Path('share') / 'locale'
+        # Find where to save the compiled translations
+        try:
+            # Use the install_data (when using "setup.py install --user")
+            path_install = pathlib.Path(self.install_data)
+        except AttributeError:
+            # Use the install_dir (when using "setup.py install")
+            path_install = pathlib.Path(self.install_dir)
+        path_locale = path_install / 'share' / 'locale'
         for path_file_po in pathlib.Path('po').glob('*.po'):
-            path_destination = path_build / 'mo' / path_file_po.stem
+            path_destination = path_locale / path_file_po.stem / 'LC_MESSAGES'
             path_file_mo = path_destination / f'{DOMAIN_NAME}.mo'
 
             if not path_destination.exists():
@@ -87,13 +93,9 @@ class Install_Data(install_data):
                                           f'{path_file_mo}')
             subprocess.call(
                 args=('msgfmt',
-                      f'--o={path_file_mo}',
+                      f'--output-file={path_file_mo}',
                       path_file_po),
                 cwd=path_base)
-
-            path_destination = path_locale / path_file_po.stem / 'LC_MESSAGES'
-            self.data_files.append((path_destination,
-                                    [str(path_file_mo)]))
 
 
 class Command_CreatePOT(setuptools.Command):
