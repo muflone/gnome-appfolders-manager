@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME App Folders Manager\n"
-"Report-Msgid-Bugs-To: muflone(at)muflone.com\n"
-"POT-Creation-Date: 2016-06-09 00:04+0200\n"
+"Project-Id-Version: GNOME App Folders Manager 0.4.0\n"
+"Report-Msgid-Bugs-To: muflone@muflone.com\n"
+"POT-Creation-Date: 2022-01-09 16:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
+#: gnome_appfolders_manager/ui/about.py:55
+#, python-brace-format
 msgid "Version {VERSION}"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:59
+#: gnome_appfolders_manager/ui/about.py:66
 msgid "Contributors:"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:278
+#: gnome_appfolders_manager/ui/main.py:289
 msgid "Remove the selected folder?"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
+#: gnome_appfolders_manager/ui/main.py:290
+#, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:343
+#: gnome_appfolders_manager/ui/main.py:355
 msgid "The application must be restarted to apply the settings"
 msgstr ""
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "_Add applications"
 msgstr ""
 
-#: ui/application_picker.ui:155 ui/main.ui:403
+#: ui/application_picker.ui:177 ui/main.ui:427
 msgid "Applications"
 msgstr ""
 
@@ -55,27 +55,27 @@ msgstr ""
 msgid "Show keyboard _shortcuts"
 msgstr ""
 
-#: ui/create_appfolder.ui:122
+#: ui/create_appfolder.ui:123
 msgid "Title:"
 msgstr ""
 
-#: ui/main.ui:93
+#: ui/main.ui:102
 msgid "Sy_mbolic icons (requires restart)"
 msgstr ""
 
-#: ui/main.ui:100
+#: ui/main.ui:109
 msgid "_Small icons (requires restart)"
 msgstr ""
 
-#: ui/main.ui:107
+#: ui/main.ui:116
 msgid "Show missing _files"
 msgstr ""
 
-#: ui/main.ui:151
+#: ui/main.ui:160
 msgid "Folders:"
 msgstr ""
 
-#: ui/main.ui:466 ui/shortcuts.ui:38
+#: ui/main.ui:490 ui/shortcuts.ui:38
 msgid "Folders"
 msgstr ""
 
@@ -97,4 +97,8 @@ msgstr ""
 
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
+msgstr ""
+
+#: ui/shortcuts.ui:79
+msgid "Search file in the current folder"
 msgstr ""

@@ -98,3 +98,7 @@ msgstr "Add a new file"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Remove the selected file"
+
+#: ui/shortcuts.ui:79
+msgid "Search file in the current folder"
+msgstr "Search file in the current folder"

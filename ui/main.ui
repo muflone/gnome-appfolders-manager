@@ -50,6 +50,15 @@
       </object>
       <accelerator key="Insert"/>
     </child>
+    <child>
+      <object class="GtkAction" id="action_files_search">
+        <property name="short-label" comments="Use domain gtk30">_Search</property>
+        <property name="icon-name">edit-find</property>
+        <property name="sensitive">False</property>
+        <signal name="activate" handler="on_action_files_search_activate" swapped="no"/>
+      </object>
+      <accelerator key="f" modifiers="GDK_CONTROL_MASK"/>
+    </child>
   </object>
   <object class="GtkActionGroup" id="actions_folders">
     <property name="accel-group">accelerators</property>
@@ -235,6 +244,20 @@
       </packing>
     </child>
     <child>
+      <object class="GtkButton" id="button_files_search">
+        <property name="use-action-appearance">True</property>
+        <property name="related-action">action_files_search</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="use-underline">True</property>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">7</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkButton" id="button_files_save">
         <property name="use-action-appearance">True</property>
         <property name="related-action">action_files_save</property>
@@ -245,7 +268,7 @@
       </object>
       <packing>
         <property name="pack-type">end</property>
-        <property name="position">7</property>
+        <property name="position">8</property>
       </packing>
     </child>
     <child>
@@ -258,7 +281,7 @@
       </object>
       <packing>
         <property name="pack-type">end</property>
-        <property name="position">8</property>
+        <property name="position">9</property>
       </packing>
     </child>
     <child>
@@ -271,7 +294,7 @@
       </object>
       <packing>
         <property name="pack-type">end</property>
-        <property name="position">9</property>
+        <property name="position">10</property>
       </packing>
     </child>
     <child>
@@ -283,7 +306,7 @@
       </object>
       <packing>
         <property name="pack-type">end</property>
-        <property name="position">10</property>
+        <property name="position">11</property>
       </packing>
     </child>
   </object>

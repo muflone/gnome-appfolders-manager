@@ -40,6 +40,7 @@ store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
 store_message('Files:', '%s:' % text(message='Files', gtk30=True))
 store_message('_Create Folder', text(message='Create Folder', gtk30=True))
 store_message('_Properties', text(message='Properties', gtk30=True))
+store_message('_Search', text(message='Search', gtk30=True))
 
 # With domain context
 for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):

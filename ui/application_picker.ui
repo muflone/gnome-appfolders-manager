@@ -23,6 +23,14 @@
         <signal name="toggled" handler="on_action_show_hidden_toggled" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkAction" id="action_search">
+        <property name="short-label" comments="Use domain gtk30">_Search</property>
+        <property name="icon-name">edit-find</property>
+        <signal name="activate" handler="on_action_search_activate" swapped="no"/>
+      </object>
+      <accelerator key="f" modifiers="GDK_CONTROL_MASK"/>
+    </child>
   </object>
   <object class="GtkMenu" id="menu_options">
     <property name="visible">True</property>
@@ -79,6 +87,20 @@
       <packing>
         <property name="pack-type">end</property>
         <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_search">
+        <property name="use-action-appearance">True</property>
+        <property name="related-action">action_search</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="use-underline">True</property>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </object>

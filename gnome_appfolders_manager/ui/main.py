@@ -103,7 +103,8 @@ class UIMain(object):
         for button in (self.ui.button_folder_new, self.ui.button_folder_remove,
                        self.ui.button_folder_properties,
                        self.ui.button_files_add, self.ui.button_files_remove,
-                       self.ui.button_files_save, self.ui.button_about, ):
+                       self.ui.button_files_save, self.ui.button_files_search,
+                       self.ui.button_about, ):
             action = button.get_related_action()
             icon_name = action.get_icon_name()
             if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
@@ -214,12 +215,14 @@ class UIMain(object):
         selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         for widget in (self.ui.action_folders_remove,
                        self.ui.action_folders_properties,
-                       self.ui.action_files_new):
+                       self.ui.action_files_new,
+                       self.ui.action_files_search):
             widget.set_sensitive(bool(selected_row))
         if not selected_row:
             self.ui.action_files_new.set_sensitive(False)
             self.ui.action_files_remove.set_sensitive(False)
             self.ui.action_files_save.set_sensitive(False)
+            self.ui.action_files_search.set_sensitive(False)
             self.model_applications.clear()
 
     def on_action_files_new_activate(self, action):
@@ -268,6 +271,11 @@ class UIMain(object):
             folder_info.set_applications(self.model_applications.rows.keys())
         # Disable folder content saving
         self.ui.action_files_save.set_sensitive(False)
+
+    def on_action_files_search_activate(self, action):
+        """Start interactive files search"""
+        self.ui.treeview_applications.grab_focus()
+        self.ui.treeview_applications.emit('start-interactive-search')
 
     def on_action_folders_remove_activate(self, action):
         """Remove the current AppFolder"""

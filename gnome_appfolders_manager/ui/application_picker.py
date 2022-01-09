@@ -68,14 +68,26 @@ class UIApplicationPicker(object):
         self.ui.dialog_application_picker.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
         self.selected_applications = None
+        # Initialize Gtk.HeaderBar
+        for button in (self.ui.button_search, ):
+            action = button.get_related_action()
+            icon_name = action.get_icon_name()
+            if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
+                icon_name += '-symbolic'
+            # Get desired icon size
+            icon_size = (Gtk.IconSize.BUTTON
+                         if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
+                         else Gtk.IconSize.LARGE_TOOLBAR)
+            button.set_image(Gtk.Image.new_from_icon_name(icon_name,
+                                                          icon_size))
+            # Remove the button label
+            button.props.label = None
+            # Set the tooltip from the action label
+            button.set_tooltip_text(action.get_label().replace('_', ''))
         # Set preferences button icon
         icon_name = self.ui.image_preferences.get_icon_name()[0]
         if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
             icon_name += '-symbolic'
-        # Get desired icon size
-        icon_size = (Gtk.IconSize.BUTTON
-                     if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
-                     else Gtk.IconSize.LARGE_TOOLBAR)
         self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {
@@ -161,3 +173,8 @@ class UIApplicationPicker(object):
         """Set the visibility for all the Gtk.TreeModelRows"""
         self.model_applications.set_all_rows_visibility(
             self.ui.action_show_hidden.get_active())
+
+    def on_action_search_activate(self, action):
+        """Start interactive files search"""
+        self.ui.treeview_applications.grab_focus()
+        self.ui.treeview_applications.emit('start-interactive-search')

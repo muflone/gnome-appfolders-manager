@@ -100,3 +100,7 @@ msgstr "Dodaj nowy plik"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Usuń zaznaczony plik"
+
+#: ui/shortcuts.ui:79
+msgid "Search file in the current folder"
+msgstr ""

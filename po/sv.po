@@ -99,3 +99,7 @@ msgstr "Lägg till en ny fil"
 #: ui/shortcuts.ui:72
 msgid "Remove the selected file"
 msgstr "Ta bort den markerade filen"
+
+#: ui/shortcuts.ui:79
+msgid "Search file in the current folder"
+msgstr ""
