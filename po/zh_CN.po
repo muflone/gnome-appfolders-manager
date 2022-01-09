@@ -20,8 +20,8 @@ msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:49
 #, python-format
-msgid "Version %s"
-msgstr "版本 %s"
+msgid "Version {VERSION}"
+msgstr "版本 {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
@@ -33,8 +33,8 @@ msgstr "移除选中的文件夹？"
 
 #: gnome_appfolders_manager/ui/main.py:279
 #, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "您确定想要移除该文件夹 %s 吗？"
+msgid "Are you sure you want to remove the folder {FOLDER}?"
+msgstr "您确定想要移除该文件夹 {FOLDER} 吗？"
 
 #: gnome_appfolders_manager/ui/main.py:343
 msgid "The application must be restarted to apply the settings"

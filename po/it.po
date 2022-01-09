@@ -20,8 +20,8 @@ msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:49
 #, python-format
-msgid "Version %s"
-msgstr "Versione %s"
+msgid "Version {VERSION}"
+msgstr "Versione {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
@@ -33,8 +33,8 @@ msgstr "Rimuovere la cartella selezionata?"
 
 #: gnome_appfolders_manager/ui/main.py:279
 #, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "Sei sicuro di voler rimuovere la cartella %s?"
+msgid "Are you sure you want to remove the folder {FOLDER}?"
+msgstr "Sei sicuro di voler rimuovere la cartella {FOLDER}?"
 
 #: gnome_appfolders_manager/ui/main.py:343
 msgid "The application must be restarted to apply the settings"

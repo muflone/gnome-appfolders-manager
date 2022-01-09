@@ -19,7 +19,7 @@ msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:49
 #, python-format
-msgid "Version %s"
+msgid "Version {VERSION}"
 msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:59
@@ -32,7 +32,7 @@ msgstr ""
 
 #: gnome_appfolders_manager/ui/main.py:279
 #, python-format
-msgid "Are you sure you want to remove the folder %s?"
+msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr ""
 
 #: gnome_appfolders_manager/ui/main.py:343

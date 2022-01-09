@@ -20,8 +20,8 @@ msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:49
 #, python-format
-msgid "Version %s"
-msgstr "версія %s"
+msgid "Version {VERSION}"
+msgstr "версія {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:59
 msgid "Contributors:"
@@ -33,8 +33,8 @@ msgstr "Видалити позначені теки?"
 
 #: gnome_appfolders_manager/ui/main.py:279
 #, python-format
-msgid "Are you sure you want to remove the folder %s?"
-msgstr "Ви впевнені, що хочете видалити теку %s?"
+msgid "Are you sure you want to remove the folder {FOLDER}?"
+msgstr "Ви впевнені, що хочете видалити теку {FOLDER}?"
 
 #: gnome_appfolders_manager/ui/main.py:343
 msgid "The application must be restarted to apply the settings"
