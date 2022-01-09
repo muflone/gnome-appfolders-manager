@@ -42,7 +42,7 @@ Open the GNOME Shell overview to use the new Application Folder.
 
 # System Requirements
 
-* Python 3.x (developed and tested for Python 3.9.4)
+* Python >= 3.6 (developed and tested for Python 3.9 and 3.10)
 * GTK+ 3.0 libraries for Python 3
 * GObject libraries for Python 3 ( https://pypi.org/project/PyGObject/ )
 * XDG library for Python 3 ( https://pypi.org/project/pyxdg/ )
