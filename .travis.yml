@@ -8,8 +8,9 @@ sudo: false
 addons:
   apt:
     packages:
-    - gir1.2-gtk-3.0                          # gi.repository.gtk
-    - gobject-introspection                   # gobject-introspection-1.0
+    - gir1.2-gtk-3.0
+    - gobject-introspection
+    - libgirepository1.0-dev
 install:
   - pip install -r requirements_travis.txt
 script:
