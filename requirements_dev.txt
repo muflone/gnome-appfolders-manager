@@ -2,3 +2,4 @@
 
 PyGObject-stubs==0.0.4
 flake8==3.9.2
+transifex-client==0.12.5
