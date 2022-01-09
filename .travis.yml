@@ -3,14 +3,13 @@ language: python
 python:
   - "3.6"
 virtualenv:
-  system_site_packages: true
+  system_site_packages: false
 sudo: false
 addons:
   apt:
     packages:
-    - python3-gi                              # GObject
     - gir1.2-gtk-3.0                          # gi.repository.gtk
-    - python3-xdg                             # PyXDG
+    - gobject-introspection                   # gobject-introspection-1.0
 install:
   - pip install -r requirements_travis.txt
 script:
