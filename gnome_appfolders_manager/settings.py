@@ -19,6 +19,7 @@
 ##
 
 import configparser
+import logging
 import optparse
 
 from gnome_appfolders_manager.constants import (VERBOSE_LEVEL_QUIET,
@@ -54,8 +55,7 @@ class Settings(object):
             self.config.optionxform = str
         # Determine which filename to use for settings
         self.filename = filename
-        self.logText('Loading settings from %s' % self.filename,
-                     VERBOSE_LEVEL_MAX)
+        logging.debug(f'Loading settings from {self.filename}')
         self.config.read(self.filename)
 
     def get(self, section, option, default=None):
@@ -119,8 +119,7 @@ class Settings(object):
     def save(self):
         """Save the whole configuration"""
         file_settings = open(self.filename, mode='w')
-        self.logText('Saving settings to %s' % self.filename,
-                     VERBOSE_LEVEL_MAX)
+        logging.debug(f'Saving settings to {self.filename}')
         self.config.write(file_settings)
         file_settings.close()
 
@@ -140,12 +139,6 @@ class Settings(object):
         """Remove every data in the settings"""
         for section in self.get_sections():
             self.config.remove_section(section)
-
-    def logText(self, text, verbose_level=VERBOSE_LEVEL_NORMAL):
-        """Print a text with current date and time based on the
-        verbose level"""
-        if verbose_level <= self.options.verbose_level:
-            print('[%s] %s' % (time.strftime('%Y/%m/%d %H:%M:%S'), text))
 
     def restore_window_position(self, window, section):
         """Restore the saved window size and position"""

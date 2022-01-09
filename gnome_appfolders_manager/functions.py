@@ -21,6 +21,7 @@
 import fnmatch
 from gettext import gettext, dgettext
 import itertools
+import logging
 import os
 import pathlib
 
@@ -130,7 +131,7 @@ def get_pixbuf_from_icon_name(icon_name, size):
             icon = icon.scale_simple(size, size,
                                      GdkPixbuf.InterpType.BILINEAR)
     else:
-        print('missing icon', icon_name)
+        logging.warning(f'missing icon: {icon_name}')
     return icon
 
 
