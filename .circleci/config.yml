@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  # The python orb contains a set of prepackaged CircleCI configuration you can use repeatedly in your configuration files
+  # Orb commands and jobs help you with common scripting around a language/tool
+  # so you dont have to copy and paste it everywhere.
+  # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
+  python: circleci/python@1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements_travis.txt
+      - run:
+          name: check code
+          command: |
+            . venv/bin/activate
+            python -m compileall gnome_appfolders_manager
+            pycodestyle gnome_appfolders_manager
+            python -m flake8 gnome_appfolders_manager
+            python setup.py install --optimize=1 --root=build
+            ls -laR build
