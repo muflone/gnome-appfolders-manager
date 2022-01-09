@@ -20,13 +20,14 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-from distutils.core import setup, Command
-from distutils.command.install_scripts import install_scripts
-from distutils.command.install_data import install_data
-import distutils.log
 import itertools
 import pathlib
+import setuptools
+import setuptools.command.install_scripts
 import subprocess
+
+# Importing distutils after setuptools uses the setuptools' distutils
+from distutils.command.install_data import install_data
 
 from gnome_appfolders_manager.constants import (APP_NAME,
                                                 APP_VERSION,
@@ -37,9 +38,9 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 DOMAIN_NAME)
 
 
-class Install_Scripts(install_scripts):
+class Install_Scripts(setuptools.command.install_scripts.install_scripts):
     def run(self):
-        install_scripts.run(self)
+        setuptools.command.install_scripts.install_scripts.run(self)
         self.rename_python_scripts()
 
     def rename_python_scripts(self):
@@ -48,9 +49,10 @@ class Install_Scripts(install_scripts):
             path_file_script = pathlib.Path(script)
             path_destination = path_file_script.with_suffix(suffix='')
             if path_file_script.suffix == '.py':
-                distutils.log.info('renaming the python script '
-                                   f'{path_file_script.name} -> '
-                                   f'{path_destination.stem}')
+                setuptools.distutils.log.info(
+                    'renaming the python script '
+                    f'{path_file_script.name} -> '
+                    f'{path_destination.stem}')
                 path_file_script.rename(path_destination)
 
 
@@ -61,7 +63,7 @@ class Install_Data(install_data):
         install_data.run(self)
 
     def install_icons(self):
-        distutils.log.info('Installing icons...')
+        setuptools.distutils.log.info('Installing icons...')
         DIR_ICONS = 'icons'
         path_icons = pathlib.Path('share') / 'icons' / 'hicolor'
         for path_format in pathlib.Path(DIR_ICONS).iterdir():
@@ -69,7 +71,7 @@ class Install_Data(install_data):
                                     list(map(str, path_format.glob('*')))))
 
     def install_translations(self):
-        distutils.log.info('Installing translations...')
+        setuptools.distutils.log.info('Installing translations...')
         path_base = pathlib.Path(__file__).parent.absolute()
         path_build = pathlib.Path('build')
         path_locale = pathlib.Path('share') / 'locale'
@@ -78,10 +80,11 @@ class Install_Data(install_data):
             path_file_mo = path_destination / f'{DOMAIN_NAME}.mo'
 
             if not path_destination.exists():
-                distutils.log.info(f'creating {path_destination}')
+                setuptools.distutils.log.info(f'creating {path_destination}')
                 path_destination.mkdir(parents=True)
 
-            distutils.log.info(f'compiling {path_file_po} -> {path_file_mo}')
+            setuptools.distutils.log.info(f'compiling {path_file_po} -> '
+                                          f'{path_file_mo}')
             subprocess.call(
                 args=('msgfmt',
                       f'--o={path_file_mo}',
@@ -93,7 +96,7 @@ class Install_Data(install_data):
                                     [str(path_file_mo)]))
 
 
-class Command_CreatePOT(Command):
+class Command_CreatePOT(setuptools.Command):
     description = "create base POT file"
     user_options = []
 
@@ -131,7 +134,7 @@ class Command_CreatePOT(Command):
             cwd=self.path_base)
 
 
-class Command_CreatePO(Command):
+class Command_CreatePO(setuptools.Command):
     description = "create translation PO file"
     user_options = [
         ('locale=', None, 'Define locale'),
@@ -161,7 +164,7 @@ class Command_CreatePO(Command):
             cwd=self.path_base)
 
 
-class Command_Translations(Command):
+class Command_Translations(setuptools.Command):
     description = "build translations"
     user_options = []
 
@@ -191,7 +194,7 @@ class Command_Translations(Command):
                              file_po))
 
 
-setup(
+setuptools.setup(
     name=APP_NAME,
     version=APP_VERSION,
     author=APP_AUTHOR,
