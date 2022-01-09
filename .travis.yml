@@ -17,5 +17,6 @@ install:
 script:
   - python -m compileall .
   - flake8 .
-  - python setup.py install --optimize=1 --root=build --dist-dir dist
+  - mkdir ../dist
+  - python setup.py install --optimize=1 --root=build
   - ls -laR build
