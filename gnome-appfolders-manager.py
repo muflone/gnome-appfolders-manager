@@ -20,7 +20,7 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-from gnome_appfolders_manager import main
+from gnome_appfolders_manager.main import main
 
 if __name__ == '__main__':
     main()
