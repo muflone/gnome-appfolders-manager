@@ -17,9 +17,6 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 script:
   - python -m compileall .
-  - pep8 . || true
-  - pychecker --no-shadow
-    --blacklist gi
-    gnome-appfolders-manager.py
+  - flake8 .
   - python setup.py install --optimize=1 --root=build
   - ls -laR build
