@@ -73,8 +73,8 @@ msgid "Show missing _files"
 msgstr "Показати відсутні файли"
 
 #: ui/main.ui:151
-msgid "_Folders:"
-msgstr "_Теки:"
+msgid "Folders:"
+msgstr "Теки:"
 
 #: ui/main.ui:466 ui/shortcuts.ui:38
 msgid "Folders"

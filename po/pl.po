@@ -74,8 +74,8 @@ msgid "Show missing _files"
 msgstr "Pokaż brakujące _pliki"
 
 #: ui/main.ui:151
-msgid "_Folders:"
-msgstr "_Katalogi:"
+msgid "Folders:"
+msgstr "Katalogi:"
 
 #: ui/main.ui:466 ui/shortcuts.ui:38
 msgid "Folders"

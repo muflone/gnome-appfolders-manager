@@ -72,7 +72,7 @@ msgid "Show missing _files"
 msgstr ""
 
 #: ui/main.ui:151
-msgid "_Folders:"
+msgid "Folders:"
 msgstr ""
 
 #: ui/main.ui:466 ui/shortcuts.ui:38

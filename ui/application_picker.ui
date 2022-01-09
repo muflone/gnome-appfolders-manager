@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkActionGroup" id="actions_dialog">
     <child>
       <object class="GtkAction" id="action_add">
-        <property name="short_label" translatable="yes">_Add applications</property>
+        <property name="short-label" translatable="yes">_Add applications</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_add_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkAction" id="action_close">
-        <property name="short_label" comments="Use domain gtk30">_Close</property>
+        <property name="short-label" comments="Use domain gtk30">_Close</property>
         <signal name="activate" handler="on_action_close_activate" swapped="no"/>
       </object>
     </child>
@@ -26,58 +26,58 @@
   </object>
   <object class="GtkMenu" id="menu_options">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkCheckMenuItem" id="menuitem_show_hidden_files">
-        <property name="use_action_appearance">True</property>
-        <property name="related_action">action_show_hidden</property>
+        <property name="use-action-appearance">True</property>
+        <property name="related-action">action_show_hidden</property>
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
       </object>
     </child>
   </object>
   <object class="GtkHeaderBar" id="header_bar">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkButton" id="button_close">
-        <property name="use_action_appearance">True</property>
-        <property name="related_action">action_close</property>
+        <property name="use-action-appearance">True</property>
+        <property name="related-action">action_close</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
       </object>
     </child>
     <child>
       <object class="GtkButton" id="button_add">
-        <property name="use_action_appearance">True</property>
-        <property name="related_action">action_add</property>
+        <property name="use-action-appearance">True</property>
+        <property name="related-action">action_add</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
       </object>
       <packing>
-        <property name="pack_type">end</property>
+        <property name="pack-type">end</property>
         <property name="position">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkMenuButton" id="menubutton_options">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="draw_indicator">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="draw-indicator">True</property>
         <property name="popup">menu_options</property>
         <child>
           <object class="GtkImage" id="image_preferences">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">emblem-system</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">emblem-system</property>
           </object>
         </child>
       </object>
       <packing>
-        <property name="pack_type">end</property>
+        <property name="pack-type">end</property>
         <property name="position">2</property>
       </packing>
     </child>
@@ -101,22 +101,22 @@
     </columns>
   </object>
   <object class="GtkTreeModelFilter" id="filter_applications">
-    <property name="child_model">store_applications</property>
+    <property name="child-model">store_applications</property>
   </object>
   <object class="GtkDialog" id="dialog_application_picker">
-    <property name="can_focus">False</property>
-    <property name="default_width">528</property>
-    <property name="default_height">245</property>
-    <property name="type_hint">dialog</property>
+    <property name="can-focus">False</property>
+    <property name="default-width">528</property>
+    <property name="default-height">245</property>
+    <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="box_content">
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="buttonbox_buttons">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
             <child>
               <placeholder/>
             </child>
@@ -133,16 +133,16 @@
         <child>
           <object class="GtkScrolledWindow" id="scroll_applications">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="shadow_type">in</property>
+            <property name="can-focus">True</property>
+            <property name="shadow-type">in</property>
             <child>
               <object class="GtkTreeView" id="treeview_applications">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
                 <property name="model">filter_applications</property>
-                <property name="headers_visible">False</property>
-                <property name="search_column">1</property>
-                <property name="rubber_banding">True</property>
+                <property name="headers-visible">False</property>
+                <property name="search-column">1</property>
+                <property name="rubber-banding">True</property>
                 <signal name="row-activated" handler="on_treeview_applications_row_activated" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview_selection_applications">
@@ -153,7 +153,7 @@
                 <child>
                   <object class="GtkTreeViewColumn" id="treeview_column_applications">
                     <property name="title" translatable="yes">Applications</property>
-                    <property name="sort_column_id">1</property>
+                    <property name="sort-column-id">1</property>
                     <child>
                       <object class="GtkCellRendererPixbuf" id="cell_application_icon"/>
                       <attributes>
