@@ -18,10 +18,33 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
+import logging
+
 from gnome_appfolders_manager.app import Application
+from gnome_appfolders_manager.command_line_options import CommandLineOptions
+from gnome_appfolders_manager.constants import (DIR_DATA,
+                                                DIR_DOCS,
+                                                DIR_LOCALE,
+                                                DIR_PREFIX,
+                                                DIR_SETTINGS,
+                                                DIR_UI)
 
 
 def main():
+    command_line_options = CommandLineOptions()
+    options = command_line_options.parse_options()
+    # Set logging level
+    verbose_levels = {0: logging.ERROR,
+                      1: logging.INFO,
+                      2: logging.DEBUG}
+    logging.getLogger().setLevel(verbose_levels[options.verbose_level])
+    # Log paths for debug purposes
+    logging.debug(f'{DIR_PREFIX=}')
+    logging.debug(f'{DIR_LOCALE=}')
+    logging.debug(f'{DIR_DOCS=}')
+    logging.debug(f'{DIR_DATA=}')
+    logging.debug(f'{DIR_UI=}')
+    logging.debug(f'{DIR_SETTINGS=}')
     # Start the application
     app = Application()
     app.run(None)

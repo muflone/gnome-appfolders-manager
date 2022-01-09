@@ -20,11 +20,7 @@
 
 import configparser
 import logging
-import optparse
 
-from gnome_appfolders_manager.constants import (VERBOSE_LEVEL_QUIET,
-                                                VERBOSE_LEVEL_NORMAL,
-                                                VERBOSE_LEVEL_MAX)
 
 POSITION_LEFT = 'left'
 POSITION_TOP = 'top'
@@ -38,16 +34,7 @@ services = None
 
 class Settings(object):
     def __init__(self, filename, case_sensitive):
-        """Initialize settings and command line options"""
-        parser = optparse.OptionParser(usage='usage: %prog [options]')
-        parser.set_defaults(verbose_level=VERBOSE_LEVEL_NORMAL)
-        parser.add_option('-v', '--verbose', dest='verbose_level',
-                          action='store_const', const=VERBOSE_LEVEL_MAX,
-                          help='show error and information messages')
-        parser.add_option('-q', '--quiet', dest='verbose_level',
-                          action='store_const', const=VERBOSE_LEVEL_QUIET,
-                          help='hide error and information messages')
-        (self.options, self.arguments) = parser.parse_args()
+        """Initialize settings"""
         # Parse settings from the configuration file
         self.config = configparser.RawConfigParser()
         # Set case sensitiveness if requested
