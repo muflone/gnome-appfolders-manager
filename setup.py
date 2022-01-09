@@ -66,7 +66,7 @@ class Install_Data(install_data):
         path_icons = pathlib.Path('share') / 'icons' / 'hicolor'
         for path_format in pathlib.Path(DIR_ICONS).iterdir():
             self.data_files.append((path_icons / path_format.name / 'apps',
-                                    path_format.glob('*')))
+                                    list(map(str, path_format.glob('*')))))
 
     def install_translations(self):
         distutils.log.info('Installing translations...')
@@ -90,7 +90,7 @@ class Install_Data(install_data):
 
             path_destination = path_locale / path_file_po.stem / 'LC_MESSAGES'
             self.data_files.append((path_destination,
-                                    [path_file_mo]))
+                                    [str(path_file_mo)]))
 
 
 class Command_CreatePOT(Command):
@@ -211,10 +211,13 @@ setup(
         ('share/applications',
             ['data/gnome-appfolders-manager.desktop']),
         (f'share/doc/{DOMAIN_NAME}',
-            list(itertools.chain(pathlib.Path('doc').glob('*'),
-                                 pathlib.Path('.').glob('*.md')))),
-        (f'share/{DOMAIN_NAME}/ui',
-            pathlib.Path('ui').glob('*')),
+            list(itertools.chain(
+                list(map(str, pathlib.Path('doc').glob('*'))),
+                list(map(str, pathlib.Path('.').glob('*.md')))))),
+        (f'share/{DOMAIN_NAME}/ui', [str(file)
+                                     for file
+                                     in pathlib.Path('ui').glob('*')
+                                     if not file.name.endswith('~')]),
     ],
     cmdclass={
         'install_scripts': Install_Scripts,
