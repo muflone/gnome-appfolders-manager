@@ -18,11 +18,9 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 ##
 
-import fnmatch
 from gettext import gettext, dgettext
 import itertools
 import logging
-import os
 import pathlib
 
 from gi.repository import Gtk
@@ -68,15 +66,6 @@ def store_message(message, translated):
 def get_ui_file(filename):
     """Return the full path of a Glade/UI file"""
     return str(DIR_UI / filename)
-
-
-def recursive_glob(starting_path, pattern):
-    """Return a list of all the matching files recursively"""
-    result = []
-    for root, dirnames, filenames in os.walk(starting_path):
-        for filename in fnmatch.filter(filenames, pattern):
-            result.append(pathlib.Path(root) / filename)
-    return result
 
 
 def get_treeview_selected_row(widget):
@@ -151,7 +140,6 @@ __all__ = [
     '_',
     'localized_messages',
     'get_ui_file',
-    'recursive_glob',
     'get_treeview_selected_row',
     'get_treeview_selected_rows',
     'get_pixbuf_from_icon_name',
