@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
-"Report-Msgid-Bugs-To: muflone(at)muflone.com\n"
-"POT-Creation-Date: 2016-06-09 00:04+0200\n"
+"Report-Msgid-Bugs-To: muflone@muflone.com\n"
+"POT-Creation-Date: 2022-01-09 15:56+0100\n"
 "PO-Revision-Date: 2017-02-22 15:30+0000\n"
 "Last-Translator: Piotr Sokół <psokol.l10n(at)gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/muflone/gnome-appfolders-manager/language/pl/)\n"
@@ -19,25 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: gnome_appfolders_manager/ui/about.py:49
-#, python-format
+#: gnome_appfolders_manager/ui/about.py:55
+#, python-brace-format
 msgid "Version {VERSION}"
 msgstr "Wersja {VERSION}"
 
-#: gnome_appfolders_manager/ui/about.py:59
+#: gnome_appfolders_manager/ui/about.py:66
 msgid "Contributors:"
 msgstr "Autorzy:"
 
-#: gnome_appfolders_manager/ui/main.py:278
+#: gnome_appfolders_manager/ui/main.py:289
 msgid "Remove the selected folder?"
 msgstr "Usunąć wybrany katalog?"
 
-#: gnome_appfolders_manager/ui/main.py:279
-#, python-format
+#: gnome_appfolders_manager/ui/main.py:290
+#, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Czy napewno usunąć katalog {FOLDER}?"
 
-#: gnome_appfolders_manager/ui/main.py:343
+#: gnome_appfolders_manager/ui/main.py:355
 msgid "The application must be restarted to apply the settings"
 msgstr "Nowe ustawienia będą aktywne po ponownym uruchomieniu programu."
 
@@ -45,7 +45,7 @@ msgstr "Nowe ustawienia będą aktywne po ponownym uruchomieniu programu."
 msgid "_Add applications"
 msgstr "_Dodaj programy"
 
-#: ui/application_picker.ui:155 ui/main.ui:403
+#: ui/application_picker.ui:177 ui/main.ui:427
 msgid "Applications"
 msgstr "Programy"
 
@@ -57,27 +57,27 @@ msgstr "_O GNOME App Folders Manager"
 msgid "Show keyboard _shortcuts"
 msgstr "Pokaż _skróty klawiszowe"
 
-#: ui/create_appfolder.ui:122
+#: ui/create_appfolder.ui:123
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: ui/main.ui:93
+#: ui/main.ui:102
 msgid "Sy_mbolic icons (requires restart)"
 msgstr "Ikony sy_mboliczne (wymagane ponowne uruchomienie)"
 
-#: ui/main.ui:100
+#: ui/main.ui:109
 msgid "_Small icons (requires restart)"
 msgstr "_Małe ikony (wymagane ponowne uruchomienie)"
 
-#: ui/main.ui:107
+#: ui/main.ui:116
 msgid "Show missing _files"
 msgstr "Pokaż brakujące _pliki"
 
-#: ui/main.ui:151
+#: ui/main.ui:160
 msgid "Folders:"
 msgstr "Katalogi:"
 
-#: ui/main.ui:466 ui/shortcuts.ui:38
+#: ui/main.ui:490 ui/shortcuts.ui:38
 msgid "Folders"
 msgstr "Katalogi"
 
