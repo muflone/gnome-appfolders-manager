@@ -1,4 +1,4 @@
 -r requirements.txt
 
 PyGObject-stubs==0.0.4
-flake8
+flake8==3.9.2
