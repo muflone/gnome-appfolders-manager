@@ -26,7 +26,6 @@ from distutils.command.install_data import install_data
 import distutils.log
 import itertools
 import pathlib
-import shutil
 import subprocess
 
 from gnome_appfolders_manager.constants import (APP_NAME,
@@ -52,7 +51,7 @@ class Install_Scripts(install_scripts):
                 distutils.log.info('renaming the python script '
                                    f'{path_file_script.name} -> '
                                    f'{path_destination.stem}')
-                shutil.move(path_file_script, path_destination)
+                path_file_script.rename(path_destination)
 
 
 class Install_Data(install_data):
