@@ -2,6 +2,10 @@
 *.pyc
 __pycache__/
 
+# Ignore build and dist folders for PyPI
+/build/
+/dist/
+
 # Ignore compiled translation files
 /locale/
 
