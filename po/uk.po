@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-09 15:56+0100\n"
+"POT-Creation-Date: 2022-01-10 01:05+0100\n"
 "PO-Revision-Date: 2017-04-22 22:24+0100\n"
 "Last-Translator: edshevsky <ed.shevsky(at)gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/muflone/gnome-appfolders-manager/language/uk/)\n"
@@ -18,10 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: gnome_appfolders_manager/ui/about.py:55
+#: gnome_appfolders_manager/ui/about.py:54
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "версія {VERSION}"
+
+#: gnome_appfolders_manager/ui/about.py:57
+msgid "Manage GNOME Shell applications folders"
+msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:66
 msgid "Contributors:"

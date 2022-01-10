@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager 0.4.0\n"
 "Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-09 16:04+0100\n"
+"POT-Creation-Date: 2022-01-10 01:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnome_appfolders_manager/ui/about.py:55
+#: gnome_appfolders_manager/ui/about.py:54
 #, python-brace-format
 msgid "Version {VERSION}"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:57
+msgid "Manage GNOME Shell applications folders"
 msgstr ""
 
 #: gnome_appfolders_manager/ui/about.py:66

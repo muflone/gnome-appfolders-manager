@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager\n"
 "Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-09 16:04+0100\n"
+"POT-Creation-Date: 2022-01-10 01:05+0100\n"
 "PO-Revision-Date: 2018-02-03 12:48+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs(at)fsf.hu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/muflone/gnome-appfolders-manager/language/hu/)\n"
@@ -18,10 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_appfolders_manager/ui/about.py:55
+#: gnome_appfolders_manager/ui/about.py:54
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "{VERSION} verzió"
+
+#: gnome_appfolders_manager/ui/about.py:57
+msgid "Manage GNOME Shell applications folders"
+msgstr "GNOME alkalmazásmappák kezelése"
 
 #: gnome_appfolders_manager/ui/about.py:66
 msgid "Contributors:"

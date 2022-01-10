@@ -24,7 +24,6 @@ from gi.repository.GdkPixbuf import Pixbuf
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.constants import (APP_NAME,
                                                 APP_VERSION,
-                                                APP_DESCRIPTION,
                                                 APP_URL,
                                                 APP_COPYRIGHT,
                                                 APP_AUTHOR,
@@ -54,7 +53,8 @@ class UIAbout(object):
         self.ui.dialog_about.set_program_name(APP_NAME)
         self.ui.dialog_about.set_version(_('Version {VERSION}').format(
             VERSION=APP_VERSION))
-        self.ui.dialog_about.set_comments(APP_DESCRIPTION)
+        self.ui.dialog_about.set_comments(
+            _('Manage GNOME Shell applications folders'))
         self.ui.dialog_about.set_website(APP_URL)
         self.ui.dialog_about.set_copyright(APP_COPYRIGHT)
         # Prepare lists for authors and contributors
