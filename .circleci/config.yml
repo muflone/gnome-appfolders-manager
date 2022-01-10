@@ -31,6 +31,5 @@ jobs:
             python -m compileall gnome_appfolders_manager
             pycodestyle gnome_appfolders_manager
             python -m flake8 gnome_appfolders_manager
-            mkdir ../dist
             python setup.py install --optimize=1 --root=build
             ls -laR build
