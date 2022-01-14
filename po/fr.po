@@ -21,7 +21,7 @@ msgstr ""
 #: gnome_appfolders_manager/ui/about.py:54
 #, python-brace-format
 msgid "Version {VERSION}"
-msgstr ""
+msgstr "Version {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:57
 msgid "Manage GNOME Shell applications folders"
