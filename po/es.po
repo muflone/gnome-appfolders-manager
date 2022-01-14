@@ -21,7 +21,7 @@ msgstr ""
 #: gnome_appfolders_manager/ui/about.py:54
 #, python-brace-format
 msgid "Version {VERSION}"
-msgstr ""
+msgstr "Versión {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:57
 msgid "Manage GNOME Shell applications folders"
@@ -38,7 +38,7 @@ msgstr "¿Eliminar la carpeta seleccionada?"
 #: gnome_appfolders_manager/ui/main.py:290
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
-msgstr ""
+msgstr "¿Está seguro de eliminar la carpeta {FOLDER}?"
 
 #: gnome_appfolders_manager/ui/main.py:355
 msgid "The application must be restarted to apply the settings"
