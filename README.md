@@ -11,34 +11,34 @@
 
 **Source code:** https://github.com/muflone/gnome-appfolders-manager
 
-**Documentation:** http://www.muflone.com/gnome-appfolders-manager/
+**Documentation:** https://www.muflone.com/gnome-appfolders-manager/
 
 # Usage
 
 From the *GNOME App Folders Manager* main window you can define your custom folders
 to group your applications by clicking the **Create folder** button on the header bar.
 
-![Main window](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main.png)
+![Main window](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main.png)
 
 Define the folder name and the folder title to show in GNOME Shell and confirm
 the new folder by clicking the **Create folder** button.
 
-![New folder](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/create-folder.png)
+![New folder](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/create-folder.png)
 
 Add your wanted applications to the new folder by clicking the**add files**
 button in the header bar, select the applications you want to include (multiple 
 selection is also possible) and click the **Add applications** button.
 
-![Application picker](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/add-applications.png)
+![Application picker](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/add-applications.png)
 
 Save your folder by clicking the **Save folder** button in the GNOME App Folders
 Manager main window.
 
-![Main window with new AppFolder](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main-with-new-appfolder.png)
+![Main window with new AppFolder](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main-with-new-appfolder.png)
 
 Open the GNOME Shell overview to use the new Application Folder.
 
-![GNOME Shell overview](http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/gnome-shell-appfolder.png)
+![GNOME Shell overview](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/gnome-shell-appfolder.png)
 
 # System Requirements
 
