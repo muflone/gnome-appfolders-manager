@@ -43,6 +43,93 @@ AppDir:
       - python3-xdg
       - gir1.2-gtk-3.0
       - librsvg2-common
+      # Language packs for translating the GTK+ widgets
+      - language-pack-gnome-af-base
+      - language-pack-gnome-am-base
+      - language-pack-gnome-an-base
+      - language-pack-gnome-ar-base
+      - language-pack-gnome-as-base
+      - language-pack-gnome-ast-base
+      - language-pack-gnome-az-base
+      - language-pack-gnome-be-base
+      - language-pack-gnome-bg-base
+      - language-pack-gnome-bn-base
+      - language-pack-gnome-br-base
+      - language-pack-gnome-bs-base
+      - language-pack-gnome-ca-base
+      - language-pack-gnome-ckb-base
+      - language-pack-gnome-crh-base
+      - language-pack-gnome-cs-base
+      - language-pack-gnome-cy-base
+      - language-pack-gnome-da-base
+      - language-pack-gnome-de-base
+      - language-pack-gnome-dz-base
+      - language-pack-gnome-el-base
+      - language-pack-gnome-en-base
+      - language-pack-gnome-eo-base
+      - language-pack-gnome-es-base
+      - language-pack-gnome-et-base
+      - language-pack-gnome-eu-base
+      - language-pack-gnome-fa-base
+      - language-pack-gnome-fi-base
+      - language-pack-gnome-fr-base
+      - language-pack-gnome-fur-base
+      - language-pack-gnome-ga-base
+      - language-pack-gnome-gd-base
+      - language-pack-gnome-gl-base
+      - language-pack-gnome-gu-base
+      - language-pack-gnome-he-base
+      - language-pack-gnome-hi-base
+      - language-pack-gnome-hr-base
+      - language-pack-gnome-hu-base
+      - language-pack-gnome-ia-base
+      - language-pack-gnome-id-base
+      - language-pack-gnome-is-base
+      - language-pack-gnome-it-base
+      - language-pack-gnome-ja-base
+      - language-pack-gnome-ka-base
+      - language-pack-gnome-kk-base
+      - language-pack-gnome-km-base
+      - language-pack-gnome-kn-base
+      - language-pack-gnome-ko-base
+      - language-pack-gnome-ku-base
+      - language-pack-gnome-lt-base
+      - language-pack-gnome-lv-base
+      - language-pack-gnome-mk-base
+      - language-pack-gnome-ml-base
+      - language-pack-gnome-mr-base
+      - language-pack-gnome-ms-base
+      - language-pack-gnome-my-base
+      - language-pack-gnome-nb-base
+      - language-pack-gnome-nds-base
+      - language-pack-gnome-ne-base
+      - language-pack-gnome-nl-base
+      - language-pack-gnome-nn-base
+      - language-pack-gnome-oc-base
+      - language-pack-gnome-or-base
+      - language-pack-gnome-pa-base
+      - language-pack-gnome-pl-base
+      - language-pack-gnome-pt-base
+      - language-pack-gnome-ro-base
+      - language-pack-gnome-ru-base
+      - language-pack-gnome-si-base
+      - language-pack-gnome-sk-base
+      - language-pack-gnome-sl-base
+      - language-pack-gnome-sq-base
+      - language-pack-gnome-sr-base
+      - language-pack-gnome-sv-base
+      - language-pack-gnome-szl-base
+      - language-pack-gnome-ta-base
+      - language-pack-gnome-te-base
+      - language-pack-gnome-tg-base
+      - language-pack-gnome-th-base
+      - language-pack-gnome-tr-base
+      - language-pack-gnome-ug-base
+      - language-pack-gnome-uk-base
+      - language-pack-gnome-vi-base
+      - language-pack-gnome-xh-base
+      - language-pack-gnome-zh-hans-base
+      - language-pack-gnome-zh-hant-base
     exclude:
       - adwaita-icon-theme
       - humanity-icon-theme
@@ -61,6 +148,7 @@ AppDir:
       - usr/share/doc/readline-common
       - usr/share/doc/tzdata
       - usr/share/doc/xkb-data
+      - usr/share/help-langpack
       - usr/share/man
       - usr/share/libthai
       - usr/share/X11
@@ -74,8 +162,27 @@ AppDir:
 
   after_bundle:
     - echo 'After bundle'
+    # Copy GTK+ translations to AppDir
     - echo '#!/bin/bash'                                               > after_bundle.sh
+    - echo 'set -e'                                                   >> after_bundle.sh
+    - echo 'APPDIR="$1"'                                              >> after_bundle.sh
+    - echo 'pushd "$APPDIR/usr/share/locale-langpack"'                >> after_bundle.sh
+    - echo 'for locale in *'                                          >> after_bundle.sh
+    - echo '  do'                                                     >> after_bundle.sh
+    - echo '    LOCALEDIR="usr/share/locale/$locale/LC_MESSAGES"'     >> after_bundle.sh
+    - echo '    if [ ! -d "$APPDIR/$LOCALEDIR" ]'                     >> after_bundle.sh
+    - echo '    then'                                                 >> after_bundle.sh
+    - echo '      mkdir -p "$APPDIR/$LOCALEDIR"'                      >> after_bundle.sh
+    - echo '    fi'                                                   >> after_bundle.sh
+    - echo '    if [ -f "$locale/LC_MESSAGES/gtk30.mo" ]'             >> after_bundle.sh
+    - echo '    then'                                                 >> after_bundle.sh
+    - echo '      cp $locale/LC_MESSAGES/gtk30.mo $APPDIR/$LOCALEDIR' >> after_bundle.sh
+    - echo '    fi'                                                   >> after_bundle.sh
+    - echo '  done'                                                   >> after_bundle.sh
+    - echo 'exit 0'                                                   >> after_bundle.sh
     - "bash after_bundle.sh ${APPDIR}"
+    # Remove every other translation
+    - "rm -rf ${APPDIR}/usr/share/locale-langpack"
 
   before_runtime:
     - echo 'Before runtime'
