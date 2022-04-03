@@ -98,13 +98,6 @@
       </object>
     </child>
     <child>
-      <object class="GtkToggleAction" id="action_preferences_symbolic_icons">
-        <property name="short-label" translatable="yes">Sy_mbolic icons (requires restart)</property>
-        <signal name="toggled" handler="on_action_preferences_need_restart_toggled" swapped="no"/>
-        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
-      </object>
-    </child>
-    <child>
       <object class="GtkToggleAction" id="action_preferences_small_icons">
         <property name="short-label" translatable="yes">_Small icons (requires restart)</property>
         <signal name="toggled" handler="on_action_preferences_need_restart_toggled" swapped="no"/>
@@ -122,14 +115,6 @@
   <object class="GtkMenu" id="menu_preferences">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <child>
-      <object class="GtkCheckMenuItem" id="menuitem_symbolic_icons">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_preferences_symbolic_icons</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-      </object>
-    </child>
     <child>
       <object class="GtkCheckMenuItem" id="menuitem_small_icons">
         <property name="use-action-appearance">True</property>

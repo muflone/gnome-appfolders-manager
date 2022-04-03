@@ -72,8 +72,6 @@ class UIApplicationPicker(object):
         for button in (self.ui.button_search, ):
             action = button.get_related_action()
             icon_name = action.get_icon_name()
-            if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
-                icon_name += '-symbolic'
             # Get desired icon size
             icon_size = (Gtk.IconSize.BUTTON
                          if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
@@ -86,8 +84,6 @@ class UIApplicationPicker(object):
             button.set_tooltip_text(action.get_label().replace('_', ''))
         # Set preferences button icon
         icon_name = self.ui.image_preferences.get_icon_name()[0]
-        if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
-            icon_name += '-symbolic'
         self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {

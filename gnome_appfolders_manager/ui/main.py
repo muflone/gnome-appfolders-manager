@@ -106,30 +106,24 @@ class UIMain(object):
                        self.ui.button_files_save, self.ui.button_files_search,
                        self.ui.button_about, ):
             action = button.get_related_action()
-            icon_name = action.get_icon_name()
-            if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
-                icon_name += '-symbolic'
             # Get desired icon size
             icon_size = (Gtk.IconSize.BUTTON
                          if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
                          else Gtk.IconSize.LARGE_TOOLBAR)
-            button.set_image(Gtk.Image.new_from_icon_name(icon_name,
-                                                          icon_size))
+            button.set_image(Gtk.Image.new_from_icon_name(
+                icon_name=action.get_icon_name(),
+                size=icon_size))
             # Remove the button label
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
         # Set preferences button icon
         icon_name = self.ui.image_preferences.get_icon_name()[0]
-        if preferences.get(preferences.HEADERBARS_SYMBOLIC_ICONS):
-            icon_name += '-symbolic'
         self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {
             preferences.HEADERBARS_SMALL_ICONS:
                 self.ui.action_preferences_small_icons,
-            preferences.HEADERBARS_SYMBOLIC_ICONS:
-                self.ui.action_preferences_symbolic_icons,
             preferences.PREFERENCES_SHOW_MISSING:
                 self.ui.action_preferences_show_missing_files
         }
