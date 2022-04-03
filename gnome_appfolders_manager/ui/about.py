@@ -21,7 +21,6 @@
 from gi.repository import Gtk
 from gi.repository.GdkPixbuf import Pixbuf
 
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.constants import (APP_NAME,
                                                 APP_VERSION,
                                                 APP_URL,
@@ -34,6 +33,7 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_RESOURCES,
                                                 FILE_ICON)
 from gnome_appfolders_manager.functions import readlines, get_ui_file, _
+from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 
 class UIAbout(object):

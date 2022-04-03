@@ -23,7 +23,6 @@ import sys
 
 from xdg import BaseDirectory
 
-
 # Application constants
 APP_NAME = 'GNOME App Folders Manager'
 APP_VERSION = '0.4.3'

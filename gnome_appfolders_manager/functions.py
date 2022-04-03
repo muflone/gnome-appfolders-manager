@@ -23,8 +23,8 @@ import itertools
 import logging
 import pathlib
 
-from gi.repository import Gtk
 from gi.repository import GdkPixbuf
+from gi.repository import Gtk
 
 from gnome_appfolders_manager.constants import DIR_UI
 

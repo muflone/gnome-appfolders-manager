@@ -20,8 +20,8 @@
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.functions import get_ui_file, text
+from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 
 
 class UIShortcuts(object):

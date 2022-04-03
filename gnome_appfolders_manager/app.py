@@ -18,8 +18,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gi.repository import Gtk
 from gi.repository import Gio
+from gi.repository import Gtk
 
 from gnome_appfolders_manager.constants import APP_ID
 from gnome_appfolders_manager.functions import get_ui_file

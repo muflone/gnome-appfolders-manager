@@ -18,9 +18,9 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
+from gi.repository import Gtk
 
 from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_ICON,
@@ -33,15 +33,13 @@ from gnome_appfolders_manager.functions import (_,
                                                 text,
                                                 text_gtk30)
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-import gnome_appfolders_manager.preferences as preferences
-import gnome_appfolders_manager.settings as settings
-
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
 from gnome_appfolders_manager.models.folder_info import FolderInfo
-
+import gnome_appfolders_manager.preferences as preferences
+import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
 from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
