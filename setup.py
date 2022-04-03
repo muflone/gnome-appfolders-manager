@@ -224,6 +224,8 @@ setuptools.setup(
                                      for file
                                      in pathlib.Path('ui').glob('*')
                                      if not file.name.endswith('~')]),
+        ('share/metainfo',
+         ['data/com.muflone.gnome-appfolders-manager.metainfo.xml']),
     ],
     cmdclass={
         'install_scripts': Install_Scripts,

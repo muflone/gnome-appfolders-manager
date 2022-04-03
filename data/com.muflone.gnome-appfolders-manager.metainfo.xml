@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.muflone.gnome-appfolders-manager</id>
+
+  <name>GNOME App Folders Manager</name>
+  <summary>Manage GNOME Shell applications folders</summary>
+  <description>
+    <p>
+      From GNOME App Folders Manager you can define your custom GNOME Shell
+      folders to group your applications.
+    </p>
+  </description>
+
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <content_rating type="oars-1.0" />
+  <categories>
+    <category>Office</category>
+  </categories>
+  <url type="homepage">https://github.com/muflone/gnome-appfolders-manager</url>
+  <url type="help">https://www.muflone.com/gnome-appfolders-manager</url>
+  <url type="translate">https://www.transifex.com/projects/p/gnome-appfolders-manager/</url>
+  <url type="bugtracker">https://github.com/muflone/gnome-appfolders-manager/issues</url>
+  <url type="contact">http://www.muflone.com/contacts/</url>
+
+  <launchable type="desktop-id">gnome-appfolders-manager.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/add-applications.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/gnome-shell-appfolder.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/about.png</image>
+    </screenshot>
+  </screenshots>
+</component>
