@@ -321,58 +321,10 @@
     </accel-groups>
     <signal name="delete-event" handler="on_win_main_delete_event" swapped="no"/>
     <child>
-      <!-- n-columns=3 n-rows=3 -->
+      <!-- n-columns=3 n-rows=1 -->
       <object class="GtkGrid" id="grid_main">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <child>
-          <object class="GtkInfoBar" id="infobar">
-            <property name="app-paintable">True</property>
-            <property name="can-focus">False</property>
-            <property name="no-show-all">True</property>
-            <child internal-child="action_area">
-              <object class="GtkButtonBox" id="buttonbox_infobar">
-                <property name="can-focus">False</property>
-                <property name="layout-style">end</property>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child internal-child="content_area">
-              <object class="GtkBox" id="box_infobar">
-                <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkLabel" id="label_infobar">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label">MESSAGE</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
-            <property name="width">3</property>
-          </packing>
-        </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_files">
             <property name="visible">True</property>
@@ -414,7 +366,7 @@
           </object>
           <packing>
             <property name="left-attach">2</property>
-            <property name="top-attach">1</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
@@ -424,7 +376,7 @@
           </object>
           <packing>
             <property name="left-attach">1</property>
-            <property name="top-attach">1</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
@@ -476,17 +428,8 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">1</property>
+            <property name="top-attach">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

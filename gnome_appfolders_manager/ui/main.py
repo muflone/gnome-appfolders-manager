@@ -339,12 +339,6 @@ class UIMain(object):
             if action is widget:
                 preferences.set(setting_name, widget.get_active())
 
-    def on_action_preferences_need_restart_toggled(self, widget):
-        """Show the infobar to require application restart"""
-        self.ui.label_infobar.set_label(
-            _('The application must be restarted to apply the settings'))
-        self.ui.infobar.show()
-
     def on_action_preferences_show_missing_files_toggled(self, widget):
         """Show and hide the missing desktop files"""
         self.on_treeview_folders_cursor_changed(
