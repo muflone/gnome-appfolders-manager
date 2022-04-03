@@ -24,7 +24,7 @@ AppDir:
   path: ./AppDir
 
   app_info:
-    id: org.muflone.gnome-appfolders-manager
+    id: com.muflone.gnome-appfolders-manager
     name: gnome-appfolders-manager
     icon: gnome-appfolders-manager
     version: 0.4.3
