@@ -30,7 +30,8 @@ from gnome_appfolders_manager.constants import (APP_NAME,
 from gnome_appfolders_manager.functions import (_,
                                                 get_ui_file,
                                                 get_treeview_selected_row,
-                                                text)
+                                                text,
+                                                text_gtk30)
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 import gnome_appfolders_manager.preferences as preferences
 import gnome_appfolders_manager.settings as settings
@@ -72,12 +73,15 @@ class UIMain(object):
             self.ui.treeview_folders.set_cursor(0)
         self.ui.treeview_folders.grab_focus()
         # Restore the saved size and position
-        settings.positions.restore_window_position(self.ui.window,
-                                                   SECTION_WINDOW_NAME)
+        settings.positions.restore_window_position(window=self.ui.window,
+                                                   section=SECTION_WINDOW_NAME)
 
     def load_ui(self):
         """Load the interface UI"""
         self.ui = GtkBuilderLoader(get_ui_file('main.ui'))
+        # Initialize translations
+        self.ui.action_about.set_label(text_gtk30('About'))
+        self.ui.action_shortcuts.set_label(text_gtk30('Shortcuts'))
         # Initialize actions
         for widget in self.ui.get_objects_by_type(Gtk.Action):
             # Connect the actions accelerators
@@ -99,19 +103,26 @@ class UIMain(object):
         # Initialize Gtk.HeaderBar
         self.ui.header_bar.props.title = self.ui.window.get_title()
         self.ui.window.set_titlebar(self.ui.header_bar)
-        for button in (self.ui.button_folder_new, self.ui.button_folder_remove,
+        for button in (self.ui.button_folder_new,
+                       self.ui.button_folder_remove,
                        self.ui.button_folder_properties,
-                       self.ui.button_files_add, self.ui.button_files_remove,
-                       self.ui.button_files_save, self.ui.button_files_search,
-                       self.ui.button_about, ):
+                       self.ui.button_files_add,
+                       self.ui.button_files_remove,
+                       self.ui.button_files_save,
+                       self.ui.button_files_search,
+                       self.ui.button_about,
+                       self.ui.button_options):
             action = button.get_related_action()
-            # Get desired icon size
-            icon_size = Gtk.IconSize.BUTTON
+            if button in (self.ui.button_options, ):
+                icon_size = Gtk.IconSize.BUTTON
+            else:
+                icon_size = Gtk.IconSize.LARGE_TOOLBAR
             button.set_image(Gtk.Image.new_from_icon_name(
                 icon_name=action.get_icon_name(),
                 size=icon_size))
-            # Remove the button label
-            button.props.label = None
+            if not action.get_is_important():
+                # Remove the button label
+                button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
@@ -121,11 +132,11 @@ class UIMain(object):
         # Load settings
         self.dict_settings_map = {
             preferences.PREFERENCES_SHOW_MISSING:
-                self.ui.action_preferences_show_missing_files
+                self.ui.action_options_show_missing_files
         }
         for setting_name, action in self.dict_settings_map.items():
             action.set_active(preferences.get(setting_name))
-        # Connect signals from the glade file to the module functions
+        # Connect signals from the UI file to the module functions
         self.ui.connect_signals(self)
 
     def run(self):
@@ -134,8 +145,8 @@ class UIMain(object):
 
     def on_window_delete_event(self, widget, event):
         """Save the settings and close the application"""
-        settings.positions.save_window_position(self.ui.window,
-                                                SECTION_WINDOW_NAME)
+        settings.positions.save_window_position(window=self.ui.window,
+                                                section=SECTION_WINDOW_NAME)
         settings.positions.save()
         settings.settings.save()
         self.application.quit()
@@ -333,13 +344,13 @@ class UIMain(object):
                     self.model_folders.get_path_by_name(folder_name))
             dialog.destroy()
 
-    def on_action_preferences_toggled(self, widget):
-        """Change a preference value"""
+    def on_action_options_toggled(self, widget):
+        """Change an option value"""
         for setting_name, action in self.dict_settings_map.items():
             if action is widget:
                 preferences.set(setting_name, widget.get_active())
 
-    def on_action_preferences_show_missing_files_toggled(self, widget):
+    def on_action_options_show_missing_files_toggled(self, widget):
         """Show and hide the missing desktop files"""
         self.on_treeview_folders_cursor_changed(
             self.ui.treeview_folders)

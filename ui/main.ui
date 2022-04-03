@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.24"/>
   <object class="GtkAccelGroup" id="accelerators"/>
   <object class="GtkActionGroup" id="actions_application">
     <property name="accel-group">accelerators</property>
-    <child>
-      <object class="GtkAction" id="action_about">
-        <property name="short-label" comments="Use domain gtk30">_About</property>
-        <property name="icon-name">help-about</property>
-        <signal name="activate" handler="on_action_about_activate" swapped="no"/>
-      </object>
-    </child>
     <child>
       <object class="GtkAction" id="action_quit">
         <property name="short-label" comments="Use domain gtk30">_Quit</property>
@@ -19,6 +12,22 @@
         <signal name="activate" handler="on_action_quit_activate" swapped="no"/>
       </object>
       <accelerator key="q" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_about">
+        <property name="short-label" comments="Use domain gtk30">About</property>
+        <property name="icon-name">help-about</property>
+        <signal name="activate" handler="on_action_about_activate" swapped="no"/>
+      </object>
+      <accelerator key="F1"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_shortcuts">
+        <property name="short-label" comments="Use domain gtk30">Shortcuts</property>
+        <property name="icon-name">help-browser</property>
+        <signal name="activate" handler="on_action_shortcuts_activate" swapped="no"/>
+      </object>
+      <accelerator key="question" modifiers="GDK_CONTROL_MASK"/>
     </child>
   </object>
   <object class="GtkActionGroup" id="actions_files">
@@ -89,29 +98,50 @@
       <accelerator key="Return" modifiers="GDK_MOD1_MASK"/>
     </child>
   </object>
-  <object class="GtkActionGroup" id="actions_preferences">
+  <object class="GtkActionGroup" id="actions_options">
     <property name="accel-group">accelerators</property>
     <child>
-      <object class="GtkAction" id="action_preferences_menu">
-        <property name="short-label" comments="Use domain gtk30">Preferences</property>
-        <property name="icon-name">preferences-desktop</property>
+      <object class="GtkAction" id="action_options">
+        <property name="short-label" comments="Use domain gtk30">Options</property>
+        <property name="icon-name">applications-system-symbolic</property>
       </object>
     </child>
     <child>
-      <object class="GtkToggleAction" id="action_preferences_show_missing_files">
+      <object class="GtkToggleAction" id="action_options_show_missing_files">
         <property name="short-label" translatable="yes">Show missing _files</property>
-        <signal name="toggled" handler="on_action_preferences_show_missing_files_toggled" after="yes" swapped="no"/>
-        <signal name="toggled" handler="on_action_preferences_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_action_options_show_missing_files_toggled" after="yes" swapped="no"/>
+        <signal name="toggled" handler="on_action_options_toggled" swapped="no"/>
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu_preferences">
+  <object class="GtkMenu" id="menu_options">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <child>
       <object class="GtkCheckMenuItem" id="menuitem_show_missing_files">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_preferences_show_missing_files</property>
+        <property name="related-action">action_options_show_missing_files</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_shortcuts">
+        <property name="related-action">action_shortcuts</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_about">
+        <property name="related-action">action_about</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="use-underline">True</property>
@@ -121,6 +151,8 @@
   <object class="GtkHeaderBar" id="header_bar">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
+    <property name="title">GNOME AppFolders Manager</property>
+    <property name="has-subtitle">False</property>
     <property name="show-close-button">True</property>
     <child>
       <object class="GtkLabel" id="label_folders">
@@ -132,138 +164,52 @@
     </child>
     <child>
       <object class="GtkButton" id="button_folder_new">
-        <property name="use-action-appearance">True</property>
+        <property name="label">Create</property>
         <property name="related-action">action_folders_new</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
+        <property name="relief">none</property>
       </object>
       <packing>
         <property name="position">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="button_folder_remove">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_folders_remove</property>
+      <object class="GtkButton" id="button_folder_properties">
+        <property name="label">Properties</property>
+        <property name="related-action">action_folders_properties</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
+        <property name="relief">none</property>
+        <property name="use-underline">True</property>
       </object>
       <packing>
         <property name="position">2</property>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="button_folder_properties">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_folders_properties</property>
+      <object class="GtkButton" id="button_folder_remove">
+        <property name="label">Remove</property>
+        <property name="related-action">action_folders_remove</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
-        <property name="use-underline">True</property>
+        <property name="relief">none</property>
       </object>
       <packing>
         <property name="position">3</property>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="button_about">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_about</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="use-underline">True</property>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">4</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkMenuButton" id="button_preferences">
-        <property name="related-action">action_preferences_menu</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="popup">menu_preferences</property>
-        <child>
-          <object class="GtkImage" id="image_preferences">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="icon-name">emblem-system</property>
-            <property name="use-fallback">True</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator" id="separator_header">
+      <object class="GtkSeparator">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-end">7</property>
       </object>
       <packing>
-        <property name="pack-type">end</property>
-        <property name="position">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="button_files_search">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_files_search</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="use-underline">True</property>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="button_files_save">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_files_save</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="use-underline">True</property>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="button_files_remove">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_files_remove</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">9</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="button_files_add">
-        <property name="use-action-appearance">True</property>
-        <property name="related-action">action_files_new</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">10</property>
+        <property name="position">4</property>
       </packing>
     </child>
     <child>
@@ -271,6 +217,92 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="label">Files:</property>
+        <property name="use-underline">True</property>
+      </object>
+      <packing>
+        <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_files_add">
+        <property name="label">New</property>
+        <property name="related-action">action_files_new</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="position">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_files_remove">
+        <property name="label">Delete</property>
+        <property name="related-action">action_files_remove</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="position">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_files_save">
+        <property name="label">Save</property>
+        <property name="related-action">action_files_save</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
+        <property name="use-underline">True</property>
+      </object>
+      <packing>
+        <property name="position">8</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="button_options">
+        <property name="related-action">action_options</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
+        <property name="popup">menu_options</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">9</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_about">
+        <property name="label">About</property>
+        <property name="related-action">action_about</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
+        <property name="use-underline">True</property>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">10</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="button_files_search">
+        <property name="label">Search</property>
+        <property name="related-action">action_files_search</property>
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="relief">none</property>
         <property name="use-underline">True</property>
       </object>
       <packing>
@@ -321,64 +353,9 @@
     </accel-groups>
     <signal name="delete-event" handler="on_window_delete_event" swapped="no"/>
     <child>
-      <!-- n-columns=3 n-rows=1 -->
-      <object class="GtkGrid" id="grid_main">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <child>
-          <object class="GtkScrolledWindow" id="scrolled_files">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
-            <child>
-              <object class="GtkTreeView" id="treeview_applications">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="model">store_applications</property>
-                <property name="headers-clickable">False</property>
-                <property name="search-column">1</property>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview_selection_applications">
-                    <signal name="changed" handler="on_treeview_selection_applications_changed" swapped="no"/>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="treeview_column_applications">
-                    <property name="title" translatable="yes">Applications</property>
-                    <property name="sort-column-id">1</property>
-                    <child>
-                      <object class="GtkCellRendererPixbuf" id="cell_application_icon"/>
-                      <attributes>
-                        <attribute name="pixbuf">4</attribute>
-                      </attributes>
-                    </child>
-                    <child>
-                      <object class="GtkCellRendererText" id="cell_application_description"/>
-                      <attributes>
-                        <attribute name="markup">3</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left-attach">2</property>
-            <property name="top-attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator" id="separator_main">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">0</property>
-          </packing>
-        </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_folders">
             <property name="width-request">250</property>
@@ -427,8 +404,63 @@
             </child>
           </object>
           <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_files">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <child>
+              <object class="GtkTreeView" id="treeview_applications">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="model">store_applications</property>
+                <property name="headers-clickable">False</property>
+                <property name="search-column">1</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeview_column_applications">
+                    <property name="title" translatable="yes">Applications</property>
+                    <property name="sort-column-id">1</property>
+                    <child>
+                      <object class="GtkCellRendererPixbuf" id="cell_application_icon"/>
+                      <attributes>
+                        <attribute name="pixbuf">4</attribute>
+                      </attributes>
+                    </child>
+                    <child>
+                      <object class="GtkCellRendererText" id="cell_application_description"/>
+                      <attributes>
+                        <attribute name="markup">3</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

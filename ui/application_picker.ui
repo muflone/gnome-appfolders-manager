@@ -49,7 +49,7 @@
     <property name="can-focus">False</property>
     <child>
       <object class="GtkButton" id="button_close">
-        <property name="use-action-appearance">True</property>
+        <property name="label">Close</property>
         <property name="related-action">action_close</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
@@ -58,7 +58,7 @@
     </child>
     <child>
       <object class="GtkButton" id="button_add">
-        <property name="use-action-appearance">True</property>
+        <property name="label">Add applications</property>
         <property name="related-action">action_add</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
@@ -74,6 +74,7 @@
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
+        <property name="relief">none</property>
         <property name="draw-indicator">True</property>
         <property name="popup">menu_options</property>
         <child>
@@ -91,11 +92,12 @@
     </child>
     <child>
       <object class="GtkButton" id="button_search">
-        <property name="use-action-appearance">True</property>
+        <property name="label">Search</property>
         <property name="related-action">action_search</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
+        <property name="relief">none</property>
         <property name="use-underline">True</property>
       </object>
       <packing>
@@ -125,7 +127,7 @@
   <object class="GtkTreeModelFilter" id="filter_applications">
     <property name="child-model">store_applications</property>
   </object>
-  <object class="GtkDialog" id="dialog_application_picker">
+  <object class="GtkDialog" id="dialog">
     <property name="can-focus">False</property>
     <property name="default-width">528</property>
     <property name="default-height">245</property>

@@ -31,53 +31,6 @@ from gnome_appfolders_manager.constants import DIR_UI
 localized_messages = {}
 
 
-def readlines(filename, empty_lines=False):
-    """Read all the lines of a filename, optionally skipping empty lines"""
-    result = []
-    with open(filename) as f:
-        for line in f.readlines():
-            line = line.strip()
-            if line or empty_lines:
-                result.append(line)
-        f.close()
-    return result
-
-
-def text(message, gtk30=False, context=None):
-    """Return a translated message and cache it for reuse"""
-    if message not in localized_messages:
-        if gtk30:
-            # Get a message translated from GTK+ 3 domain
-            full_message = message if not context else f'{context}\04{message}'
-            localized_messages[message] = dgettext('gtk30', full_message)
-            # Fix for untranslated messages with context
-            if context and localized_messages[message] == full_message:
-                localized_messages[message] = dgettext('gtk30', message)
-        else:
-            localized_messages[message] = gettext(message)
-    return localized_messages[message]
-
-
-def store_message(message, translated):
-    """Store a translated message in the localized_messages list"""
-    localized_messages[message] = translated
-
-
-def get_ui_file(filename):
-    """Return the full path of a Glade/UI file"""
-    return str(DIR_UI / filename)
-
-
-def get_treeview_selected_row(widget):
-    """Return the selected row in a GtkTreeView"""
-    return widget.get_selection().get_selected()[1]
-
-
-def get_treeview_selected_rows(widget):
-    """Return the selected rows in a GtkTreeView"""
-    return widget.get_selection().get_selected_rows()[1]
-
-
 def get_pixbuf_from_icon_name(icon_name, size):
     """Get a Gdk.PixBuf from a theme icon"""
     theme = Gtk.IconTheme.get_default()
@@ -124,24 +77,63 @@ def get_pixbuf_from_icon_name(icon_name, size):
     return icon
 
 
+def get_treeview_selected_row(widget):
+    """Return the selected row in a GtkTreeView"""
+    return widget.get_selection().get_selected()[1]
+
+
+def get_treeview_selected_rows(widget):
+    """Return the selected rows in a GtkTreeView"""
+    return widget.get_selection().get_selected_rows()[1]
+
+
+def get_ui_file(filename):
+    """Return the full path of a Glade/UI file"""
+    return str(DIR_UI / filename)
+
+
+def readlines(filename, empty_lines=False):
+    """Read all the lines of a filename, optionally skipping empty lines"""
+    result = []
+    with open(filename) as f:
+        for line in f.readlines():
+            line = line.strip()
+            if line or empty_lines:
+                result.append(line)
+        f.close()
+    return result
+
+
 def set_style_suggested_action(widget):
     """Add the suggested-action style to a widget"""
     widget.get_style_context().add_class("suggested-action")
 
 
+def store_message(message, translated):
+    """Store a translated message in the localized_messages list"""
+    localized_messages[message] = translated
+
+
+def text(message, gtk30=False, context=None):
+    """Return a translated message and cache it for reuse"""
+    if message not in localized_messages:
+        if gtk30:
+            # Get a message translated from GTK+ 3 domain
+            full_message = message if not context else f'{context}\04{message}'
+            localized_messages[message] = dgettext('gtk30', full_message)
+            # Fix for untranslated messages with context
+            if context and localized_messages[message] == full_message:
+                localized_messages[message] = dgettext('gtk30', message)
+        else:
+            localized_messages[message] = gettext(message)
+    return localized_messages[message]
+
+
+def text_gtk30(message, context=None):
+    """Return a translated text from GTK+ 3.0"""
+    return text(message=message, gtk30=True, context=context)
+
+
 # This special alias is used to track localization requests to catch
 # by xgettext. The text() calls aren't tracked by xgettext
 _ = text
-
-__all__ = [
-    'readlines',
-    'text',
-    'store_message',
-    '_',
-    'localized_messages',
-    'get_ui_file',
-    'get_treeview_selected_row',
-    'get_treeview_selected_rows',
-    'get_pixbuf_from_icon_name',
-    'set_style_suggested_action'
-]

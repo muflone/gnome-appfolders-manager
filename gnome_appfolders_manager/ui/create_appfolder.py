@@ -34,7 +34,7 @@ class UICreateAppFolder(object):
         """Prepare the AppFolder creation dialog"""
         # Load the user interface
         self.ui = GtkBuilderLoader(get_ui_file('create_appfolder.ui'))
-        self.ui.dialog_create_appfolder.set_titlebar(self.ui.header_bar)
+        self.ui.dialog.set_titlebar(self.ui.header_bar)
         # Initialize actions
         for widget in self.ui.get_objects_by_type(Gtk.Action):
             # Connect the actions accelerators
@@ -54,19 +54,19 @@ class UICreateAppFolder(object):
             if action:
                 widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
-        self.ui.dialog_create_appfolder.set_transient_for(parent)
+        self.ui.dialog.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_ok)
         self.existing_folders = existing_folders
         self.ui.button_ok.grab_default()
         self.folder_name = ''
         self.folder_title = ''
-        # Connect signals from the glade file to the module functions
+        # Connect signals from the UI file to the module functions
         self.ui.connect_signals(self)
 
     def show(self, name, title):
         """Show the dialog"""
-        settings.positions.restore_window_position(
-            self.ui.dialog_create_appfolder, SECTION_WINDOW_NAME)
+        settings.positions.restore_window_position(window=self.ui.dialog,
+                                                   section=SECTION_WINDOW_NAME)
         # Set initial values
         self.folder_name = name
         self.ui.entry_name.set_text(name)
@@ -78,26 +78,26 @@ class UICreateAppFolder(object):
             self.ui.button_ok.set_related_action(self.ui.action_save)
             self.ui.button_ok.set_tooltip_text(
                 self.ui.action_save.get_label().replace('_', ''))
-        response = self.ui.dialog_create_appfolder.run()
-        self.ui.dialog_create_appfolder.hide()
+        response = self.ui.dialog.run()
+        self.ui.dialog.hide()
         return response
 
     def destroy(self):
         """Destroy the dialog"""
-        settings.positions.save_window_position(
-            self.ui.dialog_create_appfolder, SECTION_WINDOW_NAME)
-        self.ui.dialog_create_appfolder.destroy()
-        self.ui.dialog_create_appfolder = None
+        settings.positions.save_window_position(window=self.ui.dialog,
+                                                section=SECTION_WINDOW_NAME)
+        self.ui.dialog.destroy()
+        self.ui.dialog = None
 
     def on_action_close_activate(self, action):
         """Close the dialog"""
-        self.ui.dialog_create_appfolder.response(Gtk.ResponseType.CLOSE)
+        self.ui.dialog.response(Gtk.ResponseType.CLOSE)
 
     def on_action_confirm_activate(self, action):
         """Accept the folder name and title and close the dialog"""
         self.folder_name = self.ui.entry_name.get_text().strip()
         self.folder_title = self.ui.entry_title.get_text().strip()
-        self.ui.dialog_create_appfolder.response(Gtk.ResponseType.OK)
+        self.ui.dialog.response(Gtk.ResponseType.OK)
 
     def on_entry_name_changed(self, widget):
         """Check if the folder already exists"""

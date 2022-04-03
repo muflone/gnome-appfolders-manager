@@ -28,7 +28,7 @@
     <property name="can-focus">False</property>
     <child>
       <object class="GtkButton" id="button_close">
-        <property name="use-action-appearance">True</property>
+        <property name="label">Close</property>
         <property name="related-action">action_close</property>
         <property name="visible">True</property>
         <property name="can-focus">True</property>
@@ -38,6 +38,7 @@
     </child>
     <child>
       <object class="GtkButton" id="button_ok">
+        <property name="label">Create folder</property>
         <property name="use-action-appearance">True</property>
         <property name="related-action">action_create</property>
         <property name="visible">True</property>
@@ -52,7 +53,7 @@
       </packing>
     </child>
   </object>
-  <object class="GtkDialog" id="dialog_create_appfolder">
+  <object class="GtkDialog" id="dialog">
     <property name="can-focus">False</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">

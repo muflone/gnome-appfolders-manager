@@ -41,7 +41,7 @@ class UIApplicationPicker(object):
         """Prepare the application picker dialog"""
         # Load the user interface
         self.ui = GtkBuilderLoader(get_ui_file('application_picker.ui'))
-        self.ui.dialog_application_picker.set_titlebar(self.ui.header_bar)
+        self.ui.dialog.set_titlebar(self.ui.header_bar)
         # Prepares the models for the applications
         self.model_applications = ModelApplications(self.ui.store_applications)
         self.model_applications.model.set_sort_column_id(
@@ -57,32 +57,28 @@ class UIApplicationPicker(object):
             label = widget.get_label()
             if not label:
                 label = widget.get_short_label()
-            widget.set_short_label(text(label))
             widget.set_label(text(label))
+            widget.set_short_label(label)
         # Initialize tooltips
         for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()
             if action:
                 widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
-        self.ui.dialog_application_picker.set_transient_for(parent)
+        self.ui.dialog.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)
         self.selected_applications = None
         # Initialize Gtk.HeaderBar
         for button in (self.ui.button_search, ):
             action = button.get_related_action()
-            icon_name = action.get_icon_name()
-            # Get desired icon size
-            button.set_image(Gtk.Image.new_from_icon_name(icon_name,
-                                                          Gtk.IconSize.BUTTON))
-            # Remove the button label
-            button.props.label = None
+            button.set_image(Gtk.Image.new_from_icon_name(
+                icon_name=action.get_icon_name(),
+                size=Gtk.IconSize.LARGE_TOOLBAR))
+            if not action.get_is_important():
+                # Remove the button label
+                button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
-        # Set preferences button icon
-        icon_name = self.ui.image_preferences.get_icon_name()[0]
-        self.ui.image_preferences.set_from_icon_name(icon_name,
-                                                     Gtk.IconSize.BUTTON)
         # Load settings
         self.dict_settings_map = {
             preferences.APP_PICKER_SHOW_HIDDEN:
@@ -116,27 +112,27 @@ class UIApplicationPicker(object):
                 logging.error(f'{desktop_entry.get_id()}: {e}')
         self.model_applications.set_all_rows_visibility(
             preferences.get(preferences.APP_PICKER_SHOW_HIDDEN))
-        # Connect signals from the glade file to the module functions
+        # Connect signals from the UI file to the module functions
         self.ui.connect_signals(self)
 
     def show(self):
         """Show the application picker dialog"""
-        settings.positions.restore_window_position(
-            self.ui.dialog_application_picker, SECTION_WINDOW_NAME)
-        response = self.ui.dialog_application_picker.run()
-        self.ui.dialog_application_picker.hide()
+        settings.positions.restore_window_position(window=self.ui.dialog,
+                                                   section=SECTION_WINDOW_NAME)
+        response = self.ui.dialog.run()
+        self.ui.dialog.hide()
         return response
 
     def destroy(self):
         """Destroy the application picker dialog"""
-        settings.positions.save_window_position(
-            self.ui.dialog_application_picker, SECTION_WINDOW_NAME)
-        self.ui.dialog_application_picker.destroy()
-        self.ui.dialog_application_picker = None
+        settings.positions.save_window_position(window=self.ui.dialog,
+                                                section=SECTION_WINDOW_NAME)
+        self.ui.dialog.destroy()
+        self.ui.dialog = None
 
     def on_action_close_activate(self, action):
         """Close the application picker dialog"""
-        self.ui.dialog_application_picker.response(Gtk.ResponseType.CLOSE)
+        self.ui.dialog.response(Gtk.ResponseType.CLOSE)
 
     def on_action_add_activate(self, action):
         """Add the selected application to the current AppFolder"""
@@ -145,7 +141,7 @@ class UIApplicationPicker(object):
             application = self.model_applications.get_key(
                 self.ui.filter_applications.convert_path_to_child_path(row))
             self.selected_applications.append(application)
-        self.ui.dialog_application_picker.response(Gtk.ResponseType.OK)
+        self.ui.dialog.response(Gtk.ResponseType.OK)
 
     def on_treeview_applications_row_activated(self, widget, path, column):
         """Add the selected application on row activation"""
