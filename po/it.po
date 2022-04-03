@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 04:29+0200\n"
+"POT-Creation-Date: 2022-04-03 16:04+0200\n"
 "PO-Revision-Date: 2016-05-22 15:17+0000\n"
 "Last-Translator: Fabio Castelli (Muflone) <muflone(at)muflone.com>\n"
 "Language-Team: Italian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/it/)\n"
@@ -34,11 +34,11 @@ msgstr "Gestisci le cartelle delle applicazioni di GNOME Shell"
 msgid "Contributors:"
 msgstr "Contributi:"
 
-#: gnome_appfolders_manager/ui/main.py:292
+#: gnome_appfolders_manager/ui/main.py:290
 msgid "Remove the selected folder?"
 msgstr "Rimuovere la cartella selezionata?"
 
-#: gnome_appfolders_manager/ui/main.py:293
+#: gnome_appfolders_manager/ui/main.py:291
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Sei sicuro di voler rimuovere la cartella {FOLDER}?"
@@ -47,7 +47,7 @@ msgstr "Sei sicuro di voler rimuovere la cartella {FOLDER}?"
 msgid "_Add applications"
 msgstr "_Aggiungi applicazioni"
 
-#: ui/application_picker.ui:139 ui/main.ui:457
+#: ui/application_picker.ui:139 ui/main.ui:464
 msgid "Applications"
 msgstr "Applicazioni"
 
@@ -63,15 +63,15 @@ msgstr "Mostra _scorciatoie di tastiera"
 msgid "Title:"
 msgstr "Titolo:"
 
-#: ui/main.ui:111
+#: ui/main.ui:118
 msgid "Show missing _files"
 msgstr "Mostra _file mancanti"
 
-#: ui/main.ui:175
+#: ui/main.ui:182
 msgid "Folders:"
 msgstr "Cartelle:"
 
-#: ui/main.ui:402 ui/shortcuts.ui:45
+#: ui/main.ui:409 ui/shortcuts.ui:52
 msgid "Folders"
 msgstr "Cartelle"
 
@@ -80,25 +80,29 @@ msgid "Show the about dialog"
 msgstr "Mostra la finestra informazioni"
 
 #: ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr "Apre il menu opzioni"
+
+#: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
 msgstr "Mostra la finestra delle scorciatoie"
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Create a new folder"
 msgstr "Crea una nuova cartella"
 
-#: ui/shortcuts.ui:57
+#: ui/shortcuts.ui:64
 msgid "Remove the currently selected folder"
 msgstr "Rimuove la cartella attualmente selezionata"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Add a new file"
 msgstr "Aggiunge un nuovo file"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Remove the selected file"
 msgstr "Rimuove il file selezionato"
 
-#: ui/shortcuts.ui:86
+#: ui/shortcuts.ui:93
 msgid "Search file in the current folder"
 msgstr "Cerca file nella cartella corrente"

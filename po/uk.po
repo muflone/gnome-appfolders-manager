@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 04:29+0200\n"
+"POT-Creation-Date: 2022-04-03 16:04+0200\n"
 "PO-Revision-Date: 2017-04-22 22:24+0100\n"
 "Last-Translator: edshevsky <ed.shevsky(at)gmail.com>\n"
 "Language-Team: Ukrainian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/uk/)\n"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Contributors:"
 msgstr "Автори:"
 
-#: gnome_appfolders_manager/ui/main.py:292
+#: gnome_appfolders_manager/ui/main.py:290
 msgid "Remove the selected folder?"
 msgstr "Видалити позначені теки?"
 
-#: gnome_appfolders_manager/ui/main.py:293
+#: gnome_appfolders_manager/ui/main.py:291
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Ви впевнені, що хочете видалити теку {FOLDER}?"
@@ -47,7 +47,7 @@ msgstr "Ви впевнені, що хочете видалити теку {FOLD
 msgid "_Add applications"
 msgstr "Додати _програми"
 
-#: ui/application_picker.ui:139 ui/main.ui:457
+#: ui/application_picker.ui:139 ui/main.ui:464
 msgid "Applications"
 msgstr "Програми"
 
@@ -63,15 +63,15 @@ msgstr "Показати клавіатурні _скорочення"
 msgid "Title:"
 msgstr "Назва"
 
-#: ui/main.ui:111
+#: ui/main.ui:118
 msgid "Show missing _files"
 msgstr "Показати відсутні файли"
 
-#: ui/main.ui:175
+#: ui/main.ui:182
 msgid "Folders:"
 msgstr "Теки:"
 
-#: ui/main.ui:402 ui/shortcuts.ui:45
+#: ui/main.ui:409 ui/shortcuts.ui:52
 msgid "Folders"
 msgstr "Теки"
 
@@ -80,25 +80,29 @@ msgid "Show the about dialog"
 msgstr "Показати інформаційне вікно"
 
 #: ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr ""
+
+#: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
 msgstr ""
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Create a new folder"
 msgstr "Створити нову теку"
 
-#: ui/shortcuts.ui:57
+#: ui/shortcuts.ui:64
 msgid "Remove the currently selected folder"
 msgstr "Видалити обрану папку"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Add a new file"
 msgstr "Додати новий файл"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Remove the selected file"
 msgstr "Видалити позначений файл"
 
-#: ui/shortcuts.ui:86
+#: ui/shortcuts.ui:93
 msgid "Search file in the current folder"
 msgstr ""

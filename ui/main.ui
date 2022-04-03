@@ -107,6 +107,13 @@
       </object>
     </child>
     <child>
+      <object class="GtkAction" id="action_options_menu">
+        <property name="short-label" comments="Use domain gtk30">Options</property>
+        <signal name="activate" handler="on_action_options_menu_activate" swapped="no"/>
+      </object>
+      <accelerator key="F10"/>
+    </child>
+    <child>
       <object class="GtkToggleAction" id="action_options_show_missing_files">
         <property name="short-label" translatable="yes">Show missing _files</property>
         <signal name="toggled" handler="on_action_options_show_missing_files_toggled" after="yes" swapped="no"/>

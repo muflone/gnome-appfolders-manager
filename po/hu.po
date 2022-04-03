@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 04:29+0200\n"
+"POT-Creation-Date: 2022-04-03 16:04+0200\n"
 "PO-Revision-Date: 2018-02-03 12:48+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs(at)fsf.hu>\n"
 "Language-Team: Hungarian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/hu/)\n"
@@ -34,11 +34,11 @@ msgstr "GNOME alkalmazásmappák kezelése"
 msgid "Contributors:"
 msgstr "Közreműködők:"
 
-#: gnome_appfolders_manager/ui/main.py:292
+#: gnome_appfolders_manager/ui/main.py:290
 msgid "Remove the selected folder?"
 msgstr "Eltávolítja a kiválasztott mappát?"
 
-#: gnome_appfolders_manager/ui/main.py:293
+#: gnome_appfolders_manager/ui/main.py:291
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Valóban törli a(z) {FOLDER} mappát?"
@@ -47,7 +47,7 @@ msgstr "Valóban törli a(z) {FOLDER} mappát?"
 msgid "_Add applications"
 msgstr "Alkalmazások _hozzáadása"
 
-#: ui/application_picker.ui:139 ui/main.ui:457
+#: ui/application_picker.ui:139 ui/main.ui:464
 msgid "Applications"
 msgstr "Alkalmazások"
 
@@ -63,15 +63,15 @@ msgstr "Gyors_billentyűk megjelenítése"
 msgid "Title:"
 msgstr "Cím:"
 
-#: ui/main.ui:111
+#: ui/main.ui:118
 msgid "Show missing _files"
 msgstr "Hiányzó _fájlok megjelenítése"
 
-#: ui/main.ui:175
+#: ui/main.ui:182
 msgid "Folders:"
 msgstr "Mappák:"
 
-#: ui/main.ui:402 ui/shortcuts.ui:45
+#: ui/main.ui:409 ui/shortcuts.ui:52
 msgid "Folders"
 msgstr "Mappák"
 
@@ -80,25 +80,29 @@ msgid "Show the about dialog"
 msgstr "Névjegyablak megjelenítése"
 
 #: ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr ""
+
+#: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
 msgstr ""
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Create a new folder"
 msgstr "Új mappa létrehozása"
 
-#: ui/shortcuts.ui:57
+#: ui/shortcuts.ui:64
 msgid "Remove the currently selected folder"
 msgstr "A jelenleg kiválasztott mappa eltávolítása"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Add a new file"
 msgstr "Új fájl hozzáadása"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Remove the selected file"
 msgstr "A kiválasztott fájl eltávolítása"
 
-#: ui/shortcuts.ui:86
+#: ui/shortcuts.ui:93
 msgid "Search file in the current folder"
 msgstr ""

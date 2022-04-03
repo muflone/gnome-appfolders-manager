@@ -344,6 +344,10 @@ class UIMain(object):
                     self.model_folders.get_path_by_name(folder_name))
             dialog.destroy()
 
+    def on_action_options_menu_activate(self, widget):
+        """Open the options menu"""
+        self.ui.button_options.emit('clicked')
+
     def on_action_options_toggled(self, widget):
         """Change an option value"""
         for setting_name, action in self.dict_settings_map.items():
