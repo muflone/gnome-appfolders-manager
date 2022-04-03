@@ -79,13 +79,6 @@ class UIApplicationPicker(object):
                 button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
-        # Load settings
-        self.dict_settings_map = {
-            preferences.APP_PICKER_SHOW_HIDDEN:
-                self.ui.action_show_hidden
-        }
-        for setting_name, action in self.dict_settings_map.items():
-            action.set_active(preferences.get(setting_name))
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:
@@ -152,17 +145,6 @@ class UIApplicationPicker(object):
         selected_rows = get_treeview_selected_rows(
             self.ui.treeview_applications)
         self.ui.action_add.set_sensitive(bool(selected_rows))
-
-    def on_action_preferences_toggled(self, widget):
-        """Change a preference value"""
-        for setting_name, action in self.dict_settings_map.items():
-            if action is widget:
-                preferences.set(setting_name, widget.get_active())
-
-    def on_action_show_hidden_toggled(self, widget):
-        """Set the visibility for all the Gtk.TreeModelRows"""
-        self.model_applications.set_all_rows_visibility(
-            self.ui.action_show_hidden.get_active())
 
     def on_action_search_activate(self, action):
         """Start interactive files search"""

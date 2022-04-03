@@ -113,6 +113,12 @@
         <signal name="toggled" handler="on_action_options_toggled" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkToggleAction" id="action_options_show_hidden_files">
+        <property name="short-label" comments="Use domain gtk30">Show _Hidden Files</property>
+        <signal name="toggled" handler="on_action_options_toggled" swapped="no"/>
+      </object>
+    </child>
   </object>
   <object class="GtkMenu" id="menu_options">
     <property name="visible">True</property>
@@ -120,6 +126,14 @@
     <child>
       <object class="GtkCheckMenuItem" id="menuitem_show_missing_files">
         <property name="related-action">action_options_show_missing_files</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_show_hidden_files">
+        <property name="related-action">action_options_show_hidden_files</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="use-underline">True</property>

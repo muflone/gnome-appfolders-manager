@@ -132,7 +132,9 @@ class UIMain(object):
         # Load settings
         self.dict_settings_map = {
             preferences.PREFERENCES_SHOW_MISSING:
-                self.ui.action_options_show_missing_files
+                self.ui.action_options_show_missing_files,
+            preferences.APP_PICKER_SHOW_HIDDEN:
+                self.ui.action_options_show_hidden_files
         }
         for setting_name, action in self.dict_settings_map.items():
             action.set_active(preferences.get(setting_name))
