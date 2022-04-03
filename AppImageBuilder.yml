@@ -1,5 +1,8 @@
 version: 1
 script:
+  # Install dependencies
+  - apt-get update
+  - apt-get install --yes gettext python3 python3-gi python3-xdg gir1.2-gtk-3.0
   # Remove any previous build
   - rm -rf AppDir root | true
   # Compile the package
