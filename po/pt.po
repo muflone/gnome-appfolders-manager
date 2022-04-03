@@ -1,0 +1,103 @@
+# GNOME AppFolders Manager
+# Manage GNOME Shell applications folders
+# Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
+# Website: https://www.muflone.com/gnome-appfolders-manager/
+# This file is distributed under the same license as the GNOME App Folders Manager package.
+# Portuguese translation for GNOME AppFolders Manager
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME AppFolders Manager\n"
+"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
+"POT-Creation-Date: 2022-04-03 04:29+0200\n"
+"PO-Revision-Date: 2016-05-15 21:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese (http://www.transifex.com/muflone/gnome-appfolders-manager/language/pt/)\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gnome_appfolders_manager/ui/about.py:54
+#, python-brace-format
+msgid "Version {VERSION}"
+msgstr "Versão {VERSION}"
+
+#: gnome_appfolders_manager/ui/about.py:57
+msgid "Manage GNOME Shell applications folders"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:66
+msgid "Contributors:"
+msgstr "Contribuidores:"
+
+#: gnome_appfolders_manager/ui/main.py:292
+msgid "Remove the selected folder?"
+msgstr "Remover a categoria selecionada?"
+
+#: gnome_appfolders_manager/ui/main.py:293
+#, python-brace-format
+msgid "Are you sure you want to remove the folder {FOLDER}?"
+msgstr "Tem certeza que deseja remover a categoria {FOLDER}?"
+
+#: ui/application_picker.ui:8
+msgid "_Add applications"
+msgstr "_Adicionar aplicativos"
+
+#: ui/application_picker.ui:139 ui/main.ui:457
+msgid "Applications"
+msgstr "Aplicativos"
+
+#: ui/appmenu.ui:6
+msgid "_About GNOME App Folders Manager"
+msgstr "_Sobre o GNOME App Folders Manager"
+
+#: ui/appmenu.ui:11
+msgid "Show keyboard _shortcuts"
+msgstr "Mostrar _atalhos de teclado"
+
+#: ui/create_appfolder.ui:124
+msgid "Title:"
+msgstr "Título:"
+
+#: ui/main.ui:111
+msgid "Show missing _files"
+msgstr "Mostrar _arquivos perdidos"
+
+#: ui/main.ui:175
+msgid "Folders:"
+msgstr "Categorias:"
+
+#: ui/main.ui:402 ui/shortcuts.ui:45
+msgid "Folders"
+msgstr "Categorias"
+
+#: ui/shortcuts.ui:21
+msgid "Show the about dialog"
+msgstr "Mostrar diálogo sobre"
+
+#: ui/shortcuts.ui:28
+msgid "Show the shortcuts dialog"
+msgstr ""
+
+#: ui/shortcuts.ui:50
+msgid "Create a new folder"
+msgstr "Criar nova categoria"
+
+#: ui/shortcuts.ui:57
+msgid "Remove the currently selected folder"
+msgstr "Remover categoria selecionada"
+
+#: ui/shortcuts.ui:72
+msgid "Add a new file"
+msgstr "Adicionar um novo arquivo"
+
+#: ui/shortcuts.ui:79
+msgid "Remove the selected file"
+msgstr "Remover o arquivo selecionado"
+
+#: ui/shortcuts.ui:86
+msgid "Search file in the current folder"
+msgstr ""
