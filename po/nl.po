@@ -78,7 +78,7 @@ msgstr "Toon het venster ‘Over’"
 
 #: ui/shortcuts.ui:28
 msgid "Show the shortcuts dialog"
-msgstr "Toon het sneltoetsvenster"
+msgstr "Toon het sneltoetsenvenster"
 
 #: ui/shortcuts.ui:50
 msgid "Create a new folder"
