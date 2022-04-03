@@ -16,6 +16,9 @@ script:
   - cp -r root/usr/local/share/locale AppDir/usr/share
   - mkdir -p AppDir/usr/share/doc
   - cp -r root/usr/local/share/doc/gnome-appfolders-manager AppDir/usr/share/doc
+  # Add AppStream metainfo data
+  - install -m 755 -d AppDir/usr/share/metainfo
+  - install -m 644 root/usr/local/share/metainfo/com.muflone.gnome-appfolders-manager.metainfo.xml AppDir/usr/share/metainfo/com.muflone.gnome-appfolders-manager.appdata.xml
   # Copy icon
   - install -m 755 -d AppDir/usr/share/icons/hicolor/scalable/apps/
   - install -m 644 -t AppDir/usr/share/icons/hicolor/scalable/apps/ icons/scalable/gnome-appfolders-manager.svg
