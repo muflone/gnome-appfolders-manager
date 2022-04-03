@@ -1,0 +1,78 @@
+version: 1
+script:
+  # Remove any previous build
+  - rm -rf AppDir root | true
+  # Compile the package
+  - python3 setup.py install --root root
+  # Copy the python application code into the AppDir
+  - install -m 755 -d AppDir/usr/share/gnome-appfolders-manager
+  - cp gnome-appfolders-manager.py AppDir/usr/share/gnome-appfolders-manager
+  - cp -r root/usr/local/lib/python3.6/dist-packages/gnome_appfolders_manager AppDir/usr/share/gnome-appfolders-manager
+  - cp -r root/usr/local/share/gnome-appfolders-manager/ui AppDir/usr/share/gnome-appfolders-manager
+  - cp -r root/usr/local/share/gnome-appfolders-manager/data AppDir/usr/share/gnome-appfolders-manager
+  - cp -r root/usr/local/share/locale AppDir/usr/share
+  - mkdir -p AppDir/usr/share/doc
+  - cp -r root/usr/local/share/doc/gnome-appfolders-manager AppDir/usr/share/doc
+  # Copy icon
+  - install -m 755 -d AppDir/usr/share/icons/hicolor/scalable/apps/
+  - install -m 644 -t AppDir/usr/share/icons/hicolor/scalable/apps/ icons/scalable/gnome-appfolders-manager.svg
+
+AppDir:
+  path: ./AppDir
+
+  app_info:
+    id: org.muflone.gnome-appfolders-manager
+    name: gnome-appfolders-manager
+    icon: gnome-appfolders-manager
+    version: 0.4.3
+    exec: usr/bin/python3
+    exec_args: "$APPDIR/usr/share/gnome-appfolders-manager/gnome-appfolders-manager.py $@"
+
+  apt:
+    arch: amd64
+    sources:
+      - sourceline: 'deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse'
+        key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3b4fe6acc0b21f32'
+
+    include:
+      - python3
+      - python3-gi
+      - python3-xdg
+      - gir1.2-gtk-3.0
+      - librsvg2-common
+    exclude:
+      - adwaita-icon-theme
+      - humanity-icon-theme
+
+  files:
+    exclude:
+      - usr/share/doc/dbus-*
+      - usr/share/doc/dconf-*
+      - usr/share/doc/gir1.2-*
+      - usr/share/doc/glib-*
+      - usr/share/doc/gsettings-desktop-schemas
+      - usr/share/doc/hicolor-icon-theme
+      - usr/share/doc/lib*
+      - usr/share/doc/mime-support
+      - usr/share/doc/python3*
+      - usr/share/doc/readline-common
+      - usr/share/doc/tzdata
+      - usr/share/doc/xkb-data
+      - usr/share/man
+      - usr/share/libthai
+      - usr/share/X11
+      - usr/share/zoneinfo
+      - usr/share/zoneinfo-icu
+
+  runtime:
+    env:
+      PATH: '${APPDIR}/usr/local/bin:${PATH}'
+      APPDIR_LIBRARY_PATH: '$APPDIR/usr/lib/x86_64-linux-gnu:$APPDIR/lib/x86_64-linux-gnu:$APPDIR/usr/lib:$APPDIR/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders'
+      PYTHONHOME: '${APPDIR}/usr'
+      PYTHONPATH: '${APPDIR}/usr/lib/python3.8/site-packages'
+      XDG_DATA_DIRS: '/usr/local/share:/usr/share'
+
+AppImage:
+  update-information: None
+  sign-key: None
+  arch: x86_64
