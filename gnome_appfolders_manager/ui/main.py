@@ -23,6 +23,7 @@ from gi.repository import Gdk
 from gi.repository import Gio
 
 from gnome_appfolders_manager.constants import (APP_NAME,
+                                                FILE_ICON,
                                                 FILE_SETTINGS,
                                                 FILE_WINDOWS_POSITION,
                                                 SCHEMA_FOLDERS)
@@ -71,14 +72,12 @@ class UIMain(object):
             self.ui.treeview_folders.set_cursor(0)
         self.ui.treeview_folders.grab_focus()
         # Restore the saved size and position
-        settings.positions.restore_window_position(
-            self.ui.win_main, SECTION_WINDOW_NAME)
+        settings.positions.restore_window_position(self.ui.window,
+                                                   SECTION_WINDOW_NAME)
 
     def load_ui(self):
         """Load the interface UI"""
         self.ui = GtkBuilderLoader(get_ui_file('main.ui'))
-        self.ui.win_main.set_application(self.application)
-        self.ui.win_main.set_title(APP_NAME)
         # Initialize actions
         for widget in self.ui.get_objects_by_type(Gtk.Action):
             # Connect the actions accelerators
@@ -98,8 +97,8 @@ class UIMain(object):
             if action:
                 widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Initialize Gtk.HeaderBar
-        self.ui.header_bar.props.title = self.ui.win_main.get_title()
-        self.ui.win_main.set_titlebar(self.ui.header_bar)
+        self.ui.header_bar.props.title = self.ui.window.get_title()
+        self.ui.window.set_titlebar(self.ui.header_bar)
         for button in (self.ui.button_folder_new, self.ui.button_folder_remove,
                        self.ui.button_folder_properties,
                        self.ui.button_files_add, self.ui.button_files_remove,
@@ -115,9 +114,10 @@ class UIMain(object):
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
-        # Set preferences button icon
-        icon_name = self.ui.image_preferences.get_icon_name()[0]
-        self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
+        # Set various properties
+        self.ui.window.set_title(APP_NAME)
+        self.ui.window.set_icon_from_file(str(FILE_ICON))
+        self.ui.window.set_application(self.application)
         # Load settings
         self.dict_settings_map = {
             preferences.PREFERENCES_SHOW_MISSING:
@@ -130,32 +130,32 @@ class UIMain(object):
 
     def run(self):
         """Show the UI"""
-        self.ui.win_main.show_all()
+        self.ui.window.show_all()
 
-    def on_win_main_delete_event(self, widget, event):
+    def on_window_delete_event(self, widget, event):
         """Save the settings and close the application"""
-        settings.positions.save_window_position(
-            self.ui.win_main, SECTION_WINDOW_NAME)
+        settings.positions.save_window_position(self.ui.window,
+                                                SECTION_WINDOW_NAME)
         settings.positions.save()
         settings.settings.save()
         self.application.quit()
 
     def on_action_about_activate(self, action):
         """Show the about dialog"""
-        dialog = UIAbout(self.ui.win_main)
+        dialog = UIAbout(self.ui.window)
         dialog.show()
         dialog.destroy()
 
     def on_action_shortcuts_activate(self, action):
         """Show the shortcuts dialog"""
-        dialog = UIShortcuts(self.ui.win_main)
+        dialog = UIShortcuts(self.ui.window)
         dialog.show()
 
     def on_action_quit_activate(self, action):
         """Close the application by closing the main window"""
         event = Gdk.Event()
         event.key.type = Gdk.EventType.DELETE
-        self.ui.win_main.event(event)
+        self.ui.window.event(event)
 
     def reload_folders(self):
         """Reload the Application Folders"""
@@ -217,7 +217,7 @@ class UIMain(object):
 
     def on_action_files_new_activate(self, action):
         """Show an application picker to add to the current AppFolder"""
-        dialog = UIApplicationPicker(self.ui.win_main,
+        dialog = UIApplicationPicker(self.ui.window,
                                      self.model_applications.rows.keys())
         if dialog.show() == Gtk.ResponseType.OK:
             if dialog.selected_applications:
@@ -273,7 +273,7 @@ class UIMain(object):
         if selected_row:
             folder_name = self.model_folders.get_key(selected_row)
             if show_message_dialog(class_=UIMessageDialogNoYes,
-                                   parent=self.ui.win_main,
+                                   parent=self.ui.window,
                                    message_type=Gtk.MessageType.QUESTION,
                                    title=None,
                                    msg1=_('Remove the selected folder?'),
@@ -297,7 +297,7 @@ class UIMain(object):
 
     def on_action_folders_new_activate(self, action):
         """Creat a new AppFolder"""
-        dialog = UICreateAppFolder(self.ui.win_main,
+        dialog = UICreateAppFolder(self.ui.window,
                                    self.model_folders.rows.keys())
         if dialog.show(name='', title='') == Gtk.ResponseType.OK:
             # Create a new FolderInfo object and set its title
@@ -318,7 +318,7 @@ class UIMain(object):
         if selected_row:
             name = self.model_folders.get_key(selected_row)
             title = self.model_folders.get_title(selected_row)
-            dialog = UICreateAppFolder(self.ui.win_main,
+            dialog = UICreateAppFolder(self.ui.window,
                                        self.model_folders.rows.keys())
             if dialog.show(name=name, title=title) == Gtk.ResponseType.OK:
                 folder_name = dialog.folder_name
