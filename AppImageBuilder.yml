@@ -131,8 +131,8 @@ AppDir:
       - language-pack-gnome-zh-hans-base
       - language-pack-gnome-zh-hant-base
     exclude:
-      - adwaita-icon-theme
       - humanity-icon-theme
+      - ubuntu-mono
 
   files:
     exclude:
