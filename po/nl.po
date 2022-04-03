@@ -81,7 +81,7 @@ msgstr "Toon het venster ‘Over’"
 
 #: ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr ""
+msgstr "Open het optiesmenu"
 
 #: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
