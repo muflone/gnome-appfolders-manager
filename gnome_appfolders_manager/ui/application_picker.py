@@ -73,18 +73,16 @@ class UIApplicationPicker(object):
             action = button.get_related_action()
             icon_name = action.get_icon_name()
             # Get desired icon size
-            icon_size = (Gtk.IconSize.BUTTON
-                         if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
-                         else Gtk.IconSize.LARGE_TOOLBAR)
             button.set_image(Gtk.Image.new_from_icon_name(icon_name,
-                                                          icon_size))
+                                                          Gtk.IconSize.BUTTON))
             # Remove the button label
             button.props.label = None
             # Set the tooltip from the action label
             button.set_tooltip_text(action.get_label().replace('_', ''))
         # Set preferences button icon
         icon_name = self.ui.image_preferences.get_icon_name()[0]
-        self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
+        self.ui.image_preferences.set_from_icon_name(icon_name,
+                                                     Gtk.IconSize.BUTTON)
         # Load settings
         self.dict_settings_map = {
             preferences.APP_PICKER_SHOW_HIDDEN:

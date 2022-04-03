@@ -107,9 +107,7 @@ class UIMain(object):
                        self.ui.button_about, ):
             action = button.get_related_action()
             # Get desired icon size
-            icon_size = (Gtk.IconSize.BUTTON
-                         if preferences.get(preferences.HEADERBARS_SMALL_ICONS)
-                         else Gtk.IconSize.LARGE_TOOLBAR)
+            icon_size = Gtk.IconSize.BUTTON
             button.set_image(Gtk.Image.new_from_icon_name(
                 icon_name=action.get_icon_name(),
                 size=icon_size))
@@ -122,8 +120,6 @@ class UIMain(object):
         self.ui.image_preferences.set_from_icon_name(icon_name, icon_size)
         # Load settings
         self.dict_settings_map = {
-            preferences.HEADERBARS_SMALL_ICONS:
-                self.ui.action_preferences_small_icons,
             preferences.PREFERENCES_SHOW_MISSING:
                 self.ui.action_preferences_show_missing_files
         }
