@@ -142,13 +142,16 @@ AppDir:
       - usr/share/doc/glib-*
       - usr/share/doc/gsettings-desktop-schemas
       - usr/share/doc/hicolor-icon-theme
+      - usr/share/doc/language-pack-*
       - usr/share/doc/lib*
       - usr/share/doc/mime-support
       - usr/share/doc/python3*
       - usr/share/doc/readline-common
       - usr/share/doc/tzdata
       - usr/share/doc/xkb-data
+      - usr/share/gnome
       - usr/share/help-langpack
+      - usr/share/i18n
       - usr/share/man
       - usr/share/libthai
       - usr/share/X11
