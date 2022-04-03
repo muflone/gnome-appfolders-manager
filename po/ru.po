@@ -1,6 +1,9 @@
-# Russian translations for GNOME App Folders Manager package.
-# Copyright (C) 2016-2022 Fabio Castelli
+# GNOME AppFolders Manager
+# Manage GNOME Shell applications folders
+# Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
+# Website: https://www.muflone.com/gnome-appfolders-manager/
 # This file is distributed under the same license as the GNOME App Folders Manager package.
+# Russian translation for GNOME AppFolders Manager
 #
 # Translators:
 # Aleksey Aleksey <makaleks(at)live.ru>, 2018

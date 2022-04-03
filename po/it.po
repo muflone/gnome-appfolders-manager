@@ -1,16 +1,19 @@
-# Italian translations for GNOME App Folders Manager package.
-# Copyright (C) 2016-2022 Fabio Castelli
+# GNOME AppFolders Manager
+# Manage GNOME Shell applications folders
+# Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
+# Website: https://www.muflone.com/gnome-appfolders-manager/
 # This file is distributed under the same license as the GNOME App Folders Manager package.
+# Italian translation for GNOME AppFolders Manager
 #
 # Translators:
-# Muflone <muflone(at)muflone.com>, 2016
+# Fabio Castelli (Muflone) <muflone(at)muflone.com>, 2016-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
 "POT-Creation-Date: 2022-04-03 04:29+0200\n"
 "PO-Revision-Date: 2016-05-22 15:17+0000\n"
-"Last-Translator: Muflone <muflone(at)muflone.com>\n"
+"Last-Translator: Fabio Castelli (Muflone) <muflone(at)muflone.com>\n"
 "Language-Team: Italian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
