@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
-"Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-10 01:05+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
+"POT-Creation-Date: 2022-04-03 04:29+0200\n"
 "PO-Revision-Date: 2016-05-25 06:45+0000\n"
 "Last-Translator: Dz Chen <wsxy162(at)gmail.com>\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/muflone/gnome-appfolders-manager/language/zh_CN/)\n"
@@ -31,24 +31,20 @@ msgstr ""
 msgid "Contributors:"
 msgstr "贡献者"
 
-#: gnome_appfolders_manager/ui/main.py:289
+#: gnome_appfolders_manager/ui/main.py:292
 msgid "Remove the selected folder?"
 msgstr "移除选中的文件夹？"
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:293
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "您确定想要移除该文件夹 {FOLDER} 吗？"
-
-#: gnome_appfolders_manager/ui/main.py:355
-msgid "The application must be restarted to apply the settings"
-msgstr "应用程序必须重启以应用该设置"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr "添加应用程序(_A)"
 
-#: ui/application_picker.ui:177 ui/main.ui:427
+#: ui/application_picker.ui:139 ui/main.ui:457
 msgid "Applications"
 msgstr "应用程序"
 
@@ -60,27 +56,19 @@ msgstr "关于 GNOME App Folders Manager"
 msgid "Show keyboard _shortcuts"
 msgstr "显示键盘快捷方式(_S)"
 
-#: ui/create_appfolder.ui:123
+#: ui/create_appfolder.ui:124
 msgid "Title:"
 msgstr "标题："
 
-#: ui/main.ui:102
-msgid "Sy_mbolic icons (requires restart)"
-msgstr "符号图标（需要重启）(_M)"
-
-#: ui/main.ui:109
-msgid "_Small icons (requires restart)"
-msgstr "小图标（需要重启）(_S)"
-
-#: ui/main.ui:116
+#: ui/main.ui:111
 msgid "Show missing _files"
 msgstr "显示缺失文件(_F)"
 
-#: ui/main.ui:160
+#: ui/main.ui:175
 msgid "Folders:"
 msgstr "文件夹："
 
-#: ui/main.ui:490 ui/shortcuts.ui:38
+#: ui/main.ui:402 ui/shortcuts.ui:45
 msgid "Folders"
 msgstr "文件夹"
 
@@ -88,22 +76,26 @@ msgstr "文件夹"
 msgid "Show the about dialog"
 msgstr "显示关于对话框"
 
-#: ui/shortcuts.ui:43
+#: ui/shortcuts.ui:28
+msgid "Show the shortcuts dialog"
+msgstr ""
+
+#: ui/shortcuts.ui:50
 msgid "Create a new folder"
 msgstr "新建文件夹"
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Remove the currently selected folder"
 msgstr "移除当前选中的文件夹"
 
-#: ui/shortcuts.ui:65
+#: ui/shortcuts.ui:72
 msgid "Add a new file"
 msgstr "添加新文件"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Remove the selected file"
 msgstr "移除选中的文件"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Search file in the current folder"
 msgstr ""

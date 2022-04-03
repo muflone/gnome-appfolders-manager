@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
-"Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-10 01:05+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
+"POT-Creation-Date: 2022-04-03 04:29+0200\n"
 "PO-Revision-Date: 2017-02-22 15:30+0000\n"
 "Last-Translator: Piotr Sokół <psokol.l10n(at)gmail.com>\n"
 "Language-Team: Polish (https://www.transifex.com/muflone/gnome-appfolders-manager/language/pl/)\n"
@@ -32,24 +32,20 @@ msgstr "Zarządzanie aplikacjami GNOME-Shell"
 msgid "Contributors:"
 msgstr "Autorzy:"
 
-#: gnome_appfolders_manager/ui/main.py:289
+#: gnome_appfolders_manager/ui/main.py:292
 msgid "Remove the selected folder?"
 msgstr "Usunąć wybrany katalog?"
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:293
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Czy napewno usunąć katalog {FOLDER}?"
-
-#: gnome_appfolders_manager/ui/main.py:355
-msgid "The application must be restarted to apply the settings"
-msgstr "Nowe ustawienia będą aktywne po ponownym uruchomieniu programu."
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr "_Dodaj programy"
 
-#: ui/application_picker.ui:177 ui/main.ui:427
+#: ui/application_picker.ui:139 ui/main.ui:457
 msgid "Applications"
 msgstr "Programy"
 
@@ -61,27 +57,19 @@ msgstr "_O GNOME App Folders Manager"
 msgid "Show keyboard _shortcuts"
 msgstr "Pokaż _skróty klawiszowe"
 
-#: ui/create_appfolder.ui:123
+#: ui/create_appfolder.ui:124
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: ui/main.ui:102
-msgid "Sy_mbolic icons (requires restart)"
-msgstr "Ikony sy_mboliczne (wymagane ponowne uruchomienie)"
-
-#: ui/main.ui:109
-msgid "_Small icons (requires restart)"
-msgstr "_Małe ikony (wymagane ponowne uruchomienie)"
-
-#: ui/main.ui:116
+#: ui/main.ui:111
 msgid "Show missing _files"
 msgstr "Pokaż brakujące _pliki"
 
-#: ui/main.ui:160
+#: ui/main.ui:175
 msgid "Folders:"
 msgstr "Katalogi:"
 
-#: ui/main.ui:490 ui/shortcuts.ui:38
+#: ui/main.ui:402 ui/shortcuts.ui:45
 msgid "Folders"
 msgstr "Katalogi"
 
@@ -89,22 +77,26 @@ msgstr "Katalogi"
 msgid "Show the about dialog"
 msgstr "Wyświetlenie informacji o programie"
 
-#: ui/shortcuts.ui:43
+#: ui/shortcuts.ui:28
+msgid "Show the shortcuts dialog"
+msgstr ""
+
+#: ui/shortcuts.ui:50
 msgid "Create a new folder"
 msgstr "Utworzenie nowego katalogu"
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Remove the currently selected folder"
 msgstr "Usunięcie zaznaczonego katalogu"
 
-#: ui/shortcuts.ui:65
+#: ui/shortcuts.ui:72
 msgid "Add a new file"
 msgstr "Dodaj nowy plik"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Remove the selected file"
 msgstr "Usuń zaznaczony plik"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Search file in the current folder"
 msgstr ""

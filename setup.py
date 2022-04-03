@@ -35,7 +35,8 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 APP_AUTHOR,
                                                 APP_AUTHOR_EMAIL,
                                                 APP_URL,
-                                                DOMAIN_NAME)
+                                                DOMAIN_NAME,
+                                                SOURCES_URL)
 
 
 class Install_Scripts(setuptools.command.install_scripts.install_scripts):
@@ -123,16 +124,16 @@ class Command_CreatePOT(setuptools.Command):
         list_files_process.sort()
         # Extract messages from the files to process
         subprocess.call(
-            args=itertools.chain(('xgettext',
-                                  '--keyword=_',
-                                  '--keyword=N_',
-                                  f'--output={path_pot}',
-                                  '--add-location',
-                                  f'--package-name={APP_NAME}',
-                                  f'--package-version={APP_VERSION}',
-                                  f'--copyright-holder={APP_AUTHOR}',
-                                  f'--msgid-bugs-address={APP_AUTHOR_EMAIL}'),
-                                 list_files_process),
+            args=itertools.chain((
+                'xgettext',
+                '--keyword=_',
+                '--keyword=N_',
+                f'--output={path_pot}',
+                '--add-location',
+                f'--package-name={APP_NAME}',
+                f'--copyright-holder={APP_AUTHOR}',
+                f'--msgid-bugs-address={SOURCES_URL}/issues'),
+                list_files_process),
             cwd=self.path_base)
 
 

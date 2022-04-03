@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager\n"
-"Report-Msgid-Bugs-To: muflone@muflone.com\n"
-"POT-Creation-Date: 2022-01-10 01:05+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
+"POT-Creation-Date: 2022-04-03 04:29+0200\n"
 "PO-Revision-Date: 2018-02-03 12:48+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs(at)fsf.hu>\n"
 "Language-Team: Hungarian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/hu/)\n"
@@ -31,24 +31,20 @@ msgstr "GNOME alkalmazásmappák kezelése"
 msgid "Contributors:"
 msgstr "Közreműködők:"
 
-#: gnome_appfolders_manager/ui/main.py:289
+#: gnome_appfolders_manager/ui/main.py:292
 msgid "Remove the selected folder?"
 msgstr "Eltávolítja a kiválasztott mappát?"
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:293
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Valóban törli a(z) {FOLDER} mappát?"
-
-#: gnome_appfolders_manager/ui/main.py:355
-msgid "The application must be restarted to apply the settings"
-msgstr "A beállítások érvényesítéséhez újra kell indítani az alkalmazást"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
 msgstr "Alkalmazások _hozzáadása"
 
-#: ui/application_picker.ui:177 ui/main.ui:427
+#: ui/application_picker.ui:139 ui/main.ui:457
 msgid "Applications"
 msgstr "Alkalmazások"
 
@@ -60,27 +56,19 @@ msgstr "A GNOME Alkalmazásmappa-kezelő névjegye"
 msgid "Show keyboard _shortcuts"
 msgstr "Gyors_billentyűk megjelenítése"
 
-#: ui/create_appfolder.ui:123
+#: ui/create_appfolder.ui:124
 msgid "Title:"
 msgstr "Cím:"
 
-#: ui/main.ui:102
-msgid "Sy_mbolic icons (requires restart)"
-msgstr "Szi_mbolikus ikonok (újraindítást igényel)"
-
-#: ui/main.ui:109
-msgid "_Small icons (requires restart)"
-msgstr "_Kis ikonok (újraindítást igényel)"
-
-#: ui/main.ui:116
+#: ui/main.ui:111
 msgid "Show missing _files"
 msgstr "Hiányzó _fájlok megjelenítése"
 
-#: ui/main.ui:160
+#: ui/main.ui:175
 msgid "Folders:"
 msgstr "Mappák:"
 
-#: ui/main.ui:490 ui/shortcuts.ui:38
+#: ui/main.ui:402 ui/shortcuts.ui:45
 msgid "Folders"
 msgstr "Mappák"
 
@@ -88,22 +76,26 @@ msgstr "Mappák"
 msgid "Show the about dialog"
 msgstr "Névjegyablak megjelenítése"
 
-#: ui/shortcuts.ui:43
+#: ui/shortcuts.ui:28
+msgid "Show the shortcuts dialog"
+msgstr ""
+
+#: ui/shortcuts.ui:50
 msgid "Create a new folder"
 msgstr "Új mappa létrehozása"
 
-#: ui/shortcuts.ui:50
+#: ui/shortcuts.ui:57
 msgid "Remove the currently selected folder"
 msgstr "A jelenleg kiválasztott mappa eltávolítása"
 
-#: ui/shortcuts.ui:65
+#: ui/shortcuts.ui:72
 msgid "Add a new file"
 msgstr "Új fájl hozzáadása"
 
-#: ui/shortcuts.ui:72
+#: ui/shortcuts.ui:79
 msgid "Remove the selected file"
 msgstr "A kiválasztott fájl eltávolítása"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Search file in the current folder"
 msgstr ""
