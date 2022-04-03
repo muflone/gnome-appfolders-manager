@@ -67,6 +67,26 @@ AppDir:
       - usr/share/zoneinfo
       - usr/share/zoneinfo-icu
 
+  before_bundle:
+    - echo 'Before bundle'
+    - echo '#!/bin/bash'                                               > before_bundle.sh
+    - "bash before_bundle.sh ${APPDIR}"
+
+  after_bundle:
+    - echo 'After bundle'
+    - echo '#!/bin/bash'                                               > after_bundle.sh
+    - "bash after_bundle.sh ${APPDIR}"
+
+  before_runtime:
+    - echo 'Before runtime'
+    - echo '#!/bin/bash'                                               > before_runtime.sh
+    - "bash before_runtime.sh ${APPDIR}"
+
+  after_runtime:
+    - echo 'After runtime'
+    - echo '#!/bin/bash'                                               > after_runtime.sh
+    - "bash after_runtime.sh ${APPDIR}"
+
   runtime:
     env:
       PATH: '${APPDIR}/usr/local/bin:${PATH}'
