@@ -34,13 +34,8 @@ class UICreateAppFolder(UIBase):
         super().__init__(filename='create_appfolder.ui')
         # Load the user interface
         self.ui.dialog.set_titlebar(self.ui.header_bar)
-        # Initialize titles
+        # Initialize titles and tooltips
         self.initialize_titles()
-        # Initialize tooltips
-        for widget in self.ui.get_objects_by_type(Gtk.Button):
-            action = widget.get_related_action()
-            if action:
-                widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Set various properties
         self.ui.dialog.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_ok)

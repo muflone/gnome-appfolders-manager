@@ -78,13 +78,8 @@ class UIMain(UIBase):
         # Initialize translations
         self.ui.action_about.set_label(text_gtk30('About'))
         self.ui.action_shortcuts.set_label(text_gtk30('Shortcuts'))
-        # Initialize titles
+        # Initialize titles and tooltips
         self.initialize_titles()
-        # Initialize tooltips
-        for widget in self.ui.get_objects_by_type(Gtk.Button):
-            action = widget.get_related_action()
-            if action:
-                widget.set_tooltip_text(action.get_label().replace('_', ''))
         # Initialize Gtk.HeaderBar
         self.ui.header_bar.props.title = self.ui.window.get_title()
         self.ui.window.set_titlebar(self.ui.header_bar)

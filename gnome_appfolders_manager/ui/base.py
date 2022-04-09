@@ -30,7 +30,10 @@ class UIBase(object):
         self.ui = GtkBuilderLoader(get_ui_file(filename))
 
     def initialize_titles(self) -> None:
-        """Initialize titles"""
+        """
+        Initialize titles and tooltips
+        :return: None
+        """
         # Set Actions labels and short labels
         for widget in self.ui.get_objects_by_type(Gtk.Action):
             # Connect the actions accelerators
@@ -44,3 +47,8 @@ class UIBase(object):
         # Set Labels captions
         for widget in self.ui.get_objects_by_type(Gtk.Label):
             widget.set_label(text(widget.get_label()))
+        # Initialize tooltips
+        for widget in self.ui.get_objects_by_type(Gtk.Button):
+            action = widget.get_related_action()
+            if action:
+                widget.set_tooltip_text(action.get_label().replace('_', ''))
