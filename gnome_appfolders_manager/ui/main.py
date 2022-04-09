@@ -83,24 +83,15 @@ class UIMain(UIBase):
         # Initialize Gtk.HeaderBar
         self.ui.header_bar.props.title = self.ui.window.get_title()
         self.ui.window.set_titlebar(self.ui.header_bar)
-        for button in (self.ui.button_folder_new,
-                       self.ui.button_folder_remove,
-                       self.ui.button_folder_properties,
-                       self.ui.button_files_add,
-                       self.ui.button_files_remove,
-                       self.ui.button_files_save,
-                       self.ui.button_files_search,
-                       self.ui.button_about,
-                       self.ui.button_options):
-            action = button.get_related_action()
-            button.set_image(Gtk.Image.new_from_icon_name(
-                icon_name=action.get_icon_name(),
-                size=Gtk.IconSize.BUTTON))
-            if not action.get_is_important():
-                # Remove the button label
-                button.props.label = None
-            # Set the tooltip from the action label
-            button.set_tooltip_text(action.get_label().replace('_', ''))
+        self.set_buttons_icons(buttons=[self.ui.button_folder_new,
+                                        self.ui.button_folder_remove,
+                                        self.ui.button_folder_properties,
+                                        self.ui.button_files_add,
+                                        self.ui.button_files_remove,
+                                        self.ui.button_files_save,
+                                        self.ui.button_files_search,
+                                        self.ui.button_about,
+                                        self.ui.button_options])
         # Set various properties
         self.ui.window.set_title(APP_NAME)
         self.ui.window.set_icon_from_file(str(FILE_ICON))

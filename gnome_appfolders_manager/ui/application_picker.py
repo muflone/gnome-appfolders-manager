@@ -54,16 +54,7 @@ class UIApplicationPicker(UIBase):
         set_style_suggested_action(self.ui.button_add)
         self.selected_applications = None
         # Initialize Gtk.HeaderBar
-        for button in (self.ui.button_search, ):
-            action = button.get_related_action()
-            button.set_image(Gtk.Image.new_from_icon_name(
-                icon_name=action.get_icon_name(),
-                size=Gtk.IconSize.BUTTON))
-            if not action.get_is_important():
-                # Remove the button label
-                button.props.label = None
-            # Set the tooltip from the action label
-            button.set_tooltip_text(action.get_label().replace('_', ''))
+        self.set_buttons_icons(buttons=[self.ui.button_search])
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:

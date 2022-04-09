@@ -18,6 +18,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
+from typing import Iterable
+
 from gi.repository import Gtk
 
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
@@ -28,6 +30,21 @@ from gnome_appfolders_manager.functions import get_ui_file, text
 class UIBase(object):
     def __init__(self, filename):
         self.ui = GtkBuilderLoader(get_ui_file(filename))
+
+    def set_buttons_icons(self, buttons: Iterable) -> None:
+        """
+        Set icons for buttons
+        :param buttons: tuple or list of buttons to customize
+        :return: None
+        """
+        for button in buttons:
+            action = button.get_related_action()
+            button.set_image(Gtk.Image.new_from_icon_name(
+                icon_name=action.get_icon_name(),
+                size=Gtk.IconSize.BUTTON))
+            # Remove the button label for not important buttons
+            if not action.get_is_important():
+                button.props.label = None
 
     def set_titles(self) -> None:
         """
