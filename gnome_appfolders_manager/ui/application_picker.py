@@ -73,7 +73,7 @@ class UIApplicationPicker(object):
             action = button.get_related_action()
             button.set_image(Gtk.Image.new_from_icon_name(
                 icon_name=action.get_icon_name(),
-                size=Gtk.IconSize.LARGE_TOOLBAR))
+                size=Gtk.IconSize.BUTTON))
             if not action.get_is_important():
                 # Remove the button label
                 button.props.label = None

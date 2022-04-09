@@ -111,13 +111,9 @@ class UIMain(object):
                        self.ui.button_about,
                        self.ui.button_options):
             action = button.get_related_action()
-            if button in (self.ui.button_options, ):
-                icon_size = Gtk.IconSize.BUTTON
-            else:
-                icon_size = Gtk.IconSize.LARGE_TOOLBAR
             button.set_image(Gtk.Image.new_from_icon_name(
                 icon_name=action.get_icon_name(),
-                size=icon_size))
+                size=Gtk.IconSize.BUTTON))
             if not action.get_is_important():
                 # Remove the button label
                 button.props.label = None
