@@ -64,6 +64,7 @@ class UIMain(UIBase):
         self.model_applications.model.set_sort_column_id(
             self.ui.treeview_column_applications.get_sort_column_id(),
             Gtk.SortType.ASCENDING)
+        self.ui.treeview_column_applications.set_sort_indicator(False)
         # Detect the AppFolders and select the first one automatically
         self.reload_folders()
         if self.model_folders.count() > 0:
