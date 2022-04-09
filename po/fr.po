@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-09 23:40+0200\n"
+"POT-Creation-Date: 2022-04-10 00:55+0200\n"
 "PO-Revision-Date: 2016-05-22 15:15+0000\n"
 "Last-Translator: Okki <okki(at)gnomelibre.fr>\n"
 "Language-Team: French (https://www.transifex.com/muflone/gnome-appfolders-manager/language/fr/)\n"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Contributors:"
 msgstr "Contributeurs:"
 
-#: gnome_appfolders_manager/ui/main.py:259
+#: gnome_appfolders_manager/ui/main.py:261
 msgid "Remove the selected folder?"
 msgstr "Supprimer le dossier sélectionné?"
 
-#: gnome_appfolders_manager/ui/main.py:260
+#: gnome_appfolders_manager/ui/main.py:262
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Êtes-vous certain de vouloir supprimer le dossier {FOLDER}?"
