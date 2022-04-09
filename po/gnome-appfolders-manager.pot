@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME App Folders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 16:04+0200\n"
+"POT-Creation-Date: 2022-04-09 23:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE (https://www.transifex.com/p/gnome-appfolders-manager/)\n"
@@ -19,24 +19,24 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnome_appfolders_manager/ui/about.py:54
+#: gnome_appfolders_manager/ui/about.py:53
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:57
+#: gnome_appfolders_manager/ui/about.py:56
 msgid "Manage GNOME Shell applications folders"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:66
+#: gnome_appfolders_manager/ui/about.py:65
 msgid "Contributors:"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:259
 msgid "Remove the selected folder?"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:291
+#: gnome_appfolders_manager/ui/main.py:260
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr ""
@@ -61,6 +61,10 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
+#: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr ""
+
 #: ui/main.ui:118
 msgid "Show missing _files"
 msgstr ""
@@ -75,10 +79,6 @@ msgstr ""
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
-msgstr ""
-
-#: ui/shortcuts.ui:28
-msgid "Open the options menu"
 msgstr ""
 
 #: ui/shortcuts.ui:35

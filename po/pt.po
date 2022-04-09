@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 16:04+0200\n"
+"POT-Creation-Date: 2022-04-09 23:40+0200\n"
 "PO-Revision-Date: 2016-05-15 21:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Portuguese (http://www.transifex.com/muflone/gnome-appfolders-manager/language/pt/)\n"
@@ -20,24 +20,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_appfolders_manager/ui/about.py:54
+#: gnome_appfolders_manager/ui/about.py:53
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "Versão {VERSION}"
 
-#: gnome_appfolders_manager/ui/about.py:57
+#: gnome_appfolders_manager/ui/about.py:56
 msgid "Manage GNOME Shell applications folders"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:66
+#: gnome_appfolders_manager/ui/about.py:65
 msgid "Contributors:"
 msgstr "Contribuidores:"
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:259
 msgid "Remove the selected folder?"
 msgstr "Remover a categoria selecionada?"
 
-#: gnome_appfolders_manager/ui/main.py:291
+#: gnome_appfolders_manager/ui/main.py:260
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Tem certeza que deseja remover a categoria {FOLDER}?"
@@ -62,6 +62,10 @@ msgstr "Mostrar _atalhos de teclado"
 msgid "Title:"
 msgstr "Título:"
 
+#: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr ""
+
 #: ui/main.ui:118
 msgid "Show missing _files"
 msgstr "Mostrar _arquivos perdidos"
@@ -77,10 +81,6 @@ msgstr "Categorias"
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
 msgstr "Mostrar diálogo sobre"
-
-#: ui/shortcuts.ui:28
-msgid "Open the options menu"
-msgstr ""
 
 #: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"

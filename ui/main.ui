@@ -102,13 +102,13 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_options">
-        <property name="short-label" comments="Use domain gtk30">Options</property>
+        <property name="short-label" translatable="yes">Open the options menu</property>
         <property name="icon-name">applications-system-symbolic</property>
       </object>
     </child>
     <child>
       <object class="GtkAction" id="action_options_menu">
-        <property name="short-label" comments="Use domain gtk30">Options</property>
+        <property name="short-label" translatable="yes">Open the options menu</property>
         <signal name="activate" handler="on_action_options_menu_activate" swapped="no"/>
       </object>
       <accelerator key="F10"/>

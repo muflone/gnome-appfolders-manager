@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-03 16:04+0200\n"
+"POT-Creation-Date: 2022-04-09 23:40+0200\n"
 "PO-Revision-Date: 2022-01-09 18:21+0000\n"
 "Last-Translator: Aleksey Aleksey <makaleks(at)live.ru>\n"
 "Language-Team: Russian (https://www.transifex.com/muflone/gnome-appfolders-manager/language/ru/)\n"
@@ -21,24 +21,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: gnome_appfolders_manager/ui/about.py:54
+#: gnome_appfolders_manager/ui/about.py:53
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "Версия {VERSION}"
 
-#: gnome_appfolders_manager/ui/about.py:57
+#: gnome_appfolders_manager/ui/about.py:56
 msgid "Manage GNOME Shell applications folders"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:66
+#: gnome_appfolders_manager/ui/about.py:65
 msgid "Contributors:"
 msgstr "Контрибьюторы:"
 
-#: gnome_appfolders_manager/ui/main.py:290
+#: gnome_appfolders_manager/ui/main.py:259
 msgid "Remove the selected folder?"
 msgstr "Удалить выбранную папку?"
 
-#: gnome_appfolders_manager/ui/main.py:291
+#: gnome_appfolders_manager/ui/main.py:260
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Вы уверены, что хотите удалить папку {FOLDER}?"
@@ -63,6 +63,10 @@ msgstr "Показать клавиатурные _горячие клавиши
 msgid "Title:"
 msgstr "Заголовок:"
 
+#: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
+msgid "Open the options menu"
+msgstr ""
+
 #: ui/main.ui:118
 msgid "Show missing _files"
 msgstr "Показать утерянные _файлы"
@@ -78,10 +82,6 @@ msgstr "Папки"
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
 msgstr "Показать диалог \"О программе\""
-
-#: ui/shortcuts.ui:28
-msgid "Open the options menu"
-msgstr ""
 
 #: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
