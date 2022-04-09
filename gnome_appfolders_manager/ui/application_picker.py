@@ -48,7 +48,7 @@ class UIApplicationPicker(UIBase):
         self.ui.filter_applications.set_visible_column(
             ModelApplications.COL_VISIBLE)
         # Initialize titles and tooltips
-        self.initialize_titles()
+        self.set_titles()
         # Set various properties
         self.ui.dialog.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_add)

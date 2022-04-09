@@ -29,9 +29,9 @@ class UIBase(object):
     def __init__(self, filename):
         self.ui = GtkBuilderLoader(get_ui_file(filename))
 
-    def initialize_titles(self) -> None:
+    def set_titles(self) -> None:
         """
-        Initialize titles and tooltips
+        Set titles and tooltips for Actions, Labels and Buttons
         :return: None
         """
         # Set Actions labels and short labels

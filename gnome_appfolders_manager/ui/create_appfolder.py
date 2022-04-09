@@ -35,7 +35,7 @@ class UICreateAppFolder(UIBase):
         # Load the user interface
         self.ui.dialog.set_titlebar(self.ui.header_bar)
         # Initialize titles and tooltips
-        self.initialize_titles()
+        self.set_titles()
         # Set various properties
         self.ui.dialog.set_transient_for(parent)
         set_style_suggested_action(self.ui.button_ok)
