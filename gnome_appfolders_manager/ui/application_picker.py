@@ -23,24 +23,23 @@ import logging
 from gi.repository import Gio
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import (get_ui_file,
-                                                set_style_suggested_action,
+from gnome_appfolders_manager.functions import (set_style_suggested_action,
                                                 get_treeview_selected_rows,
                                                 text)
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
 import gnome_appfolders_manager.preferences as preferences
 import gnome_appfolders_manager.settings as settings
+from gnome_appfolders_manager.ui.base import UIBase
 
 SECTION_WINDOW_NAME = 'application picker'
 
 
-class UIApplicationPicker(object):
+class UIApplicationPicker(UIBase):
     def __init__(self, parent, existing_files):
         """Prepare the application picker dialog"""
+        super().__init__(filename='application_picker.ui')
         # Load the user interface
-        self.ui = GtkBuilderLoader(get_ui_file('application_picker.ui'))
         self.ui.dialog.set_titlebar(self.ui.header_bar)
         # Prepares the models for the applications
         self.model_applications = ModelApplications(self.ui.store_applications)

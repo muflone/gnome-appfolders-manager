@@ -20,15 +20,15 @@
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import get_ui_file, text
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
+from gnome_appfolders_manager.functions import text
+from gnome_appfolders_manager.ui.base import UIBase
 
 
-class UIShortcuts(object):
+class UIShortcuts(UIBase):
     def __init__(self, parent):
         """Prepare the shortcuts dialog"""
+        super().__init__(filename='shortcuts.ui')
         # Load the user interface
-        self.ui = GtkBuilderLoader(get_ui_file('shortcuts.ui'))
         self.ui.shortcuts.set_transient_for(parent)
         # Initialize groups
         for widget in self.ui.get_objects_by_type(Gtk.ShortcutsGroup):

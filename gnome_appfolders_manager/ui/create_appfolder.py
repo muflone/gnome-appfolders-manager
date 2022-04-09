@@ -20,20 +20,19 @@
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import (get_ui_file,
-                                                set_style_suggested_action,
+from gnome_appfolders_manager.functions import (set_style_suggested_action,
                                                 text)
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 import gnome_appfolders_manager.settings as settings
+from gnome_appfolders_manager.ui.base import UIBase
 
 SECTION_WINDOW_NAME = 'create folder'
 
 
-class UICreateAppFolder(object):
+class UICreateAppFolder(UIBase):
     def __init__(self, parent, existing_folders):
         """Prepare the AppFolder creation dialog"""
+        super().__init__(filename='create_appfolder.ui')
         # Load the user interface
-        self.ui = GtkBuilderLoader(get_ui_file('create_appfolder.ui'))
         self.ui.dialog.set_titlebar(self.ui.header_bar)
         # Initialize actions
         for widget in self.ui.get_objects_by_type(Gtk.Action):

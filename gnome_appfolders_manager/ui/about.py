@@ -32,13 +32,14 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_TRANSLATORS,
                                                 FILE_RESOURCES,
                                                 FILE_ICON)
-from gnome_appfolders_manager.functions import readlines, get_ui_file, _
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
+from gnome_appfolders_manager.functions import readlines, _
+from gnome_appfolders_manager.ui.base import UIBase
 
 
-class UIAbout(object):
+class UIAbout(UIBase):
     def __init__(self, parent):
         """Prepare the about dialog"""
+        super().__init__(filename='about.ui')
         # Retrieve the translators list
         translators = []
         for line in readlines(FILE_TRANSLATORS, False):
@@ -47,8 +48,6 @@ class UIAbout(object):
             line = line.replace('(at)', '@').strip()
             if line not in translators:
                 translators.append(line)
-        # Load the user interface
-        self.ui = GtkBuilderLoader(get_ui_file('about.ui'))
         # Set various properties
         self.ui.dialog.set_program_name(APP_NAME)
         self.ui.dialog.set_version(_('Version {VERSION}').format(

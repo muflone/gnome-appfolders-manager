@@ -28,11 +28,9 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_WINDOWS_POSITION,
                                                 SCHEMA_FOLDERS)
 from gnome_appfolders_manager.functions import (_,
-                                                get_ui_file,
                                                 get_treeview_selected_row,
                                                 text,
                                                 text_gtk30)
-from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
@@ -42,6 +40,7 @@ import gnome_appfolders_manager.preferences as preferences
 import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
+from gnome_appfolders_manager.ui.base import UIBase
 from gnome_appfolders_manager.ui.create_appfolder import UICreateAppFolder
 from gnome_appfolders_manager.ui.message_dialog import (show_message_dialog,
                                                         UIMessageDialogNoYes)
@@ -50,8 +49,9 @@ from gnome_appfolders_manager.ui.shortcuts import UIShortcuts
 SECTION_WINDOW_NAME = 'main'
 
 
-class UIMain(object):
+class UIMain(UIBase):
     def __init__(self, application):
+        super().__init__(filename='main.ui')
         self.application = application
         # Load settings
         settings.settings = settings.Settings(FILE_SETTINGS, False)
@@ -76,7 +76,6 @@ class UIMain(object):
 
     def load_ui(self):
         """Load the interface UI"""
-        self.ui = GtkBuilderLoader(get_ui_file('main.ui'))
         # Initialize translations
         self.ui.action_about.set_label(text_gtk30('About'))
         self.ui.action_shortcuts.set_label(text_gtk30('Shortcuts'))
