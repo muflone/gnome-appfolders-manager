@@ -34,19 +34,8 @@ class UICreateAppFolder(UIBase):
         super().__init__(filename='create_appfolder.ui')
         # Load the user interface
         self.ui.dialog.set_titlebar(self.ui.header_bar)
-        # Initialize actions
-        for widget in self.ui.get_objects_by_type(Gtk.Action):
-            # Connect the actions accelerators
-            widget.connect_accelerator()
-            # Set labels
-            label = widget.get_label()
-            if not label:
-                label = widget.get_short_label()
-            widget.set_short_label(text(label))
-            widget.set_label(text(label))
-        # Initialize labels
-        for widget in self.ui.get_objects_by_type(Gtk.Label):
-            widget.set_label(text(widget.get_label()))
+        # Initialize titles
+        self.initialize_titles()
         # Initialize tooltips
         for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()

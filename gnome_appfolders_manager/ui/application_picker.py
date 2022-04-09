@@ -24,8 +24,7 @@ from gi.repository import Gio
 from gi.repository import Gtk
 
 from gnome_appfolders_manager.functions import (set_style_suggested_action,
-                                                get_treeview_selected_rows,
-                                                text)
+                                                get_treeview_selected_rows)
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
 import gnome_appfolders_manager.preferences as preferences
@@ -48,16 +47,8 @@ class UIApplicationPicker(UIBase):
             Gtk.SortType.ASCENDING)
         self.ui.filter_applications.set_visible_column(
             ModelApplications.COL_VISIBLE)
-        # Initialize actions
-        for widget in self.ui.get_objects_by_type(Gtk.Action):
-            # Connect the actions accelerators
-            widget.connect_accelerator()
-            # Set labels
-            label = widget.get_label()
-            if not label:
-                label = widget.get_short_label()
-            widget.set_short_label(text(label))
-            widget.set_label(text(label))
+        # Initialize titles
+        self.initialize_titles()
         # Initialize tooltips
         for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()

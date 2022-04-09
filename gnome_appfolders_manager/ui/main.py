@@ -29,7 +29,6 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 SCHEMA_FOLDERS)
 from gnome_appfolders_manager.functions import (_,
                                                 get_treeview_selected_row,
-                                                text,
                                                 text_gtk30)
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
@@ -79,19 +78,8 @@ class UIMain(UIBase):
         # Initialize translations
         self.ui.action_about.set_label(text_gtk30('About'))
         self.ui.action_shortcuts.set_label(text_gtk30('Shortcuts'))
-        # Initialize actions
-        for widget in self.ui.get_objects_by_type(Gtk.Action):
-            # Connect the actions accelerators
-            widget.connect_accelerator()
-            # Set labels
-            label = widget.get_label()
-            if not label:
-                label = widget.get_short_label()
-            widget.set_label(text(label))
-            widget.set_short_label(label)
-        # Initialize labels
-        for widget in self.ui.get_objects_by_type(Gtk.Label):
-            widget.set_label(text(widget.get_label()))
+        # Initialize titles
+        self.initialize_titles()
         # Initialize tooltips
         for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()
