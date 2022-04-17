@@ -103,7 +103,7 @@
     <child>
       <object class="GtkAction" id="action_options">
         <property name="short-label" translatable="yes">Open the options menu</property>
-        <property name="icon-name">applications-system-symbolic</property>
+        <property name="icon-name">open-menu-symbolic</property>
       </object>
     </child>
     <child>
