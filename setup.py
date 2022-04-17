@@ -29,12 +29,12 @@ import subprocess
 # Importing distutils after setuptools uses the setuptools' distutils
 from distutils.command.install_data import install_data
 
-from gnome_appfolders_manager.constants import (APP_NAME,
-                                                APP_VERSION,
-                                                APP_DESCRIPTION,
-                                                APP_AUTHOR,
+from gnome_appfolders_manager.constants import (APP_AUTHOR,
                                                 APP_AUTHOR_EMAIL,
+                                                APP_DESCRIPTION,
+                                                APP_NAME,
                                                 APP_URL,
+                                                APP_VERSION,
                                                 DOMAIN_NAME,
                                                 SOURCES_URL)
 

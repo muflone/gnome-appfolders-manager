@@ -18,7 +18,6 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gi.repository import Gtk
 from gi.repository.GdkPixbuf import Pixbuf
 
 from gnome_appfolders_manager.constants import (APP_NAME,
