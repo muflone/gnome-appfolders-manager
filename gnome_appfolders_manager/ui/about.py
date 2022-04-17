@@ -69,12 +69,10 @@ class UIAbout(UIBase):
             '\n'.join(readlines(FILE_LICENSE, True)))
         self.ui.dialog.set_translator_credits('\n'.join(translators))
         # Retrieve the external resources links
-        # only for GTK+ 3.6.0 and higher
-        if not Gtk.check_version(3, 6, 0):
-            for line in readlines(FILE_RESOURCES, False):
-                resource_type, resource_url = line.split(':', 1)
-                self.ui.dialog.add_credit_section(
-                    resource_type, (resource_url,))
+        for line in readlines(FILE_RESOURCES, False):
+            resource_type, resource_url = line.split(':', 1)
+            self.ui.dialog.add_credit_section(
+                resource_type, (resource_url,))
         icon_logo = Pixbuf.new_from_file(str(FILE_ICON))
         self.ui.dialog.set_logo(icon_logo)
         self.ui.dialog.set_transient_for(parent)
