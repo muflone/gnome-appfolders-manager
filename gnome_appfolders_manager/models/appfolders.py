@@ -46,12 +46,4 @@ class ModelAppFolders(ModelAbstract):
 
     def get_title(self, treeiter):
         """Get the title from a TreeIter"""
-        return self.model[treeiter][self.COL_TITLE]
-
-    def get_description(self, treeiter):
-        """Get the description from a TreeIter"""
-        return self.model[treeiter][self.COL_DESCRIPTION]
-
-    def get_icon(self, treeiter):
-        """Get the icon from a TreeIter"""
-        return self.model[treeiter][self.COL_ICON]
+        return self.get_data(treeiter, self.COL_TITLE)

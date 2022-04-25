@@ -68,7 +68,7 @@ class UIMain(UIBase):
         self.ui.treeview_column_applications.set_sort_indicator(False)
         # Detect the AppFolders and select the first one automatically
         self.reload_folders()
-        if self.model_folders.count() > 0:
+        if len(self.model_folders) > 0:
             self.ui.treeview_folders.set_cursor(0)
         self.ui.treeview_folders.grab_focus()
         # Restore the saved size and position

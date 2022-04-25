@@ -18,7 +18,6 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-
 class ModelAbstract(object):
     COL_KEY = 0
 
@@ -30,6 +29,14 @@ class ModelAbstract(object):
             name = row[self.COL_KEY]
             self.rows[name] = self.model.get_iter(row.path)
 
+    def __len__(self):
+        """Return the number of items in the model"""
+        return len(self.model)
+
+    def __iter__(self):
+        """Iterate the rows keys"""
+        return self.rows.__iter__()
+
     def clear(self):
         """Clear the model"""
         self.rows.clear()
@@ -39,22 +46,21 @@ class ModelAbstract(object):
         """Add a new row to the model if it doesn't exist"""
         pass
 
-    def set_data(self, treeiter, item):
+    def get_data(self, treeiter, column):
+        """Get informaion from a TreeIter column"""
+        return self.get_model_row(treeiter)[column]
+
+    def set_data(self, treeiter, column, value):
         """Update an existing TreeIter"""
-        old_key = self.get_key(treeiter)
-        # If the new name differs from the old name then update the
-        # TreeIters map in self.rows
-        if old_key != item.name:
-            self.rows.pop(old_key)
-            self.rows[item.name] = treeiter
+        self.get_model_row(treeiter)[column] = value
 
     def get_key(self, treeiter):
         """Get the name from a TreeIter"""
-        return self.model[treeiter][self.COL_KEY]
+        return self.get_model_row(treeiter)[self.COL_KEY]
 
-    def get_iter(self, name):
-        """Get a TreeIter from a name"""
-        return self.rows.get(name)
+    def get_iter(self, key):
+        """Get a TreeIter from its key"""
+        return self.rows.get(key)
 
     def get_model_row(self, treeiter):
         """Get a TreeModelRow from a TreeIter"""
@@ -81,7 +87,3 @@ class ModelAbstract(object):
         """Load the model data from a dict object"""
         for key in sorted(items.iterkeys()):
             self.add_data(items[key])
-
-    def count(self):
-        """Return the number of items in the model"""
-        return len(self.model)
