@@ -37,7 +37,14 @@ def main():
     verbose_levels = {0: logging.ERROR,
                       1: logging.INFO,
                       2: logging.DEBUG}
-    logging.getLogger().setLevel(verbose_levels[options.verbose_level])
+    logging.basicConfig(level=verbose_levels[options.verbose_level],
+                        format='%(asctime)s '
+                               '%(levelname)-8s '
+                               '%(filename)-25s '
+                               'line: %(lineno)-5d '
+                               '%(funcName)-30s '
+                               'pid: %(process)-9d '
+                               '%(message)s')
     # Log paths for debug purposes
     # Not using {VARIABLE=} as it's not compatible with Python 3.6
     logging.debug(f'DIR_PREFIX={str(DIR_PREFIX)}')
