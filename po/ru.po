@@ -65,7 +65,7 @@ msgstr "Заголовок:"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr ""
+msgstr "Открыть настройки"
 
 #: ui/main.ui:118
 msgid "Show missing _files"
@@ -85,7 +85,7 @@ msgstr "Показать диалог \"О программе\""
 
 #: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
-msgstr ""
+msgstr "Комбинации клавиш"
 
 #: ui/shortcuts.ui:57
 msgid "Create a new folder"
