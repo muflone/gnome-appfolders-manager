@@ -42,11 +42,11 @@ class Preferences(object):
         self.options = {}
         for option in DEFAULT_VALUES.keys():
             section, default = DEFAULT_VALUES[option]
-            if isinstance(default, int):
-                self.options[option] = settings.settings.get_int(
-                    section, option, default)
-            elif isinstance(default, bool):
+            if isinstance(default, bool):
                 self.options[option] = settings.settings.get_boolean(
+                    section, option, default)
+            elif isinstance(default, int):
+                self.options[option] = settings.settings.get_int(
                     section, option, default)
             else:
                 self.options[option] = settings.settings.get(
