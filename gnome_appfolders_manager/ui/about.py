@@ -31,7 +31,8 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_TRANSLATORS,
                                                 FILE_RESOURCES,
                                                 FILE_ICON)
-from gnome_appfolders_manager.functions import readlines, _
+from gnome_appfolders_manager.functions import readlines
+from gnome_appfolders_manager.localize import _
 from gnome_appfolders_manager.ui.base import UIBase
 
 

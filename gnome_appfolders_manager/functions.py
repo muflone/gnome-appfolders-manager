@@ -18,7 +18,6 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gettext import gettext, dgettext
 import itertools
 import logging
 import pathlib
@@ -27,8 +26,6 @@ from gi.repository import GdkPixbuf
 from gi.repository import Gtk
 
 from gnome_appfolders_manager.constants import DIR_UI
-
-localized_messages = {}
 
 
 def get_pixbuf_from_icon_name(icon_name, size):
@@ -107,33 +104,3 @@ def readlines(filename, empty_lines=False):
 def set_style_suggested_action(widget):
     """Add the suggested-action style to a widget"""
     widget.get_style_context().add_class("suggested-action")
-
-
-def store_message(message, translated):
-    """Store a translated message in the localized_messages list"""
-    localized_messages[message] = translated
-
-
-def text(message, gtk30=False, context=None):
-    """Return a translated message and cache it for reuse"""
-    if message not in localized_messages:
-        if gtk30:
-            # Get a message translated from GTK+ 3 domain
-            full_message = message if not context else f'{context}\04{message}'
-            localized_messages[message] = dgettext('gtk30', full_message)
-            # Fix for untranslated messages with context
-            if context and localized_messages[message] == full_message:
-                localized_messages[message] = dgettext('gtk30', message)
-        else:
-            localized_messages[message] = gettext(message)
-    return localized_messages[message]
-
-
-def text_gtk30(message, context=None):
-    """Return a translated text from GTK+ 3.0"""
-    return text(message=message, gtk30=True, context=context)
-
-
-# This special alias is used to track localization requests to catch
-# by xgettext. The text() calls aren't tracked by xgettext
-_ = text

@@ -27,9 +27,8 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_SETTINGS,
                                                 FILE_WINDOWS_POSITION,
                                                 SCHEMA_FOLDERS)
-from gnome_appfolders_manager.functions import (_,
-                                                get_treeview_selected_row,
-                                                text_gtk30)
+from gnome_appfolders_manager.functions import get_treeview_selected_row
+from gnome_appfolders_manager.localize import _, text_gtk30
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo

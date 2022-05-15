@@ -20,8 +20,8 @@
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import (set_style_suggested_action,
-                                                text)
+from gnome_appfolders_manager.functions import set_style_suggested_action
+from gnome_appfolders_manager.localize import text
 import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.ui.base import UIBase
 

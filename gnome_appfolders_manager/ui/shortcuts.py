@@ -20,7 +20,7 @@
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import text
+from gnome_appfolders_manager.localize import text
 from gnome_appfolders_manager.ui.base import UIBase
 
 
