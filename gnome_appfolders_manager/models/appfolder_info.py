@@ -18,7 +18,6 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-
 class AppFolderInfo(object):
     def __init__(self, folder_info):
         """Create an AppFolderInfo object from a FolderInfo object"""

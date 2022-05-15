@@ -70,9 +70,6 @@ class UIMain(UIBase):
         if len(self.model_folders) > 0:
             self.ui.treeview_folders.set_cursor(0)
         self.ui.treeview_folders.grab_focus()
-        # Restore the saved size and position
-        settings.positions.restore_window_position(window=self.ui.window,
-                                                   section=SECTION_WINDOW_NAME)
 
     def load_ui(self):
         """Load the interface UI"""
@@ -106,6 +103,9 @@ class UIMain(UIBase):
         }
         for setting_name, action in self.dict_settings_map.items():
             action.set_active(preferences.get(setting_name))
+        # Restore the saved size and position
+        settings.positions.restore_window_position(window=self.ui.window,
+                                                   section=SECTION_WINDOW_NAME)
         # Connect signals from the UI file to the module functions
         self.ui.connect_signals(self)
 

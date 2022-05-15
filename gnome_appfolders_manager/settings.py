@@ -21,7 +21,6 @@
 import configparser
 import logging
 
-
 POSITION_LEFT = 'left'
 POSITION_TOP = 'top'
 SIZE_WIDTH = 'width'
