@@ -103,4 +103,4 @@ def readlines(filename, empty_lines=False):
 
 def set_style_suggested_action(widget):
     """Add the suggested-action style to a widget"""
-    widget.get_style_context().add_class("suggested-action")
+    widget.get_style_context().add_class('suggested-action')
