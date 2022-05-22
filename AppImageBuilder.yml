@@ -30,7 +30,7 @@ AppDir:
     id: com.muflone.gnome-appfolders-manager
     name: gnome-appfolders-manager
     icon: gnome-appfolders-manager
-    version: 0.4.4
+    version: 0.4.5
     exec: usr/bin/python3
     exec_args: "$APPDIR/usr/share/gnome-appfolders-manager/gnome-appfolders-manager.py $@"
 
