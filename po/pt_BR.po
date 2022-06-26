@@ -7,13 +7,14 @@
 #
 # Translators:
 # Guilherme TW <guilherme7tw(at)gmail.com>, 2016
+# Paguiar735 <github.translation(at)paguiar.dev>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
 "POT-Creation-Date: 2022-04-10 00:55+0200\n"
-"PO-Revision-Date: 2016-06-27 14:04+0000\n"
-"Last-Translator: Guilherme TW <guilherme7tw(at)gmail.com>\n"
+"PO-Revision-Date: 2022-06-26 14:04+0000\n"
+"Last-Translator: Paguiar735 <github.translation(at)paguiar.dev>\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/muflone/gnome-appfolders-manager/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +29,7 @@ msgstr "Versão {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:56
 msgid "Manage GNOME Shell applications folders"
-msgstr ""
+msgstr "Manage GNOME Shell applications folders"
 
 #: gnome_appfolders_manager/ui/about.py:65
 msgid "Contributors:"
@@ -45,7 +46,7 @@ msgstr "Tem certeza que deseja remover a categoria {FOLDER}?"
 
 #: ui/application_picker.ui:8
 msgid "_Add applications"
-msgstr "_Adicionar aplicativos"
+msgstr "_Add applications"
 
 #: ui/application_picker.ui:139 ui/main.ui:464
 msgid "Applications"
@@ -53,11 +54,11 @@ msgstr "Aplicativos"
 
 #: ui/appmenu.ui:6
 msgid "_About GNOME App Folders Manager"
-msgstr "_Sobre o GNOME App Folders Manager"
+msgstr "_About GNOME App Folders Manager"
 
 #: ui/appmenu.ui:11
 msgid "Show keyboard _shortcuts"
-msgstr "Mostrar _atalhos de teclado"
+msgstr "Show keyboard _shortcuts"
 
 #: ui/create_appfolder.ui:124
 msgid "Title:"
@@ -65,11 +66,11 @@ msgstr "Título:"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr ""
+msgstr "Abrir o menu de opções"
 
 #: ui/main.ui:118
 msgid "Show missing _files"
-msgstr "Mostrar _arquivos perdidos"
+msgstr "Show missing _files"
 
 #: ui/main.ui:182
 msgid "Folders:"
@@ -81,11 +82,11 @@ msgstr "Categorias"
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
-msgstr "Mostrar diálogo sobre"
+msgstr "Exibir caixa de diálogo Sobre"
 
 #: ui/shortcuts.ui:35
 msgid "Show the shortcuts dialog"
-msgstr ""
+msgstr "Exibir caixa de diálogo Atalhos"
 
 #: ui/shortcuts.ui:57
 msgid "Create a new folder"
@@ -105,4 +106,4 @@ msgstr "Remover o arquivo selecionado"
 
 #: ui/shortcuts.ui:93
 msgid "Search file in the current folder"
-msgstr ""
+msgstr "Procurar arquivo na categoria atual"
