@@ -1,5 +1,5 @@
 -r requirements.txt
 
-PyGObject-stubs==0.0.4
-flake8==3.9.2
+PyGObject-stubs==1.0.0
+flake8==5.0.4
 transifex-client==0.12.5
