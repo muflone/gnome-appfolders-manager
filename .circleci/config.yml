@@ -10,7 +10,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/python:3.9.5
 
     working_directory: ~/repo
 
@@ -28,8 +28,8 @@ jobs:
           name: check code
           command: |
             . venv/bin/activate
-            python -m compileall gnome_appfolders_manager
-            pycodestyle gnome_appfolders_manager
-            python -m flake8 gnome_appfolders_manager
+            python -m compileall gnome_appfolders_manager gnome-appfolders-manager.py setup.py
+            pycodestyle gnome_appfolders_manager gnome-appfolders-manager.py setup.py
+            python -m flake8 gnome_appfolders_manager gnome-appfolders-manager.py setup.py
             python setup.py install --optimize=1 --root=build
-            ls -laR build
+            ls -laR .
