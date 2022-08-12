@@ -20,7 +20,7 @@ jobs:
           name: install dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install gettext gir1.2-gtk-3.0 gobject-introspection libgirepository1.0-dev
+            sudo apt-get install gettext gir1.2-gtk-3.0 gobject-introspection libcairo2-dev libgirepository1.0-dev python3-gi
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements_travis.txt
