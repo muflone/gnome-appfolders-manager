@@ -1,21 +1,22 @@
+os: linux
 dist: bionic
 language: python
 python:
   - "3.6"
 virtualenv:
-  system_site_packages: false
-sudo: false
+  system_site_packages: true
 addons:
   apt:
     packages:
-    - gir1.2-gtk-3.0
-    - gobject-introspection
-    - libgirepository1.0-dev
-    - gettext
+    - gettext                                 # msgfmt
+    - python3-gi                              # GObject
+    - libgirepository1.0-dev                  # GObject
+    - gir1.2-gtk-3.0                          # gi.repository.Gtk
 install:
   - pip install -r requirements_travis.txt
 script:
   - python -m compileall .
-  - flake8 .
+  - python -m pycodestyle .
+  - python -m flake8 .
   - python setup.py install --optimize=1 --root=build
   - ls -laR build
