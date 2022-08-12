@@ -13,7 +13,9 @@
 
 **Documentation:** https://www.muflone.com/gnome-appfolders-manager/
 
-# Usage
+**Translations:** https://explore.transifex.com/muflone/gnome-appfolders-manager/
+
+# Description
 
 From the *GNOME App Folders Manager* main window you can define your custom folders
 to group your applications by clicking the **Create folder** button on the header bar.
