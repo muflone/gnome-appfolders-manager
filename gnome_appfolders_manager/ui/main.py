@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -18,14 +18,14 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gi.repository import Gdk
+import logging
+
 from gi.repository import Gio
 from gi.repository import Gtk
 
 from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_ICON,
                                                 FILE_SETTINGS,
-                                                FILE_WINDOWS_POSITION,
                                                 SCHEMA_FOLDERS)
 from gnome_appfolders_manager.functions import get_treeview_selected_row
 from gnome_appfolders_manager.localize import _, text_gtk30
@@ -34,8 +34,9 @@ from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
 from gnome_appfolders_manager.models.folder_info import FolderInfo
-import gnome_appfolders_manager.preferences as preferences
-import gnome_appfolders_manager.settings as settings
+from gnome_appfolders_manager.settings import (APP_PICKER_SHOW_HIDDEN,
+                                               PREFERENCES_SHOW_MISSING,
+                                               Settings)
 from gnome_appfolders_manager.ui.about import UIAbout
 from gnome_appfolders_manager.ui.application_picker import UIApplicationPicker
 from gnome_appfolders_manager.ui.base import UIBase
@@ -48,34 +49,32 @@ SECTION_WINDOW_NAME = 'main'
 
 
 class UIMain(UIBase):
-    def __init__(self, application):
+    def __init__(self, application, options):
+        """Prepare the main window"""
+        logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='main.ui')
+        # Initialize members
         self.application = application
-        # Load settings
-        settings.settings = settings.Settings(FILE_SETTINGS, False)
-        settings.positions = settings.Settings(FILE_WINDOWS_POSITION, False)
+        self.options = options
         self.folders = {}
-        preferences.preferences = preferences.Preferences()
+        # Load settings
+        self.settings = Settings(filename=FILE_SETTINGS,
+                                 case_sensitive=True)
+        self.settings.load_preferences()
+        self.settings_map = {}
+        # Load UI
         self.load_ui()
-        # Prepares the models for folders and applications
+        # Prepare the models
         self.model_folders = ModelAppFolders(self.ui.store_folders)
         self.model_applications = ModelApplications(self.ui.store_applications)
-        self.model_applications.model.set_sort_column_id(
-            self.ui.treeview_column_applications.get_sort_column_id(),
-            Gtk.SortType.ASCENDING)
-        self.ui.treeview_column_applications.set_clickable(False)
-        self.ui.treeview_column_applications.set_sort_indicator(False)
-        # Detect the AppFolders and select the first one automatically
-        self.reload_folders()
-        if len(self.model_folders) > 0:
-            self.ui.treeview_folders.set_cursor(0)
-        self.ui.treeview_folders.grab_focus()
+        # Complete initialization
+        self.startup()
 
     def load_ui(self):
         """Load the interface UI"""
+        logging.debug(f'{self.__class__.__name__} load UI')
         # Initialize translations
         self.ui.action_about.set_label(text_gtk30('About'))
-        self.ui.action_shortcuts.set_label(text_gtk30('Shortcuts'))
         # Initialize titles and tooltips
         self.set_titles()
         # Initialize Gtk.HeaderBar
@@ -94,51 +93,42 @@ class UIMain(UIBase):
         self.ui.window.set_title(APP_NAME)
         self.ui.window.set_icon_from_file(str(FILE_ICON))
         self.ui.window.set_application(self.application)
-        # Load settings
-        self.dict_settings_map = {
-            preferences.PREFERENCES_SHOW_MISSING:
+        self.ui.store_applications.set_sort_column_id(
+            self.ui.treeview_column_applications.get_sort_column_id(),
+            Gtk.SortType.ASCENDING)
+        self.ui.treeview_column_applications.set_clickable(False)
+        self.ui.treeview_column_applications.set_sort_indicator(False)
+        # Connect signals from the UI file to the functions with the same name
+        self.ui.connect_signals(self)
+
+    def startup(self):
+        """Complete initialization"""
+        logging.debug(f'{self.__class__.__name__} startup')
+        self.settings_map = {
+            PREFERENCES_SHOW_MISSING:
                 self.ui.action_options_show_missing_files,
-            preferences.APP_PICKER_SHOW_HIDDEN:
+            APP_PICKER_SHOW_HIDDEN:
                 self.ui.action_options_show_hidden_files
         }
-        for setting_name, action in self.dict_settings_map.items():
-            action.set_active(preferences.get(setting_name))
+        # Load settings
+        for setting_name, action in self.settings_map.items():
+            action.set_active(self.settings.get_preference(
+                option=setting_name))
+        # Detect the AppFolders and select the first one automatically
+        self.do_reload_folders()
+        if len(self.model_folders) > 0:
+            self.ui.treeview_folders.set_cursor(0)
+        self.ui.treeview_folders.grab_focus()
         # Restore the saved size and position
-        settings.positions.restore_window_position(window=self.ui.window,
-                                                   section=SECTION_WINDOW_NAME)
-        # Connect signals from the UI file to the module functions
-        self.ui.connect_signals(self)
+        self.settings.restore_window_position(window=self.ui.window,
+                                              section=SECTION_WINDOW_NAME)
 
     def run(self):
         """Show the UI"""
+        logging.debug(f'{self.__class__.__name__} run')
         self.ui.window.show_all()
 
-    def on_window_delete_event(self, widget, event):
-        """Save the settings and close the application"""
-        settings.positions.save_window_position(window=self.ui.window,
-                                                section=SECTION_WINDOW_NAME)
-        settings.positions.save()
-        settings.settings.save()
-        self.application.quit()
-
-    def on_action_about_activate(self, action):
-        """Show the about dialog"""
-        dialog = UIAbout(self.ui.window)
-        dialog.show()
-        dialog.destroy()
-
-    def on_action_shortcuts_activate(self, action):
-        """Show the shortcuts dialog"""
-        dialog = UIShortcuts(self.ui.window)
-        dialog.show()
-
-    def on_action_quit_activate(self, action):
-        """Close the application by closing the main window"""
-        event = Gdk.Event()
-        event.key.type = Gdk.EventType.DELETE
-        self.ui.window.event(event)
-
-    def reload_folders(self):
+    def do_reload_folders(self):
         """Reload the Application Folders"""
         self.folders = {}
         self.model_folders.clear()
@@ -150,56 +140,54 @@ class UIMain(UIBase):
             self.model_folders.add_data(appfolder)
             self.folders[folder_info.folder] = folder_info
 
-    def on_treeview_folders_cursor_changed(self, widget):
-        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
-        if selected_row:
-            folder_name = self.model_folders.get_key(selected_row)
-            # Check if the folder still exists
-            # (model erased while the cursor moves through the Gtk.TreeView)
-            if folder_name in self.folders:
-                folder_info = self.folders[folder_name]
-                # Clear any previous application icon
-                self.model_applications.clear()
-                # Add new application icons
-                applications = folder_info.get_applications()
-                for application in applications:
-                    desktop_file = applications[application]
-                    if desktop_file or preferences.get(
-                            preferences.PREFERENCES_SHOW_MISSING):
-                        application_file = applications[application]
-                        application_info = ApplicationInfo(
-                            application,
-                            application_file.getName()
-                            if desktop_file else 'Missing desktop file',
-                            application_file.getComment()
-                            if desktop_file else application,
-                            application_file.getIcon()
-                            if desktop_file else None,
-                            # Always show any application, also if hidden
-                            True)
-                        self.model_applications.add_data(application_info)
-            # Disable folder content saving
-            self.ui.action_files_save.set_sensitive(False)
+    def on_action_about_activate(self, widget):
+        """Show the information dialog"""
+        dialog = UIAbout(parent=self.ui.window,
+                         settings=self.settings,
+                         options=self.options)
+        dialog.show()
+        dialog.destroy()
 
-    def on_treeview_selection_folders_changed(self, widget):
-        """Set action sensitiveness on selection change"""
-        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
-        for widget in (self.ui.action_folders_remove,
-                       self.ui.action_folders_properties,
-                       self.ui.action_files_new,
-                       self.ui.action_files_search):
-            widget.set_sensitive(bool(selected_row))
-        if not selected_row:
-            self.ui.action_files_new.set_sensitive(False)
-            self.ui.action_files_remove.set_sensitive(False)
-            self.ui.action_files_save.set_sensitive(False)
-            self.ui.action_files_search.set_sensitive(False)
-            self.model_applications.clear()
+    def on_action_shortcuts_activate(self, widget):
+        """Show the shortcuts dialog"""
+        dialog = UIShortcuts(parent=self.ui.window,
+                             settings=self.settings,
+                             options=self.options)
+        dialog.show()
 
-    def on_action_files_new_activate(self, action):
+    def on_action_quit_activate(self, widget):
+        """Save the settings and close the application"""
+        logging.debug(f'{self.__class__.__name__} quit')
+        self.settings.save_window_position(window=self.ui.window,
+                                           section=SECTION_WINDOW_NAME)
+        self.settings.save()
+        self.ui.window.destroy()
+        self.application.quit()
+
+    def on_action_options_menu_activate(self, widget):
+        """Open the options menu"""
+        self.ui.button_options.clicked()
+
+    def on_action_options_toggled(self, widget):
+        """Change an option value"""
+        for setting_name, action in self.settings_map.items():
+            if action is widget:
+                self.settings.set_preference(
+                    option=setting_name,
+                    value=widget.get_active())
+
+    def on_action_options_show_missing_files_toggled(self, widget):
+        """Show and hide the missing desktop files"""
+        self.on_treeview_folders_cursor_changed(
+            self.ui.treeview_folders)
+
+    def on_action_files_new_activate(self, widget):
         """Show an application picker to add to the current AppFolder"""
-        dialog = UIApplicationPicker(self.ui.window,
-                                     self.model_applications.rows.keys())
+        dialog = UIApplicationPicker(
+            parent=self.ui.window,
+            settings=self.settings,
+            options=self.options,
+            existing_files=self.model_applications.rows.keys())
         if dialog.show() == Gtk.ResponseType.OK:
             if dialog.selected_applications:
                 treeiter = None
@@ -220,12 +208,7 @@ class UIMain(UIBase):
                 self.ui.action_files_save.set_sensitive(True)
         dialog.destroy()
 
-    def on_treeview_selection_applications_changed(self, widget):
-        """Set action sensitiveness on selection change"""
-        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
-        self.ui.action_files_remove.set_sensitive(bool(selected_row))
-
-    def on_action_files_remove_activate(self, action):
+    def on_action_files_remove_activate(self, widget):
         """Remove the selected application from the current AppFolder"""
         selected_row = get_treeview_selected_row(self.ui.treeview_applications)
         if selected_row:
@@ -233,7 +216,7 @@ class UIMain(UIBase):
             # Enable folder content saving
             self.ui.action_files_save.set_sensitive(True)
 
-    def on_action_files_save_activate(self, action):
+    def on_action_files_save_activate(self, widget):
         """Save the current AppFolder"""
         selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         if selected_row:
@@ -243,12 +226,56 @@ class UIMain(UIBase):
         # Disable folder content saving
         self.ui.action_files_save.set_sensitive(False)
 
-    def on_action_files_search_activate(self, action):
+    def on_action_files_search_activate(self, widget):
         """Start interactive files search"""
         self.ui.treeview_applications.grab_focus()
         self.ui.treeview_applications.emit('start-interactive-search')
 
-    def on_action_folders_remove_activate(self, action):
+    def on_action_folders_new_activate(self, widget):
+        """Creat a new AppFolder"""
+        dialog = UICreateAppFolder(
+            parent=self.ui.window,
+            settings=self.settings,
+            options=self.options,
+            existing_folders=self.model_folders.rows.keys())
+        if dialog.show(name='', title='') == Gtk.ResponseType.OK:
+            # Create a new FolderInfo object and set its title
+            folder_info = FolderInfo(dialog.folder_name)
+            folder_info.set_title(dialog.folder_title)
+            # Add the folder to the folders list
+            settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
+            list_folders = settings_folders.get_strv('folder-children')
+            list_folders.append(dialog.folder_name)
+            settings_folders.set_strv('folder-children', list_folders)
+            # Reload folders list
+            self.do_reload_folders()
+        dialog.destroy()
+
+    def on_action_folders_properties_activate(self, widget):
+        """Set the AppFolder properties"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        if selected_row:
+            name = self.model_folders.get_key(selected_row)
+            title = self.model_folders.get_title(selected_row)
+            dialog = UICreateAppFolder(
+                parent=self.ui.window,
+                settings=self.settings,
+                options=self.options,
+                existing_folders=self.model_folders.rows.keys())
+            if dialog.show(name=name, title=title) == Gtk.ResponseType.OK:
+                folder_name = dialog.folder_name
+                folder_title = dialog.folder_title
+                # Update the folder title
+                folder_info = self.folders[folder_name]
+                folder_info.name = folder_title
+                folder_info.set_title(folder_title)
+                # Reload the folders list and select the folder again
+                self.do_reload_folders()
+                self.ui.treeview_folders.set_cursor(
+                    self.model_folders.get_path_by_name(folder_name))
+            dialog.destroy()
+
+    def on_action_folders_remove_activate(self, widget):
         """Remove the current AppFolder"""
         selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         if selected_row:
@@ -276,59 +303,61 @@ class UIMain(UIBase):
                 # Remove the folder from the folders model
                 self.model_folders.remove(selected_row)
 
-    def on_action_folders_new_activate(self, action):
-        """Creat a new AppFolder"""
-        dialog = UICreateAppFolder(self.ui.window,
-                                   self.model_folders.rows.keys())
-        if dialog.show(name='', title='') == Gtk.ResponseType.OK:
-            # Create a new FolderInfo object and set its title
-            folder_info = FolderInfo(dialog.folder_name)
-            folder_info.set_title(dialog.folder_title)
-            # Add the folder to the folders list
-            settings_folders = Gio.Settings.new(SCHEMA_FOLDERS)
-            list_folders = settings_folders.get_strv('folder-children')
-            list_folders.append(dialog.folder_name)
-            settings_folders.set_strv('folder-children', list_folders)
-            # Reload folders list
-            self.reload_folders()
-        dialog.destroy()
-
-    def on_action_folders_properties_activate(self, action):
-        """Set the AppFolder properties"""
+    def on_treeview_folders_cursor_changed(self, widget):
         selected_row = get_treeview_selected_row(self.ui.treeview_folders)
         if selected_row:
-            name = self.model_folders.get_key(selected_row)
-            title = self.model_folders.get_title(selected_row)
-            dialog = UICreateAppFolder(self.ui.window,
-                                       self.model_folders.rows.keys())
-            if dialog.show(name=name, title=title) == Gtk.ResponseType.OK:
-                folder_name = dialog.folder_name
-                folder_title = dialog.folder_title
-                # Update the folder title
+            folder_name = self.model_folders.get_key(selected_row)
+            # Check if the folder still exists
+            # (model erased while the cursor moves through the Gtk.TreeView)
+            if folder_name in self.folders:
                 folder_info = self.folders[folder_name]
-                folder_info.name = folder_title
-                folder_info.set_title(folder_title)
-                # Reload the folders list and select the folder again
-                self.reload_folders()
-                self.ui.treeview_folders.set_cursor(
-                    self.model_folders.get_path_by_name(folder_name))
-            dialog.destroy()
-
-    def on_action_options_menu_activate(self, widget):
-        """Open the options menu"""
-        self.ui.button_options.emit('clicked')
-
-    def on_action_options_toggled(self, widget):
-        """Change an option value"""
-        for setting_name, action in self.dict_settings_map.items():
-            if action is widget:
-                preferences.set(setting_name, widget.get_active())
-
-    def on_action_options_show_missing_files_toggled(self, widget):
-        """Show and hide the missing desktop files"""
-        self.on_treeview_folders_cursor_changed(
-            self.ui.treeview_folders)
+                # Clear any previous application icon
+                self.model_applications.clear()
+                # Add new application icons
+                applications = folder_info.get_applications()
+                for application in applications:
+                    desktop_file = applications[application]
+                    if desktop_file or self.settings.get_preference(
+                            option=PREFERENCES_SHOW_MISSING):
+                        application_file = applications[application]
+                        application_info = ApplicationInfo(
+                            application,
+                            application_file.getName()
+                            if desktop_file else 'Missing desktop file',
+                            application_file.getComment()
+                            if desktop_file else application,
+                            application_file.getIcon()
+                            if desktop_file else None,
+                            # Always show any application, also if hidden
+                            True)
+                        self.model_applications.add_data(application_info)
+            # Disable folder content saving
+            self.ui.action_files_save.set_sensitive(False)
 
     def on_treeview_folders_row_activated(self, widget, path, column):
         """Show folder properties on activation"""
         self.ui.action_folders_properties.activate()
+
+    def on_treeview_selection_applications_changed(self, widget):
+        """Set action sensitiveness on selection change"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_applications)
+        self.ui.action_files_remove.set_sensitive(bool(selected_row))
+
+    def on_treeview_selection_folders_changed(self, widget):
+        """Set action sensitiveness on selection change"""
+        selected_row = get_treeview_selected_row(self.ui.treeview_folders)
+        for widget in (self.ui.action_folders_remove,
+                       self.ui.action_folders_properties,
+                       self.ui.action_files_new,
+                       self.ui.action_files_search):
+            widget.set_sensitive(bool(selected_row))
+        if not selected_row:
+            self.ui.action_files_new.set_sensitive(False)
+            self.ui.action_files_remove.set_sensitive(False)
+            self.ui.action_files_save.set_sensitive(False)
+            self.ui.action_files_search.set_sensitive(False)
+            self.model_applications.clear()
+
+    def on_window_delete_event(self, widget, event):
+        """Close the application by closing the main window"""
+        self.ui.action_quit.activate()

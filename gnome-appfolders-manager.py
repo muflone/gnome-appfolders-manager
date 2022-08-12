@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -21,6 +20,7 @@
 ##
 
 from gnome_appfolders_manager.main import main
+
 
 if __name__ == '__main__':
     main()

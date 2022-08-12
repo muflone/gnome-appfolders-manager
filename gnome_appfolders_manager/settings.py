@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -26,14 +26,20 @@ POSITION_TOP = 'top'
 SIZE_WIDTH = 'width'
 SIZE_HEIGHT = 'height'
 
-settings = None
-positions = None
-services = None
+DEFAULT_VALUES = {}
+
+SECTION_PREFERENCES = 'preferences'
+SECTION_APP_PICKER = 'application picker'
+
+PREFERENCES_SHOW_MISSING = 'show missing files'
+DEFAULT_VALUES[PREFERENCES_SHOW_MISSING] = (SECTION_PREFERENCES, False)
+
+APP_PICKER_SHOW_HIDDEN = 'show hidden'
+DEFAULT_VALUES[APP_PICKER_SHOW_HIDDEN] = (SECTION_APP_PICKER, False)
 
 
 class Settings(object):
     def __init__(self, filename, case_sensitive):
-        """Initialize settings"""
         # Parse settings from the configuration file
         self.config = configparser.RawConfigParser()
         # Set case sensitiveness if requested
@@ -46,8 +52,8 @@ class Settings(object):
 
     def get(self, section, option, default=None):
         """Get an option from a specific section"""
-        if self.config.has_section(section) and \
-                self.config.has_option(section, option):
+        if (self.config.has_section(section) and
+                self.config.has_option(section, option)):
             return self.config.get(section, option)
         else:
             return default
@@ -70,37 +76,46 @@ class Settings(object):
         """Get an integer option from a specific section"""
         return int(self.get(section, option, default))
 
+    def set_int(self, section, option, value):
+        """Set an integer option from a specific section"""
+        self.set(section, option, int(value))
+
     def get_list(self, section, option, separator=','):
         """Get an option list from a specific section"""
         value = self.get(section, option, '')
         if len(value):
             return [v.strip() for v in value.split(separator)]
 
-    def set_int(self, section, option, value):
-        """Set an integer option from a specific section"""
-        self.set(section, option, int(value))
+    def load_preferences(self):
+        """Load preferences"""
+        for option in DEFAULT_VALUES:
+            self.set_preference(option, self.get_preference(option))
 
-    def get_setting(self, setting, default=None):
-        """Get the specified setting with a fallback value"""
-        section, option, option_type = setting
-        if option_type is int:
-            return self.get_int(section, option,
-                                default and default or 0)
-        elif option_type is bool:
-            return self.get_boolean(section, option,
-                                    default if True else False)
+    def get_preference(self, option):
+        """Get a preference value by option name"""
+        section, default = DEFAULT_VALUES[option]
+        if isinstance(default, bool):
+            method_get = self.get_boolean
+        elif isinstance(default, int):
+            method_get = self.get_int
         else:
-            return self.get(section, option, default)
+            method_get = self.get
+        return method_get(section=section,
+                          option=option,
+                          default=default)
 
-    def set_setting(self, setting, value):
-        """Set the specified setting"""
-        section, option, option_type = setting
-        if option_type is int:
-            return self.set_int(section, option, value)
-        elif option_type is bool:
-            return self.set_boolean(section, option, value)
+    def set_preference(self, option, value):
+        """Set a preference value by option name"""
+        section, default = DEFAULT_VALUES[option]
+        if isinstance(default, bool):
+            method_set = self.set_boolean
+        elif isinstance(default, int):
+            method_set = self.set_int
         else:
-            return self.set(section, option, value)
+            method_set = self.set
+        return method_set(section=section,
+                          option=option,
+                          value=value)
 
     def save(self):
         """Save the whole configuration"""
@@ -128,13 +143,13 @@ class Settings(object):
 
     def restore_window_position(self, window, section):
         """Restore the saved window size and position"""
-        if self.get_int(section, SIZE_WIDTH) and \
-                self.get_int(section, SIZE_HEIGHT):
+        if (self.get_int(section, SIZE_WIDTH) and
+                self.get_int(section, SIZE_HEIGHT)):
             window.set_default_size(
                 self.get_int(section, SIZE_WIDTH, -1),
                 self.get_int(section, SIZE_HEIGHT, -1))
-        if self.get_int(section, POSITION_LEFT) and \
-                self.get_int(section, POSITION_TOP):
+        if (self.get_int(section, POSITION_LEFT) and
+                self.get_int(section, POSITION_TOP)):
             window.move(
                 self.get_int(section, POSITION_LEFT),
                 self.get_int(section, POSITION_TOP))

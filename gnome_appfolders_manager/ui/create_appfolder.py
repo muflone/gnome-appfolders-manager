@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -18,38 +18,57 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
+import logging
+
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import set_style_suggested_action
 from gnome_appfolders_manager.localize import text
-import gnome_appfolders_manager.settings as settings
 from gnome_appfolders_manager.ui.base import UIBase
 
 SECTION_WINDOW_NAME = 'create folder'
 
 
 class UICreateAppFolder(UIBase):
-    def __init__(self, parent, existing_folders):
+    def __init__(self, parent, settings, options, existing_folders):
         """Prepare the AppFolder creation dialog"""
+        logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='create_appfolder.ui')
-        # Load the user interface
-        self.ui.dialog.set_titlebar(self.ui.header_bar)
-        # Initialize titles and tooltips
-        self.set_titles()
-        # Set various properties
-        self.ui.dialog.set_transient_for(parent)
-        set_style_suggested_action(self.ui.button_ok)
+        # Initialize members
+        self.parent = parent
+        self.settings = settings
+        self.options = options
         self.existing_folders = existing_folders
-        self.ui.button_ok.grab_default()
         self.folder_name = ''
         self.folder_title = ''
-        # Connect signals from the UI file to the module functions
+        # Load UI
+        self.load_ui()
+        # Complete initialization
+        self.startup()
+
+    def load_ui(self):
+        """Load the interface UI"""
+        logging.debug(f'{self.__class__.__name__} load UI')
+        # Initialize titles and tooltips
+        self.set_titles()
+        # Initialize Gtk.HeaderBar
+        self.ui.dialog.set_titlebar(self.ui.header_bar)
+        # Set buttons as suggested
+        self.set_buttons_style_suggested_action(
+            buttons=[self.ui.button_ok])
+        # Set various properties
+        self.ui.dialog.set_transient_for(self.parent)
+        # Connect signals from the UI file to the functions with the same name
         self.ui.connect_signals(self)
+
+    def startup(self):
+        """Complete initialization"""
+        logging.debug(f'{self.__class__.__name__} startup')
+        self.ui.button_ok.grab_default()
 
     def show(self, name, title):
         """Show the dialog"""
-        settings.positions.restore_window_position(window=self.ui.dialog,
-                                                   section=SECTION_WINDOW_NAME)
+        self.settings.restore_window_position(window=self.ui.dialog,
+                                              section=SECTION_WINDOW_NAME)
         # Set initial values
         self.folder_name = name
         self.ui.entry_name.set_text(name)
@@ -67,16 +86,16 @@ class UICreateAppFolder(UIBase):
 
     def destroy(self):
         """Destroy the dialog"""
-        settings.positions.save_window_position(window=self.ui.dialog,
-                                                section=SECTION_WINDOW_NAME)
+        self.settings.save_window_position(window=self.ui.dialog,
+                                           section=SECTION_WINDOW_NAME)
         self.ui.dialog.destroy()
         self.ui.dialog = None
 
-    def on_action_close_activate(self, action):
+    def on_action_close_activate(self, widget):
         """Close the dialog"""
         self.ui.dialog.response(Gtk.ResponseType.CLOSE)
 
-    def on_action_confirm_activate(self, action):
+    def on_action_confirm_activate(self, widget):
         """Accept the folder name and title and close the dialog"""
         self.folder_name = self.ui.entry_name.get_text().strip()
         self.folder_title = self.ui.entry_title.get_text().strip()

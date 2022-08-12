@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -23,7 +23,7 @@ class ModelAbstract(object):
 
     def __init__(self, model):
         self.model = model
-        # Fill the rows dictionary with the model items
+        # Fill the rows' dictionary with the model items
         self.rows = {}
         for row in self.model:
             name = row[self.COL_KEY]

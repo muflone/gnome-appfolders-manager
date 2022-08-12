@@ -5,6 +5,7 @@ __pycache__/
 # Ignore build and dist folders for PyPI
 /build/
 /dist/
+/*.egg-info/
 
 # Ignore compiled translation files
 /locale/
@@ -13,4 +14,7 @@ __pycache__/
 *.ui~
 *.glade~
 \#*.glade#
+\#*.ui#
 
+# Ignore PyCharm project folder
+/.idea/

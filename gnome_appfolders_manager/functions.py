@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -48,7 +48,7 @@ def get_pixbuf_from_icon_name(icon_name, size):
     else:
         # The icon was not found in the current theme, search for filenames
         # with png or jpg extensions
-        if (path_icon_name.suffix.lower() in ('.png', '.jpg', '.xpm', '.svg')):
+        if path_icon_name.suffix.lower() in ('.png', '.jpg', '.xpm', '.svg'):
             filenames = (icon_name, )
         else:
             filenames = (f'{icon_name}.png',
@@ -99,8 +99,3 @@ def readlines(filename, empty_lines=False):
                 result.append(line)
         f.close()
     return result
-
-
-def set_style_suggested_action(widget):
-    """Add the suggested-action style to a widget"""
-    widget.get_style_context().add_class('suggested-action')

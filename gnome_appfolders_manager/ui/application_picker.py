@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -23,38 +23,52 @@ import logging
 from gi.repository import Gio
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.functions import (set_style_suggested_action,
-                                                get_treeview_selected_rows)
+from gnome_appfolders_manager.functions import get_treeview_selected_rows
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
 from gnome_appfolders_manager.models.applications import ModelApplications
-import gnome_appfolders_manager.preferences as preferences
-import gnome_appfolders_manager.settings as settings
+from gnome_appfolders_manager.settings import APP_PICKER_SHOW_HIDDEN
 from gnome_appfolders_manager.ui.base import UIBase
 
 SECTION_WINDOW_NAME = 'application picker'
 
 
 class UIApplicationPicker(UIBase):
-    def __init__(self, parent, existing_files):
+    def __init__(self, parent, settings, options, existing_files):
         """Prepare the application picker dialog"""
+        logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='application_picker.ui')
-        # Load the user interface
-        self.ui.dialog.set_titlebar(self.ui.header_bar)
-        # Prepares the models for the applications
+        # Initialize members
+        self.parent = parent
+        self.settings = settings
+        self.options = options
+        self.existing_files = existing_files
+        self.selected_applications = None
+        # Load UI
+        self.load_ui()
+        # Prepare the models
         self.model_applications = ModelApplications(self.ui.store_applications)
-        self.model_applications.model.set_sort_column_id(
-            self.ui.treeview_column_applications.get_sort_column_id(),
-            Gtk.SortType.ASCENDING)
-        self.ui.filter_applications.set_visible_column(
-            ModelApplications.COL_VISIBLE)
+        # Complete initialization
+        self.startup()
+
+    def load_ui(self):
+        """Load the interface UI"""
+        logging.debug(f'{self.__class__.__name__} load UI')
         # Initialize titles and tooltips
         self.set_titles()
-        # Set various properties
-        self.ui.dialog.set_transient_for(parent)
-        set_style_suggested_action(self.ui.button_add)
-        self.selected_applications = None
         # Initialize Gtk.HeaderBar
         self.set_buttons_icons(buttons=[self.ui.button_search])
+        self.ui.dialog.set_titlebar(self.ui.header_bar)
+        # Set buttons as suggested
+        self.set_buttons_style_suggested_action(
+            buttons=[self.ui.button_add])
+        # Set various properties
+        self.ui.dialog.set_transient_for(self.parent)
+        # Connect signals from the UI file to the functions with the same name
+        self.ui.connect_signals(self)
+
+    def startup(self):
+        """Complete initialization"""
+        logging.debug(f'{self.__class__.__name__} startup')
         # Prepares the applications list
         for desktop_entry in Gio.app_info_get_all():
             try:
@@ -75,35 +89,39 @@ class UIApplicationPicker(UIBase):
                                               icon_name,
                                               desktop_entry.should_show())
                 # Skip existing files
-                if application.filename not in existing_files:
+                if application.filename not in self.existing_files:
                     self.model_applications.add_data(application)
             except Exception as e:
                 logging.error(f'{desktop_entry.get_id()}: {e}')
         self.model_applications.set_all_rows_visibility(
-            preferences.get(preferences.APP_PICKER_SHOW_HIDDEN))
-        # Connect signals from the UI file to the module functions
-        self.ui.connect_signals(self)
+            self.settings.get_preference(option=APP_PICKER_SHOW_HIDDEN))
+        self.model_applications.model.set_sort_column_id(
+            self.ui.treeview_column_applications.get_sort_column_id(),
+            Gtk.SortType.ASCENDING)
+        self.ui.filter_applications.set_visible_column(
+            ModelApplications.COL_VISIBLE)
 
     def show(self):
         """Show the application picker dialog"""
-        settings.positions.restore_window_position(window=self.ui.dialog,
-                                                   section=SECTION_WINDOW_NAME)
+        # Restore the saved size and position
+        self.settings.restore_window_position(window=self.ui.dialog,
+                                              section=SECTION_WINDOW_NAME)
         response = self.ui.dialog.run()
         self.ui.dialog.hide()
         return response
 
     def destroy(self):
         """Destroy the application picker dialog"""
-        settings.positions.save_window_position(window=self.ui.dialog,
-                                                section=SECTION_WINDOW_NAME)
+        self.settings.save_window_position(window=self.ui.dialog,
+                                           section=SECTION_WINDOW_NAME)
         self.ui.dialog.destroy()
         self.ui.dialog = None
 
-    def on_action_close_activate(self, action):
+    def on_action_close_activate(self, widget):
         """Close the application picker dialog"""
         self.ui.dialog.response(Gtk.ResponseType.CLOSE)
 
-    def on_action_add_activate(self, action):
+    def on_action_add_activate(self, widget):
         """Add the selected application to the current AppFolder"""
         self.selected_applications = []
         for row in get_treeview_selected_rows(self.ui.treeview_applications):
@@ -111,6 +129,11 @@ class UIApplicationPicker(UIBase):
                 self.ui.filter_applications.convert_path_to_child_path(row))
             self.selected_applications.append(application)
         self.ui.dialog.response(Gtk.ResponseType.OK)
+
+    def on_action_search_activate(self, widget):
+        """Start interactive files search"""
+        self.ui.treeview_applications.grab_focus()
+        self.ui.treeview_applications.emit('start-interactive-search')
 
     def on_treeview_applications_row_activated(self, widget, path, column):
         """Add the selected application on row activation"""
@@ -121,8 +144,3 @@ class UIApplicationPicker(UIBase):
         selected_rows = get_treeview_selected_rows(
             self.ui.treeview_applications)
         self.ui.action_add.set_sensitive(bool(selected_rows))
-
-    def on_action_search_activate(self, action):
-        """Start interactive files search"""
-        self.ui.treeview_applications.grab_focus()
-        self.ui.treeview_applications.emit('start-interactive-search')

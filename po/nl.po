@@ -2,7 +2,7 @@
 # Manage GNOME Shell applications folders
 # Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
 # Website: https://www.muflone.com/gnome-appfolders-manager/
-# This file is distributed under the same license as the GNOME App Folders Manager package.
+# This file is distributed under the same license as the GNOME AppFolders Manager package.
 # Dutch translation for GNOME AppFolders Manager
 #
 # Translators:
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-10 00:55+0200\n"
+"POT-Creation-Date: 2022-08-15 19:46+0200\n"
 "PO-Revision-Date: 2022-04-18 02:22+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss(at)fastmail.com>\n"
 "Language-Team: Dutch\n"
@@ -21,24 +21,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_appfolders_manager/ui/about.py:53
+#: gnome_appfolders_manager/ui/about.py:59
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "Versie {VERSION}"
 
-#: gnome_appfolders_manager/ui/about.py:56
+#: gnome_appfolders_manager/ui/about.py:62
 msgid "Manage GNOME Shell applications folders"
 msgstr "Beheer GNOME Shell-toepassingsmappen"
 
-#: gnome_appfolders_manager/ui/about.py:65
+#: gnome_appfolders_manager/ui/about.py:71
 msgid "Contributors:"
 msgstr "Bijdragers:"
 
-#: gnome_appfolders_manager/ui/main.py:261
+#: gnome_appfolders_manager/ui/main.py:287
 msgid "Remove the selected folder?"
 msgstr "Wilt u de gekozen map verwijderen?"
 
-#: gnome_appfolders_manager/ui/main.py:262
+#: gnome_appfolders_manager/ui/main.py:288
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Weet u zeker dat u {FOLDER} wilt verwijderen?"
@@ -51,17 +51,13 @@ msgstr "Toep_assingen toevoegen"
 msgid "Applications"
 msgstr "Toepassingen"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "Over GNOME-toep_assingsmappenbeheer"
-
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "_Sneltoetsen tonen"
-
 #: ui/create_appfolder.ui:124
 msgid "Title:"
 msgstr "Naam:"
+
+#: ui/main.ui:26 ui/shortcuts.ui:35
+msgid "Keyboard shortcuts"
+msgstr "Sneltoetsen"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
@@ -82,10 +78,6 @@ msgstr "Mappen"
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
 msgstr "Toon het venster ‘Over’"
-
-#: ui/shortcuts.ui:35
-msgid "Show the shortcuts dialog"
-msgstr "Toon het sneltoetsenvenster"
 
 #: ui/shortcuts.ui:57
 msgid "Create a new folder"

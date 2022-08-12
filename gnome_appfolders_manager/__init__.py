@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -24,6 +24,7 @@ import locale
 import gnome_appfolders_manager.requires                           # noqa: F401
 from gnome_appfolders_manager.constants import DOMAIN_NAME, DIR_LOCALE
 from gnome_appfolders_manager.localize import store_message, text
+
 
 # Load domain for translation
 for module in (gettext, locale):

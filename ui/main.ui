@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkAccelGroup" id="accelerators"/>
@@ -7,7 +7,7 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_quit">
-        <property name="short-label" comments="Use domain gtk30">_Quit</property>
+        <property name="label" context="gtk30">_Quit</property>
         <property name="icon-name">application-exit</property>
         <signal name="activate" handler="on_action_quit_activate" swapped="no"/>
       </object>
@@ -15,7 +15,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_about">
-        <property name="short-label" comments="Use domain gtk30">About</property>
+        <property name="label" context="gtk30">About</property>
         <property name="icon-name">help-about</property>
         <signal name="activate" handler="on_action_about_activate" swapped="no"/>
       </object>
@@ -23,7 +23,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_shortcuts">
-        <property name="short-label" comments="Use domain gtk30">Shortcuts</property>
+        <property name="label" translatable="yes">Keyboard shortcuts</property>
         <property name="icon-name">help-browser</property>
         <signal name="activate" handler="on_action_shortcuts_activate" swapped="no"/>
       </object>
@@ -34,7 +34,7 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_files_save">
-        <property name="short-label" comments="Use domain gtk30">_Save</property>
+        <property name="label" context="gtk30">_Save</property>
         <property name="icon-name">document-save</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_save_activate" swapped="no"/>
@@ -43,7 +43,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_remove">
-        <property name="short-label" comments="Use domain gtk30">_Delete</property>
+        <property name="label" context="gtk30">_Delete</property>
         <property name="icon-name">list-remove</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_remove_activate" swapped="no"/>
@@ -52,7 +52,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_new">
-        <property name="short-label" comments="Use domain gtk30">_New</property>
+        <property name="label" context="gtk30">_New</property>
         <property name="icon-name">list-add</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_new_activate" swapped="no"/>
@@ -61,7 +61,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_search">
-        <property name="short-label" comments="Use domain gtk30">_Search</property>
+        <property name="label" context="gtk30">_Search</property>
         <property name="icon-name">edit-find</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_search_activate" swapped="no"/>
@@ -73,7 +73,7 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_folders_remove">
-        <property name="short-label" comments="Use domain gtk30">_Remove</property>
+        <property name="label" context="gtk30">_Remove</property>
         <property name="icon-name">edit-delete</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_remove_activate" swapped="no"/>
@@ -82,7 +82,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_folders_create">
-        <property name="short-label" comments="Use domain gtk30">_Create</property>
+        <property name="label" context="gtk30">_Create</property>
         <property name="icon-name">folder-new</property>
         <signal name="activate" handler="on_action_folders_new_activate" swapped="no"/>
       </object>
@@ -90,7 +90,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_folders_properties">
-        <property name="short-label" comments="Use domain gtk30">_Properties</property>
+        <property name="label" context="gtk30">_Properties</property>
         <property name="icon-name">document-properties</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_properties_activate" swapped="no"/>
@@ -102,27 +102,27 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_options">
-        <property name="short-label" translatable="yes">Open the options menu</property>
+        <property name="label" translatable="yes">Open the options menu</property>
         <property name="icon-name">open-menu-symbolic</property>
       </object>
     </child>
     <child>
       <object class="GtkAction" id="action_options_menu">
-        <property name="short-label" translatable="yes">Open the options menu</property>
+        <property name="label" translatable="yes">Open the options menu</property>
         <signal name="activate" handler="on_action_options_menu_activate" swapped="no"/>
       </object>
       <accelerator key="F10"/>
     </child>
     <child>
       <object class="GtkToggleAction" id="action_options_show_missing_files">
-        <property name="short-label" translatable="yes">Show missing _files</property>
+        <property name="label" translatable="yes">Show missing _files</property>
         <signal name="toggled" handler="on_action_options_show_missing_files_toggled" after="yes" swapped="no"/>
         <signal name="toggled" handler="on_action_options_toggled" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkToggleAction" id="action_options_show_hidden_files">
-        <property name="short-label" comments="Use domain gtk30">Show _Hidden Files</property>
+        <property name="label" context="gtk30">Show _Hidden Files</property>
         <signal name="toggled" handler="on_action_options_toggled" swapped="no"/>
       </object>
     </child>

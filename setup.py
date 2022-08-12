@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -39,17 +38,18 @@ from gnome_appfolders_manager.constants import (APP_AUTHOR,
                                                 SOURCES_URL)
 
 
-class Install_Scripts(setuptools.command.install_scripts.install_scripts):
+class InstallScripts(setuptools.command.install_scripts.install_scripts):
     def run(self):
         setuptools.command.install_scripts.install_scripts.run(self)
         self.rename_python_scripts()
 
     def rename_python_scripts(self):
-        "Rename main executable python script without .py extension"
+        """Rename main executable python script without .py extension"""
         for script in self.get_outputs():
             path_file_script = pathlib.Path(script)
             path_destination = path_file_script.with_suffix(suffix='')
             if path_file_script.suffix == '.py':
+                # noinspection PyUnresolvedReferences
                 setuptools.distutils.log.info(
                     'renaming the python script '
                     f'{path_file_script.name} -> '
@@ -57,26 +57,28 @@ class Install_Scripts(setuptools.command.install_scripts.install_scripts):
                 path_file_script.rename(path_destination)
 
 
-class Install_Data(install_data):
+class InstallData(install_data):
     def run(self):
         self.install_icons()
         self.install_translations()
         install_data.run(self)
 
     def install_icons(self):
+        # noinspection PyUnresolvedReferences
         setuptools.distutils.log.info('Installing icons...')
-        DIR_ICONS = 'icons'
         path_icons = pathlib.Path('share') / 'icons' / 'hicolor'
-        for path_format in pathlib.Path(DIR_ICONS).iterdir():
+        for path_format in pathlib.Path('icons').iterdir():
             self.data_files.append((path_icons / path_format.name / 'apps',
                                     list(map(str, path_format.glob('*')))))
 
     def install_translations(self):
+        # noinspection PyUnresolvedReferences
         setuptools.distutils.log.info('Installing translations...')
         path_base = pathlib.Path(__file__).parent.absolute()
         # Find where to save the compiled translations
         try:
             # Use the install_data (when using "setup.py install --user")
+            # noinspection PyUnresolvedReferences
             path_install = pathlib.Path(self.install_data)
         except AttributeError:
             # Use the install_dir (when using "setup.py install")
@@ -87,9 +89,11 @@ class Install_Data(install_data):
             path_file_mo = path_destination / f'{DOMAIN_NAME}.mo'
 
             if not path_destination.exists():
+                # noinspection PyUnresolvedReferences
                 setuptools.distutils.log.info(f'creating {path_destination}')
                 path_destination.mkdir(parents=True)
 
+            # noinspection PyUnresolvedReferences
             setuptools.distutils.log.info(f'compiling {path_file_po} -> '
                                           f'{path_file_mo}')
             subprocess.call(
@@ -99,7 +103,7 @@ class Install_Data(install_data):
                 cwd=path_base)
 
 
-class Command_CreatePOT(setuptools.Command):
+class CommandCreatePOT(setuptools.Command):
     description = "create base POT file"
     user_options = []
 
@@ -107,22 +111,24 @@ class Command_CreatePOT(setuptools.Command):
         pass
 
     def finalize_options(self):
-        self.path_base = pathlib.Path(__file__).parent.absolute()
-        self.path_po = self.path_base / 'po'
+        pass
 
     def run(self):
-        path_ui = self.path_base / 'ui'
-        path_pot = self.path_po / f'{DOMAIN_NAME}.pot'
+        path_base = pathlib.Path(__file__).parent.absolute()
+        path_po = path_base / 'po'
+        path_ui = path_base / 'ui'
+        path_pot = path_po / f'{DOMAIN_NAME}.pot'
         list_files_process = []
         # Add *.ui files to list of files to process
         for filename in path_ui.glob('*.ui'):
-            list_files_process.append(filename.relative_to(self.path_base))
+            list_files_process.append(filename.relative_to(path_base))
         # Add *.py files to list of files to process
-        for filename in self.path_base.rglob('*.py'):
-            list_files_process.append(filename.relative_to(self.path_base))
+        for filename in path_base.rglob('*.py'):
+            list_files_process.append(filename.relative_to(path_base))
         # Sort the files to process them always in the same order (hopefully)
         list_files_process.sort()
         # Extract messages from the files to process
+        # noinspection PyTypeChecker
         subprocess.call(
             args=itertools.chain((
                 'xgettext',
@@ -134,29 +140,33 @@ class Command_CreatePOT(setuptools.Command):
                 f'--copyright-holder={APP_AUTHOR}',
                 f'--msgid-bugs-address={SOURCES_URL}/issues'),
                 list_files_process),
-            cwd=self.path_base)
+            cwd=path_base)
 
 
-class Command_CreatePO(setuptools.Command):
+class CommandCreatePO(setuptools.Command):
     description = "create translation PO file"
     user_options = [
         ('locale=', None, 'Define locale'),
         ('output=', None, 'Define output file'),
         ]
 
-    def initialize_options(self):
+    # noinspection PyUnusedLocal
+    def __init__(self, dist, **kw):
+        super().__init__(dist)
         self.locale = None
         self.output = None
 
+    def initialize_options(self):
+        pass
+
     def finalize_options(self):
-        self.path_base = pathlib.Path(__file__).parent.absolute()
-        self.path_po = self.path_base / 'po'
-        assert (self.locale), 'Missing locale'
-        assert (self.output), 'Missing output file'
+        assert self.locale, 'Missing locale'
+        assert self.output, 'Missing output file'
 
     def run(self):
-        path_file_pot = self.path_po / f'{DOMAIN_NAME}.pot'
-        path_file_po = self.path_po / f'{self.output}.po'
+        path_base = pathlib.Path(__file__).parent.absolute()
+        path_file_pot = path_base / 'po' / f'{DOMAIN_NAME}.pot'
+        path_file_po = path_base / 'po' / f'{self.output}.po'
         # Create PO file
         subprocess.call(
             args=('msginit',
@@ -164,10 +174,10 @@ class Command_CreatePO(setuptools.Command):
                   '--no-translator',
                   f'--output-file={path_file_po}',
                   f'--locale={self.locale}'),
-            cwd=self.path_base)
+            cwd=path_base)
 
 
-class Command_Translations(setuptools.Command):
+class CommandTranslations(setuptools.Command):
     description = "build translations"
     user_options = []
 
@@ -175,22 +185,21 @@ class Command_Translations(setuptools.Command):
         pass
 
     def finalize_options(self):
-        self.path_base = pathlib.Path(__file__).parent.absolute()
-        self.path_po = self.path_base / 'po'
-        self.path_mo = self.path_base / 'locale'
+        pass
 
     def run(self):
-        path_pot = self.path_po / f'{DOMAIN_NAME}.pot'
-        for file_po in self.path_po.glob('*.po'):
+        path_base = pathlib.Path(__file__).parent.absolute()
+        path_po = path_base / 'po'
+        for file_po in path_po.glob('*.po'):
             subprocess.call(('msgmerge',
                              '--update',
                              '--backup=off',
                              file_po,
-                             path_pot))
-            path_directory = self.path_mo / file_po.stem / 'LC_MESSAGES'
-            file_mo = path_directory / f'{DOMAIN_NAME}.mo'
-            if not path_directory.exists():
-                path_directory.mkdir(parents=True)
+                             path_po / f'{DOMAIN_NAME}.pot'))
+            path_mo = path_base / 'locale' / file_po.stem / 'LC_MESSAGES'
+            if not path_mo.exists():
+                path_mo.mkdir(parents=True)
+            file_mo = path_mo / f'{DOMAIN_NAME}.mo'
             subprocess.call(('msgfmt',
                              '--output-file',
                              file_mo,
@@ -228,10 +237,10 @@ setuptools.setup(
          ['data/com.muflone.gnome-appfolders-manager.metainfo.xml']),
     ],
     cmdclass={
-        'install_scripts': Install_Scripts,
-        'install_data': Install_Data,
-        'create_pot': Command_CreatePOT,
-        'create_po': Command_CreatePO,
-        'translations': Command_Translations
+        'install_scripts': InstallScripts,
+        'install_data': InstallData,
+        'create_pot': CommandCreatePOT,
+        'create_po': CommandCreatePO,
+        'translations': CommandTranslations
     }
 )

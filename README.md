@@ -1,9 +1,9 @@
-# GNOME App Folders Manager
+# GNOME AppFolders Manager
 
 [![Travis CI Build Status](https://img.shields.io/travis/com/muflone/gnome-appfolders-manager/master.svg)](https://www.travis-ci.com/github/muflone/gnome-appfolders-manager)
 [![CircleCI Build Status](https://img.shields.io/circleci/project/github/muflone/gnome-appfolders-manager/master.svg)](https://circleci.com/gh/muflone/gnome-appfolders-manager)
 
-**Description:** Manage GNOME Shell applications folders.
+**Description:** Manage GNOME Shell applications folders
 
 **Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
 
@@ -17,7 +17,7 @@
 
 # Description
 
-From the *GNOME App Folders Manager* main window you can define your custom folders
+From the *GNOME AppFolders Manager* main window you can define your custom folders
 to group your applications by clicking the **Create folder** button on the header bar.
 
 ![Main window](https://www.muflone.com/resources/gnome-appfolders-manager/archive/latest/english/main.png)

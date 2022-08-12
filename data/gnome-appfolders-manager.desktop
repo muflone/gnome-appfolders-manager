@@ -2,11 +2,13 @@
 Version=1.0
 Encoding=UTF-8
 Type=Application
-Name=GNOME App Folders Manager
+Name=GNOME AppFolders Manager
 Comment=Manage GNOME Shell applications folders
 Comment[en]=Manage GNOME Shell applications folders
 Comment[it]=Gestisci le cartelle delle applicazioni di GNOME Shell
 Comment[de]=Anwendungsordner in der GNOME Shell-Übersicht organisieren
+Comment[fr]=Gérer le dossier d'applications du GNOME Shell
+Comment[nl]=Beheer GNOME Shell-toepassingsmappen
 Comment[pl]=Zarządzanie aplikacjami GNOME-Shell
 Comment[hu]=GNOME alkalmazásmappák kezelése
 Terminal=false

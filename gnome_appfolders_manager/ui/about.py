@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -18,28 +18,34 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
+import logging
+
 from gi.repository.GdkPixbuf import Pixbuf
 
-from gnome_appfolders_manager.constants import (APP_NAME,
-                                                APP_VERSION,
-                                                APP_URL,
-                                                APP_COPYRIGHT,
-                                                APP_AUTHOR,
+from gnome_appfolders_manager.constants import (APP_AUTHOR,
                                                 APP_AUTHOR_EMAIL,
+                                                APP_COPYRIGHT,
+                                                APP_NAME,
+                                                APP_URL,
+                                                APP_VERSION,
                                                 FILE_CONTRIBUTORS,
+                                                FILE_ICON,
                                                 FILE_LICENSE,
-                                                FILE_TRANSLATORS,
                                                 FILE_RESOURCES,
-                                                FILE_ICON)
+                                                FILE_TRANSLATORS)
 from gnome_appfolders_manager.functions import readlines
 from gnome_appfolders_manager.localize import _
 from gnome_appfolders_manager.ui.base import UIBase
 
 
 class UIAbout(UIBase):
-    def __init__(self, parent):
-        """Prepare the about dialog"""
+    def __init__(self, parent, settings, options):
+        """Prepare the information dialog"""
+        logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='about.ui')
+        # Initialize members
+        self.settings = settings
+        self.options = options
         # Retrieve the translators list
         translators = []
         for line in readlines(FILE_TRANSLATORS, False):
@@ -65,24 +71,26 @@ class UIAbout(UIBase):
             contributors.insert(0, _('Contributors:'))
             authors.extend(contributors)
         self.ui.dialog.set_authors(authors)
-        self.ui.dialog.set_license(
-            '\n'.join(readlines(FILE_LICENSE, True)))
+        self.ui.dialog.set_license('\n'.join(readlines(FILE_LICENSE, True)))
         self.ui.dialog.set_translator_credits('\n'.join(translators))
         # Retrieve the external resources links
         for line in readlines(FILE_RESOURCES, False):
             resource_type, resource_url = line.split(':', 1)
-            self.ui.dialog.add_credit_section(
-                resource_type, (resource_url,))
+            self.ui.dialog.add_credit_section(resource_type, (resource_url,))
         icon_logo = Pixbuf.new_from_file(str(FILE_ICON))
         self.ui.dialog.set_logo(icon_logo)
         self.ui.dialog.set_transient_for(parent)
+        # Connect signals from the UI file to the functions with the same name
+        self.ui.connect_signals(self)
 
     def show(self):
-        """Show the About dialog"""
+        """Show the information dialog"""
+        logging.debug(f'{self.__class__.__name__} show')
         self.ui.dialog.run()
         self.ui.dialog.hide()
 
     def destroy(self):
-        """Destroy the About dialog"""
+        """Destroy the information dialog"""
+        logging.debug(f'{self.__class__.__name__} destroy')
         self.ui.dialog.destroy()
         self.ui.dialog = None

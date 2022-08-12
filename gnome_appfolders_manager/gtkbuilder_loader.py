@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -40,9 +40,9 @@ class GtkBuilderLoader(object):
         """Get the widgets list from GtkBuilder"""
         return self.builder.get_objects()
 
-    def get_objects_by_type(self, type):
+    def get_objects_by_type(self, object_type):
         """Get the widgets list with a specific type from GtkBuilder"""
-        return [w for w in self.get_objects() if isinstance(w, type)]
+        return [w for w in self.get_objects() if isinstance(w, object_type)]
 
     def get_object(self, key):
         """Get a widget from GtkBuilder using a method"""

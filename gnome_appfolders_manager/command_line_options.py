@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -51,6 +51,7 @@ class CommandLineOptions(object):
                                  help='hide error and information messages')
         self.options = None
 
+    # noinspection PyProtectedMember,PyUnresolvedReferences
     def add_group(self, name: str) -> argparse._ArgumentGroup:
         """
         Add a command-line options group

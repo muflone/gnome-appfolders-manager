@@ -1,5 +1,5 @@
 ##
-#     Project: GNOME App Folders Manager
+#     Project: GNOME AppFolders Manager
 # Description: Manage GNOME Shell applications folders
 #      Author: Fabio Castelli (Muflone) <muflone@muflone.com>
 #   Copyright: 2016-2022 Fabio Castelli
@@ -54,5 +54,5 @@ def main():
     logging.debug(f'DIR_UI={str(DIR_UI)}')
     logging.debug(f'DIR_SETTINGS={str(DIR_SETTINGS)}')
     # Start the application
-    app = Application()
+    app = Application(options=options)
     app.run(None)

@@ -2,16 +2,16 @@
 # Manage GNOME Shell applications folders
 # Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
 # Website: https://www.muflone.com/gnome-appfolders-manager/
-# This file is distributed under the same license as the GNOME App Folders Manager package.
+# This file is distributed under the same license as the GNOME AppFolders Manager package.
 # Hungarian translation for GNOME AppFolders Manager
 #
 # Translators:
 # Balazs Mesko <mesko.balazs at fsf dot hu>, 2018.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME App Folders Manager\n"
+"Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
-"POT-Creation-Date: 2022-04-10 00:55+0200\n"
+"POT-Creation-Date: 2022-08-15 19:46+0200\n"
 "PO-Revision-Date: 2018-02-03 12:48+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs(at)fsf.hu>\n"
 "Language-Team: Hungarian\n"
@@ -21,24 +21,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_appfolders_manager/ui/about.py:53
+#: gnome_appfolders_manager/ui/about.py:59
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "{VERSION} verzió"
 
-#: gnome_appfolders_manager/ui/about.py:56
+#: gnome_appfolders_manager/ui/about.py:62
 msgid "Manage GNOME Shell applications folders"
 msgstr "GNOME alkalmazásmappák kezelése"
 
-#: gnome_appfolders_manager/ui/about.py:65
+#: gnome_appfolders_manager/ui/about.py:71
 msgid "Contributors:"
 msgstr "Közreműködők:"
 
-#: gnome_appfolders_manager/ui/main.py:261
+#: gnome_appfolders_manager/ui/main.py:287
 msgid "Remove the selected folder?"
 msgstr "Eltávolítja a kiválasztott mappát?"
 
-#: gnome_appfolders_manager/ui/main.py:262
+#: gnome_appfolders_manager/ui/main.py:288
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Valóban törli a(z) {FOLDER} mappát?"
@@ -51,17 +51,13 @@ msgstr "Alkalmazások _hozzáadása"
 msgid "Applications"
 msgstr "Alkalmazások"
 
-#: ui/appmenu.ui:6
-msgid "_About GNOME App Folders Manager"
-msgstr "A GNOME Alkalmazásmappa-kezelő névjegye"
-
-#: ui/appmenu.ui:11
-msgid "Show keyboard _shortcuts"
-msgstr "Gyors_billentyűk megjelenítése"
-
 #: ui/create_appfolder.ui:124
 msgid "Title:"
 msgstr "Cím:"
+
+#: ui/main.ui:26 ui/shortcuts.ui:35
+msgid "Keyboard shortcuts"
+msgstr "Gyorsbillentyűk"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
@@ -82,10 +78,6 @@ msgstr "Mappák"
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
 msgstr "Névjegyablak megjelenítése"
-
-#: ui/shortcuts.ui:35
-msgid "Show the shortcuts dialog"
-msgstr ""
 
 #: ui/shortcuts.ui:57
 msgid "Create a new folder"

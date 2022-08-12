@@ -2,11 +2,11 @@
 <component type="desktop-application">
   <id>com.muflone.gnome-appfolders-manager</id>
 
-  <name>GNOME App Folders Manager</name>
+  <name>GNOME AppFolders Manager</name>
   <summary>Manage GNOME Shell applications folders</summary>
   <description>
     <p>
-      From GNOME App Folders Manager you can define your custom GNOME Shell
+      From GNOME AppFolders Manager you can define your custom GNOME Shell
       folders to group your applications.
     </p>
   </description>
