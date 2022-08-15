@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
-"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
 "POT-Creation-Date: 2022-08-15 19:46+0200\n"
 "PO-Revision-Date: 2016-05-25 06:45+0000\n"
 "Last-Translator: Dz Chen <wsxy162(at)gmail.com>\n"

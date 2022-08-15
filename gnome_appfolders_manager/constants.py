@@ -33,7 +33,7 @@ APP_URL = 'https://www.muflone.com/gnome-appfolders-manager/'
 APP_AUTHOR = 'Fabio Castelli'
 APP_AUTHOR_EMAIL = 'muflone@muflone.com'
 APP_COPYRIGHT = f'Copyright 2016-2022 {APP_AUTHOR}'
-SOURCES_URL = 'https://github.com/muflone/gnome-appfolders-manager'
+URL_SOURCES = 'https://github.com/muflone/gnome-appfolders-manager/'
 # Other constants
 DOMAIN_NAME = 'gnome-appfolders-manager'
 VERBOSE_LEVEL_QUIET = 0

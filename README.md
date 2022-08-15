@@ -9,7 +9,7 @@
 
 **License:** GPL-3+
 
-**Source code:** https://github.com/muflone/gnome-appfolders-manager
+**Source code:** https://github.com/muflone/gnome-appfolders-manager/
 
 **Documentation:** https://www.muflone.com/gnome-appfolders-manager/
 
