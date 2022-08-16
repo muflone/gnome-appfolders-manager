@@ -5,7 +5,7 @@
 
 **Description:** Manage GNOME Shell applications folders
 
-**Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone(at)muflone.com>
+**Copyright:** 2016-2022 Fabio Castelli (Muflone) <muflone@muflone.com>
 
 **License:** GPL-3+
 
