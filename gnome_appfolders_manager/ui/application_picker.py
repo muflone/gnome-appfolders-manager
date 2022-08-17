@@ -100,12 +100,12 @@ class UIApplicationPicker(UIBase):
             Gtk.SortType.ASCENDING)
         self.ui.filter_applications.set_visible_column(
             ModelApplications.COL_VISIBLE)
-
-    def show(self):
-        """Show the application picker dialog"""
         # Restore the saved size and position
         self.settings.restore_window_position(window=self.ui.dialog,
                                               section=SECTION_WINDOW_NAME)
+
+    def show(self):
+        """Show the application picker dialog"""
         response = self.ui.dialog.run()
         self.ui.dialog.hide()
         return response

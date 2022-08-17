@@ -64,11 +64,12 @@ class UICreateAppFolder(UIBase):
         """Complete initialization"""
         logging.debug(f'{self.__class__.__name__} startup')
         self.ui.button_ok.grab_default()
+        # Restore the saved size and position
+        self.settings.restore_window_position(window=self.ui.dialog,
+                                              section=SECTION_WINDOW_NAME)
 
     def show(self, name, title):
         """Show the dialog"""
-        self.settings.restore_window_position(window=self.ui.dialog,
-                                              section=SECTION_WINDOW_NAME)
         # Set initial values
         self.folder_name = name
         self.ui.entry_name.set_text(name)
