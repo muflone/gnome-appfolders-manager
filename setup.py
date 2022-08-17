@@ -25,7 +25,7 @@ import setuptools
 import setuptools.command.install_scripts
 import subprocess
 
-# Importing distutils after setuptools uses the setuptools' distutils
+# Importing distutils after setuptools uses the setuptools distutils
 from distutils.command.install_data import install_data
 
 from gnome_appfolders_manager.constants import (APP_AUTHOR,
