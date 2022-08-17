@@ -28,7 +28,7 @@ from gnome_appfolders_manager.ui.base import UIBase
 
 class UIShortcuts(UIBase):
     def __init__(self, parent, settings, options):
-        """Prepare the shortcuts dialog"""
+        """Prepare the dialog"""
         logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='shortcuts.ui')
         # Initialize members
@@ -44,12 +44,12 @@ class UIShortcuts(UIBase):
             widget.props.title = text(widget.props.title)
 
     def show(self):
-        """Show the shortcuts dialog"""
+        """Show the dialog"""
         logging.debug(f'{self.__class__.__name__} show')
         self.ui.shortcuts.show()
 
     def destroy(self):
-        """Destroy the shortcuts dialog"""
+        """Destroy the dialog"""
         logging.debug(f'{self.__class__.__name__} destroy')
         self.ui.shortcuts.destroy()
         self.ui.shortcuts = None

@@ -34,7 +34,7 @@ SECTION_WINDOW_NAME = 'application picker'
 
 class UIApplicationPicker(UIBase):
     def __init__(self, parent, settings, options, existing_files):
-        """Prepare the application picker dialog"""
+        """Prepare the dialog"""
         logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='application_picker.ui')
         # Initialize members
@@ -105,13 +105,13 @@ class UIApplicationPicker(UIBase):
                                               section=SECTION_WINDOW_NAME)
 
     def show(self):
-        """Show the application picker dialog"""
+        """Show the dialog"""
         response = self.ui.dialog.run()
         self.ui.dialog.hide()
         return response
 
     def destroy(self):
-        """Destroy the application picker dialog"""
+        """Destroy the dialog"""
         self.settings.save_window_position(window=self.ui.dialog,
                                            section=SECTION_WINDOW_NAME)
         self.ui.dialog.destroy()

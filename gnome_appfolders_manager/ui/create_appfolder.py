@@ -30,7 +30,7 @@ SECTION_WINDOW_NAME = 'create folder'
 
 class UICreateAppFolder(UIBase):
     def __init__(self, parent, settings, options, existing_folders):
-        """Prepare the AppFolder creation dialog"""
+        """Prepare the dialog"""
         logging.debug(f'{self.__class__.__name__} init')
         super().__init__(filename='create_appfolder.ui')
         # Initialize members
