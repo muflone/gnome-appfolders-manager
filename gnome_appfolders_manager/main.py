@@ -20,6 +20,7 @@
 
 import logging
 
+import gnome_appfolders_manager.requires                           # noqa: F401
 from gnome_appfolders_manager.app import Application
 from gnome_appfolders_manager.command_line_options import CommandLineOptions
 from gnome_appfolders_manager.constants import (DIR_DATA,
@@ -28,6 +29,7 @@ from gnome_appfolders_manager.constants import (DIR_DATA,
                                                 DIR_PREFIX,
                                                 DIR_SETTINGS,
                                                 DIR_UI)
+import gnome_appfolders_manager.translations                       # noqa: F401
 
 
 def main():

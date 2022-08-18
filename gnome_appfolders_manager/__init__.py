@@ -17,32 +17,3 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
-
-import gettext
-import locale
-
-import gnome_appfolders_manager.requires                           # noqa: F401
-from gnome_appfolders_manager.constants import DOMAIN_NAME, DIR_LOCALE
-from gnome_appfolders_manager.localize import store_message, text
-
-
-# Load domain for translation
-for module in (gettext, locale):
-    module.bindtextdomain(DOMAIN_NAME, DIR_LOCALE)
-    module.textdomain(DOMAIN_NAME)
-
-# Import some translated messages from GTK+ domain
-for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
-                'A folder with that name already exists',
-                'General', 'Preferences'):
-    text(message=message, gtk30=True)
-store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
-store_message('Files:', '%s:' % text(message='Files', gtk30=True))
-store_message('_Create Folder', text(message='Create Folder', gtk30=True))
-store_message('_Properties', text(message='Properties', gtk30=True))
-store_message('_Search', text(message='Search', gtk30=True))
-
-# With domain context
-for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):
-    text(message=message, gtk30=True, context='Stock label')
-store_message('Quit', text(message='_Quit', gtk30=True).replace('_', ''))
