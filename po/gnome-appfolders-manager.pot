@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
-"POT-Creation-Date: 2022-08-15 19:46+0200\n"
+"POT-Creation-Date: 2022-08-18 22:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,37 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnome_appfolders_manager/ui/about.py:59
+#: gnome_appfolders_manager/ui/about.py:65
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:62
+#: gnome_appfolders_manager/ui/about.py:68
 msgid "Manage GNOME Shell applications folders"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/about.py:71
+#: gnome_appfolders_manager/ui/about.py:77
 msgid "Contributors:"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:84
+msgid "Project home page"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:85
+msgid "Source code"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:86
+msgid "Author information"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:87
+msgid "Issues and bugs tracking"
+msgstr ""
+
+#: gnome_appfolders_manager/ui/about.py:88
+msgid "Translations"
 msgstr ""
 
 #: gnome_appfolders_manager/ui/main.py:287

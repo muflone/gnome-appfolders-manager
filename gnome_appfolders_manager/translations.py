@@ -21,14 +21,14 @@
 import gettext
 import locale
 
-from gnome_appfolders_manager.constants import DOMAIN_NAME, DIR_LOCALE
+from gnome_appfolders_manager.constants import APP_DOMAIN, DIR_LOCALE
 from gnome_appfolders_manager.localize import store_message, text
 
 
 # Load domain for translation
 for module in (gettext, locale):
-    module.bindtextdomain(DOMAIN_NAME, DIR_LOCALE)
-    module.textdomain(DOMAIN_NAME)
+    module.bindtextdomain(APP_DOMAIN, DIR_LOCALE)
+    module.textdomain(APP_DOMAIN)
 
 # Import some translated messages from GTK+ domain
 for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',

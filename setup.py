@@ -31,10 +31,10 @@ from distutils.command.install_data import install_data
 from gnome_appfolders_manager.constants import (APP_AUTHOR,
                                                 APP_AUTHOR_EMAIL,
                                                 APP_DESCRIPTION,
+                                                APP_DOMAIN,
                                                 APP_NAME,
-                                                APP_URL,
                                                 APP_VERSION,
-                                                DOMAIN_NAME,
+                                                URL_APPLICATION,
                                                 URL_SOURCES)
 
 
@@ -86,7 +86,7 @@ class InstallData(install_data):
         path_locale = path_install / 'share' / 'locale'
         for path_file_po in pathlib.Path('po').glob('*.po'):
             path_destination = path_locale / path_file_po.stem / 'LC_MESSAGES'
-            path_file_mo = path_destination / f'{DOMAIN_NAME}.mo'
+            path_file_mo = path_destination / f'{APP_DOMAIN}.mo'
 
             if not path_destination.exists():
                 # noinspection PyUnresolvedReferences
@@ -117,7 +117,7 @@ class CommandCreatePOT(setuptools.Command):
         path_base = pathlib.Path(__file__).parent.absolute()
         path_po = path_base / 'po'
         path_ui = path_base / 'ui'
-        path_pot = path_po / f'{DOMAIN_NAME}.pot'
+        path_pot = path_po / f'{APP_DOMAIN}.pot'
         list_files_process = []
         # Add *.ui files to list of files to process
         for filename in path_ui.glob('*.ui'):
@@ -165,7 +165,7 @@ class CommandCreatePO(setuptools.Command):
 
     def run(self):
         path_base = pathlib.Path(__file__).parent.absolute()
-        path_file_pot = path_base / 'po' / f'{DOMAIN_NAME}.pot'
+        path_file_pot = path_base / 'po' / f'{APP_DOMAIN}.pot'
         path_file_po = path_base / 'po' / f'{self.output}.po'
         # Create PO file
         subprocess.call(
@@ -195,11 +195,11 @@ class CommandTranslations(setuptools.Command):
                              '--update',
                              '--backup=off',
                              file_po,
-                             path_po / f'{DOMAIN_NAME}.pot'))
+                             path_po / f'{APP_DOMAIN}.pot'))
             path_mo = path_base / 'locale' / file_po.stem / 'LC_MESSAGES'
             if not path_mo.exists():
                 path_mo.mkdir(parents=True)
-            file_mo = path_mo / f'{DOMAIN_NAME}.mo'
+            file_mo = path_mo / f'{APP_DOMAIN}.mo'
             subprocess.call(('msgfmt',
                              '--output-file',
                              file_mo,
@@ -213,7 +213,7 @@ setuptools.setup(
     author_email=APP_AUTHOR_EMAIL,
     maintainer=APP_AUTHOR,
     maintainer_email=APP_AUTHOR_EMAIL,
-    url=APP_URL,
+    url=URL_APPLICATION,
     description=APP_DESCRIPTION,
     license='GPL v3',
     scripts=['gnome-appfolders-manager.py'],
@@ -221,18 +221,18 @@ setuptools.setup(
               'gnome_appfolders_manager.models',
               'gnome_appfolders_manager.ui'],
     data_files=[
-        (f'share/{DOMAIN_NAME}/data',
+        (f'share/{APP_DOMAIN}/data',
             ['data/gnome-appfolders-manager.png']),
         ('share/applications',
             ['data/gnome-appfolders-manager.desktop']),
-        (f'share/doc/{DOMAIN_NAME}',
+        (f'share/doc/{APP_DOMAIN}',
             list(itertools.chain(
                 list(map(str, pathlib.Path('doc').glob('*'))),
                 list(map(str, pathlib.Path('.').glob('*.md')))))),
-        (f'share/{DOMAIN_NAME}/ui', [str(file)
-                                     for file
-                                     in pathlib.Path('ui').glob('*')
-                                     if not file.name.endswith('~')]),
+        (f'share/{APP_DOMAIN}/ui', [str(file)
+                                    for file
+                                    in pathlib.Path('ui').glob('*')
+                                    if not file.name.endswith('~')]),
         ('share/metainfo',
          ['data/com.muflone.gnome-appfolders-manager.metainfo.xml']),
     ],
