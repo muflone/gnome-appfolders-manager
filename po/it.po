@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
-"POT-Creation-Date: 2022-08-15 19:46+0200\n"
+"POT-Creation-Date: 2022-08-19 01:22+0200\n"
 "PO-Revision-Date: 2022-04-18 02:06+0200\n"
 "Last-Translator: Fabio Castelli (Muflone) <muflone(at)muflone.com>\n"
 "Language-Team: Italian\n"
@@ -21,18 +21,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_appfolders_manager/ui/about.py:59
+#: gnome_appfolders_manager/ui/about.py:65
 #, python-brace-format
 msgid "Version {VERSION}"
 msgstr "Versione {VERSION}"
 
-#: gnome_appfolders_manager/ui/about.py:62
+#: gnome_appfolders_manager/ui/about.py:68
 msgid "Manage GNOME Shell applications folders"
 msgstr "Gestisci le cartelle delle applicazioni di GNOME Shell"
 
-#: gnome_appfolders_manager/ui/about.py:71
+#: gnome_appfolders_manager/ui/about.py:77
 msgid "Contributors:"
 msgstr "Contributori:"
+
+#: gnome_appfolders_manager/ui/about.py:84
+msgid "Project home page"
+msgstr "Home page del progetto"
+
+#: gnome_appfolders_manager/ui/about.py:85
+msgid "Source code"
+msgstr "Codice sorgente"
+
+#: gnome_appfolders_manager/ui/about.py:86
+msgid "Author information"
+msgstr "Informazioni sull'autore"
+
+#: gnome_appfolders_manager/ui/about.py:87
+msgid "Issues and bugs tracking"
+msgstr "Tracciamento di problemi e bug"
+
+#: gnome_appfolders_manager/ui/about.py:88
+msgid "Translations"
+msgstr "Traduzioni"
 
 #: gnome_appfolders_manager/ui/main.py:287
 msgid "Remove the selected folder?"
@@ -61,7 +81,7 @@ msgstr "Scorciatoie da tastiera"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr "Apre il menu opzioni"
+msgstr "Apri il menu opzioni"
 
 #: ui/main.ui:118
 msgid "Show missing _files"
