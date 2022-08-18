@@ -19,8 +19,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from gnome_appfolders_manager.main import main
+import gnome_appfolders_manager.main
 
 
 if __name__ == '__main__':
-    main()
+    gnome_appfolders_manager.main.main()
