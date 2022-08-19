@@ -4,8 +4,6 @@
 # Website: https://www.muflone.com/gnome-appfolders-manager/
 # This file is distributed under the same license as the GNOME AppFolders Manager package.
 # X translation for GNOME AppFolders Manager
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
