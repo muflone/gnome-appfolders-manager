@@ -7,13 +7,14 @@
 #
 # Translators:
 # Guilherme TW <guilherme7tw(at)gmail.com>, 2016
+# Paguiar735 <github.translation(at)paguiar.dev>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
 "POT-Creation-Date: 2022-08-19 01:22+0200\n"
 "PO-Revision-Date: 2016-06-27 14:04+0000\n"
-"Last-Translator: Guilherme TW <guilherme7tw(at)gmail.com>\n"
+"Last-Translator: Paguiar735 <github.translation(at)paguiar.dev>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +82,7 @@ msgstr "Atalhos de teclado"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr ""
+msgstr "Abrir o menu de opções"
 
 #: ui/main.ui:118
 msgid "Show missing _files"
@@ -97,7 +98,7 @@ msgstr "Categorias"
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
-msgstr "Mostrar diálogo sobre"
+msgstr "Exibir caixa de diálogo sobre"
 
 #: ui/shortcuts.ui:57
 msgid "Create a new folder"
@@ -117,4 +118,4 @@ msgstr "Remover o arquivo selecionado"
 
 #: ui/shortcuts.ui:93
 msgid "Search file in the current folder"
-msgstr ""
+msgstr "Procurar arquivo na categoria atual"
