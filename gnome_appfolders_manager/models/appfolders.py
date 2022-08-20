@@ -46,4 +46,4 @@ class ModelAppFolders(ModelAbstract):
 
     def get_title(self, treeiter):
         """Get the title from a TreeIter"""
-        return self.get_data(treeiter, self.COL_TITLE)
+        return self.model[treeiter][self.COL_TITLE]
