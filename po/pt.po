@@ -6,13 +6,14 @@
 # Portuguese translation for GNOME AppFolders Manager
 #
 # Translators:
+# Danielson Tavares <caosdan(at)gmail.com>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
 "POT-Creation-Date: 2022-08-20 17:45+0200\n"
 "PO-Revision-Date: 2016-05-15 21:46+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Danielson Tavares <caosdan(at)gmail.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +81,7 @@ msgstr "Atalhos de teclado"
 
 #: ui/main.ui:105 ui/main.ui:111 ui/shortcuts.ui:28
 msgid "Open the options menu"
-msgstr ""
+msgstr "Abrir o menu de opções"
 
 #: ui/main.ui:118
 msgid "Show missing _files"
@@ -120,4 +121,4 @@ msgstr "Remover o arquivo selecionado"
 
 #: ui/shortcuts.ui:107
 msgid "Search file in the current folder"
-msgstr ""
+msgstr "Procurar arquivo na categoria atual"
