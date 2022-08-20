@@ -20,9 +20,6 @@
 
 import logging
 
-from gi.repository import Gtk
-
-from gnome_appfolders_manager.localize import text
 from gnome_appfolders_manager.ui.base import UIBase
 
 
@@ -34,14 +31,10 @@ class UIShortcuts(UIBase):
         # Initialize members
         self.settings = settings
         self.options = options
+        # Initialize titles and tooltips
+        self.set_titles()
         # Load the user interface
         self.ui.shortcuts.set_transient_for(parent)
-        # Initialize groups
-        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsGroup):
-            widget.props.title = text(widget.props.title)
-        # Initialize shortcuts
-        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsShortcut):
-            widget.props.title = text(widget.props.title)
 
     def show(self):
         """Show the dialog"""

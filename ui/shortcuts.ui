@@ -60,6 +60,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
+                <property name="accelerator">&lt;alt&gt;Return</property>
+                <property name="title" translatable="yes">Edit the folder properties</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;Delete</property>
                 <property name="title" translatable="yes">Remove the currently selected folder</property>
               </object>
@@ -84,6 +91,13 @@
                 <property name="visible">1</property>
                 <property name="accelerator">Delete</property>
                 <property name="title" translatable="yes">Remove the selected file</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;S</property>
+                <property name="title">Save</property>
               </object>
             </child>
             <child>

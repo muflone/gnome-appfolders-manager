@@ -22,7 +22,7 @@ import logging
 
 from gi.repository import Gtk
 
-from gnome_appfolders_manager.localize import text
+from gnome_appfolders_manager.localize import strip_underline, text
 from gnome_appfolders_manager.ui.base import UIBase
 
 SECTION_WINDOW_NAME = 'create folder'
@@ -70,6 +70,7 @@ class UICreateAppFolder(UIBase):
 
     def show(self, name, title):
         """Show the dialog"""
+        logging.debug(f'{self.__class__.__name__} show')
         # Set initial values
         self.folder_name = name
         self.ui.entry_name.set_text(name)
@@ -80,13 +81,14 @@ class UICreateAppFolder(UIBase):
             self.ui.entry_name.set_sensitive(False)
             self.ui.button_ok.set_related_action(self.ui.action_save)
             self.ui.button_ok.set_tooltip_text(
-                self.ui.action_save.get_label().replace('_', ''))
+                strip_underline(self.ui.action_save.get_label()))
         response = self.ui.dialog.run()
         self.ui.dialog.hide()
         return response
 
     def destroy(self):
         """Destroy the dialog"""
+        logging.debug(f'{self.__class__.__name__} destroy')
         self.settings.save_window_position(window=self.ui.dialog,
                                            section=SECTION_WINDOW_NAME)
         self.ui.dialog.destroy()

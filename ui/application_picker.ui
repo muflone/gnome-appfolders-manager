@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkActionGroup" id="actions_dialog">
@@ -18,7 +18,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_search">
-        <property name="short-label" comments="Use domain gtk30">_Search</property>
+        <property name="short-label" context="gtk30">Search</property>
         <property name="icon-name">edit-find</property>
         <signal name="activate" handler="on_action_search_activate" swapped="no"/>
       </object>

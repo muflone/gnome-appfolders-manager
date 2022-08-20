@@ -18,6 +18,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
+import logging
+
 from gi.repository import Gtk
 
 
@@ -25,6 +27,7 @@ class UIMessageDialog(object):
     def __init__(self, parent, message_type, title, msg1, msg2,
                  buttons, default_response_id):
         """Prepare the message dialog"""
+        logging.debug(f'{self.__class__.__name__} init')
         self.dialog = Gtk.MessageDialog(parent=parent,
                                         flags=Gtk.DialogFlags.MODAL,
                                         message_type=message_type,
@@ -37,12 +40,14 @@ class UIMessageDialog(object):
 
     def show(self):
         """Show the dialog"""
+        logging.debug(f'{self.__class__.__name__} show')
         result = self.dialog.run()
         self.dialog.hide()
         return result
 
     def destroy(self):
         """Destroy the dialog"""
+        logging.debug(f'{self.__class__.__name__} destroy')
         self.dialog.destroy()
         self.dialog = None
 

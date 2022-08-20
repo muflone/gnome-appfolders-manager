@@ -26,7 +26,7 @@ from gi.repository import Gtk
 from gnome_appfolders_manager.constants import DIR_ICONS
 from gnome_appfolders_manager.functions import get_ui_file
 from gnome_appfolders_manager.gtkbuilder_loader import GtkBuilderLoader
-from gnome_appfolders_manager.localize import text
+from gnome_appfolders_manager.localize import strip_underline, text
 
 
 class UIBase(object):
@@ -67,11 +67,31 @@ class UIBase(object):
         # Set Labels captions
         for widget in self.ui.get_objects_by_type(Gtk.Label):
             widget.set_label(text(widget.get_label()))
-        # Initialize tooltips
+        # Initialize buttons labels and tooltips
         for widget in self.ui.get_objects_by_type(Gtk.Button):
             action = widget.get_related_action()
             if action:
-                widget.set_tooltip_text(action.get_label().replace('_', ''))
+                widget.set_tooltip_text(strip_underline(action.get_label()))
+            else:
+                widget.set_label(strip_underline(text(widget.get_label())))
+                widget.set_tooltip_text(widget.get_label())
+        # Initialize column headers titles
+        for widget in self.ui.get_objects_by_type(Gtk.TreeViewColumn):
+            widget.set_title(strip_underline(text(widget.get_title())))
+        # Initialize shortcuts groups titles
+        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsGroup):
+            widget.props.title = strip_underline(text(widget.props.title))
+        # Initialize shortcuts titles
+        for widget in self.ui.get_objects_by_type(Gtk.ShortcutsShortcut):
+            widget.props.title = strip_underline(text(widget.props.title))
+        # Initialize menuitems labels
+        for widget in self.ui.get_objects_by_type(Gtk.MenuItem):
+            if not isinstance(widget, Gtk.SeparatorMenuItem):
+                widget.set_label(strip_underline(text(widget.get_label())))
+        for widget in self.ui.get_objects_by_type(Gtk.CheckMenuItem):
+            widget.set_label(strip_underline(text(widget.get_label())))
+        for widget in self.ui.get_objects_by_type(Gtk.RadioMenuItem):
+            widget.set_label(strip_underline(text(widget.get_label())))
 
     def load_image_file(self, image: Gtk.Image) -> bool:
         """

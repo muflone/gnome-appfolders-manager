@@ -22,7 +22,10 @@ import gettext
 import locale
 
 from gnome_appfolders_manager.constants import APP_DOMAIN, DIR_LOCALE
-from gnome_appfolders_manager.localize import store_message, text
+from gnome_appfolders_manager.localize import (store_message,
+                                               strip_colon,
+                                               strip_underline,
+                                               text)
 
 
 # Load domain for translation
@@ -31,17 +34,25 @@ for module in (gettext, locale):
     module.textdomain(APP_DOMAIN)
 
 # Import some translated messages from GTK+ domain
-for message in ('_Create', '_Remove', '_Save', '_Close', 'Show _Hidden Files',
-                'A folder with that name already exists',
-                'General', 'Preferences'):
-    text(message=message, gtk30=True)
-store_message('Folder Name:', '%s:' % text(message='Folder Name', gtk30=True))
-store_message('Files:', '%s:' % text(message='Files', gtk30=True))
-store_message('_Create Folder', text(message='Create Folder', gtk30=True))
-store_message('_Properties', text(message='Properties', gtk30=True))
-store_message('_Search', text(message='Search', gtk30=True))
+for message in ('About', 'A folder with that name already exists',
+                '_Close', '_Create', 'Create Folder', 'Files', 'General',
+                'Properties', '_Remove', '_Save', 'Search',
+                'Show _Hidden Files'):
+    store_message(strip_colon(strip_underline(message)),
+                  strip_colon(strip_underline(text(message=message,
+                                                   gtk30=True))))
 
-# With domain context
-for message in ('_New', '_Delete', '_About', '_Close', '_Quit'):
-    text(message=message, gtk30=True, context='Stock label')
-store_message('Quit', text(message='_Quit', gtk30=True).replace('_', ''))
+# Import some translated messages from GTK+ domain and context
+for message in ('_Delete', '_New', '_Quit'):
+    store_message(strip_colon(strip_underline(message)),
+                  strip_colon(strip_underline(text(message=message,
+                                                   gtk30=True,
+                                                   context='Stock label'))))
+
+# Import some variations
+store_message('Files:', '%s:' % text(message='Files',
+                                     gtk30=True))
+store_message('Folder Name:', '%s:' % text(message='Folder Name',
+                                           gtk30=True))
+store_message('Folders:', '%s:' % text(message='Folders',
+                                       gtk30=False))

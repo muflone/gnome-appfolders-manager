@@ -20,7 +20,7 @@
 
 from gettext import gettext, dgettext
 
-localized_messages = {}
+localized_messages = {'': ''}
 
 
 def store_message(message, translated):
@@ -51,11 +51,6 @@ def text(message, gtk30=False, context=None):
         else:
             localized_messages[message] = gettext(message)
     return localized_messages[message]
-
-
-def text_gtk30(message, context=None):
-    """Return a translated text from GTK+ 3.0"""
-    return text(message=message, gtk30=True, context=context)
 
 
 # This special alias is used to track localization requests to catch

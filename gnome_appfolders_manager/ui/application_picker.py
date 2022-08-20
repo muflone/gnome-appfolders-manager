@@ -106,12 +106,14 @@ class UIApplicationPicker(UIBase):
 
     def show(self):
         """Show the dialog"""
+        logging.debug(f'{self.__class__.__name__} show')
         response = self.ui.dialog.run()
         self.ui.dialog.hide()
         return response
 
     def destroy(self):
         """Destroy the dialog"""
+        logging.debug(f'{self.__class__.__name__} destroy')
         self.settings.save_window_position(window=self.ui.dialog,
                                            section=SECTION_WINDOW_NAME)
         self.ui.dialog.destroy()

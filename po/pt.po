@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
-"POT-Creation-Date: 2022-08-19 01:22+0200\n"
+"POT-Creation-Date: 2022-08-20 17:45+0200\n"
 "PO-Revision-Date: 2016-05-15 21:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Portuguese\n"
@@ -53,11 +53,11 @@ msgstr ""
 msgid "Translations"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:287
+#: gnome_appfolders_manager/ui/main.py:285
 msgid "Remove the selected folder?"
 msgstr "Remover a categoria selecionada?"
 
-#: gnome_appfolders_manager/ui/main.py:288
+#: gnome_appfolders_manager/ui/main.py:286
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Tem certeza que deseja remover a categoria {FOLDER}?"
@@ -66,11 +66,11 @@ msgstr "Tem certeza que deseja remover a categoria {FOLDER}?"
 msgid "_Add applications"
 msgstr "_Adicionar aplicativos"
 
-#: ui/application_picker.ui:139 ui/main.ui:464
+#: ui/application_picker.ui:139 ui/main.ui:550
 msgid "Applications"
 msgstr "Aplicativos"
 
-#: ui/create_appfolder.ui:124
+#: ui/create_appfolder.ui:123
 msgid "Title:"
 msgstr "Título:"
 
@@ -86,13 +86,13 @@ msgstr ""
 msgid "Show missing _files"
 msgstr "Mostrar _arquivos perdidos"
 
-#: ui/main.ui:182
-msgid "Folders:"
-msgstr "Categorias:"
-
-#: ui/main.ui:409 ui/shortcuts.ui:52
+#: ui/main.ui:164 ui/main.ui:495 ui/shortcuts.ui:52
 msgid "Folders"
 msgstr "Categorias"
+
+#: ui/main.ui:211
+msgid "Options"
+msgstr ""
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
@@ -103,17 +103,21 @@ msgid "Create a new folder"
 msgstr "Criar nova categoria"
 
 #: ui/shortcuts.ui:64
+msgid "Edit the folder properties"
+msgstr ""
+
+#: ui/shortcuts.ui:71
 msgid "Remove the currently selected folder"
 msgstr "Remover categoria selecionada"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Add a new file"
 msgstr "Adicionar um novo arquivo"
 
-#: ui/shortcuts.ui:86
+#: ui/shortcuts.ui:93
 msgid "Remove the selected file"
 msgstr "Remover o arquivo selecionado"
 
-#: ui/shortcuts.ui:93
+#: ui/shortcuts.ui:107
 msgid "Search file in the current folder"
 msgstr ""

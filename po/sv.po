@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME AppFolders Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/muflone/gnome-appfolders-manager/issues/\n"
-"POT-Creation-Date: 2022-08-19 01:22+0200\n"
+"POT-Creation-Date: 2022-08-20 17:45+0200\n"
 "PO-Revision-Date: 2017-03-12 23:02+0000\n"
 "Last-Translator: Anders Jonsson <transifex(at)norsjovallen.se>\n"
 "Language-Team: Swedish\n"
@@ -54,11 +54,11 @@ msgstr ""
 msgid "Translations"
 msgstr ""
 
-#: gnome_appfolders_manager/ui/main.py:287
+#: gnome_appfolders_manager/ui/main.py:285
 msgid "Remove the selected folder?"
 msgstr "Ta bort den markerade mappen?"
 
-#: gnome_appfolders_manager/ui/main.py:288
+#: gnome_appfolders_manager/ui/main.py:286
 #, python-brace-format
 msgid "Are you sure you want to remove the folder {FOLDER}?"
 msgstr "Är du säker på att du vill ta bort mappen {FOLDER}?"
@@ -67,11 +67,11 @@ msgstr "Är du säker på att du vill ta bort mappen {FOLDER}?"
 msgid "_Add applications"
 msgstr "_Lägg till program"
 
-#: ui/application_picker.ui:139 ui/main.ui:464
+#: ui/application_picker.ui:139 ui/main.ui:550
 msgid "Applications"
 msgstr "Program"
 
-#: ui/create_appfolder.ui:124
+#: ui/create_appfolder.ui:123
 msgid "Title:"
 msgstr "Titel:"
 
@@ -87,13 +87,13 @@ msgstr ""
 msgid "Show missing _files"
 msgstr "Visa saknade _filer"
 
-#: ui/main.ui:182
-msgid "Folders:"
-msgstr "Mappar:"
-
-#: ui/main.ui:409 ui/shortcuts.ui:52
+#: ui/main.ui:164 ui/main.ui:495 ui/shortcuts.ui:52
 msgid "Folders"
 msgstr "Mappar"
+
+#: ui/main.ui:211
+msgid "Options"
+msgstr ""
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
@@ -104,17 +104,21 @@ msgid "Create a new folder"
 msgstr "Skapa en ny mapp"
 
 #: ui/shortcuts.ui:64
+msgid "Edit the folder properties"
+msgstr ""
+
+#: ui/shortcuts.ui:71
 msgid "Remove the currently selected folder"
 msgstr "Ta bort den aktuellt markerade mappen"
 
-#: ui/shortcuts.ui:79
+#: ui/shortcuts.ui:86
 msgid "Add a new file"
 msgstr "Lägg till en ny fil"
 
-#: ui/shortcuts.ui:86
+#: ui/shortcuts.ui:93
 msgid "Remove the selected file"
 msgstr "Ta bort den markerade filen"
 
-#: ui/shortcuts.ui:93
+#: ui/shortcuts.ui:107
 msgid "Search file in the current folder"
 msgstr ""

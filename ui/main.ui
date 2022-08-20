@@ -34,7 +34,7 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_files_save">
-        <property name="label" context="gtk30">_Save</property>
+        <property name="label" context="gtk30">Save</property>
         <property name="icon-name">document-save</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_save_activate" swapped="no"/>
@@ -43,7 +43,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_remove">
-        <property name="label" context="gtk30">_Delete</property>
+        <property name="label" context="gtk30">Delete</property>
         <property name="icon-name">list-remove</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_remove_activate" swapped="no"/>
@@ -52,7 +52,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_new">
-        <property name="label" context="gtk30">_New</property>
+        <property name="label" context="gtk30">New</property>
         <property name="icon-name">list-add</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_new_activate" swapped="no"/>
@@ -61,7 +61,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_files_search">
-        <property name="label" context="gtk30">_Search</property>
+        <property name="label" context="gtk30">Search</property>
         <property name="icon-name">edit-find</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_files_search_activate" swapped="no"/>
@@ -73,7 +73,7 @@
     <property name="accel-group">accelerators</property>
     <child>
       <object class="GtkAction" id="action_folders_remove">
-        <property name="label" context="gtk30">_Remove</property>
+        <property name="label" context="gtk30">Remove</property>
         <property name="icon-name">edit-delete</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_remove_activate" swapped="no"/>
@@ -82,7 +82,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_folders_create">
-        <property name="label" context="gtk30">_Create</property>
+        <property name="label" context="gtk30">Create</property>
         <property name="icon-name">folder-new</property>
         <signal name="activate" handler="on_action_folders_new_activate" swapped="no"/>
       </object>
@@ -90,7 +90,7 @@
     </child>
     <child>
       <object class="GtkAction" id="action_folders_properties">
-        <property name="label" context="gtk30">_Properties</property>
+        <property name="label" context="gtk30">Properties</property>
         <property name="icon-name">document-properties</property>
         <property name="sensitive">False</property>
         <signal name="activate" handler="on_action_folders_properties_activate" swapped="no"/>
@@ -131,19 +131,71 @@
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <child>
-      <object class="GtkCheckMenuItem" id="menuitem_show_missing_files">
-        <property name="related-action">action_options_show_missing_files</property>
+      <object class="GtkMenuItem" id="menuitem_files_new">
+        <property name="related-action">action_files_new</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="label">New</property>
         <property name="use-underline">True</property>
       </object>
     </child>
     <child>
-      <object class="GtkCheckMenuItem" id="menuitem_show_hidden_files">
-        <property name="related-action">action_options_show_hidden_files</property>
+      <object class="GtkMenuItem" id="menuitem_files_remove">
+        <property name="related-action">action_files_remove</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="label">Delete</property>
         <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_files_save">
+        <property name="related-action">action_files_save</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label">Save</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_folders">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">Folders</property>
+        <property name="use-underline">True</property>
+        <child type="submenu">
+          <object class="GtkMenu">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_folders_create">
+                <property name="related-action">action_folders_create</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Create</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_folders_properties">
+                <property name="related-action">action_folders_properties</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Properties</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_folders_remove">
+                <property name="related-action">action_folders_remove</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Remove</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
     <child>
@@ -153,10 +205,43 @@
       </object>
     </child>
     <child>
+      <object class="GtkMenuItem" id="menuitem_options">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">Options</property>
+        <property name="use-underline">True</property>
+        <child type="submenu">
+          <object class="GtkMenu">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkCheckMenuItem" id="menuitem_show_hidden_files">
+                <property name="related-action">action_options_show_hidden_files</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Show _Hidden Files</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckMenuItem" id="menuitem_show_missing_files">
+                <property name="related-action">action_options_show_missing_files</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Show missing _files</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="menuitem_shortcuts">
         <property name="related-action">action_shortcuts</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="label">Keyboard shortcuts</property>
         <property name="use-underline">True</property>
       </object>
     </child>
@@ -165,6 +250,7 @@
         <property name="related-action">action_about</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="label">About</property>
         <property name="use-underline">True</property>
       </object>
     </child>
@@ -179,7 +265,7 @@
       <object class="GtkLabel" id="label_folders">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="label" translatable="yes">Folders:</property>
+        <property name="label">Folders:</property>
         <property name="use-underline">True</property>
       </object>
     </child>

@@ -28,7 +28,7 @@ from gnome_appfolders_manager.constants import (APP_NAME,
                                                 FILE_SETTINGS,
                                                 SCHEMA_FOLDERS)
 from gnome_appfolders_manager.functions import get_treeview_selected_row
-from gnome_appfolders_manager.localize import _, text_gtk30
+from gnome_appfolders_manager.localize import _
 from gnome_appfolders_manager.models.appfolder_info import AppFolderInfo
 from gnome_appfolders_manager.models.appfolders import ModelAppFolders
 from gnome_appfolders_manager.models.application_info import ApplicationInfo
@@ -73,8 +73,6 @@ class UIMain(UIBase):
     def load_ui(self):
         """Load the interface UI"""
         logging.debug(f'{self.__class__.__name__} load UI')
-        # Initialize translations
-        self.ui.action_about.set_label(text_gtk30('About'))
         # Initialize titles and tooltips
         self.set_titles()
         # Initialize Gtk.HeaderBar
