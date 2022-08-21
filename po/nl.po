@@ -105,7 +105,7 @@ msgstr "Maak een nieuwe map aan"
 
 #: ui/shortcuts.ui:64
 msgid "Edit the folder properties"
-msgstr ""
+msgstr "Bewerk de mapeigenschappen"
 
 #: ui/shortcuts.ui:71
 msgid "Remove the currently selected folder"
