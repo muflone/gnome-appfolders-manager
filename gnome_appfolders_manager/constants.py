@@ -26,7 +26,7 @@ from xdg import BaseDirectory
 
 # Application constants
 APP_NAME = 'GNOME AppFolders Manager'
-APP_VERSION = '0.4.6'
+APP_VERSION = '0.4.7'
 APP_DESCRIPTION = 'Manage GNOME Shell applications folders'
 APP_DOMAIN = 'gnome-appfolders-manager'
 APP_AUTHOR = 'Fabio Castelli'
