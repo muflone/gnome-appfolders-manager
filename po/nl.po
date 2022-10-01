@@ -1,7 +1,7 @@
 # GNOME AppFolders Manager
 # Manage GNOME Shell applications folders
 # Copyright (C) 2016-2022 Fabio Castelli (Muflone) <muflone@muflone.com>
-# Website: https://www.muflone.com/gnome-appfolders-manager/
+# Website: http://www.muflone.com/gnome-appfolders-manager/
 # This file is distributed under the same license as the GNOME AppFolders Manager package.
 # Dutch translation for GNOME AppFolders Manager
 #
