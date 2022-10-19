@@ -47,7 +47,7 @@ class ModelAbstract(object):
         pass
 
     def get_data(self, treeiter, column):
-        """Get informaion from a TreeIter column"""
+        """Get information from a TreeIter column"""
         return self.get_model_row(treeiter)[column]
 
     def set_data(self, treeiter, column, value):

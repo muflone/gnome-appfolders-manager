@@ -230,7 +230,7 @@ class UIMain(UIBase):
         self.ui.treeview_applications.emit('start-interactive-search')
 
     def on_action_folders_new_activate(self, widget):
-        """Creat a new AppFolder"""
+        """Create a new AppFolder"""
         dialog = UICreateAppFolder(
             parent=self.ui.window,
             settings=self.settings,
