@@ -29,7 +29,7 @@ msgstr "Versão {VERSION}"
 
 #: gnome_appfolders_manager/ui/about.py:68
 msgid "Manage GNOME Shell applications folders"
-msgstr ""
+msgstr "Gerenciar categorias do GNOME Shell"
 
 #: gnome_appfolders_manager/ui/about.py:77
 msgid "Contributors:"
@@ -37,23 +37,23 @@ msgstr "Contribuidores:"
 
 #: gnome_appfolders_manager/ui/about.py:84
 msgid "Project home page"
-msgstr ""
+msgstr "Página do projeto"
 
 #: gnome_appfolders_manager/ui/about.py:85
 msgid "Source code"
-msgstr ""
+msgstr "Código fonte"
 
 #: gnome_appfolders_manager/ui/about.py:86
 msgid "Author information"
-msgstr ""
+msgstr "Informações do autor"
 
 #: gnome_appfolders_manager/ui/about.py:87
 msgid "Issues and bugs tracking"
-msgstr ""
+msgstr "Problemas e resolução de bugs"
 
 #: gnome_appfolders_manager/ui/about.py:88
 msgid "Translations"
-msgstr ""
+msgstr "Traduções"
 
 #: gnome_appfolders_manager/ui/main.py:285
 msgid "Remove the selected folder?"
@@ -94,7 +94,7 @@ msgstr "Categorias"
 
 #: ui/main.ui:211
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: ui/shortcuts.ui:21
 msgid "Show the about dialog"
@@ -106,7 +106,7 @@ msgstr "Criar nova categoria"
 
 #: ui/shortcuts.ui:64
 msgid "Edit the folder properties"
-msgstr ""
+msgstr "Editar propriedades da categoria"
 
 #: ui/shortcuts.ui:71
 msgid "Remove the currently selected folder"
